@@ -40,7 +40,6 @@ public class Test : MonoBehaviour
         if (Input.GetKey(KeyCode.Backspace))
             toto.gameObject.transform.localRotation = new Quaternion(0, 0 ,0 , 1);
 
-
         CheckSolution();
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -49,7 +48,6 @@ public class Test : MonoBehaviour
             Debug.Log(toto.gameObject.transform.rotation.y);
             Debug.Log(toto.gameObject.transform.rotation.z);
             Debug.Log(toto.gameObject.transform.rotation.w);
-
         }
     }
 
