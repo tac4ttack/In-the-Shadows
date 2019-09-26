@@ -9,6 +9,7 @@ public class Test : MonoBehaviour
     public  Light       spot;
     public  float       bias;
     public Quaternion[] solutions;
+    private Quaternion current;
 
     // Start is called before the first frame update
     void Start()
@@ -44,26 +45,34 @@ public class Test : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log(toto.gameObject.transform.rotation.x);
-            Debug.Log(toto.gameObject.transform.rotation.y);
-            Debug.Log(toto.gameObject.transform.rotation.z);
-            Debug.Log(toto.gameObject.transform.rotation.w);
+            Debug.Log(toto.gameObject.transform.localRotation);
+            Debug.Log(current);
         }
     }
 
+    /*
+        Will check if the Solution quaternion is logically equal to the object quaternion
+        Is true if:
+            Q1 == Q2
+            or
+            Q1 == -Q2
+     */
     void    CheckSolution()
     {
+        current = Quaternion.Normalize(toto.transform.localRotation);
+        
         for (int i = 0; i < solutions.Length; i++)
         {
             Quaternion q = (Quaternion)solutions[i];
-            if (    q.x >= toto.transform.rotation.x - bias
-                &&  q.x <= toto.transform.rotation.x + bias
-                &&  q.y >= toto.transform.rotation.y - bias
-                &&  q.y <= toto.transform.rotation.y + bias
-                &&  q.z >= toto.transform.rotation.z - bias
-                &&  q.z <= toto.transform.rotation.z + bias
-                &&  q.w >= toto.transform.rotation.w - bias
-                &&  q.w <= toto.transform.rotation.w + bias)
+            if (    ((q.x >= current.x - bias &&  q.x <= current.x + bias)
+                &&  (q.y >= current.y - bias &&  q.y <= current.y + bias)
+                &&  (q.z >= current.z - bias &&  q.z <= current.z + bias)
+                &&  (q.w >= current.w - bias &&  q.w <= current.w + bias))
+                ||
+                    ((q.x >= -current.x - bias &&  q.x <= -current.x + bias)
+                &&  (q.y >= -current.y - bias &&  q.y <= -current.y + bias)
+                &&  (q.z >= -current.z - bias &&  q.z <= -current.z + bias)
+                &&  (q.w >= -current.w - bias &&  q.w <= -current.w + bias)))
             {
                 spot.color = Color.green;
             }
