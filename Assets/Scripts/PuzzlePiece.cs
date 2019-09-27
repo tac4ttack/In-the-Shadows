@@ -35,11 +35,21 @@ public class PuzzlePiece : MonoBehaviour
         // DEBUG
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log(this.gameObject.name);
             Debug.Log(this.gameObject.transform.localRotation);
+            Debug.Log("\n");
         }
     }
 
     void FixedUpdate()
+    {
+        _currentOrientation = this.gameObject.transform.localRotation;
+        _currentPosition = this.gameObject.transform.localPosition;
+
+        CheckSolutions();
+    }
+
+    void OnMouseDrag()
     {
         if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
         {
@@ -56,11 +66,6 @@ public class PuzzlePiece : MonoBehaviour
             if (!TranslationConstraints[1])
                 this.gameObject.transform.Translate(new Vector3(0, Input.GetAxis("Mouse Y"), 0) * Time.deltaTime * _translationSpeed, Space.World);
         }
-
-        _currentOrientation = this.gameObject.transform.localRotation;
-        _currentPosition = this.gameObject.transform.localPosition;
-
-        CheckSolutions();
     }
 
     private void    CheckSolutions()
