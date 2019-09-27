@@ -9,23 +9,26 @@ public class Puzzle : MonoBehaviour
 
     public PuzzlePiece[]    PuzzlePieces;
 
-    private bool            _validated;
+    private bool            _isPuzzleValidated;
 
     void Start()
     {
-        _validated = false;
+        _isPuzzleValidated = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         CheckPuzzlePieces();
-        
+
         // DEBUG
-        if (_validated)
+        if (_isPuzzleValidated)
+        {
             debugSpot.color = Color.green;
+        }
         else
+        {
             debugSpot.color = Color.white;
+        }
     }
 
     void CheckPuzzlePieces()
@@ -34,8 +37,9 @@ public class Puzzle : MonoBehaviour
         for (int i = 0; i < PuzzlePieces.Length; i++)
         {
             PuzzlePiece p = (PuzzlePiece)PuzzlePieces[i];
-            tmp = p.validated;
+            tmp = p.isPuzzlePieceValidated;
         }
-        _validated = tmp;
+        _isPuzzleValidated = tmp;
     }
+
 }
