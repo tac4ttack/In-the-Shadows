@@ -239,11 +239,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   validated: 0
-  solQua:
+  OrientationSolutions:
   - {x: 0.7, y: 0, z: 0, w: 0.7}
   - {x: 0.1, y: 0.7, z: -0.7, w: 0.1}
-  solPos:
+  PositionSolutions:
   - {x: 0, y: 0, z: 0}
+  RotationConstraints: 010001
+  TranslationConstraints: 010101
 --- !u!1001 &1139712058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -478,6 +480,10 @@ PrefabInstance:
       propertyPath: pieces.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6968655589660330773, guid: 316c57965a639400383af8da9d005064, type: 3}
+      propertyPath: PuzzlePieces.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3847521634168516874, guid: 316c57965a639400383af8da9d005064, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.89
@@ -532,6 +538,10 @@ PrefabInstance:
       objectReference: {fileID: 25704738}
     - target: {fileID: 6968655589660330773, guid: 316c57965a639400383af8da9d005064, type: 3}
       propertyPath: pieces.Array.data[0]
+      value: 
+      objectReference: {fileID: 1007850704}
+    - target: {fileID: 6968655589660330773, guid: 316c57965a639400383af8da9d005064, type: 3}
+      propertyPath: PuzzlePieces.Array.data[0]
       value: 
       objectReference: {fileID: 1007850704}
     m_RemovedComponents: []

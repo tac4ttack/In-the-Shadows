@@ -4,34 +4,38 @@ using UnityEngine;
 
 public class Puzzle : MonoBehaviour
 {
+    // DEBUG
     public Light            debugSpot;
-    public PuzzlePiece[]    pieces;
 
-    private bool            validated;
+    public PuzzlePiece[]    PuzzlePieces;
+
+    private bool            _validated;
 
     void Start()
     {
-        validated = false;
+        _validated = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckPieces();
-        if (validated)
+        CheckPuzzlePieces();
+        
+        // DEBUG
+        if (_validated)
             debugSpot.color = Color.green;
         else
             debugSpot.color = Color.white;
     }
 
-    void CheckPieces()
+    void CheckPuzzlePieces()
     {
         bool   tmp = false;
-        for (int i = 0; i < pieces.Length; i++)
+        for (int i = 0; i < PuzzlePieces.Length; i++)
         {
-            PuzzlePiece p = (PuzzlePiece)pieces[i];
+            PuzzlePiece p = (PuzzlePiece)PuzzlePieces[i];
             tmp = p.validated;
         }
-        validated = tmp;
+        _validated = tmp;
     }
 }
