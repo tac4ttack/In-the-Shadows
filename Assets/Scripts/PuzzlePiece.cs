@@ -52,9 +52,9 @@ public class PuzzlePiece : MonoBehaviour
         if (Input.GetMouseButton(1) || (Input.GetMouseButton(0) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))))
         {
             if (!TranslationConstraints[0])
-                this.gameObject.transform.Translate(new Vector3(Input.GetAxis("Mouse X"), 0, 0) * Time.deltaTime * _translationSpeed * -1);
+                this.gameObject.transform.Translate(new Vector3(Input.GetAxis("Mouse X"), 0, 0) * Time.deltaTime * _translationSpeed * -1, Space.World);
             if (!TranslationConstraints[1])
-                this.gameObject.transform.Translate(new Vector3(0, Input.GetAxis("Mouse Y"), 0) * Time.deltaTime * _translationSpeed);
+                this.gameObject.transform.Translate(new Vector3(0, Input.GetAxis("Mouse Y"), 0) * Time.deltaTime * _translationSpeed, Space.World);
         }
 
         _currentOrientation = this.gameObject.transform.localRotation;
