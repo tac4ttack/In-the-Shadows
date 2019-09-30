@@ -58,11 +58,9 @@ public class PuzzlePiece : MonoBehaviour
         isPuzzlePieceValidated = (_isOrientationOK && _isRelativePositionOK);
     }
 
-
-    // BUG FOUND, mouse clicks not behaving well!!!!!!!!!!!
     void OnMouseDrag()
     {
-        if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
+        if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift) && !Input.GetMouseButton(1))
         {
             if (!RotationConstraints[0])
             {
@@ -74,7 +72,7 @@ public class PuzzlePiece : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(1) || (Input.GetMouseButton(0) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))))
+        if (Input.GetMouseButton(1) || (!Input.GetMouseButton(1) && Input.GetMouseButton(0) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))))
         {
             if (!TranslationConstraints[0])
             {
