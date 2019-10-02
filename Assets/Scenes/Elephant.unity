@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.015
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 370531780}
   - component: {fileID: 370531779}
   - component: {fileID: 370531778}
+  - component: {fileID: 370531781}
   m_Layer: 0
   m_Name: Cam
   m_TagString: Untagged
@@ -200,6 +201,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 6.0940003, y: -3.808, z: -5.0270004}
+--- !u!114 &370531781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370531777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6066cc3dedda94e568b82d2e40531fee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1007850703 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 6aecf6feee7a6408eb6610440c63928a,
