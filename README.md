@@ -32,7 +32,7 @@ Dans ce projet, nous allons développer un jeu ressemblant à Shadowmatic. Le bu
 - [file] Low Poly Forest Pack:
  https://jaks.itch.io/lowpolyforestpack
 
-- [file] Modular Terrain Pack:
+- [file][used] Modular Terrain Pack:
  https://fertile-soil-productions.itch.io/modular-terrain-pack
 
  - [file] Modular House Collection:
