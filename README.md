@@ -2,10 +2,10 @@
 Dans ce projet, nous allons développer un jeu ressemblant à Shadowmatic. Le but dujeu est le suivant : on doit reproduire une forme reconnaissable en ombre sur un mur, àl’aide d’objets situés au premier plan.
 
 # Assets et outils utilisés:
-- [script] Low Poly Water:
+- [script][used] Low Poly Water:
  http://viclw17.github.io/2016/03/29/low-poly-water/
 
-- [script] No Shared Vertices:
+- [script][used] No Shared Vertices:
  https://answers.unity.com/questions/798510/flat-shading.html
 
 - [asset store][used] Polybrush:
@@ -17,7 +17,7 @@ Dans ce projet, nous allons développer un jeu ressemblant à Shadowmatic. Le bu
 - [file] Low Poly Nature Pack:
  https://jhan-gutierrez.itch.io/low-poly-nature-pack
 
-- [used][file] Low Poly Foliage Pack - 001:
+- [file][used] Low Poly Foliage Pack - 001:
  https://emerald-eel-entertainment.itch.io/low-poly-foliage-pack-001
 
 - [file] Low Poly Rock Pack - 001:
@@ -35,7 +35,7 @@ Dans ce projet, nous allons développer un jeu ressemblant à Shadowmatic. Le bu
 - [file][used] Modular Terrain Pack:
  https://fertile-soil-productions.itch.io/modular-terrain-pack
 
- - [file] Modular House Collection:
+ - [file][used] Modular House Collection:
   https://fertile-soil-productions.itch.io/modular-house-collection
 
 - [file] Poly Desert Freebies:
@@ -46,3 +46,11 @@ Dans ce projet, nous allons développer un jeu ressemblant à Shadowmatic. Le bu
 
 - [file] Ultimate Nature Pack:
  https://quaternius.itch.io/150-lowpoly-nature-models
+
+- [file][used] Tile36: https://cc0textures.com/view.php?tex=Tiles36
+
+- [file] Low Poly Planets: https://motherboardmage.itch.io/low-poly-planets
+
+- [file] Low Poly Earth v2: https://sketchfab.com/3d-models/low-poly-earthv2-31c7f11f8bfa4ef79949a4ee824ae81f#download
+
+- [file][used] Low Poly Room: https://sketchfab.com/3d-models/low-poly-room-6efd70b753f24ed2b12541e43154ffdd
