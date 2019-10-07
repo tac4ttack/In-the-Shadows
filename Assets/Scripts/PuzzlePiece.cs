@@ -68,11 +68,16 @@ public class PuzzlePiece : MonoBehaviour
         {
             if (!RotationConstraints[0])
             {
-                this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * _rotationSpeed * 1);
+                this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * _rotationSpeed * -1);
+                // this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0), Time.deltaTime * _rotationSpeed);
+                // this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * _rotationSpeed, Space.Self);
+
             }
             if (!RotationConstraints[1])
             {
-                this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0) * Time.deltaTime * _rotationSpeed * 1);
+                this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0) * Time.deltaTime * _rotationSpeed);
+                // this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0), Time.deltaTime * _rotationSpeed);
+                // this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0), Time.deltaTime * _rotationSpeed, Space.Self);
             }
         }
 

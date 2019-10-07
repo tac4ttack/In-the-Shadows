@@ -14,11 +14,26 @@ Dans ce projet, nous allons développer un jeu ressemblant à Shadowmatic. Le bu
 - [file][used] LowPoly Environment Pack:
  https://korveen.itch.io/lowpoly-environment-pack
 
-- [file] Low Poly Nature Pack:
- https://jhan-gutierrez.itch.io/low-poly-nature-pack
-
 - [file][used] Low Poly Foliage Pack - 001:
  https://emerald-eel-entertainment.itch.io/low-poly-foliage-pack-001
+
+- [file][used] Modular Terrain Pack:
+ https://fertile-soil-productions.itch.io/modular-terrain-pack
+
+ - [file][used] Modular House Collection:
+  https://fertile-soil-productions.itch.io/modular-house-collection
+
+- [file][used] Low Poly Room: 
+https://sketchfab.com/3d-models/low-poly-room-6efd70b753f24ed2b12541e43154ffdd
+
+- [file][used] Isometric Japanese Team Room:
+ https://sketchfab.com/3d-models/isometric-japanese-tea-room-b422c6839b72424ead4c015596c5a7d5#download
+
+- [file] Tile36:
+ https://cc0textures.com/view.php?tex=Tiles36
+
+- [file] Low Poly Nature Pack:
+ https://jhan-gutierrez.itch.io/low-poly-nature-pack
 
 - [file] Low Poly Rock Pack - 001:
  https://emerald-eel-entertainment.itch.io/low-poly-rock-pack-001
@@ -32,11 +47,6 @@ Dans ce projet, nous allons développer un jeu ressemblant à Shadowmatic. Le bu
 - [file] Low Poly Forest Pack:
  https://jaks.itch.io/lowpolyforestpack
 
-- [file][used] Modular Terrain Pack:
- https://fertile-soil-productions.itch.io/modular-terrain-pack
-
- - [file][used] Modular House Collection:
-  https://fertile-soil-productions.itch.io/modular-house-collection
 
 - [file] Poly Desert Freebies:
  https://runemarkstudio.itch.io/poly-desert
@@ -47,10 +57,9 @@ Dans ce projet, nous allons développer un jeu ressemblant à Shadowmatic. Le bu
 - [file] Ultimate Nature Pack:
  https://quaternius.itch.io/150-lowpoly-nature-models
 
-- [file][used] Tile36: https://cc0textures.com/view.php?tex=Tiles36
+- [file] Low Poly Planets: 
+https://motherboardmage.itch.io/low-poly-planets
 
-- [file] Low Poly Planets: https://motherboardmage.itch.io/low-poly-planets
+- [file] Low Poly Earth v2: 
+https://sketchfab.com/3d-models/low-poly-earthv2-31c7f11f8bfa4ef79949a4ee824ae81f#download
 
-- [file] Low Poly Earth v2: https://sketchfab.com/3d-models/low-poly-earthv2-31c7f11f8bfa4ef79949a4ee824ae81f#download
-
-- [file][used] Low Poly Room: https://sketchfab.com/3d-models/low-poly-room-6efd70b753f24ed2b12541e43154ffdd

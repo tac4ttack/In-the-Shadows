@@ -795,6 +795,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ElephantTerrain
       objectReference: {fileID: 0}
+    - target: {fileID: 94767155, guid: 317d4ada3800649e58103d8f461aa7cd, type: 3}
+      propertyPath: m_Lightmapping
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7761041256200455230, guid: 317d4ada3800649e58103d8f461aa7cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -855,7 +859,23 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1841965309}
-    m_RemovedComponents: []
+    - target: {fileID: 7761041257251478091, guid: 317d4ada3800649e58103d8f461aa7cd,
+        type: 3}
+      propertyPath: PerlinSpeedX
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761041257251478091, guid: 317d4ada3800649e58103d8f461aa7cd,
+        type: 3}
+      propertyPath: PerlinSpeedZ
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7761041257251478091, guid: 317d4ada3800649e58103d8f461aa7cd,
+        type: 3}
+      propertyPath: Scale
+      value: 0.4
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7732761580516604932, guid: 317d4ada3800649e58103d8f461aa7cd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 317d4ada3800649e58103d8f461aa7cd, type: 3}
 --- !u!1001 &7895845563134463841
 PrefabInstance:
