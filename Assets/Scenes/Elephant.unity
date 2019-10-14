@@ -874,6 +874,11 @@ PrefabInstance:
       propertyPath: Scale
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 1208981874, guid: 317d4ada3800649e58103d8f461aa7cd, type: 3}
+      propertyPath: m_Name
+      value: Sun
+      objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 7732761580516604932, guid: 317d4ada3800649e58103d8f461aa7cd, type: 3}
+    - {fileID: 1876642668, guid: 317d4ada3800649e58103d8f461aa7cd, type: 3}
+    - {fileID: 383187889, guid: 317d4ada3800649e58103d8f461aa7cd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 317d4ada3800649e58103d8f461aa7cd, type: 3}
