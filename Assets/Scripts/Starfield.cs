@@ -22,7 +22,7 @@ public class Starfield : MonoBehaviour
     void Awake()
     {
         //DEBUG
-        Debug.Log("Awakening starfield!");
+        // Debug.Log("Awakening starfield!");
 
         float randomSize;
         float color;
@@ -34,6 +34,9 @@ public class Starfield : MonoBehaviour
         _yOffset = StarFieldHeight * 0.5f;
 
         _Stars = new ParticleSystem.Particle[StarAmount];
+        _StarsStartSize = new float[StarAmount];
+        _StarsBlink = new bool[StarAmount];
+
         for (int i = 0; i < StarAmount; i++)
         {
             randomSize = Random.Range(StarSizeRange, StarSizeRange + 1.0f);
@@ -49,19 +52,39 @@ public class Starfield : MonoBehaviour
                                             Random.Range(0, StarFieldHeight) - _yOffset,
                                             0);
             _Stars[i].startSize = StarSize * randomSize;
+            
+            // WIP
+            _StarsBlink[i] = Random.Range(0f, 1f) > 0.75f ? true : false ;
+            _StarsStartSize[i] = _Stars[i].startSize;
+
             _Stars[i].startColor = new Color(1.0f, color + GreenOffset, color + BlueOffset, 1.0f);
         }
         _Emitter.SetParticles(_Stars, _Stars.Length);
     }
 
+    public float ShineSpeed = 0.5f;
+    public float MaxExpand = 0.5f;
+    private float[] _StarsStartSize;
+    private bool[] _StarsBlink;
+
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.J))
             Awake();
-
         for (int i = 0; i < _Stars.Length; i++)
         {
-            // _Stars[i]. = Mathf.Sin(Time.deltaTime) * 1.0f;
+            if (_StarsBlink[i])
+                _Stars[i].startSize = (Mathf.Sin(Time.time * ShineSpeed) + 1.0f) / 2.0f * MaxExpand + _StarsStartSize[i];;
+            // _Stars[i].startColor = new Color(1.0f, Random.Range(0, 1f), Random.Range(0, 1f), 1.0f);
+            // _Stars[i].startSize = _Stars[i].GetCurrentSize(_Emitter) * Mathf.Sin(Time.deltaTime) * 10f;
+            // _Stars[i].startSize = Mathf.PingPong(Time.time * ShineSpeed, MaxExpand);
         }
+        _Emitter.SetParticles(_Stars, _Stars.Length);
     }
+
+    
+    
+    // var range = maxSize - minSize;
+    // transform.localScale.y = minSize + Mathf.PingPong(Time.time * speed, range);
+    // transform.localScale.y = (Mathf.Sin(Time.time * speed) + 1.0) / 2.0 * range + minSize;
 }
