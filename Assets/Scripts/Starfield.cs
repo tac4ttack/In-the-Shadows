@@ -27,17 +27,6 @@ public class Starfield : MonoBehaviour
         float randomSize;
         float color;
 
-        // if (Screen.currentResolution.width < 1500.0f)
-        //     StarFieldWidth = 1500.0f;
-        // else
-        //     StarFieldWidth = Screen.currentResolution.width;
-        
-        // if (Screen.currentResolution.height < 1000.0f)
-        //     StarFieldHeight = 1000.0f;
-        // else
-        //     StarFieldHeight = Screen.currentResolution.height;
-        
-
         _Emitter = this.GetComponent<ParticleSystem>();
         Assert.IsNotNull(_Emitter, "Particle System component is missing from GameObject!");
         

@@ -7,6 +7,6 @@ public class EarthRotate : MonoBehaviour
 
     void Update()
     {
-        this.transform.Rotate(_rotationAxis, rotationSpeed * Time.deltaTime, Space.Self);
+        this.transform.Rotate(_rotationAxis, -1 * rotationSpeed * Time.deltaTime);
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class PuzzlePiece : MonoBehaviour
@@ -183,26 +182,4 @@ public class PuzzlePiece : MonoBehaviour
             }
         }
     }
-
-    /*
-    // OBSOLETE!!!!
-    private void    CheckPosition()
-    {
-        for (int i = 0; i < PositionSolutions.Length; i++)
-        {
-            Vector3 p = (Vector3)PositionSolutions[i];
-            if (    (p.x >=  _currentPosition.x - _positionBias && p.x <=  _currentPosition.x + _positionBias)
-                &&  (p.y >=  _currentPosition.y - _positionBias && p.y <=  _currentPosition.y + _positionBias)
-                &&  (p.z >=  _currentPosition.z - _positionBias && p.z <=  _currentPosition.z + _positionBias))
-            {
-                _isRelativePositionOK = true;
-                break;
-            }
-            else
-            {
-                _isRelativePositionOK = false;
-            }
-        }
-    }
-    */
 }
