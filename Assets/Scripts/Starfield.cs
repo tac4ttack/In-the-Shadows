@@ -21,9 +21,6 @@ public class Starfield : MonoBehaviour
 
     void Awake()
     {
-        //DEBUG
-        // Debug.Log("Awakening starfield!");
-
         float randomSize;
         float color;
 
@@ -53,7 +50,6 @@ public class Starfield : MonoBehaviour
                                             0);
             _Stars[i].startSize = StarSize * randomSize;
             
-            // WIP
             _StarsBlink[i] = Random.Range(0f, 1f) > 0.75f ? true : false ;
             _StarsStartSize[i] = _Stars[i].startSize;
 
@@ -75,16 +71,7 @@ public class Starfield : MonoBehaviour
         {
             if (_StarsBlink[i])
                 _Stars[i].startSize = (Mathf.Sin(Time.time * ShineSpeed) + 1.0f) / 2.0f * MaxExpand + _StarsStartSize[i];;
-            // _Stars[i].startColor = new Color(1.0f, Random.Range(0, 1f), Random.Range(0, 1f), 1.0f);
-            // _Stars[i].startSize = _Stars[i].GetCurrentSize(_Emitter) * Mathf.Sin(Time.deltaTime) * 10f;
-            // _Stars[i].startSize = Mathf.PingPong(Time.time * ShineSpeed, MaxExpand);
         }
         _Emitter.SetParticles(_Stars, _Stars.Length);
     }
-
-    
-    
-    // var range = maxSize - minSize;
-    // transform.localScale.y = minSize + Mathf.PingPong(Time.time * speed, range);
-    // transform.localScale.y = (Mathf.Sin(Time.time * speed) + 1.0) / 2.0 * range + minSize;
 }
