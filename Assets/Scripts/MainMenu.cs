@@ -4,6 +4,7 @@ using UnityEngine.Assertions;
 public class MainMenu : MonoBehaviour
 {
     public GameObject MainPanel;
+    public GameObject PlayPanel;
     public GameObject SettingsPanel;
     public GameObject CreditsPanel;
 
@@ -12,10 +13,12 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         Assert.IsNotNull(MainPanel, "Main panel GameObject not set!");
+        Assert.IsNotNull(PlayPanel, "Play panel GameObject not set!");
         Assert.IsNotNull(SettingsPanel, "Settings panel GameObject not set!");
-        Assert.IsNotNull(CreditsPanel, "Settings panel GameObject not set!");
+        Assert.IsNotNull(CreditsPanel, "Credits panel GameObject not set!");
 
         MainPanel.SetActive(true);
+        PlayPanel.SetActive(false);
         SettingsPanel.SetActive(false);
         CreditsPanel.SetActive(false);
         _activePanel = MainPanel;
@@ -32,6 +35,13 @@ public class MainMenu : MonoBehaviour
         _activePanel.SetActive(false);
         MainPanel.SetActive(true);
         _activePanel = MainPanel;
+    }
+
+    public void PlayButton()
+    {
+        MainPanel.SetActive(false);
+        PlayPanel.SetActive(true);
+        _activePanel = PlayPanel;
     }
 
     public void SettingsButton()
