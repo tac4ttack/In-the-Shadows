@@ -258,7 +258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -25.5, y: -27.5}
+  m_AnchoredPosition: {x: -5.5, y: -27.5}
   m_SizeDelta: {x: 18, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &102134277
@@ -303,7 +303,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 604110474}
-        m_MethodName: BackButton
+        m_MethodName: ClearButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -434,7 +434,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0.2
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -9023,7 +9023,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0.1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -9071,7 +9071,7 @@ RectTransform:
   - {fileID: 2138318621}
   - {fileID: 1118552033}
   m_Father: {fileID: 1337854433}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9784,8 +9784,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1965089634}
-  - {fileID: 2032063232}
   - {fileID: 1044316347}
+  - {fileID: 2032063232}
   - {fileID: 959967005}
   m_Father: {fileID: 1845731140}
   m_RootOrder: 1
@@ -10492,6 +10492,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 604110474}
+        m_MethodName: BackButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1845731141}
         m_MethodName: BackButton
         m_Mode: 1
         m_Arguments:
@@ -11974,13 +11985,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0e5336f962f4ae983ebad683549bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MasterVolumeValue: {fileID: 0}
-  MasterVolumeSlider: {fileID: 0}
-  SFXVolumeValue: {fileID: 0}
-  SFXVolumeSlider: {fileID: 0}
-  MusicVolumeValue: {fileID: 0}
-  MusicVolumeSlider: {fileID: 0}
-  MuteCheckbox: {fileID: 0}
+  MasterVolumeValue: {fileID: 868957946}
+  MasterVolumeSlider: {fileID: 2140635696}
+  SFXVolumeValue: {fileID: 2138318622}
+  SFXVolumeSlider: {fileID: 109524783}
+  MusicVolumeValue: {fileID: 578486410}
+  MusicVolumeSlider: {fileID: 1043242172}
+  MuteCheckbox: {fileID: 959967006}
 --- !u!114 &1845731142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12500,7 +12511,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Clear data
+  m_text: TEST SOUND
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1de28783f92434f0abb61ee9a8f566e2, type: 2}
   m_sharedMaterial: {fileID: 21457898548028410, guid: 1de28783f92434f0abb61ee9a8f566e2,
@@ -12995,7 +13006,7 @@ RectTransform:
   - {fileID: 578486409}
   - {fileID: 939238417}
   m_Father: {fileID: 1337854433}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -13845,7 +13856,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.3
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -13936,6 +13947,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4678255994075345039, guid: f1315c900d47f4bfc8cbff135014c034,
         type: 3}
+      propertyPath: Sfx.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678255994075345039, guid: f1315c900d47f4bfc8cbff135014c034,
+        type: 3}
       propertyPath: Musics.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 3908b4708a6454e12a4a498564c5938a, type: 3}
@@ -13949,77 +13965,13 @@ PrefabInstance:
       propertyPath: Musics.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: ed8eb6dbd865a4bc5995444eb633a280, type: 3}
+    - target: {fileID: 4678255994075345039, guid: f1315c900d47f4bfc8cbff135014c034,
+        type: 3}
+      propertyPath: Sfx.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: f37694c45be5a4ac1863332dd47cd05c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1315c900d47f4bfc8cbff135014c034, type: 3}
---- !u!1001 &3815470410951235000
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3815470411911210933, guid: 0124bcc294d0c4cffb056133e9ef313d,
-        type: 3}
-      propertyPath: m_Name
-      value: LevelData
-      objectReference: {fileID: 0}
-    - target: {fileID: 3815470411911210935, guid: 0124bcc294d0c4cffb056133e9ef313d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 338.31836
-      objectReference: {fileID: 0}
-    - target: {fileID: 3815470411911210935, guid: 0124bcc294d0c4cffb056133e9ef313d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -342.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 3815470411911210935, guid: 0124bcc294d0c4cffb056133e9ef313d,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -12.418278
-      objectReference: {fileID: 0}
-    - target: {fileID: 3815470411911210935, guid: 0124bcc294d0c4cffb056133e9ef313d,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3815470411911210935, guid: 0124bcc294d0c4cffb056133e9ef313d,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3815470411911210935, guid: 0124bcc294d0c4cffb056133e9ef313d,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3815470411911210935, guid: 0124bcc294d0c4cffb056133e9ef313d,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3815470411911210935, guid: 0124bcc294d0c4cffb056133e9ef313d,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3815470411911210935, guid: 0124bcc294d0c4cffb056133e9ef313d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3815470411911210935, guid: 0124bcc294d0c4cffb056133e9ef313d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3815470411911210935, guid: 0124bcc294d0c4cffb056133e9ef313d,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0124bcc294d0c4cffb056133e9ef313d, type: 3}
 --- !u!1001 &4342906815112068325
 PrefabInstance:
   m_ObjectHideFlags: 0

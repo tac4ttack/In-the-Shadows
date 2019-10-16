@@ -39,5 +39,8 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);   
         }
         DontDestroyOnLoad(this.gameObject);
+
+
+        // RAJOUTER LOAD SAVED SETTINGS
     }
 }
