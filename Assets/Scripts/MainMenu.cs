@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -17,11 +18,25 @@ public class MainMenu : MonoBehaviour
         Assert.IsNotNull(SettingsPanel, "Settings panel GameObject not set!");
         Assert.IsNotNull(CreditsPanel, "Credits panel GameObject not set!");
 
+        // WORKS ONLY IF PANELS ARE LEFT ACTIVE IN SCENE BEFORE LAUNCH
+        // if (!MainPanel)
+        //     MainPanel = GameObject.Find("MainPanel");
+        // if (!PlayPanel)
+        //     PlayPanel = GameObject.Find("PlayPanel");
+        // if (!SettingsPanel)
+        //     SettingsPanel = GameObject.Find("SettingsPanel");
+        // if (!CreditsPanel)
+        //     CreditsPanel = GameObject.Find("CreditsPanel");
+
         MainPanel.SetActive(true);
         PlayPanel.SetActive(false);
         SettingsPanel.SetActive(false);
         CreditsPanel.SetActive(false);
         _activePanel = MainPanel;
+
+
+        // DEBUG Music
+        SoundManager.sm.MusicSrc.PlayOneShot(SoundManager.sm.Musics[0]);
     }
 
     public void ExitButton()
@@ -56,5 +71,11 @@ public class MainMenu : MonoBehaviour
         MainPanel.SetActive(false);
         CreditsPanel.SetActive(true);
         _activePanel = CreditsPanel;
+    }
+
+    public void ClearButton()
+    {
+        // DEBUG SFX
+        SoundManager.sm.SfxSrc.PlayOneShot(SoundManager.sm.Sfx[0]);
     }
 }

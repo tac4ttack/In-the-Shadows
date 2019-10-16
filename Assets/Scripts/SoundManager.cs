@@ -7,12 +7,9 @@ public class SoundManager : MonoBehaviour
     [HideInInspector] public static SoundManager sm { get; private set; }
 
     public List<AudioClip> Musics = new List<AudioClip>();
-    public List<AudioClip> Sounds = new List<AudioClip>();
+    public List<AudioClip> Sfx = new List<AudioClip>();
     public AudioSource MusicSrc;
-    public AudioSource EffectSrc;
-    public float GeneralVolume = 50;
-    public float MusicVolume = 50;
-    public float EffectVolume = 50;
+    public AudioSource SfxSrc;
 
     private void Awake()
     {
@@ -25,16 +22,14 @@ public class SoundManager : MonoBehaviour
 
         if (MusicSrc == null)
             MusicSrc = AS[0];
-            MusicSrc = GetComponent<AudioSource>();
-        if (EffectSrc == null)
-            EffectSrc = AS[1];
-            EffectSrc = GetComponent<AudioSource>();
+        if (SfxSrc == null)
+            SfxSrc = AS[1];
+
+        // Singleton setup
         // OLD WAY
         // if (!sm)
         //     sm = this;
-
         // NEW WAY
-        // Singleton setup
         if (sm == null)
         {
             sm = this;

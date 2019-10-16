@@ -14,7 +14,7 @@ public class LevelData : MonoBehaviour
 
     void Start()
     {
-        SoundManager.sm.MusicSrc.PlayOneShot(SoundManager.sm.Musics[TrackNumber]);
+        // SoundManager.sm.MusicSrc.PlayOneShot(SoundManager.sm.Musics[TrackNumber]);
     }
 
     void OnDestroy()
