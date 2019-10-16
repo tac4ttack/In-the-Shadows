@@ -32,5 +32,35 @@ public static class SaveSystem
             Debug.LogError("Settings data file not found in " + settingsPath);
             return null;
         }
-    } 
+    }
+
+    public static void SavePlayers(PlayersData iData)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string settingsPath = Application.persistentDataPath + "/players.bin";
+        // File mode is create because we want to overwrite existing files
+        FileStream stream = new FileStream(settingsPath, FileMode.Create);        
+        PlayersData data = new PlayersData(iData);
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
+    public static PlayersData LoadPlayers()
+    {
+        string settingsPath = Application.persistentDataPath + "/players.bin";
+
+        if (File.Exists(settingsPath))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(settingsPath, FileMode.Open);
+            PlayersData data = formatter.Deserialize(stream) as PlayersData;
+            stream.Close();
+            return data;
+        }
+        else
+        {
+            Debug.LogError("Players data file not found in " + settingsPath);
+            return null;
+        }
+    }
 }
