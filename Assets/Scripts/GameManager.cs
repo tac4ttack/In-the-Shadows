@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         SoundManager.sm.SfxSrc.volume = Settings.SFXVolume * Settings.MasterVolume;
         SoundManager.sm.MusicSrc.volume = Settings.MusicVolume * Settings.MasterVolume;
         // Launch Main Menu Music here
+        // Needs to create logic for date formatting and putting it into last played player data
     }
 
     void Update()

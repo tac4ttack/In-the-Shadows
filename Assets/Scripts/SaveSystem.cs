@@ -37,7 +37,7 @@ public static class SaveSystem
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string playersPath = Application.persistentDataPath + "/players.bin";
-        FileStream playersSaveStream = new FileStream(playersPath, FileMode.Create);        
+        FileStream playersSaveStream = new FileStream(playersPath, FileMode.Create); 
         PlayersData data = new PlayersData(iData);
         formatter.Serialize(playersSaveStream, data);
         playersSaveStream.Close();
