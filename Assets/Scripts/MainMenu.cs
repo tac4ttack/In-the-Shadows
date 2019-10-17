@@ -14,26 +14,30 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        Assert.IsNotNull(MainPanel, "Main panel GameObject not set!");
-        Assert.IsNotNull(PlayPanel, "Play panel GameObject not set!");
-        Assert.IsNotNull(SettingsPanel, "Settings panel GameObject not set!");
-        Assert.IsNotNull(CreditsPanel, "Credits panel GameObject not set!");
-
-        // WORKS ONLY IF PANELS ARE LEFT ACTIVE IN SCENE BEFORE LAUNCH
-        // if (!MainPanel)
-        //     MainPanel = GameObject.Find("MainPanel");
-        // if (!PlayPanel)
-        //     PlayPanel = GameObject.Find("PlayPanel");
-        // if (!SettingsPanel)
-        //     SettingsPanel = GameObject.Find("SettingsPanel");
-        // if (!CreditsPanel)
-        //     CreditsPanel = GameObject.Find("CreditsPanel");
+        // WORKS ONLY IF PANELS ARE LEFT ACTIVE IN SCENE BEFORE LAUNCH SO WE ACTIVATE THEM MANUALLY FIRST!
+        MainPanel.SetActive(true);
+        PlayPanel.SetActive(true);
+        SettingsPanel.SetActive(true);
+        CreditsPanel.SetActive(true);
+        if (!MainPanel)
+            MainPanel = GameObject.Find("MainPanel");
+        if (!PlayPanel)
+            PlayPanel = GameObject.Find("PlayPanel");
+        if (!SettingsPanel)
+            SettingsPanel = GameObject.Find("SettingsPanel");
+        if (!CreditsPanel)
+            CreditsPanel = GameObject.Find("CreditsPanel");
 
         MainPanel.SetActive(true);
         PlayPanel.SetActive(false);
         SettingsPanel.SetActive(false);
         CreditsPanel.SetActive(false);
         _activePanel = MainPanel;
+
+        Assert.IsNotNull(MainPanel, "Main panel GameObject not set!");
+        Assert.IsNotNull(PlayPanel, "Play panel GameObject not set!");
+        Assert.IsNotNull(SettingsPanel, "Settings panel GameObject not set!");
+        Assert.IsNotNull(CreditsPanel, "Credits panel GameObject not set!");
 
         // DEBUG Music
         SoundManager.sm.MusicSrc.PlayOneShot(SoundManager.sm.Musics[0]);
@@ -71,16 +75,6 @@ public class MainMenu : MonoBehaviour
         MainPanel.SetActive(false);
         CreditsPanel.SetActive(true);
         _activePanel = CreditsPanel;
-    }
-
-    public void ClearDataButton()
-    {
-        GameManager.gm.ClearAllPlayersData();
-    }
-
-    public void ClearSlotButton(int iSlot)
-    {
-        GameManager.gm.ClearTargetPlayerData(iSlot);
     }
 
     // DEBUG
