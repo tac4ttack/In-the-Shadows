@@ -20,6 +20,7 @@ public class PlayersData
     public float[] ProgressionPercentage;
     public string[] LastPlayed;
     public bool[] IsEmpty;
+    public bool[] NewGame;
 
     public int _puzzlesAmount = 3;
 
@@ -30,16 +31,23 @@ public class PlayersData
         ProgressionPercentage = new float[3];
         LastPlayed = new string[3];
         IsEmpty = new bool[3];
+        NewGame = new bool[3];
 
         for (int i = 0; i < 3; i++)
         {
-            PlayersName[i] = "John Doe";
+            PlayersName[i] = "Player #" + (i + 1);
             Progression[i].Level = new int[3];
             for (int j = 0; j < _puzzlesAmount; j++)
-                Progression[i].Level[j] = i + j;
+            {
+                if (j == 0)
+                    Progression[i].Level[j] = 1;
+                else
+                    Progression[i].Level[j] = 0;
+            }
             ProgressionPercentage[i] = 0f;
             LastPlayed[i] = "never";
             IsEmpty[i] = true;
+            NewGame[i] = true;
         }
     }
 
@@ -50,6 +58,8 @@ public class PlayersData
         ProgressionPercentage = new float[3];
         LastPlayed = new string[3];
         IsEmpty = new bool[3];
+        NewGame = new bool[3];
+
         for (int i = 0; i < 3; i++)
         {
             PlayersName[i] = iData.PlayersName[i];
@@ -59,6 +69,26 @@ public class PlayersData
             ProgressionPercentage[i] = iData.ProgressionPercentage[i];
             LastPlayed[i] = iData.LastPlayed[i];
             IsEmpty[i] = iData.IsEmpty[i];
+            NewGame[i] = iData.NewGame[i];
+        }
+    }
+
+    public void ResetTargetPlayer(int iSlot)
+    {
+        if (iSlot >= 0 && iSlot < 3)
+        {
+            PlayersName[iSlot] = "Player #" + (iSlot + 1);
+            for (int i = 0; i < _puzzlesAmount; i++)
+            {
+                if (i == 0)
+                    Progression[iSlot].Level[i] = 1;
+                else
+                    Progression[iSlot].Level[i] = 0;
+            }
+            ProgressionPercentage[iSlot] = 0f;
+            LastPlayed[iSlot] = "never";
+            IsEmpty[iSlot] = true;
+            NewGame[iSlot] = true;
         }
     }
 }

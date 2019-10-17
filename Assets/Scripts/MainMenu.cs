@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Assertions;
 using TMPro;
 
@@ -33,7 +34,6 @@ public class MainMenu : MonoBehaviour
         SettingsPanel.SetActive(false);
         CreditsPanel.SetActive(false);
         _activePanel = MainPanel;
-
 
         // DEBUG Music
         SoundManager.sm.MusicSrc.PlayOneShot(SoundManager.sm.Musics[0]);
@@ -75,9 +75,15 @@ public class MainMenu : MonoBehaviour
 
     public void ClearDataButton()
     {
-        GameManager.gm.ClearPlayersData();
+        GameManager.gm.ClearAllPlayersData();
     }
 
+    public void ClearSlotButton(int iSlot)
+    {
+        GameManager.gm.ClearTargetPlayerData(iSlot);
+    }
+
+    // DEBUG
     public void TestSoundButton()
     {
         // DEBUG SFX

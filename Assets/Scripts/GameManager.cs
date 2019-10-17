@@ -50,9 +50,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ClearPlayersData()
+    public void ClearAllPlayersData()
     {
         Players = new PlayersData();
+        SaveSystem.SavePlayers(Players);
+    }
+
+    public void ClearTargetPlayerData(int iSlot)
+    {
+        Players.ResetTargetPlayer(iSlot);
         SaveSystem.SavePlayers(Players);
     }
 
