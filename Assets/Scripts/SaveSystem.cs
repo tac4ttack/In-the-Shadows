@@ -8,11 +8,10 @@ public static class SaveSystem
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string settingsPath = Application.persistentDataPath + "/settings.bin";
-        // File mode is create because we want to overwrite existing files
-        FileStream stream = new FileStream(settingsPath, FileMode.Create);        
+        FileStream settingsSaveStream = new FileStream(settingsPath, FileMode.Create);        
         SettingsData data = new SettingsData(iData);
-        formatter.Serialize(stream, data);
-        stream.Close();
+        formatter.Serialize(settingsSaveStream, data);
+        settingsSaveStream.Close();
     }
 
     public static SettingsData LoadSettings()
@@ -22,14 +21,14 @@ public static class SaveSystem
         if (File.Exists(settingsPath))
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(settingsPath, FileMode.Open);
-            SettingsData data = formatter.Deserialize(stream) as SettingsData;
-            stream.Close();
+            FileStream settingsLoadStream = new FileStream(settingsPath, FileMode.Open);
+            SettingsData data = formatter.Deserialize(settingsLoadStream) as SettingsData;
+            settingsLoadStream.Close();
             return data;
         }
         else
         {
-            Debug.LogError("Settings data file not found in " + settingsPath);
+            Debug.LogWarning("Settings data file not found in " + settingsPath);
             return null;
         }
     }
@@ -37,29 +36,28 @@ public static class SaveSystem
     public static void SavePlayers(PlayersData iData)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string settingsPath = Application.persistentDataPath + "/players.bin";
-        // File mode is create because we want to overwrite existing files
-        FileStream stream = new FileStream(settingsPath, FileMode.Create);        
+        string playersPath = Application.persistentDataPath + "/players.bin";
+        FileStream playersSaveStream = new FileStream(playersPath, FileMode.Create);        
         PlayersData data = new PlayersData(iData);
-        formatter.Serialize(stream, data);
-        stream.Close();
+        formatter.Serialize(playersSaveStream, data);
+        playersSaveStream.Close();
     }
 
     public static PlayersData LoadPlayers()
     {
-        string settingsPath = Application.persistentDataPath + "/players.bin";
+        string playersPath = Application.persistentDataPath + "/players.bin";
 
-        if (File.Exists(settingsPath))
+        if (File.Exists(playersPath))
         {
             BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(settingsPath, FileMode.Open);
-            PlayersData data = formatter.Deserialize(stream) as PlayersData;
-            stream.Close();
+            FileStream playersLoadStream = new FileStream(playersPath, FileMode.Open);
+            PlayersData data = formatter.Deserialize(playersLoadStream) as PlayersData;
+            playersLoadStream.Close();
             return data;
         }
         else
         {
-            Debug.LogError("Players data file not found in " + settingsPath);
+            Debug.LogWarning("Players data file not found in " + playersPath);
             return null;
         }
     }

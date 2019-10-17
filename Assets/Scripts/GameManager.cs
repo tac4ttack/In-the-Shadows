@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-
 using UnityEngine;
 using UnityEngine.SceneManagement; //So you can use SceneManager
 
@@ -51,9 +50,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    
-    
-    
+    public void ClearPlayersData()
+    {
+        Players = new PlayersData();
+        SaveSystem.SavePlayers(Players);
+    }
+
     // DEBUG AND TESTING
     IEnumerator JumpToScene(Scene iTarget)
     {

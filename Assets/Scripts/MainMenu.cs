@@ -73,7 +73,12 @@ public class MainMenu : MonoBehaviour
         _activePanel = CreditsPanel;
     }
 
-    public void ClearButton()
+    public void ClearDataButton()
+    {
+        GameManager.gm.ClearPlayersData();
+    }
+
+    public void TestSoundButton()
     {
         // DEBUG SFX
         SoundManager.sm.SfxSrc.PlayOneShot(SoundManager.sm.Sfx[0]);
