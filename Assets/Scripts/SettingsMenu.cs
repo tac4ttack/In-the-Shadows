@@ -70,8 +70,8 @@ public class SettingsMenu : MonoBehaviour
     {
         GameManager.gm.Settings.MasterVolume = MasterVolumeSlider.value;
         MasterVolumeValue.text = Mathf.RoundToInt(GameManager.gm.Settings.MasterVolume * 100f) + "%";
-        SoundManager.sm.SfxSrc.volume = GameManager.gm.Settings.SFXVolume * GameManager.gm.Settings.MasterVolume;
-        SoundManager.sm.MusicSrc.volume = GameManager.gm.Settings.MusicVolume * GameManager.gm.Settings.MasterVolume;
+        GameManager.gm.soundManager.SfxSrc.volume = GameManager.gm.Settings.SFXVolume * GameManager.gm.Settings.MasterVolume;
+        GameManager.gm.soundManager.MusicSrc.volume = GameManager.gm.Settings.MusicVolume * GameManager.gm.Settings.MasterVolume;
         if (!GameManager.gm.Settings.SoundMuted)
             GameManager.gm.Settings.PreviousMasterVolume = GameManager.gm.Settings.MasterVolume;
         SaveSystem.SaveSettings(GameManager.gm.Settings);
@@ -81,7 +81,7 @@ public class SettingsMenu : MonoBehaviour
     {
         GameManager.gm.Settings.SFXVolume = SFXVolumeSlider.value;
         SFXVolumeValue.text = Mathf.RoundToInt(GameManager.gm.Settings.SFXVolume * 100f) + "%";
-        SoundManager.sm.SfxSrc.volume = GameManager.gm.Settings.SFXVolume * GameManager.gm.Settings.MasterVolume;
+        GameManager.gm.soundManager.SfxSrc.volume = GameManager.gm.Settings.SFXVolume * GameManager.gm.Settings.MasterVolume;
         if (!GameManager.gm.Settings.SoundMuted)
             GameManager.gm.Settings.PreviousSFXVolume = GameManager.gm.Settings.SFXVolume;
         SaveSystem.SaveSettings(GameManager.gm.Settings);
@@ -91,7 +91,7 @@ public class SettingsMenu : MonoBehaviour
     {
         GameManager.gm.Settings.MusicVolume = MusicVolumeSlider.value;
         MusicVolumeValue.text = Mathf.RoundToInt(GameManager.gm.Settings.MusicVolume * 100f) + "%";
-        SoundManager.sm.MusicSrc.volume = GameManager.gm.Settings.MusicVolume * GameManager.gm.Settings.MasterVolume;
+        GameManager.gm.soundManager.MusicSrc.volume = GameManager.gm.Settings.MusicVolume * GameManager.gm.Settings.MasterVolume;
         if (!GameManager.gm.Settings.SoundMuted)
             GameManager.gm.Settings.PreviousMusicVolume = GameManager.gm.Settings.MusicVolume;
         SaveSystem.SaveSettings(GameManager.gm.Settings);
@@ -126,7 +126,7 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
-    public void ResetToDefaults()
+    public void ResetToDefaultsButtonPress()
     {
         MasterVolumeSlider.value = GameManager.gm.Settings.DefaultMasterVolume;
         GameManager.gm.Settings.PreviousMasterVolume = GameManager.gm.Settings.DefaultMasterVolume;
@@ -141,7 +141,7 @@ public class SettingsMenu : MonoBehaviour
         SaveSystem.SaveSettings(GameManager.gm.Settings);
     }
 
-    public void BackButton()
+    public void BackButtonPress()
     {
         SaveSystem.SaveSettings(GameManager.gm.Settings);
     }

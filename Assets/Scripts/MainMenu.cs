@@ -40,7 +40,7 @@ public class MainMenu : MonoBehaviour
         Assert.IsNotNull(CreditsPanel, "Credits panel GameObject not set!");
 
         // DEBUG Music
-        SoundManager.sm.MusicSrc.PlayOneShot(SoundManager.sm.Musics[0]);
+        GameManager.gm.soundManager.MusicSrc.PlayOneShot(GameManager.gm.soundManager.Musics[0]);
     }
 
     public void ExitButton()
@@ -49,28 +49,28 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void BackButton()
+    public void BackButtonPress()
     {
         _activePanel.SetActive(false);
         MainPanel.SetActive(true);
         _activePanel = MainPanel;
     }
 
-    public void PlayButton()
+    public void PlayButtonPress()
     {
         MainPanel.SetActive(false);
         PlayPanel.SetActive(true);
         _activePanel = PlayPanel;
     }
 
-    public void SettingsButton()
+    public void SettingsButtonPress()
     {
         MainPanel.SetActive(false);
         SettingsPanel.SetActive(true);
         _activePanel = SettingsPanel;
     }
 
-    public void CreditsButton()
+    public void CreditsButtonPress()
     {
         MainPanel.SetActive(false);
         CreditsPanel.SetActive(true);
@@ -78,9 +78,9 @@ public class MainMenu : MonoBehaviour
     }
 
     // DEBUG
-    public void TestSoundButton()
+    public void TestSoundButtonPress()
     {
         // DEBUG SFX
-        SoundManager.sm.SfxSrc.PlayOneShot(SoundManager.sm.Sfx[0]);
+        GameManager.gm.soundManager.SfxSrc.PlayOneShot(GameManager.gm.soundManager.Sfx[0]);
     }
 }

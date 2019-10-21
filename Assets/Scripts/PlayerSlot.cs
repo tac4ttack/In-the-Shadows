@@ -96,4 +96,19 @@ public class PlayerSlot : MonoBehaviour
         GameManager.gm.Players.ResetTargetPlayer(SlotID);
         SaveSystem.SavePlayers(GameManager.gm.Players);
     }
+
+    public void SlotPress()
+    {
+        Debug.Log("SlotClick!");
+        Debug.Log(this.gameObject.name);
+        if (Empty)
+        {
+            NewGameDialog newGameDialog = _CurrentSlot.transform.parent.Find("NewGameDialog").gameObject.GetComponent<NewGameDialog>();
+            newGameDialog.Enable(SlotID);
+        }
+        else
+        {
+            Debug.Log("Should launch game for player slot #" + SlotID);
+        }
+    }
 }

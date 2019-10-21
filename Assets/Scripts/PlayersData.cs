@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-[System.Serializable]
+﻿[System.Serializable]
 public class PlayersData
 {
     /*
@@ -20,7 +18,7 @@ public class PlayersData
     public float[] ProgressionPercentage;
     public string[] LastPlayed;
     public bool[] IsEmpty;
-    public bool[] NewGame;
+    public bool[] DoTutorial;
 
     public int _puzzlesAmount = 3;
 
@@ -31,7 +29,7 @@ public class PlayersData
         ProgressionPercentage = new float[3];
         LastPlayed = new string[3];
         IsEmpty = new bool[3];
-        NewGame = new bool[3];
+        DoTutorial = new bool[3];
 
         for (int i = 0; i < 3; i++)
         {
@@ -47,7 +45,7 @@ public class PlayersData
             ProgressionPercentage[i] = 0f;
             LastPlayed[i] = "never";
             IsEmpty[i] = true;
-            NewGame[i] = true;
+            DoTutorial[i] = true;
         }
     }
 
@@ -58,7 +56,7 @@ public class PlayersData
         ProgressionPercentage = new float[3];
         LastPlayed = new string[3];
         IsEmpty = new bool[3];
-        NewGame = new bool[3];
+        DoTutorial = new bool[3];
 
         for (int i = 0; i < 3; i++)
         {
@@ -69,7 +67,7 @@ public class PlayersData
             ProgressionPercentage[i] = iData.ProgressionPercentage[i];
             LastPlayed[i] = iData.LastPlayed[i];
             IsEmpty[i] = iData.IsEmpty[i];
-            NewGame[i] = iData.NewGame[i];
+            DoTutorial[i] = iData.DoTutorial[i];
         }
     }
 
@@ -88,7 +86,7 @@ public class PlayersData
             ProgressionPercentage[iSlot] = 0f;
             LastPlayed[iSlot] = "never";
             IsEmpty[iSlot] = true;
-            NewGame[iSlot] = true;
+            DoTutorial[iSlot] = true;
         }
     }
 }

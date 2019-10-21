@@ -1,24 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    [HideInInspector] public static SoundManager sm { get; private set; }
-
     public List<AudioClip> Musics = new List<AudioClip>();
     public List<AudioClip> Sfx = new List<AudioClip>();
     public AudioSource MusicSrc;
     public AudioSource SfxSrc;
 
-    private void Awake()
+    private void Start()
     {
         List<AudioSource> AS = new List<AudioSource>();
         GetComponents<AudioSource>(AS);
         if (AS.Count != 2)
-            Debug.Log("Error?");
+            Debug.Log("SoundManager does not seems to have the correct number of Audio sources");
         else
-            Debug.Log("Audio source ok!");
+            Debug.Log("Audio sources successfully loaded!");
 
         if (MusicSrc == null)
             MusicSrc = AS[0];
@@ -30,17 +27,15 @@ public class SoundManager : MonoBehaviour
         // if (!sm)
         //     sm = this;
         // NEW WAY
-        if (sm == null)
-        {
-            sm = this;
-        }
-        else if (sm != this)
-        {
-            Destroy(gameObject);   
-        }
+        // if (sm == null)
+        // {
+        //     sm = this;
+        // }
+        // else if (sm != this)
+        // {
+        //     Destroy(gameObject);   
+        // }
+
         DontDestroyOnLoad(this.gameObject);
-
-
-        // RAJOUTER LOAD SAVED SETTINGS
     }
 }
