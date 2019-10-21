@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
     {
         yield return null;
     }    
+    
     public void TestPlayerSave()
     {
         Debug.Log("DEBUG: Saving players data!");
