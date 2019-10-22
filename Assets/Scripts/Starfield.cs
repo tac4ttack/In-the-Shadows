@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Assertions;
 public class Starfield : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class Starfield : MonoBehaviour
     {
         float randomSize;
         float color;
+
+        // StarFieldWidth = Camera.main.pixelWidth;
+        // StarFieldHeight = Camera.main.pixelHeight;
 
         _Emitter = this.GetComponent<ParticleSystem>();
         Assert.IsNotNull(_Emitter, "Particle System component is missing from GameObject!");

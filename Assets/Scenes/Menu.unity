@@ -8742,7 +8742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1088235657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13061,6 +13061,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7254088815651642330, guid: 1fff444b64fe44fadb53e62e49c71459,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7254088815651642331, guid: 1fff444b64fe44fadb53e62e49c71459,
         type: 3}

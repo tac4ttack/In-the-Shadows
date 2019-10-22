@@ -1,44 +1,35 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class DebugOrbitNav : MonoBehaviour
 {
-    private Vector3 _startPos;
-    private Vector3 _targetPos;
-    public float _camAltitude = 2f;
-    private float _timer = 0f;
+    public float _camAltitude = 3f;
     public float _speed = 1f;
-
-    void Awake()
-    {
-        _targetPos = Camera.main.transform.position;
-    }
-
-    void Update()
-    {
-        if (Camera.main.transform.position != _targetPos)
-        {
-            Debug.Log("moving");
-            Camera.main.transform.position = Vector3.Slerp(Camera.main.transform.position, _targetPos, _timer);
-            Camera.main.transform.LookAt(this.transform.position);
-        }
-
-        _timer = Time.deltaTime * _speed;
-    }
+    private IEnumerator _orbitCamCoroutine;
+    private bool _orbiting = false;
 
     void OnMouseDown()
     {
-        Vector3 clickPosition;
-        clickPosition = Input.mousePosition;
-
+        if (_orbiting)
+            StopCoroutine(_orbitCamCoroutine);   
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(clickPosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log("Clicked on gameobject: " + hit.collider.name);
-            Debug.Log(hit.point);
-
-            _startPos = Camera.main.transform.position;
-            _targetPos = (hit.point - this.gameObject.transform.position) * _camAltitude;
+            _orbitCamCoroutine = OrbitCamera(Camera.main.transform.position, (hit.point - this.gameObject.transform.position) * _camAltitude, 1f);
+            StartCoroutine(_orbitCamCoroutine);
         }
+    }
+
+    IEnumerator OrbitCamera(Vector3 iStart, Vector3 iTarget, float iTime)
+    {
+        _orbiting = true;
+        for (float t = 0f; t < iTime; t += Time.deltaTime * _speed)
+        {
+            Camera.main.transform.position = Vector3.Slerp(iStart, iTarget, t / iTime);
+            Camera.main.transform.LookAt(this.transform.position);
+            yield return 0;
+        }
+        _orbiting = false;
     }
 }
