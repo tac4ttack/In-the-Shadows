@@ -103,7 +103,7 @@ public class PlayerSlot : MonoBehaviour
         Debug.Log(this.gameObject.name);
         if (Empty)
         {
-            NewGameDialog newGameDialog = _CurrentSlot.transform.parent.Find("NewGameDialog").gameObject.GetComponent<NewGameDialog>();
+            NewGameDialog newGameDialog = _CurrentSlot.transform.parent.transform.parent.Find("NewGameDialog").gameObject.GetComponent<NewGameDialog>();
             newGameDialog.Enable(SlotID);
         }
         else
