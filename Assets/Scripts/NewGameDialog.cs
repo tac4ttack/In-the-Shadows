@@ -9,9 +9,14 @@ public class NewGameDialog : MonoBehaviour
     private TextMeshProUGUI NewGameDialogTitleText;
     private TMP_InputField PlayerNameInput;
     private Toggle TutorialToggle;
+    private CanvasGroup _playPanelCanvas;
 
     void Awake()
     {
+        if (!_playPanelCanvas)
+            _playPanelCanvas = GameObject.Find("PlayPanel").GetComponent<CanvasGroup>();
+        Assert.IsNotNull(_playPanelCanvas, "Play panel canvas group not found!");
+
         if (!NewGameDialogTitleText)
             NewGameDialogTitleText = GameObject.Find("NewGameDialogTitle").GetComponent<TextMeshProUGUI>();
             // NewGameDialogTitleText = this.gameObject.transform.Find("NewGameDialogTitle").GetComponent<TextMeshProUGUI>();
@@ -30,23 +35,15 @@ public class NewGameDialog : MonoBehaviour
         NewGameDialogTitleText.text = "New Game";
     }
 
-    void OnEnable()
-    {
-
-    }
-
-    void OnDisable()
-    {
-
-    }
-
     public void Enable(int iSlot)
     {
         if (iSlot >= 0 && iSlot<= 2)
         {
             this.gameObject.SetActive(true);
+            _playPanelCanvas.interactable = false;
+            _playPanelCanvas.alpha = 0.2f;
             CurrentSlot = iSlot;
-            NewGameDialogTitleText.text = "New Game #" + CurrentSlot;
+            NewGameDialogTitleText.text = "New Game #" + (CurrentSlot + 1);
         }
         else
             Debug.LogError("New Game Dialog Error: wrong slot id -> " + iSlot);
@@ -55,6 +52,8 @@ public class NewGameDialog : MonoBehaviour
     public void BackButtonPress()
     {
         // add clean input field etc... or put it in the OnDisable() function
+        _playPanelCanvas.interactable = true;
+        _playPanelCanvas.alpha = 1f;
         PlayerNameInput.text = "";
         TutorialToggle.isOn = false;
         CurrentSlot = -1;

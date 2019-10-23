@@ -39,16 +39,16 @@ public class PlayerSlot : MonoBehaviour
             PlayerNameText = PlayerSlotInfoPlaceholder.transform.Find("PlayerName_Text").GetComponent<TextMeshProUGUI>();
 
         if (!CompletionRadial)
-            CompletionRadial = PlayerSlotInfoPlaceholder.transform.Find("Progression_Radial").GetComponent<Image>();
+            CompletionRadial = PlayerSlotInfoPlaceholder.transform.Find("Progression_Radial_Back").transform.Find("Progression_Radial").GetComponent<Image>();
 
         if (!CompletionPercentageText)
-            CompletionPercentageText = PlayerSlotInfoPlaceholder.transform.Find("Progression_Radial").Find("Progression_Value").GetComponent<TextMeshProUGUI>();
+            CompletionPercentageText = CompletionRadial.transform.Find("Progression_Value").GetComponent<TextMeshProUGUI>();
 
         if (!LastPlayedText)
-            LastPlayedText = PlayerSlotInfoPlaceholder.transform.Find("LastPlayed_Text").GetComponent<TextMeshProUGUI>();
+            LastPlayedText = PlayerSlotInfoPlaceholder.transform.Find("Bottom").transform.Find("Bottom_left").transform.Find("LastPlayed_Text").GetComponent<TextMeshProUGUI>();
 
         if (!ClearSlotButton)
-            ClearSlotButton = PlayerSlotInfoPlaceholder.transform.Find("ClearSlot_Button").GetComponent<Button>();
+            ClearSlotButton = PlayerSlotInfoPlaceholder.transform.Find("Bottom").transform.Find("Bottom_right").transform.Find("ClearSlot_Button").GetComponent<Button>();
 
 
         Assert.IsNotNull(_CurrentSlot, "Slot GameObject not found!");
