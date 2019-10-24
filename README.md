@@ -10,8 +10,7 @@ Dans ce projet, nous allons développer un jeu ressemblant à Shadowmatic. Le bu
  https://www.dafont.com/fr/rezland.font
 - [font file][used] Conthrax:
  https://www.dafont.com/fr/conthrax.font
-
-- [tool][used?] SpaceScape:
+- [tool][used] SpaceScape:
  http://alexcpeterson.com/spacescape/
 
 - [script][used][to be rewritten] Low Poly Water:
