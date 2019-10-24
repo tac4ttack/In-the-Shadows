@@ -16,8 +16,11 @@ public class DebugOrbitNav : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
-            _orbitCamCoroutine = OrbitCamera(Camera.main.transform.position, (hit.point - this.gameObject.transform.position) * _camAltitude, 1f);
-            StartCoroutine(_orbitCamCoroutine);
+            if (!Utility.IsPointerOverUIObject())
+            {
+                _orbitCamCoroutine = OrbitCamera(Camera.main.transform.position, (hit.point - this.gameObject.transform.position) * _camAltitude, 1f);
+                StartCoroutine(_orbitCamCoroutine);
+            }
         }
     }
 

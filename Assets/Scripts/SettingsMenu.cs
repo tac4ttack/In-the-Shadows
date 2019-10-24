@@ -50,7 +50,10 @@ public class SettingsMenu : MonoBehaviour
         Assert.IsNotNull(MusicVolumeSlider, "Music volume slider is missing!");
 
         Assert.IsNotNull(MuteCheckbox, "Mute checkbox is missing!");
-        
+    }
+
+    void Start()
+    {
         InitSoundSettings(GameManager.gm.Settings);
     }
 

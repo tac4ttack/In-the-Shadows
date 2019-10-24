@@ -14,7 +14,6 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        // WORKS ONLY IF PANELS ARE LEFT ACTIVE IN SCENE BEFORE LAUNCH SO WE ACTIVATE THEM MANUALLY FIRST!
         MainPanel.SetActive(true);
         PlayPanel.SetActive(true);
         SettingsPanel.SetActive(true);

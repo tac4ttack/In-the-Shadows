@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource MusicSrc;
     public AudioSource SfxSrc;
 
-    private void Start()
+    private void Awake()
     {
         List<AudioSource> AS = new List<AudioSource>();
         GetComponents<AudioSource>(AS);
