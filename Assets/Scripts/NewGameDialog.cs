@@ -84,7 +84,7 @@ public class NewGameDialog : MonoBehaviour
 
     private bool CheckPlayerName()
     {
-        if (_playerNameInput.text == "")
+        if (_playerNameInput.text.Trim() == "")
             return false;
         return true;
     }
