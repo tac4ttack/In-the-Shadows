@@ -12,8 +12,8 @@ public class Starfield : MonoBehaviour
     public float    StarFieldHeight = 36.0f;
     public bool     AddColor = false;
 
-    private float                       _xOffset;
-    private float                       _yOffset;
+    private float                       _OffsetX;
+    private float                       _OffsetY;
     private ParticleSystem              _Emitter;
     private ParticleSystem.Particle[]   _Stars;
 
@@ -31,8 +31,8 @@ public class Starfield : MonoBehaviour
         _Emitter = this.GetComponent<ParticleSystem>();
         Assert.IsNotNull(_Emitter, "Particle System component is missing from GameObject!");
         
-        _xOffset = StarFieldWidth * 0.5f;
-        _yOffset = StarFieldHeight * 0.5f;
+        _OffsetX = StarFieldWidth * 0.5f;
+        _OffsetY = StarFieldHeight * 0.5f;
 
         _Stars = new ParticleSystem.Particle[StarAmount];
         _StarsStartSize = new float[StarAmount];
@@ -49,8 +49,8 @@ public class Starfield : MonoBehaviour
             {
                 color = 1f;
             }
-            _Stars[i].position = new Vector3(Random.Range(0, StarFieldWidth) - _xOffset,
-                                            Random.Range(0, StarFieldHeight) - _yOffset,
+            _Stars[i].position = new Vector3(Random.Range(0, StarFieldWidth) - _OffsetX,
+                                            Random.Range(0, StarFieldHeight) - _OffsetY,
                                             0);
             _Stars[i].startSize = StarSize * randomSize;
             

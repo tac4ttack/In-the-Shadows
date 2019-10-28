@@ -5,37 +5,37 @@ public class CreditsAutoscroll : MonoBehaviour
 {
     public float Speed = 0.01f;
     
-    private UnityEngine.UI.Scrollbar _bar;
-    private bool _paused = false;
-    private float _delay = 0f;
+    private UnityEngine.UI.Scrollbar _Bar;
+    private bool _Paused = false;
+    private float _Delay = 0f;
     
     void Awake()
     {
-        _bar = GetComponent<UnityEngine.UI.Scrollbar>();
-        Assert.IsNotNull(_bar, "Scroll bar component not found!");
+        _Bar = GetComponent<UnityEngine.UI.Scrollbar>();
+        Assert.IsNotNull(_Bar, "Scroll bar component not found!");
     }
     void OnEnable()
     {
-        _bar.value = 1f;
-        _delay = 0f;
+        _Bar.value = 1f;
+        _Delay = 0f;
     }
 
     void Update()
     {
-        _delay += 0.01f;
+        _Delay += 0.01f;
 
-        if (!_paused && (_delay > 1f))
-            _bar.value = _bar.value - Time.deltaTime * Speed;
+        if (!_Paused && (_Delay > 1f))
+            _Bar.value = _Bar.value - Time.deltaTime * Speed;
     }
 
     
     public void ScrollPause()
     {
-        _paused = true;
+        _Paused = true;
     }
 
     public void ScrollResume()
     {
-        _paused = false;
+        _Paused = false;
     }
 }

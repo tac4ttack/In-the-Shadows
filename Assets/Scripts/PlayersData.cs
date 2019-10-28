@@ -20,7 +20,7 @@ public class PlayersData
     public bool[] IsEmpty;
     public bool[] DoTutorial;
 
-    public int _puzzlesAmount = 3;
+    public int _PuzzlesAmount = 3;
 
     public PlayersData()
     {
@@ -35,7 +35,7 @@ public class PlayersData
         {
             PlayersName[i] = "Player #" + (i + 1);
             Progression[i].Level = new int[3];
-            for (int j = 0; j < _puzzlesAmount; j++)
+            for (int j = 0; j < _PuzzlesAmount; j++)
             {
                 if (j == 0)
                     Progression[i].Level[j] = 1;
@@ -62,7 +62,7 @@ public class PlayersData
         {
             PlayersName[i] = iData.PlayersName[i];
             Progression[i].Level = new int[3];
-            for (int j = 0; j < _puzzlesAmount; j++)
+            for (int j = 0; j < _PuzzlesAmount; j++)
                 Progression[i].Level[j] = iData.Progression[i].Level[j];
             ProgressionPercentage[i] = iData.ProgressionPercentage[i];
             LastPlayed[i] = iData.LastPlayed[i];
@@ -76,7 +76,7 @@ public class PlayersData
         if (iSlot >= 0 && iSlot < 3)
         {
             PlayersName[iSlot] = "Player #" + (iSlot + 1);
-            for (int i = 0; i < _puzzlesAmount; i++)
+            for (int i = 0; i < _PuzzlesAmount; i++)
             {
                 if (i == 0)
                     Progression[iSlot].Level[i] = 1;

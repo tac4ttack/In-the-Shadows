@@ -8,8 +8,8 @@ public class PauseMenu : MonoBehaviour
     public CanvasGroup PauseMenu_CG;
     public CanvasGroup Settings_CG;
 
-    private float _transitionSpeed = 0.1f;
-    private bool _paused = false;
+    private float _TransitionSpeed = 0.1f;
+    private bool _Paused = false;
 
     void Awake()
     {
@@ -44,7 +44,7 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("toto");
-            if (_paused)
+            if (_Paused)
                 StartCoroutine(PopOut(1f));
             else
                 StartCoroutine(PopUpPauseMenu(1f));
@@ -54,8 +54,8 @@ public class PauseMenu : MonoBehaviour
 
     IEnumerator PopUpPauseMenu(float iTime)
     {
-        _paused = true;
-        for (float t = 0f; t < iTime; t += _transitionSpeed)
+        _Paused = true;
+        for (float t = 0f; t < iTime; t += _TransitionSpeed)
         {
             Background_CG.alpha += 0.1f;
             Background_CG.blocksRaycasts = true;
@@ -67,8 +67,8 @@ public class PauseMenu : MonoBehaviour
 
     IEnumerator PopOut(float iTime)
     {
-        _paused = false;
-        for (float t = 0f; t < iTime; t += _transitionSpeed)
+        _Paused = false;
+        for (float t = 0f; t < iTime; t += _TransitionSpeed)
         {
             Background_CG.alpha -= 0.1f;
             Background_CG.blocksRaycasts = false;

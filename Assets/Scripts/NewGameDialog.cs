@@ -6,37 +6,38 @@ using TMPro;
 public class NewGameDialog : MonoBehaviour
 {
     [HideInInspector] public int CurrentSlot = -1;
-    private TextMeshProUGUI _newGameDialogTitle;
-    private TMP_InputField _playerNameInput;
-    private Toggle _tutorialToggle;
-    private CanvasGroup _playPanelCanvas;
-    private Button _createButton;
+
+    private TextMeshProUGUI _NewGameDialogTitle;
+    private TMP_InputField _PlayerNameInput;
+    private Toggle _TutorialToggle;
+    private CanvasGroup _PlayPanelCanvas;
+    private Button _CreateButton;
 
     void Awake()
     {
-        if (!_playPanelCanvas)
-            _playPanelCanvas = GameObject.Find("PlayPanel").GetComponent<CanvasGroup>();
-        Assert.IsNotNull(_playPanelCanvas, "Play panel canvas group not found!");
+        if (!_PlayPanelCanvas)
+            _PlayPanelCanvas = GameObject.Find("PlayPanel").GetComponent<CanvasGroup>();
+        Assert.IsNotNull(_PlayPanelCanvas, "Play panel canvas group not found!");
 
-        if (!_newGameDialogTitle)
-            _newGameDialogTitle = this.gameObject.transform.Find("NewGameDialogTitle").GetComponent<TextMeshProUGUI>();
-        Assert.IsNotNull(_newGameDialogTitle, "New game title text GameObject not found!");
+        if (!_NewGameDialogTitle)
+            _NewGameDialogTitle = this.gameObject.transform.Find("NewGameDialogTitle").GetComponent<TextMeshProUGUI>();
+        Assert.IsNotNull(_NewGameDialogTitle, "New game title text GameObject not found!");
 
-        if (!_playerNameInput)
-            _playerNameInput = this.gameObject.transform.Find("PlayerNameInputfield").GetComponent<TMP_InputField>();
-        Assert.IsNotNull(_playerNameInput, "New player name input field not found!");
+        if (!_PlayerNameInput)
+            _PlayerNameInput = this.gameObject.transform.Find("PlayerNameInputfield").GetComponent<TMP_InputField>();
+        Assert.IsNotNull(_PlayerNameInput, "New player name input field not found!");
 
-        if (!_tutorialToggle)
-            _tutorialToggle = this.gameObject.transform.Find("Bottom").transform.Find("Bottom_left").transform.Find("SkipTutorial_Checkbox").GetComponent<Toggle>();
-        Assert.IsNotNull(_tutorialToggle, "Tutorial skip toggle button not found!");
+        if (!_TutorialToggle)
+            _TutorialToggle = this.gameObject.transform.Find("Bottom").transform.Find("Bottom_left").transform.Find("SkipTutorial_Checkbox").GetComponent<Toggle>();
+        Assert.IsNotNull(_TutorialToggle, "Tutorial skip toggle button not found!");
         
-        if (!_createButton)
-            _createButton = this.gameObject.transform.Find("Bottom").transform.Find("Bottom_right").transform.Find("NewGameCreate_Button").GetComponent<Button>();
-        Assert.IsNotNull(_createButton, "New game create button not found!");
+        if (!_CreateButton)
+            _CreateButton = this.gameObject.transform.Find("Bottom").transform.Find("Bottom_right").transform.Find("NewGameCreate_Button").GetComponent<Button>();
+        Assert.IsNotNull(_CreateButton, "New game create button not found!");
 
-        _newGameDialogTitle.text = "New Game";
-        _createButton.interactable = false;
-        _tutorialToggle.isOn = false;
+        _NewGameDialogTitle.text = "New Game";
+        _CreateButton.interactable = false;
+        _TutorialToggle.isOn = false;
     }
 
     public void Enable(int iSlot)
@@ -44,10 +45,10 @@ public class NewGameDialog : MonoBehaviour
         if (iSlot >= 0 && iSlot<= 2)
         {
             this.gameObject.SetActive(true);
-            _playPanelCanvas.interactable = false;
-            _playPanelCanvas.alpha = 0.2f;
+            _PlayPanelCanvas.interactable = false;
+            _PlayPanelCanvas.alpha = 0.2f;
             CurrentSlot = iSlot;
-            _newGameDialogTitle.text = "New Game #" + (CurrentSlot + 1);
+            _NewGameDialogTitle.text = "New Game #" + (CurrentSlot + 1);
         }
         else
             Debug.LogError("New Game Dialog Error: wrong slot id -> " + iSlot);
@@ -56,10 +57,10 @@ public class NewGameDialog : MonoBehaviour
     public void BackButtonPress()
     {
         // add clean input field etc... or put it in the OnDisable() function
-        _playPanelCanvas.interactable = true;
-        _playPanelCanvas.alpha = 1f;
-        _playerNameInput.text = "";
-        _tutorialToggle.isOn = false;
+        _PlayPanelCanvas.interactable = true;
+        _PlayPanelCanvas.alpha = 1f;
+        _PlayerNameInput.text = "";
+        _TutorialToggle.isOn = false;
         CurrentSlot = -1;
         this.gameObject.SetActive(false);
     }
@@ -69,22 +70,22 @@ public class NewGameDialog : MonoBehaviour
         // DEBUG
         Debug.Log("New game dialog CREATE button press!");
         Debug.Log("Current slot is #" + CurrentSlot);
-        Debug.Log("Player name input is [" + _playerNameInput.text + "]");
-        Debug.Log("Tutorial skip is " + _tutorialToggle.isOn);
+        Debug.Log("Player name input is [" + _PlayerNameInput.text + "]");
+        Debug.Log("Tutorial skip is " + _TutorialToggle.isOn);
 
-        _playerNameInput.text = _playerNameInput.text.Trim();
-        GameManager.gm.CreateNewPlayer(CurrentSlot, _playerNameInput.text, !(_tutorialToggle.isOn));
+        _PlayerNameInput.text = _PlayerNameInput.text.Trim();
+        GameManager.gm.CreateNewPlayer(CurrentSlot, _PlayerNameInput.text, !(_TutorialToggle.isOn));
         BackButtonPress();
     }
 
     public void PlayerNameInputValueChange()
     {
-        _createButton.interactable = CheckPlayerName();
+        _CreateButton.interactable = CheckPlayerName();
     }
 
     private bool CheckPlayerName()
     {
-        if (_playerNameInput.text.Trim() == "")
+        if (_PlayerNameInput.text.Trim() == "")
             return false;
         return true;
     }

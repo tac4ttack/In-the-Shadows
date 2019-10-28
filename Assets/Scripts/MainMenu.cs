@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
     public GameObject SettingsPanel;
     public GameObject CreditsPanel;
 
-    private GameObject _activePanel;
+    private GameObject _ActivePanel;
 
     void Start()
     {
@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour
         PlayPanel.SetActive(false);
         SettingsPanel.SetActive(false);
         CreditsPanel.SetActive(false);
-        _activePanel = MainPanel;
+        _ActivePanel = MainPanel;
 
         Assert.IsNotNull(MainPanel, "Main panel GameObject not set!");
         Assert.IsNotNull(PlayPanel, "Play panel GameObject not set!");
@@ -50,30 +50,30 @@ public class MainMenu : MonoBehaviour
 
     public void BackButtonPress()
     {
-        _activePanel.SetActive(false);
+        _ActivePanel.SetActive(false);
         MainPanel.SetActive(true);
-        _activePanel = MainPanel;
+        _ActivePanel = MainPanel;
     }
 
     public void PlayButtonPress()
     {
         MainPanel.SetActive(false);
         PlayPanel.SetActive(true);
-        _activePanel = PlayPanel;
+        _ActivePanel = PlayPanel;
     }
 
     public void SettingsButtonPress()
     {
         MainPanel.SetActive(false);
         SettingsPanel.SetActive(true);
-        _activePanel = SettingsPanel;
+        _ActivePanel = SettingsPanel;
     }
 
     public void CreditsButtonPress()
     {
         MainPanel.SetActive(false);
         CreditsPanel.SetActive(true);
-        _activePanel = CreditsPanel;
+        _ActivePanel = CreditsPanel;
     }
 
     // DEBUG

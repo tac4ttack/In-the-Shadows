@@ -14,23 +14,23 @@ public class PuzzlePiece : MonoBehaviour
     public      bool[]          RotationConstraints = new bool[3];
     public      bool[]          TranslationConstraints = new bool[3];
 
-    private     float           _rotationSpeed = 42f;
-    private     float           _translationSpeed = 10.5f;
-    private     float           _orientationBias = 0.035f;
-    private     float           _directionBias = 0.035f;
-    private     float           _distanceBias = 0.035f;
-    private     bool            _isOrientationOK;
-    private     bool            _isRelativePositionOK;
-    private     Quaternion      _currentOrientation;
-    private     Vector3         _currentPosition;
-    private     Puzzle          _puzzleContainer;
+    private     float           _RotationSpeed = 42f;
+    private     float           _TranslationSpeed = 10.5f;
+    private     float           _OrientationBias = 0.035f;
+    private     float           _DirectionBias = 0.035f;
+    private     float           _DistanceBias = 0.035f;
+    private     bool            _OrientationOK;
+    private     bool            _RelativePositionOK;
+    private     Quaternion      _CurrentOrientation;
+    private     Vector3         _CurrentPosition;
+    private     Puzzle          _PuzzleContainer;
 
     void Start()
     {
-        _puzzleContainer = this.GetComponentInParent<Puzzle>();
+        _PuzzleContainer = this.GetComponentInParent<Puzzle>();
         isPuzzlePieceValidated = false;
-        _isOrientationOK = false;
-        _isRelativePositionOK = false;
+        _OrientationOK = false;
+        _RelativePositionOK = false;
         RotationConstraints[2] = true;
         TranslationConstraints[2] = true;
     }
@@ -54,11 +54,11 @@ public class PuzzlePiece : MonoBehaviour
 
     void FixedUpdate()
     {
-        _currentOrientation = this.gameObject.transform.localRotation;
-        _currentPosition = this.gameObject.transform.localPosition;
+        _CurrentOrientation = this.gameObject.transform.localRotation;
+        _CurrentPosition = this.gameObject.transform.localPosition;
 
         CheckSolutions();
-        isPuzzlePieceValidated = (_isOrientationOK && _isRelativePositionOK);
+        isPuzzlePieceValidated = (_OrientationOK && _RelativePositionOK);
     }
 
     void OnMouseDrag()
@@ -67,16 +67,16 @@ public class PuzzlePiece : MonoBehaviour
         {
             if (!RotationConstraints[0])
             {
-                this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * _rotationSpeed * -1);
-                // this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0), Time.deltaTime * _rotationSpeed);
-                // this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * _rotationSpeed, Space.Self);
+                this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * _RotationSpeed * -1);
+                // this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0), Time.deltaTime * _RotationSpeed);
+                // this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * _RotationSpeed, Space.Self);
 
             }
             if (!RotationConstraints[1])
             {
-                this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0) * Time.deltaTime * _rotationSpeed);
-                // this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0), Time.deltaTime * _rotationSpeed);
-                // this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0), Time.deltaTime * _rotationSpeed, Space.Self);
+                this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0) * Time.deltaTime * _RotationSpeed);
+                // this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0), Time.deltaTime * _RotationSpeed);
+                // this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0), Time.deltaTime * _RotationSpeed, Space.Self);
             }
         }
 
@@ -84,11 +84,11 @@ public class PuzzlePiece : MonoBehaviour
         {
             if (!TranslationConstraints[0])
             {
-                this.gameObject.transform.Translate(new Vector3(Input.GetAxis("Mouse X"), 0, 0) * Time.deltaTime * _translationSpeed * -1, Space.World);
+                this.gameObject.transform.Translate(new Vector3(Input.GetAxis("Mouse X"), 0, 0) * Time.deltaTime * _TranslationSpeed * -1, Space.World);
             }
             if (!TranslationConstraints[1])
             {
-                this.gameObject.transform.Translate(new Vector3(0, Input.GetAxis("Mouse Y"), 0) * Time.deltaTime * _translationSpeed, Space.World);
+                this.gameObject.transform.Translate(new Vector3(0, Input.GetAxis("Mouse Y"), 0) * Time.deltaTime * _TranslationSpeed, Space.World);
             }
         }
     }
@@ -96,7 +96,7 @@ public class PuzzlePiece : MonoBehaviour
     private void    CheckSolutions()
     {
         CheckOrientation();
-        _isRelativePositionOK = CheckRelativePosition();
+        _RelativePositionOK = CheckRelativePosition();
     }
 
     /*
@@ -113,28 +113,28 @@ public class PuzzlePiece : MonoBehaviour
             for (int i = 0; i < OrientationSolutions.Length; i++)
             {
                 Quaternion q = (Quaternion)OrientationSolutions[i];
-                if (    ((q.x >=  _currentOrientation.x - _orientationBias && q.x <=  _currentOrientation.x + _orientationBias)
-                    &&   (q.y >=  _currentOrientation.y - _orientationBias && q.y <=  _currentOrientation.y + _orientationBias)
-                    &&   (q.z >=  _currentOrientation.z - _orientationBias && q.z <=  _currentOrientation.z + _orientationBias)
-                    &&   (q.w >=  _currentOrientation.w - _orientationBias && q.w <=  _currentOrientation.w + _orientationBias))
+                if (    ((q.x >=  _CurrentOrientation.x - _OrientationBias && q.x <=  _CurrentOrientation.x + _OrientationBias)
+                    &&   (q.y >=  _CurrentOrientation.y - _OrientationBias && q.y <=  _CurrentOrientation.y + _OrientationBias)
+                    &&   (q.z >=  _CurrentOrientation.z - _OrientationBias && q.z <=  _CurrentOrientation.z + _OrientationBias)
+                    &&   (q.w >=  _CurrentOrientation.w - _OrientationBias && q.w <=  _CurrentOrientation.w + _OrientationBias))
                     ||
-                        ((q.x >= -_currentOrientation.x - _orientationBias && q.x <= -_currentOrientation.x + _orientationBias)
-                    &&   (q.y >= -_currentOrientation.y - _orientationBias && q.y <= -_currentOrientation.y + _orientationBias)
-                    &&   (q.z >= -_currentOrientation.z - _orientationBias && q.z <= -_currentOrientation.z + _orientationBias)
-                    &&   (q.w >= -_currentOrientation.w - _orientationBias && q.w <= -_currentOrientation.w + _orientationBias)))
+                        ((q.x >= -_CurrentOrientation.x - _OrientationBias && q.x <= -_CurrentOrientation.x + _OrientationBias)
+                    &&   (q.y >= -_CurrentOrientation.y - _OrientationBias && q.y <= -_CurrentOrientation.y + _OrientationBias)
+                    &&   (q.z >= -_CurrentOrientation.z - _OrientationBias && q.z <= -_CurrentOrientation.z + _OrientationBias)
+                    &&   (q.w >= -_CurrentOrientation.w - _OrientationBias && q.w <= -_CurrentOrientation.w + _OrientationBias)))
                 {
-                    _isOrientationOK = true;
+                    _OrientationOK = true;
                     break;
                 }
                 else
                 {
-                    _isOrientationOK = false;
+                    _OrientationOK = false;
                 }
             }        
         }
         else
         {
-            _isOrientationOK = true;
+            _OrientationOK = true;
         }
     }
 
@@ -161,18 +161,18 @@ public class PuzzlePiece : MonoBehaviour
             Vector3 currentRelativeDirection = RelativePuzzlePiece.transform.position - this.gameObject.transform.position;
             float currentRelativeDistance = currentRelativeDirection.magnitude;
             
-            if (    (RelativeDistanceSolution >= currentRelativeDistance - _distanceBias && RelativeDistanceSolution <= currentRelativeDistance + _distanceBias)
-                &&  (RelativeDirectionSolution.x >= currentRelativeDirection.x - _directionBias && RelativeDirectionSolution.x <= currentRelativeDirection.x + _directionBias)
-                &&  (RelativeDirectionSolution.y >= currentRelativeDirection.y - _directionBias && RelativeDirectionSolution.y <= currentRelativeDirection.y + _directionBias)
-                &&  (RelativeDirectionSolution.z >= currentRelativeDirection.z - _directionBias && RelativeDirectionSolution.z <= currentRelativeDirection.z + _directionBias))
+            if (    (RelativeDistanceSolution >= currentRelativeDistance - _DistanceBias && RelativeDistanceSolution <= currentRelativeDistance + _DistanceBias)
+                &&  (RelativeDirectionSolution.x >= currentRelativeDirection.x - _DirectionBias && RelativeDirectionSolution.x <= currentRelativeDirection.x + _DirectionBias)
+                &&  (RelativeDirectionSolution.y >= currentRelativeDirection.y - _DirectionBias && RelativeDirectionSolution.y <= currentRelativeDirection.y + _DirectionBias)
+                &&  (RelativeDirectionSolution.z >= currentRelativeDirection.z - _DirectionBias && RelativeDirectionSolution.z <= currentRelativeDirection.z + _DirectionBias))
             {
                 return true;
             }
             if (    CheckMirroredRelative
-                &&  (RelativeDistanceSolution >= currentRelativeDistance - _distanceBias && RelativeDistanceSolution <= currentRelativeDistance + _distanceBias)
-                &&  (-RelativeDirectionSolution.x >= currentRelativeDirection.x - _directionBias && -RelativeDirectionSolution.x <= currentRelativeDirection.x + _directionBias)
-                &&  (RelativeDirectionSolution.y >= currentRelativeDirection.y - _directionBias && RelativeDirectionSolution.y <= currentRelativeDirection.y + _directionBias)
-                &&  (RelativeDirectionSolution.z >= currentRelativeDirection.z - _directionBias && RelativeDirectionSolution.z <= currentRelativeDirection.z + _directionBias))
+                &&  (RelativeDistanceSolution >= currentRelativeDistance - _DistanceBias && RelativeDistanceSolution <= currentRelativeDistance + _DistanceBias)
+                &&  (-RelativeDirectionSolution.x >= currentRelativeDirection.x - _DirectionBias && -RelativeDirectionSolution.x <= currentRelativeDirection.x + _DirectionBias)
+                &&  (RelativeDirectionSolution.y >= currentRelativeDirection.y - _DirectionBias && RelativeDirectionSolution.y <= currentRelativeDirection.y + _DirectionBias)
+                &&  (RelativeDirectionSolution.z >= currentRelativeDirection.z - _DirectionBias && RelativeDirectionSolution.z <= currentRelativeDirection.z + _DirectionBias))
             {
                 return true;
             }

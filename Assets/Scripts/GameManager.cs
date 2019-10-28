@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public static GameManager gm { get; private set; }
     public SoundManager soundManager;
 
-    public bool _inDebugMode = false; // replace by private
-    public int _currentSlot = -1; // replace by private
+    public bool _InDebugMode = false; // replace by private
+    public int _CurrentSlot = -1; // replace by private
 
     public SettingsData Settings;
     public PlayersData Players;

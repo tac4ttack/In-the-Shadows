@@ -5,15 +5,15 @@ using UnityEngine;
 public class Puzzle : MonoBehaviour
 {
     // DEBUG
-    public Light            debugSpot;
+    public Light            DebugSpot;
 
     public PuzzlePiece[]    PuzzlePieces;
 
-    private bool            _isPuzzleValidated;
+    private bool            _PuzzleValidated;
 
     void Start()
     {
-        _isPuzzleValidated = false;
+        _PuzzleValidated = false;
     }
 
     void Update()
@@ -21,13 +21,13 @@ public class Puzzle : MonoBehaviour
         CheckPuzzlePieces();
 
         // DEBUG
-        if (_isPuzzleValidated)
+        if (_PuzzleValidated)
         {
-            debugSpot.color = Color.green;
+            DebugSpot.color = Color.green;
         }
         else
         {
-            debugSpot.color = Color.white;
+            DebugSpot.color = Color.white;
         }
     }
 
@@ -39,7 +39,7 @@ public class Puzzle : MonoBehaviour
             PuzzlePiece p = (PuzzlePiece)PuzzlePieces[i];
             tmp = p.isPuzzlePieceValidated;
         }
-        _isPuzzleValidated = tmp;
+        _PuzzleValidated = tmp;
     }
 
 }

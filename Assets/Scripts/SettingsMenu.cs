@@ -7,18 +7,18 @@ public class SettingsMenu : MonoBehaviour
 {
     public TextMeshProUGUI MasterVolumeValue;
     public Slider MasterVolumeSlider;
-    private float _prevMasterVolumeValue;
+    private float _PrevMasterVolumeValue;
 
     public TextMeshProUGUI SFXVolumeValue;
     public Slider SFXVolumeSlider;
-    private float _prevSFXVolumeValue;
+    private float _PrevSFXVolumeValue;
     
     public TextMeshProUGUI MusicVolumeValue;
     public Slider MusicVolumeSlider;
-    private float _prevMusicVolumeValue;
+    private float _PrevMusicVolumeValue;
 
     public Toggle MuteCheckbox;
-    private bool _initFlag = true;
+    private bool _InitFlag = true;
 
     void Awake()
     {
@@ -66,7 +66,7 @@ public class SettingsMenu : MonoBehaviour
         MasterVolumeSlider.interactable = !iData.SoundMuted;
         SFXVolumeSlider.interactable = !iData.SoundMuted;
         MusicVolumeSlider.interactable = !iData.SoundMuted;
-        _initFlag = false;
+        _InitFlag = false;
     }
 
     public void UpdateMasterVolume()
@@ -102,7 +102,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void MuteCheckboxToggle()
     {
-        if (MuteCheckbox.isOn && !_initFlag)
+        if (MuteCheckbox.isOn && !_InitFlag)
         {
             GameManager.gm.Settings.SoundMuted = true;
             MasterVolumeSlider.interactable = false;
@@ -116,7 +116,7 @@ public class SettingsMenu : MonoBehaviour
             GameManager.gm.Settings.PreviousMusicVolume = GameManager.gm.Settings.MusicVolume;
             MusicVolumeSlider.value = 0f;
         }
-        else if (!MuteCheckbox.isOn && !_initFlag)
+        else if (!MuteCheckbox.isOn && !_InitFlag)
         {
             GameManager.gm.Settings.SoundMuted = false;
             MasterVolumeSlider.interactable = true;
