@@ -1,8 +1,4 @@
-﻿
-// using UnityEngine;
-
-// public class StateMachine : MonoBehaviour
-public class StateMachine
+﻿public class StateMachine
 {
     private IState _CurrentState;
     private IState _PreviousState;
@@ -36,4 +32,11 @@ public class StateMachine
         _CurrentState.Enter();
     }
     */
+}
+
+public interface IState
+{
+    void Enter();
+    void Execute();
+    void Exit();
 }

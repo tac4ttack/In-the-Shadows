@@ -43,7 +43,7 @@ public class PauseMenu : MonoBehaviour
 
     void Start() => PauseMenuStateMachine.ChangeState(new Inactive_PauseMenuState(this));
     void Update() => PauseMenuStateMachine.ExecuteState();
-    
+
     #region Buttons Logic
     public void ResumeButtonClick()
     {
@@ -110,7 +110,7 @@ public class Inactive_PauseMenuState : IState
 
     public void Execute()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)) // && current GameState compatible
         {
             _PauseMenu.PauseMenuStateMachine.ChangeState(new Active_PauseMenuState(_PauseMenu));
         }
