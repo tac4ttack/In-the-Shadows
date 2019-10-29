@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
-using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -39,7 +38,7 @@ public class MainMenu : MonoBehaviour
         Assert.IsNotNull(CreditsPanel, "Credits panel GameObject not set!");
 
         // DEBUG Music
-        GameManager.gm.soundManager.MusicSrc.PlayOneShot(GameManager.gm.soundManager.Musics[0]);
+        GameManager.GM.SM.MusicSrc.PlayOneShot(GameManager.GM.SM.Musics[0]);
     }
 
     public void ExitButton()
@@ -74,12 +73,5 @@ public class MainMenu : MonoBehaviour
         MainPanel.SetActive(false);
         CreditsPanel.SetActive(true);
         _ActivePanel = CreditsPanel;
-    }
-
-    // DEBUG
-    public void TestSoundButtonPress()
-    {
-        // DEBUG SFX
-        GameManager.gm.soundManager.SfxSrc.PlayOneShot(GameManager.gm.soundManager.Sfx[0]);
     }
 }

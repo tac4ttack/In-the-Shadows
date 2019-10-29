@@ -54,7 +54,7 @@ public class SettingsMenu : MonoBehaviour
 
     void Start()
     {
-        InitSoundSettings(GameManager.gm.Settings);
+        InitSoundSettings(GameManager.GM.Settings);
     }
 
     public void InitSoundSettings(SettingsData iData)
@@ -71,81 +71,88 @@ public class SettingsMenu : MonoBehaviour
 
     public void UpdateMasterVolume()
     {
-        GameManager.gm.Settings.MasterVolume = MasterVolumeSlider.value;
-        MasterVolumeValue.text = Mathf.RoundToInt(GameManager.gm.Settings.MasterVolume * 100f) + "%";
-        GameManager.gm.soundManager.SfxSrc.volume = GameManager.gm.Settings.SFXVolume * GameManager.gm.Settings.MasterVolume;
-        GameManager.gm.soundManager.MusicSrc.volume = GameManager.gm.Settings.MusicVolume * GameManager.gm.Settings.MasterVolume;
-        if (!GameManager.gm.Settings.SoundMuted)
-            GameManager.gm.Settings.PreviousMasterVolume = GameManager.gm.Settings.MasterVolume;
-        SaveSystem.SaveSettings(GameManager.gm.Settings);
+        GameManager.GM.Settings.MasterVolume = MasterVolumeSlider.value;
+        MasterVolumeValue.text = Mathf.RoundToInt(GameManager.GM.Settings.MasterVolume * 100f) + "%";
+        GameManager.GM.SM.SfxSrc.volume = GameManager.GM.Settings.SFXVolume * GameManager.GM.Settings.MasterVolume;
+        GameManager.GM.SM.MusicSrc.volume = GameManager.GM.Settings.MusicVolume * GameManager.GM.Settings.MasterVolume;
+        if (!GameManager.GM.Settings.SoundMuted)
+            GameManager.GM.Settings.PreviousMasterVolume = GameManager.GM.Settings.MasterVolume;
+        SaveSystem.SaveSettings(GameManager.GM.Settings);
     }
 
     public void UpdateSFXVolume()
     {
-        GameManager.gm.Settings.SFXVolume = SFXVolumeSlider.value;
-        SFXVolumeValue.text = Mathf.RoundToInt(GameManager.gm.Settings.SFXVolume * 100f) + "%";
-        GameManager.gm.soundManager.SfxSrc.volume = GameManager.gm.Settings.SFXVolume * GameManager.gm.Settings.MasterVolume;
-        if (!GameManager.gm.Settings.SoundMuted)
-            GameManager.gm.Settings.PreviousSFXVolume = GameManager.gm.Settings.SFXVolume;
-        SaveSystem.SaveSettings(GameManager.gm.Settings);
+        GameManager.GM.Settings.SFXVolume = SFXVolumeSlider.value;
+        SFXVolumeValue.text = Mathf.RoundToInt(GameManager.GM.Settings.SFXVolume * 100f) + "%";
+        GameManager.GM.SM.SfxSrc.volume = GameManager.GM.Settings.SFXVolume * GameManager.GM.Settings.MasterVolume;
+        if (!GameManager.GM.Settings.SoundMuted)
+            GameManager.GM.Settings.PreviousSFXVolume = GameManager.GM.Settings.SFXVolume;
+        SaveSystem.SaveSettings(GameManager.GM.Settings);
     }
 
     public void UpdateMusicVolume()
     {
-        GameManager.gm.Settings.MusicVolume = MusicVolumeSlider.value;
-        MusicVolumeValue.text = Mathf.RoundToInt(GameManager.gm.Settings.MusicVolume * 100f) + "%";
-        GameManager.gm.soundManager.MusicSrc.volume = GameManager.gm.Settings.MusicVolume * GameManager.gm.Settings.MasterVolume;
-        if (!GameManager.gm.Settings.SoundMuted)
-            GameManager.gm.Settings.PreviousMusicVolume = GameManager.gm.Settings.MusicVolume;
-        SaveSystem.SaveSettings(GameManager.gm.Settings);
+        GameManager.GM.Settings.MusicVolume = MusicVolumeSlider.value;
+        MusicVolumeValue.text = Mathf.RoundToInt(GameManager.GM.Settings.MusicVolume * 100f) + "%";
+        GameManager.GM.SM.MusicSrc.volume = GameManager.GM.Settings.MusicVolume * GameManager.GM.Settings.MasterVolume;
+        if (!GameManager.GM.Settings.SoundMuted)
+            GameManager.GM.Settings.PreviousMusicVolume = GameManager.GM.Settings.MusicVolume;
+        SaveSystem.SaveSettings(GameManager.GM.Settings);
     }
 
     public void MuteCheckboxToggle()
     {
         if (MuteCheckbox.isOn && !_InitFlag)
         {
-            GameManager.gm.Settings.SoundMuted = true;
+            GameManager.GM.Settings.SoundMuted = true;
             MasterVolumeSlider.interactable = false;
             SFXVolumeSlider.interactable = false;
             MusicVolumeSlider.interactable = false;
 
-            GameManager.gm.Settings.PreviousMasterVolume = GameManager.gm.Settings.MasterVolume;
+            GameManager.GM.Settings.PreviousMasterVolume = GameManager.GM.Settings.MasterVolume;
             MasterVolumeSlider.value = 0f;
-            GameManager.gm.Settings.PreviousSFXVolume = GameManager.gm.Settings.SFXVolume;
+            GameManager.GM.Settings.PreviousSFXVolume = GameManager.GM.Settings.SFXVolume;
             SFXVolumeSlider.value = 0f;
-            GameManager.gm.Settings.PreviousMusicVolume = GameManager.gm.Settings.MusicVolume;
+            GameManager.GM.Settings.PreviousMusicVolume = GameManager.GM.Settings.MusicVolume;
             MusicVolumeSlider.value = 0f;
         }
         else if (!MuteCheckbox.isOn && !_InitFlag)
         {
-            GameManager.gm.Settings.SoundMuted = false;
+            GameManager.GM.Settings.SoundMuted = false;
             MasterVolumeSlider.interactable = true;
             SFXVolumeSlider.interactable = true;
             MusicVolumeSlider.interactable = true;
 
-            MasterVolumeSlider.value = GameManager.gm.Settings.PreviousMasterVolume;
-            SFXVolumeSlider.value = GameManager.gm.Settings.PreviousSFXVolume;
-            MusicVolumeSlider.value = GameManager.gm.Settings.PreviousMusicVolume;
+            MasterVolumeSlider.value = GameManager.GM.Settings.PreviousMasterVolume;
+            SFXVolumeSlider.value = GameManager.GM.Settings.PreviousSFXVolume;
+            MusicVolumeSlider.value = GameManager.GM.Settings.PreviousMusicVolume;
         }
     }
 
     public void ResetToDefaultsButtonPress()
     {
-        MasterVolumeSlider.value = GameManager.gm.Settings.DefaultMasterVolume;
-        GameManager.gm.Settings.PreviousMasterVolume = GameManager.gm.Settings.DefaultMasterVolume;
-        SFXVolumeSlider.value = GameManager.gm.Settings.DefaultSFXVolume;
-        GameManager.gm.Settings.PreviousSFXVolume = GameManager.gm.Settings.DefaultSFXVolume;
-        MusicVolumeSlider.value = GameManager.gm.Settings.DefaultMusicVolume;
-        GameManager.gm.Settings.PreviousMusicVolume = GameManager.gm.Settings.DefaultMusicVolume;
-        GameManager.gm.Settings.SoundMuted = false;
+        MasterVolumeSlider.value = GameManager.GM.Settings.DefaultMasterVolume;
+        GameManager.GM.Settings.PreviousMasterVolume = GameManager.GM.Settings.DefaultMasterVolume;
+        SFXVolumeSlider.value = GameManager.GM.Settings.DefaultSFXVolume;
+        GameManager.GM.Settings.PreviousSFXVolume = GameManager.GM.Settings.DefaultSFXVolume;
+        MusicVolumeSlider.value = GameManager.GM.Settings.DefaultMusicVolume;
+        GameManager.GM.Settings.PreviousMusicVolume = GameManager.GM.Settings.DefaultMusicVolume;
+        GameManager.GM.Settings.SoundMuted = false;
         MasterVolumeSlider.interactable = true;
         SFXVolumeSlider.interactable = true;
         MusicVolumeSlider.interactable = true;
-        SaveSystem.SaveSettings(GameManager.gm.Settings);
+        SaveSystem.SaveSettings(GameManager.GM.Settings);
     }
 
     public void BackButtonPress()
     {
-        SaveSystem.SaveSettings(GameManager.gm.Settings);
+        SaveSystem.SaveSettings(GameManager.GM.Settings);
+    }
+
+    // DEBUG
+    public void TestSoundButtonPress()
+    {
+        // DEBUG SFX
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[0]);
     }
 }

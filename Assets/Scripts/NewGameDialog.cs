@@ -74,7 +74,7 @@ public class NewGameDialog : MonoBehaviour
         Debug.Log("Tutorial skip is " + _TutorialToggle.isOn);
 
         _PlayerNameInput.text = _PlayerNameInput.text.Trim();
-        GameManager.gm.CreateNewPlayer(CurrentSlot, _PlayerNameInput.text, !(_TutorialToggle.isOn));
+        GameManager.GM.CreateNewPlayer(CurrentSlot, _PlayerNameInput.text, !(_TutorialToggle.isOn));
         BackButtonPress();
     }
 

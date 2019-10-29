@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement; //So you can use SceneManager
 
 public class GameManager : MonoBehaviour
 {
-    [HideInInspector] public static GameManager gm { get; private set; }
-    public SoundManager soundManager;
+    [HideInInspector] public static GameManager GM { get; private set; }
+    public SoundManager SM;
 
     public bool _InDebugMode = false; // replace by private
     public int _CurrentSlot = -1; // replace by private
@@ -17,19 +17,19 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         // Singleton setup
-        if (gm == null)
+        if (GM == null)
         {
-            gm = this;
+            GM = this;
         }
-        else if (gm != this)
+        else if (GM != this)
         {
             Destroy(gameObject);   
         }
         DontDestroyOnLoad(this.gameObject);
 
-        if (!soundManager)
-            soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
-        Assert.IsNotNull(soundManager, "SoundManager not found in scene!");
+        if (SM == null)
+            SM = this.GetComponent<SoundManager>();
+        Assert.IsNotNull(SM, "SoundManager not found!");
 
         Settings = SaveSystem.LoadSettings();
         if (Settings == null)
@@ -42,8 +42,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        soundManager.SfxSrc.volume = Settings.SFXVolume * Settings.MasterVolume;
-        soundManager.MusicSrc.volume = Settings.MusicVolume * Settings.MasterVolume;
+        SM.SfxSrc.volume = Settings.SFXVolume * Settings.MasterVolume;
+        SM.MusicSrc.volume = Settings.MusicVolume * Settings.MasterVolume;
         // Launch Main Menu Music here
         // Needs to create logic for date formatting and putting it into last played player data
     }

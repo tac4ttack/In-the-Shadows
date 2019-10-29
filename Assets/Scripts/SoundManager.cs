@@ -21,21 +21,5 @@ public class SoundManager : MonoBehaviour
             MusicSrc = AS[0];
         if (SfxSrc == null)
             SfxSrc = AS[1];
-
-        // Singleton setup
-        // OLD WAY
-        // if (!sm)
-        //     sm = this;
-        // NEW WAY
-        // if (sm == null)
-        // {
-        //     sm = this;
-        // }
-        // else if (sm != this)
-        // {
-        //     Destroy(gameObject);   
-        // }
-
-        DontDestroyOnLoad(this.gameObject);
     }
 }

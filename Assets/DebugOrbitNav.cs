@@ -31,7 +31,7 @@ public class DebugOrbitNav : MonoBehaviour
         {
             Camera.main.transform.position = Vector3.Slerp(iStart, iTarget, t / iTime);
             Camera.main.transform.LookAt(this.transform.position);
-            yield return 0;
+            yield return null;
         }
         _orbiting = false;
     }

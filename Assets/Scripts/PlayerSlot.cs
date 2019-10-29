@@ -62,14 +62,14 @@ public class PlayerSlot : MonoBehaviour
 
     void Start()
     {
-        Empty = GameManager.gm.Players.IsEmpty[SlotID];
+        Empty = GameManager.GM.Players.IsEmpty[SlotID];
 
         FetchSlotInfo();
     }
 
     void Update()
     {
-        Empty = GameManager.gm.Players.IsEmpty[SlotID];
+        Empty = GameManager.GM.Players.IsEmpty[SlotID];
         FetchSlotInfo();
     }
 
@@ -84,17 +84,17 @@ public class PlayerSlot : MonoBehaviour
         {
             EmptyTextPlaceholder.SetActive(false);
             PlayerSlotInfoPlaceholder.SetActive(true);
-            PlayerNameText.text = GameManager.gm.Players.PlayersName[SlotID];
-            CompletionRadial.fillAmount = GameManager.gm.Players.ProgressionPercentage[SlotID] / 100f;
-            CompletionPercentageText.text = Mathf.RoundToInt(GameManager.gm.Players.ProgressionPercentage[SlotID]) + "%";
-            LastPlayedText.text = "Last played: " + GameManager.gm.Players.LastPlayed[SlotID];
+            PlayerNameText.text = GameManager.GM.Players.PlayersName[SlotID];
+            CompletionRadial.fillAmount = GameManager.GM.Players.ProgressionPercentage[SlotID] / 100f;
+            CompletionPercentageText.text = Mathf.RoundToInt(GameManager.GM.Players.ProgressionPercentage[SlotID]) + "%";
+            LastPlayedText.text = "Last played: " + GameManager.GM.Players.LastPlayed[SlotID];
         }
     }
 
     public void ClearSlotButtonPress()
     {
-        GameManager.gm.Players.ResetTargetPlayer(SlotID);
-        SaveSystem.SavePlayers(GameManager.gm.Players);
+        GameManager.GM.Players.ResetTargetPlayer(SlotID);
+        SaveSystem.SavePlayers(GameManager.GM.Players);
     }
 
     public void SlotPress()
