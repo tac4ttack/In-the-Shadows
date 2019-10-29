@@ -43,8 +43,8 @@ public class PauseMenu : MonoBehaviour
 
     void Start() => PauseMenuStateMachine.ChangeState(new Inactive_PauseMenuState(this));
     void Update() => PauseMenuStateMachine.ExecuteState();
-
-    # region Buttons Logic
+    
+    #region Buttons Logic
     public void ResumeButtonClick()
     {
         Debug.Log("Resume button click!");
@@ -93,11 +93,12 @@ public class PauseMenu : MonoBehaviour
     #endregion
 }
 
+#region PauseMenu States
 public class Inactive_PauseMenuState : IState
 {
     private PauseMenu _PauseMenu;
 
-    public Inactive_PauseMenuState(PauseMenu iPauseMenu) {_PauseMenu = iPauseMenu;}
+    public Inactive_PauseMenuState(PauseMenu iPauseMenu) => _PauseMenu = iPauseMenu;
 
     public void Enter()
     {
@@ -126,7 +127,7 @@ public class Active_PauseMenuState : IState
 {
     private PauseMenu _PauseMenu;
 
-    public Active_PauseMenuState(PauseMenu iPauseMenu) {_PauseMenu = iPauseMenu;}
+    public Active_PauseMenuState(PauseMenu iPauseMenu) => _PauseMenu = iPauseMenu;
 
     public void Enter()
     {
@@ -153,7 +154,7 @@ public class Settings_PauseMenuState : IState
 {
     private PauseMenu _PauseMenu;
 
-    public Settings_PauseMenuState(PauseMenu iPauseMenu) {_PauseMenu = iPauseMenu;}
+    public Settings_PauseMenuState(PauseMenu iPauseMenu) => _PauseMenu = iPauseMenu;
 
     public void Enter()
     {
@@ -180,21 +181,20 @@ public class ConfirmationPrompt_PauseMenuState : IState
 {
     private PauseMenu _PauseMenu;
 
-    public ConfirmationPrompt_PauseMenuState(PauseMenu iPauseMenu) {_PauseMenu = iPauseMenu;}
-    
+    public ConfirmationPrompt_PauseMenuState(PauseMenu iPauseMenu) => _PauseMenu = iPauseMenu;
+
     public void Enter()
     {
         _PauseMenu.CurrentState = PauseMenu.PauseMenuStates.ConfirmationPrompt;
         GameManager.GM.StartCoroutine(Utility.PopOutCanvasGroup(_PauseMenu.PauseMenuCG, 1f, _PauseMenu.TransitionSpeed));
         GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_PauseMenu.ConfirmationPromptCG, 1f, _PauseMenu.TransitionSpeed));
-        // pop in confirmation prompt canvas
     }
 
     public void Execute() {}
 
     public void Exit()
     {
-        // pop out confirmation prompt canvas
         GameManager.GM.StartCoroutine(Utility.PopOutCanvasGroup(_PauseMenu.ConfirmationPromptCG, 1f, _PauseMenu.TransitionSpeed));
     }
 }
+#endregion
