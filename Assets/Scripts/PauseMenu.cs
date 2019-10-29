@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Assertions;
-
 
 public class PauseMenu : MonoBehaviour
 {
     public StateMachine PauseMenuStateMachine = new StateMachine();
-    public enum PauseMenuStates { Inactive = 0, Active, Settings};
+    public enum PauseMenuStates { Inactive = 0, Active, Settings, ConfirmationPrompt};
     public PauseMenuStates CurrentState;
     public float TransitionSpeed = 0.1f;
 
@@ -15,13 +13,7 @@ public class PauseMenu : MonoBehaviour
     public CanvasGroup BackgroundCG;
     public CanvasGroup PauseMenuCG;
     public CanvasGroup SettingsCG;
-
-    [Header("Main buttons of Pause Menu UI")]
-    public Button ResumeButton;
-    public Button RestartButton;
-    public Button SettingsButton;
-    public Button ExitButton;
-    public Button AbortButton;
+    public CanvasGroup ConfirmationPromptCG;
 
     void Awake()
     {
@@ -33,28 +25,14 @@ public class PauseMenu : MonoBehaviour
             PauseMenuCG = this.gameObject.transform.Find("PauseMenu_Panel").GetComponent<CanvasGroup>();
         if (SettingsCG == null)
             SettingsCG = this.gameObject.transform.Find("Settings_Panel").GetComponent<CanvasGroup>();;
+        if (ConfirmationPromptCG == null)
+            ConfirmationPromptCG = this.gameObject.transform.Find("Confirmation_Panel").GetComponent<CanvasGroup>();
 
         Assert.IsNotNull(PauseCG, "Pause Menu UI Canvas group not found!");
         Assert.IsNotNull(BackgroundCG, "Pause Menu Background Canvas group not found!");
         Assert.IsNotNull(PauseMenuCG, "Pause Menu Panel Canvas group not found!");
         Assert.IsNotNull(SettingsCG, "Settings Panel Canvas group not found!");
-
-        if (ResumeButton == null)
-            ResumeButton = PauseMenuCG.gameObject.transform.Find("Resume_Button").GetComponent<Button>();
-        if (RestartButton == null)
-            RestartButton = PauseMenuCG.gameObject.transform.Find("Restart_Button").GetComponent<Button>();
-        if (SettingsButton == null)
-            SettingsButton = PauseMenuCG.gameObject.transform.Find("Settings_Button").GetComponent<Button>();
-        if (AbortButton == null)
-            AbortButton = PauseMenuCG.gameObject.transform.Find("Abort_Button").GetComponent<Button>();
-        if (ExitButton == null)
-            ExitButton = PauseMenuCG.gameObject.transform.Find("Exit_Button").GetComponent<Button>();
-
-        Assert.IsNotNull(ResumeButton, "Pause menu Resume button not found!");
-        Assert.IsNotNull(RestartButton, "Pause menu Restart button not found!");
-        Assert.IsNotNull(SettingsButton, "Pause menu Settings button not found!");
-        Assert.IsNotNull(ExitButton, "Pause menu Exit button not found!");
-        Assert.IsNotNull(AbortButton, "Pause menu Abort button not found!");
+        Assert.IsNotNull(ConfirmationPromptCG, "Confirmation Prompt Canvas group not found!");
 
         // DEBUG TODO!
         // When the main state machine will be done
@@ -63,41 +41,63 @@ public class PauseMenu : MonoBehaviour
         //      disable(abort button)
     }
 
-    void Start()
+    void Start() => PauseMenuStateMachine.ChangeState(new Inactive_PauseMenuState(this));
+    void Update() => PauseMenuStateMachine.ExecuteState();
+
+    # region Buttons Logic
+    public void ResumeButtonClick()
     {
-        PauseMenuStateMachine.ChangeState(new Inactive_PauseMenuState(this.gameObject, this));
-        CurrentState = PauseMenuStates.Inactive;
+        Debug.Log("Resume button click!");
+        PauseMenuStateMachine.ChangeState(new Inactive_PauseMenuState(this));
+    }
+    
+    public void RestartButtonClick()
+    {
+        Debug.Log("Restart button click!");
+        PauseMenuStateMachine.ChangeState(new ConfirmationPrompt_PauseMenuState(this));
     }
 
-    void Update()
+    public void AbortButtonClick()
     {
-        PauseMenuStateMachine.ExecuteState();
+        Debug.Log("Abort button click!");
+        PauseMenuStateMachine.ChangeState(new ConfirmationPrompt_PauseMenuState(this));
     }
 
-    /*
-    **  Settings Panel buttons logic
-    */
+    public void ExitButtonClick()
+    {
+        Debug.Log("Exit button click!");
+        PauseMenuStateMachine.ChangeState(new ConfirmationPrompt_PauseMenuState(this));
+    }
+
     public void SettingsButtonClick()
     {
-        PauseMenuStateMachine.ChangeState(new Settings_PauseMenuState(this.gameObject, this));
+        PauseMenuStateMachine.ChangeState(new Settings_PauseMenuState(this));
     }
 
     public void SettingsBackButtonClick()
     {
         PauseMenuStateMachine.GoBackToPreviousState();
     }
+
+    public void ConfirmationYesButtonClick()
+    {
+        Debug.Log("Confirmation yes button clicked!");
+
+    }
+
+    public void ConfirmationNoButtonClick()
+    {
+        Debug.Log("Confirmation no button clicked!");
+        PauseMenuStateMachine.GoBackToPreviousState();
+    }
+    #endregion
 }
 
 public class Inactive_PauseMenuState : IState
 {
-    private GameObject _PauseMenuGO;
     private PauseMenu _PauseMenu;
 
-    public Inactive_PauseMenuState(GameObject iPauseMenuGO, PauseMenu iPauseMenu)
-    {
-        _PauseMenuGO = iPauseMenuGO;
-        _PauseMenu = iPauseMenu;
-    }
+    public Inactive_PauseMenuState(PauseMenu iPauseMenu) {_PauseMenu = iPauseMenu;}
 
     public void Enter()
     {
@@ -111,26 +111,22 @@ public class Inactive_PauseMenuState : IState
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            _PauseMenu.PauseMenuStateMachine.ChangeState(new Active_PauseMenuState(_PauseMenuGO, _PauseMenu));
+            _PauseMenu.PauseMenuStateMachine.ChangeState(new Active_PauseMenuState(_PauseMenu));
         }
     }
 
     public void Exit()
     {
         Debug.Log("Inactive PM Exit");
+        // add switch back to gamestate logic?
     }
 }
 
 public class Active_PauseMenuState : IState
 {
-    private GameObject _PauseMenuGO;
     private PauseMenu _PauseMenu;
 
-    public Active_PauseMenuState(GameObject iPauseMenuGO, PauseMenu iPauseMenu)
-    {
-        _PauseMenuGO = iPauseMenuGO;
-        _PauseMenu = iPauseMenu;
-    }
+    public Active_PauseMenuState(PauseMenu iPauseMenu) {_PauseMenu = iPauseMenu;}
 
     public void Enter()
     {
@@ -144,30 +140,23 @@ public class Active_PauseMenuState : IState
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            _PauseMenu.PauseMenuStateMachine.ChangeState(new Inactive_PauseMenuState(_PauseMenuGO, _PauseMenu));
+            _PauseMenu.PauseMenuStateMachine.ChangeState(new Inactive_PauseMenuState(_PauseMenu));
         }
     }
 
     public void Exit()
     {
-        Debug.Log("Active PM Exit");
-    }
+        GameManager.GM.StartCoroutine(Utility.PopOutCanvasGroup(_PauseMenu.PauseMenuCG, 1f, _PauseMenu.TransitionSpeed));    }
 }
 
 public class Settings_PauseMenuState : IState
 {
-    private GameObject _PauseMenuGO;
     private PauseMenu _PauseMenu;
 
-    public Settings_PauseMenuState(GameObject iPauseMenuGO, PauseMenu iPauseMenu)
-    {
-        _PauseMenuGO = iPauseMenuGO;
-        _PauseMenu = iPauseMenu;
-    }
+    public Settings_PauseMenuState(PauseMenu iPauseMenu) {_PauseMenu = iPauseMenu;}
 
     public void Enter()
     {
-        GameManager.GM.StartCoroutine(Utility.PopOutCanvasGroup(_PauseMenu.PauseMenuCG, 1f, _PauseMenu.TransitionSpeed));
         GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_PauseMenu.SettingsCG, 1f, _PauseMenu.TransitionSpeed));
         _PauseMenu.CurrentState = PauseMenu.PauseMenuStates.Settings;
     }
@@ -184,5 +173,28 @@ public class Settings_PauseMenuState : IState
     {
         SaveSystem.SaveSettings(GameManager.GM.Settings);
         GameManager.GM.StartCoroutine(Utility.PopOutCanvasGroup(_PauseMenu.SettingsCG, 1f, _PauseMenu.TransitionSpeed));
+    }
+}
+
+public class ConfirmationPrompt_PauseMenuState : IState
+{
+    private PauseMenu _PauseMenu;
+
+    public ConfirmationPrompt_PauseMenuState(PauseMenu iPauseMenu) {_PauseMenu = iPauseMenu;}
+    
+    public void Enter()
+    {
+        _PauseMenu.CurrentState = PauseMenu.PauseMenuStates.ConfirmationPrompt;
+        GameManager.GM.StartCoroutine(Utility.PopOutCanvasGroup(_PauseMenu.PauseMenuCG, 1f, _PauseMenu.TransitionSpeed));
+        GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_PauseMenu.ConfirmationPromptCG, 1f, _PauseMenu.TransitionSpeed));
+        // pop in confirmation prompt canvas
+    }
+
+    public void Execute() {}
+
+    public void Exit()
+    {
+        // pop out confirmation prompt canvas
+        GameManager.GM.StartCoroutine(Utility.PopOutCanvasGroup(_PauseMenu.ConfirmationPromptCG, 1f, _PauseMenu.TransitionSpeed));
     }
 }
