@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public static class Utility
 {
+    public const float TransitionSpeed = 0.1f;
+
     public static bool IsPointerOverUIObject()
     {
         PointerEventData eventData = new PointerEventData(EventSystem.current);
@@ -16,7 +18,7 @@ public static class Utility
         return (raycastResults.Count > 0);
     }
 
-    public static IEnumerator PopInCanvasGroup(CanvasGroup iCanvasGroup, float iTime, float iSpeed)
+    public static IEnumerator PopInCanvasGroup(CanvasGroup iCanvasGroup, float iTime, float iSpeed, float iTargetAlpha = 1f)
     {
         iCanvasGroup.interactable = true;
         iCanvasGroup.blocksRaycasts = true;
@@ -27,7 +29,7 @@ public static class Utility
         }
     }
 
-    public static IEnumerator PopOutCanvasGroup(CanvasGroup iCanvasGroup, float iTime, float iSpeed)
+    public static IEnumerator PopOutCanvasGroup(CanvasGroup iCanvasGroup, float iTime, float iSpeed, float iTargetAlpha = 0f)
     {
         iCanvasGroup.interactable = false;
         iCanvasGroup.blocksRaycasts = false;

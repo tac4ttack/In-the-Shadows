@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.SceneManagement; //So you can use SceneManager
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,12 +10,12 @@ public class GameManager : MonoBehaviour
     public StateMachine GameStateMachine = new StateMachine();
     public enum GameStates { TitleScreen = 0, MainMenu, LevelSelection, InGame};
     public GameStates CurrentState;
-   
+
     public SettingsData Settings;
     public PlayersData Players;
 
     public bool DebugMode = false;
-    public int CurrentSlot = -1;
+    public int CurrentPlayerSlot = -1;
 
     void Awake()
     {
@@ -46,24 +45,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        GameStateMachine.ChangeState(new TitleScreen_GameState(this, GameObject.Find("MainMenu").GetComponent<MainMenu>()));
-        
         // Sound settings loading
         SM.SfxSrc.volume = Settings.SFXVolume * Settings.MasterVolume;
         SM.MusicSrc.volume = Settings.MusicVolume * Settings.MasterVolume;
-
-        // Launch Main Menu Music here
-        // Needs to create logic for date formatting and putting it into last played player data
-    }
-
-    void Update()
-    {
-        // DEBUG
-        // if (Input.GetKeyUp(KeyCode.R))
-        // {
-        //     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //     Debug.Log("Reloading current scene!");
-        // }
+        
+        GameStateMachine.ChangeState(new InMainMenu_GameState());
     }
 
     public void ClearAllPlayersData()
@@ -98,56 +84,30 @@ public class GameManager : MonoBehaviour
 }
 
 #region Game States
-public class TitleScreen_GameState : IState
+public class InMainMenu_GameState : IState
 {
-    private GameManager _GameManager;
-    private MainMenu _MainMenu;
-
-    public TitleScreen_GameState(GameManager iGameManager, MainMenu iMainMenu)
-    {
-        _GameManager = iGameManager;
-        _MainMenu = iMainMenu;
-    }
-
-    public void Enter()
-    {
-        // _mainmenu title screen should already be present
-        // _MainMenu.TitleScreenCG.gameObject.active = true;
-        _GameManager.CurrentState = GameManager.GameStates.TitleScreen;
-    }
-
-    public void Execute()
-    {
-        // if (Input.anyKey)
-        // _GameManager.GameStateMachine.ChangeState(new MainMenu_GameState());
-    }
-
-    public void Exit()
-    {
-        // mainmenu title screen pop out
-    }
-}
-
-public class MainMenu_GameState : IState
-{
-    public MainMenu_GameState()
+    public InMainMenu_GameState()
     {
 
     }
     
     public void Enter()
     {
-        throw new System.NotImplementedException();
+        GameManager.GM.CurrentState = GameManager.GameStates.MainMenu;
+        GameManager.GM.DebugMode = false;
+        GameManager.GM.CurrentPlayerSlot = -1;
+        // add main menu music launch?
     }
 
     public void Execute()
     {
-        throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
     }
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
+        // stop all musics?
     }
 }
 
@@ -160,17 +120,20 @@ public class LevelSelection_GameState : IState
 
     public void Enter()
     {
-        throw new System.NotImplementedException();
+        GameManager.GM.CurrentState = GameManager.GameStates.LevelSelection;
+        SceneManager.LoadScene(1);
+        // add level selection music launch?
     }
 
     public void Execute()
     {
-        throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
     }
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
+        // stop all musics?
     }
 }
 
@@ -183,40 +146,18 @@ public class InGame_GameState : IState
 
     public void Enter()
     {
-        throw new System.NotImplementedException();
+        GameManager.GM.CurrentState = GameManager.GameStates.InGame;
+        // add puzzle level music launch depending on the level id?
     }
 
     public void Execute()
     {
-        throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
     }
 
     public void Exit()
     {
-        throw new System.NotImplementedException();
-    }
-}
-
-public class WinScreen_GameState : IState
-{
-    public WinScreen_GameState()
-    {
-
-    }
-
-    public void Enter()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void Execute()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void Exit()
-    {
-        throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
     }
 }
 #endregion

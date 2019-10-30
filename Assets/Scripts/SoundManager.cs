@@ -13,10 +13,7 @@ public class SoundManager : MonoBehaviour
         List<AudioSource> AS = new List<AudioSource>();
         GetComponents<AudioSource>(AS);
         if (AS.Count != 2)
-            Debug.Log("SoundManager does not seems to have the correct number of Audio sources");
-        else
-            Debug.Log("Audio sources successfully loaded!");
-
+            Debug.LogError("SoundManager does not seems to have the correct number of Audio sources");
         if (MusicSrc == null)
             MusicSrc = AS[0];
         if (SfxSrc == null)

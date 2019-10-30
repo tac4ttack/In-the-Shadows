@@ -6,6 +6,7 @@ using TMPro;
 public class PlayerSlot : MonoBehaviour
 {
     private GameObject _CurrentSlot;
+    private MainMenu _MainMenuScript;
     
     public int SlotID = -1;
     public TextMeshProUGUI PlayerNameText;
@@ -31,25 +32,20 @@ public class PlayerSlot : MonoBehaviour
 
         if (!EmptyTextPlaceholder)
             EmptyTextPlaceholder = _CurrentSlot.transform.Find("Empty_Text").gameObject;
-
         if (!PlayerSlotInfoPlaceholder)
             PlayerSlotInfoPlaceholder = _CurrentSlot.transform.Find("PlayerSlotInfo").gameObject;
-
         if (!PlayerNameText)
             PlayerNameText = PlayerSlotInfoPlaceholder.transform.Find("PlayerName_Text").GetComponent<TextMeshProUGUI>();
-
         if (!CompletionRadial)
             CompletionRadial = PlayerSlotInfoPlaceholder.transform.Find("Progression_Radial_Back").transform.Find("Progression_Radial").GetComponent<Image>();
-
         if (!CompletionPercentageText)
             CompletionPercentageText = CompletionRadial.transform.Find("Progression_Value").GetComponent<TextMeshProUGUI>();
-
         if (!LastPlayedText)
             LastPlayedText = PlayerSlotInfoPlaceholder.transform.Find("Bottom").transform.Find("Bottom_left").transform.Find("LastPlayed_Text").GetComponent<TextMeshProUGUI>();
-
         if (!ClearSlotButton)
             ClearSlotButton = PlayerSlotInfoPlaceholder.transform.Find("Bottom").transform.Find("Bottom_right").transform.Find("ClearSlot_Button").GetComponent<Button>();
-
+        if (!_MainMenuScript)
+            _MainMenuScript = GameObject.FindGameObjectWithTag("MainMenuUI").GetComponent<MainMenu>();
 
         Assert.IsNotNull(_CurrentSlot, "Slot GameObject not found!");
         Assert.IsNotNull(PlayerNameText, "Player name text not found in slot \"" + _CurrentSlot.name + "\"");
@@ -58,12 +54,12 @@ public class PlayerSlot : MonoBehaviour
         Assert.IsNotNull(LastPlayedText, "Last played text not found in slot \"" + _CurrentSlot.name + "\"");
         Assert.IsNotNull(ClearSlotButton, "Clear slot button not found in slot \"" + _CurrentSlot.name + "\"");
         Assert.IsNotNull(EmptyTextPlaceholder, "Empty placeholder text not found in slot \"" + _CurrentSlot.name + "\"");
+        Assert.IsNotNull(_MainMenuScript, "Main Menu Script instance not found!");
     }
 
     void Start()
     {
         Empty = GameManager.GM.Players.IsEmpty[SlotID];
-
         FetchSlotInfo();
     }
 
@@ -99,16 +95,17 @@ public class PlayerSlot : MonoBehaviour
 
     public void SlotPress()
     {
-        Debug.Log("SlotClick!");
-        Debug.Log(this.gameObject.name);
         if (Empty)
         {
-            NewGameDialog newGameDialog = _CurrentSlot.transform.parent.transform.parent.Find("NewGameDialog").gameObject.GetComponent<NewGameDialog>();
-            newGameDialog.Enable(SlotID);
+            _MainMenuScript.MainMenuStateMachine.ChangeState(new NewPlayerPrompt_MainMenuState(_MainMenuScript, SlotID));
         }
         else
         {
             Debug.Log("Should launch game for player slot #" + SlotID);
+            // Use the GameManager State Machine!
+            // GameManager.GM.DebugMode = ToggleDebug value!!!
+            GameManager.GM.CurrentPlayerSlot = SlotID;
+            GameManager.GM.GameStateMachine.ChangeState(new LevelSelection_GameState());
         }
     }
 }

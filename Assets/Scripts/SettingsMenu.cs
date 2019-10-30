@@ -144,11 +144,6 @@ public class SettingsMenu : MonoBehaviour
         SaveSystem.SaveSettings(GameManager.GM.Settings);
     }
 
-    public void BackButtonPress()
-    {
-        SaveSystem.SaveSettings(GameManager.GM.Settings);
-    }
-
     // DEBUG
     public void TestSoundButtonPress()
     {

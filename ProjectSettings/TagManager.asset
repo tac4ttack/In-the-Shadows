@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SoundManager
   - NewGameDialog
+  - MainMenuUI
   layers:
   - Default
   - TransparentFX

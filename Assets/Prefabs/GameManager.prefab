@@ -47,8 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SM: {fileID: 0}
-  _InDebugMode: 0
-  _CurrentSlot: -1
+  CurrentState: 0
   Settings:
     DefaultMasterVolume: 1
     DefaultSFXVolume: 1
@@ -80,6 +79,8 @@ MonoBehaviour:
     IsEmpty: 010101
     DoTutorial: 010101
     _PuzzlesAmount: 3
+  DebugMode: 0
+  CurrentSlot: -1
 --- !u!114 &676138472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +113,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -208,7 +209,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
