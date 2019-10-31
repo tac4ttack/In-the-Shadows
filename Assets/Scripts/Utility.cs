@@ -20,23 +20,29 @@ public static class Utility
 
     public static IEnumerator PopInCanvasGroup(CanvasGroup iCanvasGroup, float iTime, float iSpeed, float iTargetAlpha = 1f)
     {
-        iCanvasGroup.interactable = true;
-        iCanvasGroup.blocksRaycasts = true;
-        for (float t = 0f; t < iTime; t += iSpeed)
+        if (iCanvasGroup != null)
         {
-            iCanvasGroup.alpha += 0.1f;
-            yield return null;
+            iCanvasGroup.interactable = true;
+            iCanvasGroup.blocksRaycasts = true;
+            for (float t = 0f; t < iTime; t += iSpeed)
+            {
+                iCanvasGroup.alpha += 0.1f;
+                yield return null;
+            }
         }
     }
 
     public static IEnumerator PopOutCanvasGroup(CanvasGroup iCanvasGroup, float iTime, float iSpeed, float iTargetAlpha = 0f)
     {
-        iCanvasGroup.interactable = false;
-        iCanvasGroup.blocksRaycasts = false;
-        for (float t = 0f; t < iTime; t += iSpeed)
+        if (iCanvasGroup != null)
         {
-            iCanvasGroup.alpha -= 0.1f;
-            yield return null;
+            iCanvasGroup.interactable = false;
+            iCanvasGroup.blocksRaycasts = false;
+            for (float t = 0f; t < iTime; t += iSpeed)
+            {
+                iCanvasGroup.alpha -= 0.1f;
+                yield return null;
+            }
         }
     }
 }

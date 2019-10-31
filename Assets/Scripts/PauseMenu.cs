@@ -9,6 +9,9 @@ public class PauseMenu : MonoBehaviour
     public enum PauseMenuStates {Inactive = 0, Active, Settings, ConfirmationPrompt};
     public PauseMenuStates CurrentState;
     
+    public enum ConfirmationPromptTarget {None = 0, MainMenu, LevelSelection, Restart};
+    public ConfirmationPromptTarget CurrentConfirmationPromptTarget;
+
     [Header("Canvas Groups of Pause Menu UI")]
     public CanvasGroup Pause_CG;
     public CanvasGroup Background_CG;
@@ -55,6 +58,7 @@ public class PauseMenu : MonoBehaviour
     void Update() => PauseMenuStateMachine.ExecuteState();
 
     #region Buttons Logic
+
     public void ResumeButtonPress()
     {
         PauseMenuStateMachine.ChangeState(new Inactive_PauseMenuState(this));
@@ -62,16 +66,19 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartButtonPress()
     {
+        CurrentConfirmationPromptTarget = PauseMenu.ConfirmationPromptTarget.Restart;
         PauseMenuStateMachine.ChangeState(new ConfirmationPrompt_PauseMenuState(this));
     }
 
     public void AbortButtonPress()
     {
+        CurrentConfirmationPromptTarget = PauseMenu.ConfirmationPromptTarget.LevelSelection;
         PauseMenuStateMachine.ChangeState(new ConfirmationPrompt_PauseMenuState(this));
     }
 
     public void ExitButtonPress()
     {
+        CurrentConfirmationPromptTarget = PauseMenu.ConfirmationPromptTarget.MainMenu;
         PauseMenuStateMachine.ChangeState(new ConfirmationPrompt_PauseMenuState(this));
     }
 
@@ -87,21 +94,34 @@ public class PauseMenu : MonoBehaviour
 
     public void ConfirmationYesButtonPress()
     {
-        // Action will depend on the pressed button and on the current gamestate!!!
-        //DEBUG TEST ONLY
-        // Debug.Log("Confirmation yes button clicked!");
-        if (GameManager.GM.CurrentState == GameManager.GameStates.LevelSelection)
-            SceneManager.LoadScene(0);
+        switch (CurrentConfirmationPromptTarget)
+        {
+            case PauseMenu.ConfirmationPromptTarget.MainMenu:
+                GameManager.GM.GameStateMachine.ChangeState(new InMainMenu_GameState());
+                break;
+            case PauseMenu.ConfirmationPromptTarget.Restart:
+                ;
+                // Reload ?
+                // GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(puzzle_index));
+                break;
+            case PauseMenu.ConfirmationPromptTarget.LevelSelection:
+                GameManager.GM.GameStateMachine.ChangeState(new LevelSelection_GameState());
+                break;
+            default:
+                break;
+        }
     }
 
     public void ConfirmationNoButtonPress()
     {
         PauseMenuStateMachine.GoBackToPreviousState();
     }
+
     #endregion
 }
 
 #region PauseMenu States
+
 public class Inactive_PauseMenuState : IState
 {
     private PauseMenu _PauseMenu;
@@ -197,7 +217,7 @@ public class ConfirmationPrompt_PauseMenuState : IState
     public void Execute() {}
 
     public void Exit()
-    {
+    {   _PauseMenu.CurrentConfirmationPromptTarget = PauseMenu.ConfirmationPromptTarget.None;
         GameManager.GM.StartCoroutine(Utility.PopOutCanvasGroup(_PauseMenu.ConfirmationPrompt_CG, 1f, Utility.TransitionSpeed));
     }
 }

@@ -22,9 +22,9 @@ public class NewGameDialog : MonoBehaviour
         if (!PlayerNameInput)
             PlayerNameInput = this.gameObject.transform.Find("PlayerNameInputfield").GetComponent<TMP_InputField>();
         if (!TutorialToggle)
-            TutorialToggle = this.gameObject.transform.Find("Bottom").transform.Find("Bottom_left").transform.Find("SkipTutorial_Checkbox").GetComponent<Toggle>();
+            TutorialToggle = this.gameObject.transform.Find("Bottom").Find("Bottom_left").Find("SkipTutorial_Checkbox").GetComponent<Toggle>();
         if (!CreateButton)
-            CreateButton = this.gameObject.transform.Find("Bottom").transform.Find("Bottom_right").transform.Find("NewGameCreate_Button").GetComponent<Button>();
+            CreateButton = this.gameObject.transform.Find("Bottom").Find("Bottom_right").Find("NewGameCreate_Button").GetComponent<Button>();
 
         Assert.IsNotNull(PlayPanelCanvas, "Play panel canvas group not found!");
         Assert.IsNotNull(NewGameDialogTitle, "New game title text GameObject not found!");

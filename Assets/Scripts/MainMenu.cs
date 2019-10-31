@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Assertions;
 
 public class MainMenu : MonoBehaviour
@@ -16,7 +17,9 @@ public class MainMenu : MonoBehaviour
     public CanvasGroup SettingsPanel_CG;
     public CanvasGroup CreditsPanel_CG;
     public CanvasGroup NewPlayerPrompt_CG;
+
     public GameObject SpaceSystem_GO;
+    public Toggle DebugModeCheckBox;
 
     void Awake()
     {
@@ -37,7 +40,9 @@ public class MainMenu : MonoBehaviour
         if (NewPlayerPrompt_CG == null)
             NewPlayerPrompt_CG = this.gameObject.transform.Find("NewGame_Panel").GetComponent<CanvasGroup>();
         if (SpaceSystem_GO == null)
-            SpaceSystem_GO = this.gameObject.transform.Find("Main_Panel").gameObject.transform.Find("SpaceSystem").gameObject;
+            SpaceSystem_GO = this.gameObject.transform.Find("Main_Panel").Find("SpaceSystem").gameObject;
+        if (DebugModeCheckBox == null)
+            DebugModeCheckBox = this.gameObject.transform.Find("Play_Panel").Find("Buttons").Find("Buttons_group_left").Find("DebugMode_Checkbox").GetComponent<Toggle>();
 
         Assert.IsNotNull(BackgroundPanel_CG, "Background Canvas group not found!");
         Assert.IsNotNull(MainPanel_CG, "Main Menu Canvas group not found!");
@@ -48,6 +53,7 @@ public class MainMenu : MonoBehaviour
         Assert.IsNotNull(CreditsPanel_CG, "Credits Canvas group not found!");
         Assert.IsNotNull(NewPlayerPrompt_CG, "New Player Prompt Canvas group not found!");
         Assert.IsNotNull(SpaceSystem_GO, "Space System GameObject not found!");
+        Assert.IsNotNull(DebugModeCheckBox, "Debug Mode Toggle not found!");
     }
 
     void Start() => MainMenuStateMachine.ChangeState(new TitleScreen_MainMenuState(this, TitleScreenPanel_CG.gameObject.transform.Find("PressAnyKey_Text").GetComponent<CanvasGroup>()));
@@ -85,6 +91,11 @@ public class MainMenu : MonoBehaviour
     public void PlayPanelBackButtonPress()
     {
         MainMenuStateMachine.ChangeState(new Main_MainMenuState(this));
+    }
+
+    public void DebugModeToggleCheck()
+    {
+        GameManager.GM.DebugMode = DebugModeCheckBox.isOn;
     }
 
     #endregion

@@ -37,13 +37,13 @@ public class PlayerSlot : MonoBehaviour
         if (!PlayerNameText)
             PlayerNameText = PlayerSlotInfoPlaceholder.transform.Find("PlayerName_Text").GetComponent<TextMeshProUGUI>();
         if (!CompletionRadial)
-            CompletionRadial = PlayerSlotInfoPlaceholder.transform.Find("Progression_Radial_Back").transform.Find("Progression_Radial").GetComponent<Image>();
+            CompletionRadial = PlayerSlotInfoPlaceholder.transform.Find("Progression_Radial_Back").Find("Progression_Radial").GetComponent<Image>();
         if (!CompletionPercentageText)
             CompletionPercentageText = CompletionRadial.transform.Find("Progression_Value").GetComponent<TextMeshProUGUI>();
         if (!LastPlayedText)
-            LastPlayedText = PlayerSlotInfoPlaceholder.transform.Find("Bottom").transform.Find("Bottom_left").transform.Find("LastPlayed_Text").GetComponent<TextMeshProUGUI>();
+            LastPlayedText = PlayerSlotInfoPlaceholder.transform.Find("Bottom").Find("Bottom_left").Find("LastPlayed_Text").GetComponent<TextMeshProUGUI>();
         if (!ClearSlotButton)
-            ClearSlotButton = PlayerSlotInfoPlaceholder.transform.Find("Bottom").transform.Find("Bottom_right").transform.Find("ClearSlot_Button").GetComponent<Button>();
+            ClearSlotButton = PlayerSlotInfoPlaceholder.transform.Find("Bottom").Find("Bottom_right").Find("ClearSlot_Button").GetComponent<Button>();
         if (!_MainMenuScript)
             _MainMenuScript = GameObject.FindGameObjectWithTag("MainMenuUI").GetComponent<MainMenu>();
 
@@ -101,9 +101,6 @@ public class PlayerSlot : MonoBehaviour
         }
         else
         {
-            Debug.Log("Should launch game for player slot #" + SlotID);
-            // Use the GameManager State Machine!
-            // GameManager.GM.DebugMode = ToggleDebug value!!!
             GameManager.GM.CurrentPlayerSlot = SlotID;
             GameManager.GM.GameStateMachine.ChangeState(new LevelSelection_GameState());
         }

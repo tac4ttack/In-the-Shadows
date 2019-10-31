@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         SM.SfxSrc.volume = Settings.SFXVolume * Settings.MasterVolume;
         SM.MusicSrc.volume = Settings.MusicVolume * Settings.MasterVolume;
         
-        GameStateMachine.ChangeState(new InMainMenu_GameState());
+        CurrentState = GameManager.GameStates.MainMenu;
     }
 
     public void ClearAllPlayersData()
@@ -88,11 +88,11 @@ public class InMainMenu_GameState : IState
 {
     public InMainMenu_GameState()
     {
-
     }
     
     public void Enter()
     {
+        SceneManager.LoadScene(0);
         GameManager.GM.CurrentState = GameManager.GameStates.MainMenu;
         GameManager.GM.DebugMode = false;
         GameManager.GM.CurrentPlayerSlot = -1;
