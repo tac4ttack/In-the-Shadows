@@ -17,6 +17,8 @@ Dans un premier temps je tiens Ã  avoir un build fonctionnel avant de chercher Ã
  https://www.dafont.com/fr/conthrax.font
 - [tool][used] SpaceScape:
  http://alexcpeterson.com/spacescape/
+- [tool][used] Blender:
+ https://www.blender.org
 
 - [script][used][to be rewritten] Low Poly Water:
  http://viclw17.github.io/2016/03/29/low-poly-water/

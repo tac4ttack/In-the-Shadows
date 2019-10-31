@@ -49,12 +49,15 @@ public class PauseMenu : MonoBehaviour
         
         Assert.IsNotNull(Restart_BTN, "Restart button not found!");
         Assert.IsNotNull(Restart_BTN, "Abort button not found!");
-        
-        Restart_BTN.gameObject.SetActive(GameManager.GM.CurrentState == GameManager.GameStates.InGame);
-        Abort_BTN.gameObject.SetActive(GameManager.GM.CurrentState == GameManager.GameStates.InGame);
     }
 
-    void Start() => PauseMenuStateMachine.ChangeState(new Inactive_PauseMenuState(this));
+    void Start()
+    {
+        Restart_BTN.gameObject.SetActive(GameManager.GM.CurrentState == GameManager.GameStates.InGame);
+        Abort_BTN.gameObject.SetActive(GameManager.GM.CurrentState == GameManager.GameStates.InGame);
+        PauseMenuStateMachine.ChangeState(new Inactive_PauseMenuState(this));
+    }
+    
     void Update() => PauseMenuStateMachine.ExecuteState();
 
     #region Buttons Logic
