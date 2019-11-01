@@ -90,11 +90,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891fcd6121a6441f2b00f724cf95ca10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scale: 0.5
+  Scale: 0.4
+  SinSpeed: {x: 0.21, y: 0.21}
   SinSpeedX: 0.21
   SinSpeedZ: 0.21
-  PerlinSpeedX: 0.21
-  PerlinSpeedZ: 0.21
+  PerlinSpeed: {x: 0.15, y: 0.15}
+  PerlinSpeedX: 0.15
+  PerlinSpeedZ: 0.15
   RecalculateNormals: 1
-  isSin: 1
-  isPerlin: 1
+  UseSin: 0
+  UsePerlin: 1

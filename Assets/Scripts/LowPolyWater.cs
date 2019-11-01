@@ -1,14 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LowPolyWater : MonoBehaviour
 {
     public float Scale = 1.0f;
-    public float SinSpeedX = 1.0f;
-    public float SinSpeedZ = 1.0f;
-    public float PerlinSpeedX = 1.0f;
-    public float PerlinSpeedZ = 1.0f;
+    public Vector2 SinSpeed = new Vector2(1.0f, 1.0f);
+    public Vector2 PerlinSpeed = new Vector2(1.0f, 1.0f);
     public bool RecalculateNormals = true;
     public bool UseSin = false;
     public bool UsePerlin = true;
@@ -36,29 +32,29 @@ public class LowPolyWater : MonoBehaviour
 
             if (UseSin == true && UsePerlin == false)
             {
-                vertex.y += Mathf.Sin(vertex.x + Time.time * SinSpeedX) *
-                            Mathf.Sin(vertex.z + Time.time * SinSpeedZ) * Scale;
+                vertex.y += Mathf.Sin(vertex.x + Time.time * SinSpeed.x) *
+                            Mathf.Sin(vertex.z + Time.time * SinSpeed.y) * Scale;
             }
 
             if (UsePerlin == true && UseSin == false)
             {
-                vertex.y += Mathf.PerlinNoise(vertex.x + Time.time * PerlinSpeedX,
-                                              vertex.z + Time.time * PerlinSpeedZ) * Scale;
+                vertex.y += Mathf.PerlinNoise(vertex.x + Time.time * PerlinSpeed.x,
+                                              vertex.z + Time.time * PerlinSpeed.y) * Scale;
             }
             
             if (UsePerlin == true && UseSin == true)
             {
-                vertex.y += Mathf.PerlinNoise(vertex.x + Time.time * PerlinSpeedX,
-                                              vertex.z + Time.time * PerlinSpeedZ) *
-                            Mathf.Sin(vertex.x + Time.time * SinSpeedX) *
-                            Mathf.Sin(vertex.z + Time.time * SinSpeedZ) * Scale;
+                vertex.y += Mathf.PerlinNoise(vertex.x + Time.time * PerlinSpeed.x,
+                                              vertex.z + Time.time * PerlinSpeed.y) *
+                            Mathf.Sin(vertex.x + Time.time * SinSpeed.x) *
+                            Mathf.Sin(vertex.z + Time.time * SinSpeed.y) * Scale;
             }
 
             _Vertices[i] = vertex;
         }
 
         _Mesh.MarkDynamic();
-       _Mesh.vertices = _Vertices;
+        _Mesh.vertices = _Vertices;
         _Mesh.RecalculateBounds();
 
         if (RecalculateNormals)
