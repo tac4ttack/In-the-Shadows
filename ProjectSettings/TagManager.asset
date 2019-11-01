@@ -4,9 +4,31 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - SoundManager
-  - NewGameDialog
-  - MainMenuUI
+  - MainMenu_NewGameDialog
+  - MainMenu_UI
+  - MainMenu_Background
+  - MainMenu_TitleScreenPanel
+  - MainMenu_MainPanel
+  - MainMenu_MainButtonsPanel
+  - MainMenu_PlayPanel
+  - MainMenu_SettingsPanel
+  - MainMenu_CreditsPanel
+  - MainMenu_SpaceSystem
+  - MainMenu_DebugModeToggle
+  - MainMenu_PressAnyKeyText
+  - PauseMenu_Background
+  - PauseMenu_Panel
+  - PauseMenu_SettingsPanel
+  - PauseMenu_RestartButton
+  - PauseMenu_AbortButton
+  - PauseMenu_UI
+  - PauseMenu_ConfirmationDialog
+  - LevelSelection_PauseMenuButton
+  - LevelSelection_NavLeftButton
+  - LevelSelection_NavRightButton
+  - LevelSelection_LevelTitleText
+  - LevelSelection_LevelCountText
+  - LevelSelection_Map
   layers:
   - Default
   - TransparentFX
