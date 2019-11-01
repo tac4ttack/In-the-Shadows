@@ -23,14 +23,13 @@ public class LevelSelection : MonoBehaviour
     [Space]
     public LevelMarker[] Levels;
 
-    [SerializeField] private int _CurrentSelection = 0;
+    private int _CurrentSelection = 0;
     private GameObject _Earth_GO;
     private IEnumerator _OrbitCamCoroutine;
     private bool _IsOrbiting = false;
 
     void Awake()
     {
-
         if (NavLeft_BTN == null)
             NavLeft_BTN = GameObject.FindGameObjectWithTag("LevelSelection_NavLeftButton").GetComponent<Button>();
         Assert.IsNotNull(NavLeft_BTN, "Left Navigation button not found!");
@@ -79,9 +78,8 @@ public class LevelSelection : MonoBehaviour
         StartCoroutine(_OrbitCamCoroutine);
     }
 
-    void UpdateLevelSelectionUI()
+    void FixedUpdate()
     {
-        Debug.Log("toto = " + _CurrentSelection);
         if (_CurrentSelection == 0)
         {
             NavLeft_BTN.interactable = false;
@@ -95,7 +93,10 @@ public class LevelSelection : MonoBehaviour
             NavLeft_BTN.interactable = true;            
             NavRight_BTN.interactable = true;
         }
+    }
 
+    void UpdateLevelSelectionUI()
+    {
         LevelTitle_TXT.text = Levels[_CurrentSelection].Title;
         LevelCount_TXT.text = (_CurrentSelection + 1).ToString("D2") + "/" +Levels.Length.ToString("D2");
         LevelDescriptionTitle_TXT.text = Levels[_CurrentSelection].Reference;
@@ -106,6 +107,7 @@ public class LevelSelection : MonoBehaviour
     public void PlayButtonTest()
     {
         Debug.Log("coucoucoucoucoucouc");
+        // scenemanager.launchscen(levelindex + sceneindexoffset)
     }
 
     public void NavLeftButtonPress()
