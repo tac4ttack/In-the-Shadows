@@ -1,10 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
 using TMPro;
 
 public class LevelSelection : MonoBehaviour
 {
+    [Header("Camera orbiting settings")]
+    [SerializeField] private float _CamAltitude = 1.5f;
+    [SerializeField] private float _OrbitSpeed = 1f;
+
     [Header("Elements of Level Selection UI")]
     public Button NavLeft_BTN;
     public Button NavRight_BTN;
@@ -15,8 +20,13 @@ public class LevelSelection : MonoBehaviour
     public TextMeshProUGUI LevelDescriptionContent_TXT;
     public TextMeshProUGUI LevelDescriptionBestTime_TXT;
     public Button LevelDescriptionPlay_BTN;
-
+    [Space]
     public LevelMarker[] Levels;
+
+    [SerializeField] private int _CurrentSelection = 0;
+    private GameObject _Earth_GO;
+    private IEnumerator _OrbitCamCoroutine;
+    private bool _IsOrbiting = false;
 
     void Awake()
     {
@@ -37,6 +47,26 @@ public class LevelSelection : MonoBehaviour
             LevelCount_TXT = GameObject.FindGameObjectWithTag("LevelSelection_LevelCountText").GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(LevelCount_TXT, "Level Count text placeholder not found!");
 
+        if (LevelDescriptionTitle_TXT == null)
+            LevelDescriptionTitle_TXT = GameObject.FindGameObjectWithTag("LevelSelection_Description_TitleText").GetComponent<TextMeshProUGUI>();
+        Assert.IsNotNull(LevelDescriptionTitle_TXT, "Level Description Title text placeholder not found!");
+        
+        if (LevelDescriptionContent_TXT == null)
+            LevelDescriptionContent_TXT = GameObject.FindGameObjectWithTag("LevelSelection_Description_ContentText").GetComponent<TextMeshProUGUI>();;
+        Assert.IsNotNull(LevelDescriptionContent_TXT, "Level Description Content text placeholder not found!");
+        
+        if (LevelDescriptionBestTime_TXT == null)
+            LevelDescriptionBestTime_TXT = GameObject.FindGameObjectWithTag("LevelSelection_Description_BestTimeText").GetComponent<TextMeshProUGUI>();;
+        Assert.IsNotNull(LevelDescriptionBestTime_TXT, "Level Description Best Time text placeholder not found!");
+        
+        if (LevelDescriptionPlay_BTN == null)
+            LevelDescriptionPlay_BTN = GameObject.FindGameObjectWithTag("LevelSelection_Description_PlayButton").GetComponent<Button>();;
+        Assert.IsNotNull(LevelDescriptionPlay_BTN, "Level Description Play button not found!");
+
+        if (_Earth_GO == null)
+            _Earth_GO = GameObject.FindGameObjectWithTag("LevelSelection_Earth");
+        Assert.IsNotNull(_Earth_GO, "Earth GameObject is missing from the scene!");
+
         Levels = GameObject.FindGameObjectWithTag("LevelSelection_Map").GetComponentsInChildren<LevelMarker>();
         if (Levels.Length <= 0)
             Debug.LogError("Level list can't be empty!");
@@ -44,9 +74,77 @@ public class LevelSelection : MonoBehaviour
 
     void Start()
     {
-        // DEBUG
-        // Load here the information to fill the texts!
-        LevelTitle_TXT.text = "Foobar!";
-        LevelCount_TXT.text = "66/66";
+        UpdateLevelSelectionUI();
+        _OrbitCamCoroutine = OrbitCamera(Camera.main.transform.position, Levels[_CurrentSelection].Position * _CamAltitude, 1f);
+        StartCoroutine(_OrbitCamCoroutine);
+    }
+
+    void UpdateLevelSelectionUI()
+    {
+        Debug.Log("toto = " + _CurrentSelection);
+        if (_CurrentSelection == 0)
+        {
+            NavLeft_BTN.interactable = false;
+        }
+        else if (_CurrentSelection == Levels.Length - 1)
+        {
+            NavRight_BTN.interactable = false;
+        }
+        else
+        {
+            NavLeft_BTN.interactable = true;            
+            NavRight_BTN.interactable = true;
+        }
+
+        LevelTitle_TXT.text = Levels[_CurrentSelection].Title;
+        LevelCount_TXT.text = (_CurrentSelection + 1).ToString("D2") + "/" +Levels.Length.ToString("D2");
+        LevelDescriptionTitle_TXT.text = Levels[_CurrentSelection].Reference;
+        LevelDescriptionContent_TXT.text = Levels[_CurrentSelection].Description;
+        LevelDescriptionBestTime_TXT.text = Levels[_CurrentSelection].BestTime;
+    }
+
+    public void PlayButtonTest()
+    {
+        Debug.Log("coucoucoucoucoucouc");
+    }
+
+    public void NavLeftButtonPress()
+    {
+        if (_IsOrbiting)
+            StopCoroutine(_OrbitCamCoroutine);
+
+        if (_CurrentSelection - 1 >= 0)
+        {
+            _CurrentSelection--;
+            UpdateLevelSelectionUI();
+            _OrbitCamCoroutine = OrbitCamera(Camera.main.transform.position, Levels[_CurrentSelection].Position * _CamAltitude, 1f);
+            StartCoroutine(_OrbitCamCoroutine);
+        }
+    }
+
+    public void NavRightButtonPress()
+    {
+        if (_IsOrbiting)
+            StopCoroutine(_OrbitCamCoroutine);
+        
+        if (_CurrentSelection + 1 <= Levels.Length)
+        {
+            _CurrentSelection++;
+            UpdateLevelSelectionUI();
+            _OrbitCamCoroutine = OrbitCamera(Camera.main.transform.position, Levels[_CurrentSelection].Position * _CamAltitude, 1f);
+            StartCoroutine(_OrbitCamCoroutine);
+        }
+    }
+
+    IEnumerator OrbitCamera(Vector3 iStart, Vector3 iTarget, float iTime)
+    {
+        _IsOrbiting = true;
+        for (float t = 0f; t < iTime; t += Time.deltaTime * _OrbitSpeed)
+        {
+            Camera.main.transform.position = Vector3.Slerp(iStart, iTarget, t / iTime);
+            Camera.main.transform.LookAt(_Earth_GO.transform.position);
+            yield return null;
+        }
+        _IsOrbiting = false;
     }
 }

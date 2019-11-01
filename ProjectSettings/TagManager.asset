@@ -29,6 +29,11 @@ TagManager:
   - LevelSelection_LevelTitleText
   - LevelSelection_LevelCountText
   - LevelSelection_Map
+  - LevelSelection_Description_TitleText
+  - LevelSelection_Description_ContentText
+  - LevelSelection_Description_BestTimeText
+  - LevelSelection_Description_PlayButton
+  - LevelSelection_Earth
   layers:
   - Default
   - TransparentFX
