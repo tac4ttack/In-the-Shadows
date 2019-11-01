@@ -17,46 +17,53 @@ public class MainMenu : MonoBehaviour
     public CanvasGroup SettingsPanel_CG;
     public CanvasGroup CreditsPanel_CG;
     public CanvasGroup NewPlayerPrompt_CG;
-
     public GameObject SpaceSystem_GO;
     public Toggle DebugModeCheckBox;
 
     void Awake()
     {
         if (BackgroundPanel_CG == null)
-            BackgroundPanel_CG = this.gameObject.transform.Find("Background_Panel").GetComponent<CanvasGroup>();
-        if (MainPanel_CG == null)
-            MainPanel_CG = this.gameObject.transform.Find("Main_Panel").GetComponent<CanvasGroup>();
-        if (TitleScreenPanel_CG == null)
-            TitleScreenPanel_CG = this.gameObject.transform.Find("TitleScreen_Panel").GetComponent<CanvasGroup>();
-        if (MainButtonsPanel_CG == null)
-            MainButtonsPanel_CG = this.gameObject.transform.Find("MainButtons_Panel").GetComponent<CanvasGroup>();
-        if (PlayPanel_CG == null)
-            PlayPanel_CG = this.gameObject.transform.Find("Play_Panel").GetComponent<CanvasGroup>();
-        if (SettingsPanel_CG == null)
-            SettingsPanel_CG = this.gameObject.transform.Find("Settings_Panel").GetComponent<CanvasGroup>();
-        if (CreditsPanel_CG == null)
-            CreditsPanel_CG = this.gameObject.transform.Find("Credits_Panel").GetComponent<CanvasGroup>();
-        if (NewPlayerPrompt_CG == null)
-            NewPlayerPrompt_CG = this.gameObject.transform.Find("NewGame_Panel").GetComponent<CanvasGroup>();
-        if (SpaceSystem_GO == null)
-            SpaceSystem_GO = this.gameObject.transform.Find("Main_Panel").Find("SpaceSystem").gameObject;
-        if (DebugModeCheckBox == null)
-            DebugModeCheckBox = this.gameObject.transform.Find("Play_Panel").Find("Buttons").Find("Buttons_group_left").Find("DebugMode_Checkbox").GetComponent<Toggle>();
-
+            BackgroundPanel_CG = GameObject.FindGameObjectWithTag("MainMenu_Background").GetComponent<CanvasGroup>();
         Assert.IsNotNull(BackgroundPanel_CG, "Background Canvas group not found!");
+
+        if (MainPanel_CG == null)
+            MainPanel_CG = GameObject.FindGameObjectWithTag("MainMenu_MainPanel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(MainPanel_CG, "Main Menu Canvas group not found!");
+
+        if (TitleScreenPanel_CG == null)
+            TitleScreenPanel_CG = GameObject.FindGameObjectWithTag("MainMenu_TitleScreenPanel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(TitleScreenPanel_CG, "Title Screen Canvas group not found!");
+
+        if (MainButtonsPanel_CG == null)
+            MainButtonsPanel_CG = GameObject.FindGameObjectWithTag("MainMenu_MainButtonsPanel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(MainButtonsPanel_CG, "Main Buttons Canvas group not found!");
+
+        if (PlayPanel_CG == null)
+            PlayPanel_CG = GameObject.FindGameObjectWithTag("MainMenu_PlayPanel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(PlayPanel_CG, "Play Panel Canvas group not found!");
+
+        if (SettingsPanel_CG == null)
+            SettingsPanel_CG = GameObject.FindGameObjectWithTag("MainMenu_SettingsPanel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(SettingsPanel_CG, "Settings Canvas group not found!");
+
+        if (CreditsPanel_CG == null)
+            CreditsPanel_CG = GameObject.FindGameObjectWithTag("MainMenu_CreditsPanel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(CreditsPanel_CG, "Credits Canvas group not found!");
+
+        if (NewPlayerPrompt_CG == null)
+            NewPlayerPrompt_CG = GameObject.FindGameObjectWithTag("MainMenu_NewGameDialog").GetComponent<CanvasGroup>();
         Assert.IsNotNull(NewPlayerPrompt_CG, "New Player Prompt Canvas group not found!");
+
+        if (SpaceSystem_GO == null)
+            SpaceSystem_GO = GameObject.FindGameObjectWithTag("MainMenu_SpaceSystem").gameObject;
         Assert.IsNotNull(SpaceSystem_GO, "Space System GameObject not found!");
+
+        if (DebugModeCheckBox == null)
+            DebugModeCheckBox = GameObject.FindGameObjectWithTag("MainMenu_DebugModeToggle").GetComponent<Toggle>();
         Assert.IsNotNull(DebugModeCheckBox, "Debug Mode Toggle not found!");
     }
 
-    void Start() => MainMenuStateMachine.ChangeState(new TitleScreen_MainMenuState(this, TitleScreenPanel_CG.gameObject.transform.Find("PressAnyKey_Text").GetComponent<CanvasGroup>()));
+    void Start() => MainMenuStateMachine.ChangeState(new TitleScreen_MainMenuState(this, GameObject.FindGameObjectWithTag("MainMenu_PressAnyKeyText").GetComponent<CanvasGroup>()));
     void Update() => MainMenuStateMachine.ExecuteState();
 
     #region Buttons logic
@@ -284,9 +291,9 @@ public class Inactive_MainMenuState : IState
         _MainMenu.CurrentState = MainMenu.MainMenuStates.Inactive;
     }
 
-    public void Execute() {}
+    public void Execute() { }
 
-    public void Exit() {}
+    public void Exit() { }
 }
 
 #endregion

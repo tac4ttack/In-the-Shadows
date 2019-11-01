@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
-using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -12,14 +11,12 @@ public class PauseMenu : MonoBehaviour
     public enum ConfirmationPromptTarget {None = 0, MainMenu, LevelSelection, Restart};
     public ConfirmationPromptTarget CurrentConfirmationPromptTarget;
 
-    [Header("Canvas Groups of Pause Menu UI")]
+    [Header("Elements of Pause Menu UI")]
     public CanvasGroup Pause_CG;
     public CanvasGroup Background_CG;
     public CanvasGroup PauseMenu_CG;
     public CanvasGroup Settings_CG;
     public CanvasGroup ConfirmationPrompt_CG;
-
-    [Header("Buttons of Pause Menu UI")]
     public Button Restart_BTN;
     public Button Abort_BTN;
 
@@ -27,28 +24,31 @@ public class PauseMenu : MonoBehaviour
     {
         if (Pause_CG == null)
             Pause_CG = this.gameObject.GetComponent<CanvasGroup>();
-        if (Background_CG == null)
-            Background_CG = this.gameObject.transform.Find("PauseMenu_Background").GetComponent<CanvasGroup>();
-        if (PauseMenu_CG == null)
-            PauseMenu_CG = this.gameObject.transform.Find("PauseMenu_Panel").GetComponent<CanvasGroup>();
-        if (Settings_CG == null)
-            Settings_CG = this.gameObject.transform.Find("Settings_Panel").GetComponent<CanvasGroup>();;
-        if (ConfirmationPrompt_CG == null)
-            ConfirmationPrompt_CG = this.gameObject.transform.Find("Confirmation_Panel").GetComponent<CanvasGroup>();
-
         Assert.IsNotNull(Pause_CG, "Pause Menu UI Canvas group not found!");
+
+        if (Background_CG == null)
+            Background_CG = GameObject.FindGameObjectWithTag("PauseMenu_Background").GetComponent<CanvasGroup>();
         Assert.IsNotNull(Background_CG, "Pause Menu Background Canvas group not found!");
+
+        if (PauseMenu_CG == null)
+            PauseMenu_CG = GameObject.FindGameObjectWithTag("PauseMenu_Panel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(PauseMenu_CG, "Pause Menu Canvas group not found!");
+
+        if (Settings_CG == null)
+            Settings_CG = GameObject.FindGameObjectWithTag("PauseMenu_SettingsPanel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(Settings_CG, "Settings Canvas group not found!");
+
+        if (ConfirmationPrompt_CG == null)
+            ConfirmationPrompt_CG = GameObject.FindGameObjectWithTag("PauseMenu_ConfirmationDialog").GetComponent<CanvasGroup>();
         Assert.IsNotNull(ConfirmationPrompt_CG, "Confirmation Prompt Canvas group not found!");
 
         if (Restart_BTN == null)
-            Restart_BTN = PauseMenu_CG.gameObject.transform.Find("Restart_Button").GetComponent<Button>();
-        if (Abort_BTN == null)
-            Abort_BTN = PauseMenu_CG.gameObject.transform.Find("Abort_Button").GetComponent<Button>();;
-        
+            Restart_BTN = GameObject.FindGameObjectWithTag("PauseMenu_RestartButton").GetComponent<Button>();
         Assert.IsNotNull(Restart_BTN, "Restart button not found!");
-        Assert.IsNotNull(Restart_BTN, "Abort button not found!");
+
+        if (Abort_BTN == null)
+            Abort_BTN = GameObject.FindGameObjectWithTag("PauseMenu_AbortButton").GetComponent<Button>();
+        Assert.IsNotNull(Abort_BTN, "Abort button not found!");
     }
 
     void Start()
@@ -118,6 +118,11 @@ public class PauseMenu : MonoBehaviour
     public void ConfirmationNoButtonPress()
     {
         PauseMenuStateMachine.GoBackToPreviousState();
+    }
+
+    public void PauseMenuButtonPress()
+    {
+        PauseMenuStateMachine.ChangeState(new Active_PauseMenuState(this));
     }
 
     #endregion
