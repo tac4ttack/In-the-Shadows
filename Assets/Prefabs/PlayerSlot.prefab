@@ -316,13 +316,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotID: 0
-  PlayerNameText: {fileID: 0}
-  CompletionRadial: {fileID: 0}
-  CompletionPercentageText: {fileID: 0}
-  LastPlayedText: {fileID: 0}
-  ClearSlotButton: {fileID: 0}
-  EmptyTextPlaceholder: {fileID: 0}
-  PlayerSlotInfoPlaceholder: {fileID: 0}
+  PlayerName_TXT: {fileID: 0}
+  CompletionRadial_IMG: {fileID: 0}
+  CompletionPercentage_TXT: {fileID: 0}
+  LastPlayed_TXT: {fileID: 0}
+  ClearSlot_BTN: {fileID: 0}
+  EmptyText_GO: {fileID: 0}
+  PlayerSlotInfo_GO: {fileID: 0}
   Empty: 0
 --- !u!1 &7983107326036076294
 GameObject:
@@ -794,7 +794,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7983107325895885991}
-        m_MethodName: ClearSlotButtonPress
+        m_MethodName: ClearSlot_BTNPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
