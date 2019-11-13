@@ -18,9 +18,8 @@ public class PlayersData
     public float[] ProgressionPercentage;
     public string[] LastPlayed;
     public bool[] IsEmpty;
-    public bool[] DoTutorial;
 
-    public int _PuzzlesAmount = 3;
+    public int _PuzzlesAmount = 4;
 
     public PlayersData()
     {
@@ -29,13 +28,12 @@ public class PlayersData
         ProgressionPercentage = new float[3];
         LastPlayed = new string[3];
         IsEmpty = new bool[3];
-        DoTutorial = new bool[3];
 
         for (int i = 0; i < 3; i++)
         {
             PlayersName[i] = "Player #" + (i + 1);
-            Progression[i].Level = new int[3];
-            for (int j = 0; j < _PuzzlesAmount; j++)
+            Progression[i].Level = new int[_PuzzlesAmount];
+            for (int j = 0; j < _PuzzlesAmount - 1; j++)
             {
                 if (j == 0)
                     Progression[i].Level[j] = 1;
@@ -45,7 +43,6 @@ public class PlayersData
             ProgressionPercentage[i] = 0f;
             LastPlayed[i] = "never";
             IsEmpty[i] = true;
-            DoTutorial[i] = true;
         }
     }
 
@@ -56,18 +53,16 @@ public class PlayersData
         ProgressionPercentage = new float[3];
         LastPlayed = new string[3];
         IsEmpty = new bool[3];
-        DoTutorial = new bool[3];
 
         for (int i = 0; i < 3; i++)
         {
             PlayersName[i] = iData.PlayersName[i];
-            Progression[i].Level = new int[3];
-            for (int j = 0; j < _PuzzlesAmount; j++)
+            Progression[i].Level = new int[_PuzzlesAmount];
+            for (int j = 0; j < _PuzzlesAmount - 1; j++)
                 Progression[i].Level[j] = iData.Progression[i].Level[j];
             ProgressionPercentage[i] = iData.ProgressionPercentage[i];
             LastPlayed[i] = iData.LastPlayed[i];
             IsEmpty[i] = iData.IsEmpty[i];
-            DoTutorial[i] = iData.DoTutorial[i];
         }
     }
 
@@ -76,7 +71,7 @@ public class PlayersData
         if (iSlot >= 0 && iSlot < 3)
         {
             PlayersName[iSlot] = "Player #" + (iSlot + 1);
-            for (int i = 0; i < _PuzzlesAmount; i++)
+            for (int i = 0; i < _PuzzlesAmount - 1; i++)
             {
                 if (i == 0)
                     Progression[iSlot].Level[i] = 1;
@@ -86,7 +81,6 @@ public class PlayersData
             ProgressionPercentage[iSlot] = 0f;
             LastPlayed[iSlot] = "never";
             IsEmpty[iSlot] = true;
-            DoTutorial[iSlot] = true;
         }
     }
 }

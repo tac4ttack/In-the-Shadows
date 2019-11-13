@@ -8,6 +8,7 @@ public class LevelSelection : MonoBehaviour
 {
     [Header("Camera orbiting settings")]
     [SerializeField] private float _CamAltitude = 1.5f;
+    [HideInInspector] public float CamAltitude { get => _CamAltitude; }
     [SerializeField] private float _OrbitSpeed = 1f;
 
     [Header("Elements of Level Selection UI")]
@@ -15,7 +16,6 @@ public class LevelSelection : MonoBehaviour
     public Button NavRight_BTN;
     public TextMeshProUGUI LevelTitle_TXT;
     public TextMeshProUGUI LevelCount_TXT;
-
     public TextMeshProUGUI LevelDescriptionTitle_TXT;
     public TextMeshProUGUI LevelDescriptionContent_TXT;
     public TextMeshProUGUI LevelDescriptionBestTime_TXT;
@@ -24,7 +24,11 @@ public class LevelSelection : MonoBehaviour
     public LevelMarker[] Levels;
 
     private int _CurrentSelection = 0;
+    private int _PreviousSelection = 0;
+    
     private GameObject _Earth_GO;
+    public GameObject Earth_GO { get => _Earth_GO; }
+
     private IEnumerator _OrbitCamCoroutine;
     private bool _IsOrbiting = false;
 
@@ -73,6 +77,9 @@ public class LevelSelection : MonoBehaviour
 
     void Start()
     {
+        NavLeft_BTN.onClick.AddListener(delegate{NavButtonPress(-1);});
+        NavRight_BTN.onClick.AddListener(delegate{NavButtonPress(1);});
+
         UpdateLevelSelectionUI();
         _OrbitCamCoroutine = OrbitCamera(Camera.main.transform.position, Levels[_CurrentSelection].Position * _CamAltitude, 1f);
         StartCoroutine(_OrbitCamCoroutine);
@@ -84,11 +91,11 @@ public class LevelSelection : MonoBehaviour
         {
             NavLeft_BTN.interactable = false;
         }
-        else if (_CurrentSelection == Levels.Length - 1)
+        if (_CurrentSelection == Levels.Length - 1)
         {
             NavRight_BTN.interactable = false;
         }
-        else
+        if (_CurrentSelection > 0 || _CurrentSelection < (Levels.Length - 1))
         {
             NavLeft_BTN.interactable = true;            
             NavRight_BTN.interactable = true;
@@ -102,12 +109,19 @@ public class LevelSelection : MonoBehaviour
         LevelDescriptionTitle_TXT.text = Levels[_CurrentSelection].Reference;
         LevelDescriptionContent_TXT.text = Levels[_CurrentSelection].Description;
         LevelDescriptionBestTime_TXT.text = Levels[_CurrentSelection].BestTime;
+        Levels[_PreviousSelection].AnimationController.SetBool("Selected", false);
+        Levels[_CurrentSelection].AnimationController.SetBool("Selected", true);
     }
 
     public void PlayButtonTest()
     {
         Debug.Log("coucoucoucoucoucouc");
         // scenemanager.launchscen(levelindex + sceneindexoffset)
+    }
+
+    public void NavButtonPress(int iDirection)
+    {
+        Debug.Log($"Foobar {iDirection}!");
     }
 
     public void NavLeftButtonPress()
@@ -117,6 +131,7 @@ public class LevelSelection : MonoBehaviour
 
         if (_CurrentSelection - 1 >= 0)
         {
+            _PreviousSelection = _CurrentSelection;
             _CurrentSelection--;
             UpdateLevelSelectionUI();
             _OrbitCamCoroutine = OrbitCamera(Camera.main.transform.position, Levels[_CurrentSelection].Position * _CamAltitude, 1f);
@@ -131,10 +146,30 @@ public class LevelSelection : MonoBehaviour
         
         if (_CurrentSelection + 1 <= Levels.Length)
         {
+            _PreviousSelection = _CurrentSelection;
             _CurrentSelection++;
             UpdateLevelSelectionUI();
             _OrbitCamCoroutine = OrbitCamera(Camera.main.transform.position, Levels[_CurrentSelection].Position * _CamAltitude, 1f);
             StartCoroutine(_OrbitCamCoroutine);
+        }
+    }
+
+    public void OnMarkerClick(int iId)
+    {
+        if (_IsOrbiting)
+            StopCoroutine(_OrbitCamCoroutine);
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (!Utility.IsPointerOverUIObject())
+            {
+                _PreviousSelection = _CurrentSelection;
+                _CurrentSelection = iId;
+                UpdateLevelSelectionUI();
+                _OrbitCamCoroutine = OrbitCamera(Camera.main.transform.position, Levels[_CurrentSelection].Position * _CamAltitude, 1f);
+                StartCoroutine(_OrbitCamCoroutine);
+            }
         }
     }
 

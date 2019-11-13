@@ -34,6 +34,8 @@ TagManager:
   - LevelSelection_Description_BestTimeText
   - LevelSelection_Description_PlayButton
   - LevelSelection_Earth
+  - LevelSelection_Panel
+  - LevelSelection_Description_Panel
   layers:
   - Default
   - TransparentFX

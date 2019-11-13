@@ -14,6 +14,6 @@ public class GodHand : MonoBehaviour
     void OnMouseDrag()
     {
         if (!Utility.IsPointerOverUIObject())
-            _Body.AddTorque(new Vector3(0, -1 * Input.GetAxis("Mouse X"), 0), ForceMode.Impulse);
+            _Body.AddTorque(new Vector3(0.5f * Input.GetAxis("Mouse Y"), -0.5f * Input.GetAxis("Mouse X"), 0), ForceMode.Impulse);
     }
 }

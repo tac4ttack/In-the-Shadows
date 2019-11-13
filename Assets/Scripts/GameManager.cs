@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class GameManager : MonoBehaviour
 
     public bool DebugMode = false;
     public int CurrentPlayerSlot = -1;
+    public int LastPlayedLevel = -1;
+    public List<int> ToUnlock;
+    public List<int> ToComplete;
 
     void Awake()
     {
@@ -41,6 +45,9 @@ public class GameManager : MonoBehaviour
         Players = SaveSystem.LoadPlayers();
         if (Players == null)
             Players = new PlayersData();
+        
+        ToUnlock = new List<int>();
+        ToComplete = new List<int>();
     }
 
     void Start()
@@ -70,12 +77,8 @@ public class GameManager : MonoBehaviour
         {
             Players.PlayersName[iSlot] = iName;
             Players.IsEmpty[iSlot] = false;
-            Players.DoTutorial[iSlot] = iDoTutorial;
-            if (iDoTutorial)
-                Players.Progression[iSlot].Level[0] = 1;
-            else
-                Players.Progression[iSlot].Level[0] = 2;
-            Players.Progression[iSlot].Level[1] = 1;
+            if (!iDoTutorial)
+                Players.Progression[iSlot].Level[1] = 1;
             for (int i = 2; i < Players.Progression[iSlot].Level.Length; i++)
                 Players.Progression[iSlot].Level[i] = 0;
             SaveSystem.SavePlayers(Players);

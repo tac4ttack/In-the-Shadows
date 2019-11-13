@@ -301,29 +301,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2001224315}
     m_Modifications:
-    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
-        type: 3}
-      propertyPath: _Id
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
-        type: 3}
-      propertyPath: _Title
-      value: Teabagging forbidden!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
-        type: 3}
-      propertyPath: _Reference
-      value: '#TEHAHTIM.02'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
-        type: 3}
-      propertyPath: _Description
-      value: 'People from this place love dried leaves.
-
-        They can be very creative for finding new ways of consumming dried leaves
-        but it seems we forgot a basic one...'
-      objectReference: {fileID: 0}
     - target: {fileID: 4178894601596786886, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: m_Name
@@ -398,6 +375,34 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.027548213
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Id
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Title
+      value: Teabagging forbidden!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Reference
+      value: '#TEHAHTIM.02'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Description
+      value: 'People from this place love dried leaves.
+
+        They can be very creative for finding new ways of consumming dried leaves
+        but it seems we forgot a basic one...'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213894125267129619, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f9cf458a21934204be4d66f9a93f122, type: 3}
@@ -666,26 +671,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1719791990}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &566963166 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5162994932125078203, guid: 765f9682e02ba4963b65d4b5b652189e,
-    type: 3}
-  m_PrefabInstance: {fileID: 5162994933020028283}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &566963168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566963166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c0a278e5a7be4b3a978b3cd458cbb72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _camAltitude: 1.8
-  _speed: 1
 --- !u!224 &587117439 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2801440209057794175, guid: 9407048cc08e54d3b98db7bd9a7f1eae,
@@ -1202,27 +1187,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2001224315}
     m_Modifications:
-    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
-        type: 3}
-      propertyPath: _Id
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
-        type: 3}
-      propertyPath: _Title
-      value: Dumbo is missing!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
-        type: 3}
-      propertyPath: _Reference
-      value: '#DUMB.01'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
-        type: 3}
-      propertyPath: _Description
-      value: Reports say that we forgot to include one of the biggest life form of
-        this environment!
-      objectReference: {fileID: 0}
     - target: {fileID: 4178894601596786886, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: m_Name
@@ -1297,6 +1261,32 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.027548227
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Id
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Title
+      value: Dumbo is missing!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Reference
+      value: '#DUMB.01'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Description
+      value: Reports say that we forgot to include one of the biggest life form of
+        this environment!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213894125267129619, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f9cf458a21934204be4d66f9a93f122, type: 3}
@@ -2564,7 +2554,7 @@ GameObject:
   - component: {fileID: 1480435985}
   m_Layer: 5
   m_Name: LevelSelection_Panel
-  m_TagString: Untagged
+  m_TagString: LevelSelection_Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2797,7 +2787,7 @@ GameObject:
   - component: {fileID: 1573751460}
   m_Layer: 5
   m_Name: LevelDescription_Panel
-  m_TagString: Untagged
+  m_TagString: LevelSelection_Description_Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3054,27 +3044,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2001224315}
     m_Modifications:
-    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
-        type: 3}
-      propertyPath: _Id
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
-        type: 3}
-      propertyPath: _Title
-      value: It's not round, it's ovale!
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
-        type: 3}
-      propertyPath: _Reference
-      value: '#GALILE.03'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
-        type: 3}
-      propertyPath: _Description
-      value: Rumors say that a long time ago, earthlings thought they were living
-        on a disc... silly humans!
-      objectReference: {fileID: 0}
     - target: {fileID: 4178894601596786886, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: m_Name
@@ -3149,6 +3118,32 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.027548207
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Id
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Title
+      value: It's not round, it's ovale!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Reference
+      value: '#GALILE.03'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Description
+      value: Rumors say that a long time ago, earthlings thought they were living
+        on a disc... silly humans!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213894125267129619, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f9cf458a21934204be4d66f9a93f122, type: 3}
@@ -3486,30 +3481,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2001224315}
     m_Modifications:
-    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
-        type: 3}
-      propertyPath: _Id
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
-        type: 3}
-      propertyPath: _Title
-      value: Tutorial
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
-        type: 3}
-      propertyPath: _Description
-      value: 'Greetings employee!
-
-        If you need a little reminder on how to do your job, you can do this course
-        that will teach you how to manipulate and recover missing artefacts from our
-        Ghola planetoid.'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
-        type: 3}
-      propertyPath: _Reference
-      value: '#ROOKIE.00'
-      objectReference: {fileID: 0}
     - target: {fileID: 4178894601596786886, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: m_Name
@@ -3584,6 +3555,35 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.027548209
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Id
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Title
+      value: Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Description
+      value: 'Greetings employee!
+
+        If you need a little reminder on how to do your job, you can do this course
+        that will teach you how to manipulate and recover missing artefacts from our
+        Ghola planetoid.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Reference
+      value: '#ROOKIE.00'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6213894125267129619, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f9cf458a21934204be4d66f9a93f122, type: 3}
@@ -6892,7 +6892,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: LevelSelection_Earth
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5162994932125078207, guid: 765f9682e02ba4963b65d4b5b652189e,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5162994932125078201, guid: 765f9682e02ba4963b65d4b5b652189e, type: 3}
+    - {fileID: 5162994932125078207, guid: 765f9682e02ba4963b65d4b5b652189e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 765f9682e02ba4963b65d4b5b652189e, type: 3}
 --- !u!1001 &6157936549487024978
 PrefabInstance:
