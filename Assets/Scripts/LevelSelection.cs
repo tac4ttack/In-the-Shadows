@@ -115,8 +115,10 @@ public class LevelSelection : MonoBehaviour
 
     public void PlayButtonTest()
     {
-        Debug.Log("coucoucoucoucoucouc");
-        // scenemanager.launchscen(levelindex + sceneindexoffset)
+        // DEBUG TO ELEPHANT SCENE
+        GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(1));
+        
+        // GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(_CurrentSelection));
     }
 
     public void NavButtonPress(int iDirection)

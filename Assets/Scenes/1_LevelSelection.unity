@@ -261,7 +261,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 600}
+  m_SizeDelta: {x: 1500, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &202731461
 MonoBehaviour:
@@ -2374,7 +2374,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 100}
+  m_SizeDelta: {x: 560, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1463815215
 MonoBehaviour:
@@ -2621,11 +2621,11 @@ MonoBehaviour:
     m_Right: 50
     m_Top: 50
     m_Bottom: 50
-  m_ChildAlignment: 4
+  m_ChildAlignment: 0
   m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 0
 --- !u!114 &1480435987
 MonoBehaviour:
@@ -3315,6 +3315,11 @@ PrefabInstance:
       propertyPath: m_UpdateMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2801440209057794177, guid: 9407048cc08e54d3b98db7bd9a7f1eae,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1280e8e97a83740c3a8d5f3479a0c353, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9407048cc08e54d3b98db7bd9a7f1eae, type: 3}
 --- !u!1 &1669612730
@@ -3634,7 +3639,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 90}
+  m_SizeDelta: {x: 1500, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1753949018
 MonoBehaviour:
@@ -6729,16 +6734,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2801440209057794176, guid: 9407048cc08e54d3b98db7bd9a7f1eae,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1480435985}
-    - target: {fileID: 2801440209057794176, guid: 9407048cc08e54d3b98db7bd9a7f1eae,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2801440210524858712, guid: 9407048cc08e54d3b98db7bd9a7f1eae,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -6757,12 +6752,22 @@ PrefabInstance:
     - target: {fileID: 2801440210524858714, guid: 9407048cc08e54d3b98db7bd9a7f1eae,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801440210524858714, guid: 9407048cc08e54d3b98db7bd9a7f1eae,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967040
       objectReference: {fileID: 0}
     - target: {fileID: 2801440209057794177, guid: 9407048cc08e54d3b98db7bd9a7f1eae,
         type: 3}
-      propertyPath: m_UpdateMode
-      value: 0
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1280e8e97a83740c3a8d5f3479a0c353, type: 2}
+    - target: {fileID: 2801440210524858711, guid: 9407048cc08e54d3b98db7bd9a7f1eae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9407048cc08e54d3b98db7bd9a7f1eae, type: 3}

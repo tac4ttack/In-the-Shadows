@@ -89,9 +89,7 @@ public class GameManager : MonoBehaviour
 #region Game States
 public class InMainMenu_GameState : IState
 {
-    public InMainMenu_GameState()
-    {
-    }
+    public InMainMenu_GameState() {}
     
     public void Enter()
     {
@@ -102,24 +100,14 @@ public class InMainMenu_GameState : IState
         // add main menu music launch?
     }
 
-    public void Execute()
-    {
-        // throw new System.NotImplementedException();
-    }
+    public void Execute() {}
 
-    public void Exit()
-    {
-        // throw new System.NotImplementedException();
-        // stop all musics?
-    }
+    public void Exit() {}
 }
 
 public class LevelSelection_GameState : IState
 {
-    public LevelSelection_GameState()
-    {
-
-    }
+    public LevelSelection_GameState() {}
 
     public void Enter()
     {
@@ -128,39 +116,29 @@ public class LevelSelection_GameState : IState
         // add level selection music launch?
     }
 
-    public void Execute()
-    {
-        // throw new System.NotImplementedException();
-    }
+    public void Execute() {}
 
-    public void Exit()
-    {
-        // throw new System.NotImplementedException();
-        // stop all musics?
-    }
+    public void Exit() {}
 }
 
 public class InGame_GameState : IState
 {
-    public InGame_GameState()
-    {
+    private int _SceneIndex;
 
+    public InGame_GameState(int iTargetSceneIndex)
+    {
+        _SceneIndex = iTargetSceneIndex;
     }
 
     public void Enter()
     {
         GameManager.GM.CurrentState = GameManager.GameStates.InGame;
+        SceneManager.LoadScene(_SceneIndex + 2);
         // add puzzle level music launch depending on the level id?
     }
 
-    public void Execute()
-    {
-        // throw new System.NotImplementedException();
-    }
+    public void Execute() {}
 
-    public void Exit()
-    {
-        // throw new System.NotImplementedException();
-    }
+    public void Exit() {}
 }
 #endregion
