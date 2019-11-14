@@ -80,30 +80,30 @@ public class LevelSelection : MonoBehaviour
         NavLeft_BTN.onClick.AddListener(delegate{NavButtonPress(-1);});
         NavRight_BTN.onClick.AddListener(delegate{NavButtonPress(1);});
 
-        UpdateLevelSelectionUI();
         _OrbitCamCoroutine = OrbitCamera(Camera.main.transform.position, Levels[_CurrentSelection].Position * _CamAltitude, 1f);
         StartCoroutine(_OrbitCamCoroutine);
     }
 
-    void FixedUpdate()
+    private void UpdateLevelSelectionUI(int iNextSelection)
     {
-        if (_CurrentSelection == 0)
-        {
-            NavLeft_BTN.interactable = false;
-        }
-        if (_CurrentSelection == Levels.Length - 1)
-        {
-            NavRight_BTN.interactable = false;
-        }
-        if (_CurrentSelection > 0 || _CurrentSelection < (Levels.Length - 1))
-        {
-            NavLeft_BTN.interactable = true;            
-            NavRight_BTN.interactable = true;
-        }
-    }
+        Debug.Log($"new selection is {iNextSelection}");
 
-    void UpdateLevelSelectionUI()
-    {
+        if (iNextSelection == 0)
+        {
+            NavLeft_BTN.animator.SetTrigger(NavLeft_BTN.animationTriggers.disabledTrigger);
+            NavRight_BTN.animator.SetTrigger(NavRight_BTN.animationTriggers.normalTrigger);
+        }
+        else if (iNextSelection + 1 == Levels.Length)
+        {
+            NavLeft_BTN.animator.SetTrigger(NavLeft_BTN.animationTriggers.normalTrigger);
+            NavRight_BTN.animator.SetTrigger(NavRight_BTN.animationTriggers.disabledTrigger);
+        }
+        else
+        {
+            NavLeft_BTN.animator.SetTrigger(NavLeft_BTN.animationTriggers.normalTrigger);
+            NavRight_BTN.animator.SetTrigger(NavRight_BTN.animationTriggers.normalTrigger);
+        }
+        
         LevelTitle_TXT.text = Levels[_CurrentSelection].Title;
         LevelCount_TXT.text = (_CurrentSelection + 1).ToString("D2") + "/" +Levels.Length.ToString("D2");
         LevelDescriptionTitle_TXT.text = Levels[_CurrentSelection].Reference;
@@ -121,34 +121,16 @@ public class LevelSelection : MonoBehaviour
 
     public void NavButtonPress(int iDirection)
     {
-        Debug.Log($"Foobar {iDirection}!");
-    }
+        int nextSelection = _CurrentSelection + iDirection;
 
-    public void NavLeftButtonPress()
-    {
-        if (_IsOrbiting)
-            StopCoroutine(_OrbitCamCoroutine);
-
-        if (_CurrentSelection - 1 >= 0)
+        if (nextSelection >= 0 && nextSelection < Levels.Length)
         {
             _PreviousSelection = _CurrentSelection;
-            _CurrentSelection--;
-            UpdateLevelSelectionUI();
-            _OrbitCamCoroutine = OrbitCamera(Camera.main.transform.position, Levels[_CurrentSelection].Position * _CamAltitude, 1f);
-            StartCoroutine(_OrbitCamCoroutine);
-        }
-    }
+            _CurrentSelection = nextSelection;
 
-    public void NavRightButtonPress()
-    {
-        if (_IsOrbiting)
-            StopCoroutine(_OrbitCamCoroutine);
-        
-        if (_CurrentSelection + 1 <= Levels.Length)
-        {
-            _PreviousSelection = _CurrentSelection;
-            _CurrentSelection++;
-            UpdateLevelSelectionUI();
+            if (_IsOrbiting)
+                StopCoroutine(_OrbitCamCoroutine);
+
             _OrbitCamCoroutine = OrbitCamera(Camera.main.transform.position, Levels[_CurrentSelection].Position * _CamAltitude, 1f);
             StartCoroutine(_OrbitCamCoroutine);
         }
@@ -156,17 +138,16 @@ public class LevelSelection : MonoBehaviour
 
     public void OnMarkerClick(int iId)
     {
-        if (_IsOrbiting)
-            StopCoroutine(_OrbitCamCoroutine);
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
             if (!Utility.IsPointerOverUIObject())
             {
+                if (_IsOrbiting)
+                    StopCoroutine(_OrbitCamCoroutine);
                 _PreviousSelection = _CurrentSelection;
                 _CurrentSelection = iId;
-                UpdateLevelSelectionUI();
                 _OrbitCamCoroutine = OrbitCamera(Camera.main.transform.position, Levels[_CurrentSelection].Position * _CamAltitude, 1f);
                 StartCoroutine(_OrbitCamCoroutine);
             }
@@ -176,6 +157,7 @@ public class LevelSelection : MonoBehaviour
     IEnumerator OrbitCamera(Vector3 iStart, Vector3 iTarget, float iTime)
     {
         _IsOrbiting = true;
+        UpdateLevelSelectionUI(_CurrentSelection);
         for (float t = 0f; t < iTime; t += Time.deltaTime * _OrbitSpeed)
         {
             Camera.main.transform.position = Vector3.Slerp(iStart, iTarget, t / iTime);
