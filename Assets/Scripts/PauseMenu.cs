@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -57,8 +58,6 @@ public class PauseMenu : MonoBehaviour
         Abort_BTN.gameObject.SetActive(GameManager.GM.CurrentState == GameManager.GameStates.InGame);
         PauseMenuStateMachine.ChangeState(new Inactive_PauseMenuState(this));
     }
-    
-    void Update() => PauseMenuStateMachine.ExecuteState();
 
     #region Buttons Logic
 
@@ -103,9 +102,7 @@ public class PauseMenu : MonoBehaviour
                 GameManager.GM.GameStateMachine.ChangeState(new InMainMenu_GameState());
                 break;
             case PauseMenu.ConfirmationPromptTarget.Restart:
-                ;
-                // Reload ?
-                // GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(puzzle_index));
+                GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(SceneManager.GetActiveScene().buildIndex));
                 break;
             case PauseMenu.ConfirmationPromptTarget.LevelSelection:
                 GameManager.GM.GameStateMachine.ChangeState(new LevelSelection_GameState());
@@ -144,13 +141,7 @@ public class Inactive_PauseMenuState : IState
         _PauseMenu.CurrentState = PauseMenu.PauseMenuStates.Inactive;
     }
 
-    public void Execute()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))        
-        {
-            _PauseMenu.PauseMenuStateMachine.ChangeState(new Active_PauseMenuState(_PauseMenu));
-        }
-    }
+    public void Execute() {}
 
     public void Exit() {}
 }
@@ -167,19 +158,16 @@ public class Active_PauseMenuState : IState
         GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_PauseMenu.Background_CG, 1f, Utility.TransitionSpeed));
         GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_PauseMenu.PauseMenu_CG, 1f, Utility.TransitionSpeed));
         _PauseMenu.CurrentState = PauseMenu.PauseMenuStates.Active;
+        Time.timeScale = 0f;
     }
 
-    public void Execute()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            _PauseMenu.PauseMenuStateMachine.ChangeState(new Inactive_PauseMenuState(_PauseMenu));
-        }
-    }
+    public void Execute() {}
 
     public void Exit()
     {
-        GameManager.GM.StartCoroutine(Utility.PopOutCanvasGroup(_PauseMenu.PauseMenu_CG, 1f, Utility.TransitionSpeed));    }
+        GameManager.GM.StartCoroutine(Utility.PopOutCanvasGroup(_PauseMenu.PauseMenu_CG, 1f, Utility.TransitionSpeed));
+        Time.timeScale = 1f;
+    }
 }
 
 public class Settings_PauseMenuState : IState
@@ -194,13 +182,7 @@ public class Settings_PauseMenuState : IState
         _PauseMenu.CurrentState = PauseMenu.PauseMenuStates.Settings;
     }
 
-    public void Execute()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            _PauseMenu.PauseMenuStateMachine.GoBackToPreviousState();
-        }
-    }
+    public void Execute() {}
 
     public void Exit()
     {
@@ -225,7 +207,8 @@ public class ConfirmationPrompt_PauseMenuState : IState
     public void Execute() {}
 
     public void Exit()
-    {   _PauseMenu.CurrentConfirmationPromptTarget = PauseMenu.ConfirmationPromptTarget.None;
+    {   
+        _PauseMenu.CurrentConfirmationPromptTarget = PauseMenu.ConfirmationPromptTarget.None;
         GameManager.GM.StartCoroutine(Utility.PopOutCanvasGroup(_PauseMenu.ConfirmationPrompt_CG, 1f, Utility.TransitionSpeed));
     }
 }

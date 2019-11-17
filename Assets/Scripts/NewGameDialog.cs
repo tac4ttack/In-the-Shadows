@@ -47,12 +47,6 @@ public class NewGameDialog : MonoBehaviour
 
     public void CreateButtonPress()
     {
-        // DEBUG
-        // Debug.Log("New game dialog CREATE button press!");
-        // Debug.Log("Current slot is #" + CurrentSlot);
-        // Debug.Log("Player name input is [" + PlayerNameInput.text + "]");
-        // Debug.Log("Tutorial skip is " + TutorialToggle.isOn);
-
         PlayerNameInput.text = PlayerNameInput.text.Trim();
         GameManager.GM.CreateNewPlayer(CurrentSlot, PlayerNameInput.text, !(TutorialToggle.isOn));
     }

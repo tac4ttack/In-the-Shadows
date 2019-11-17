@@ -36,6 +36,8 @@ TagManager:
   - LevelSelection_Earth
   - LevelSelection_Panel
   - LevelSelection_Description_Panel
+  - InGame_WinScreen_Camera
+  - InGame_PuzzlePiece
   layers:
   - Default
   - TransparentFX
@@ -49,7 +51,7 @@ TagManager:
   - Puzzle
   - PuzzleShadowSurface
   - IgnoreLight
-  - 
+  - WinScreen_UI
   - 
   - 
   - 

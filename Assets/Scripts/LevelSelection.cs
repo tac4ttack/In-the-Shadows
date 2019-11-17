@@ -32,6 +32,10 @@ public class LevelSelection : MonoBehaviour
     private IEnumerator _OrbitCamCoroutine;
     private bool _IsOrbiting = false;
 
+    private int _SceneIndexOffset = 2;
+
+    private PauseMenu _PauseMenuUI;
+
     void Awake()
     {
         if (NavLeft_BTN == null)
@@ -73,6 +77,10 @@ public class LevelSelection : MonoBehaviour
         Levels = GameObject.FindGameObjectWithTag("LevelSelection_Map").GetComponentsInChildren<LevelMarker>();
         if (Levels.Length <= 0)
             Debug.LogError("Level list can't be empty!");
+
+        if (_PauseMenuUI == null)
+            _PauseMenuUI = GameObject.FindGameObjectWithTag("PauseMenu_UI").GetComponent<PauseMenu>();
+        Assert.IsNotNull(_PauseMenuUI, "Pause Menu UI not found in scene!");
     }
 
     void Start()
@@ -84,6 +92,24 @@ public class LevelSelection : MonoBehaviour
         StartCoroutine(_OrbitCamCoroutine);
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            switch (_PauseMenuUI.CurrentState)
+            {
+                case PauseMenu.PauseMenuStates.Inactive:
+                    _PauseMenuUI.PauseMenuStateMachine.ChangeState((new Active_PauseMenuState(_PauseMenuUI)));
+                    break;
+                case PauseMenu.PauseMenuStates.Active:
+                    _PauseMenuUI.PauseMenuStateMachine.ChangeState((new Inactive_PauseMenuState(_PauseMenuUI)));
+                    break;
+                case PauseMenu.PauseMenuStates.Settings:
+                    _PauseMenuUI.PauseMenuStateMachine.GoBackToPreviousState();
+                    break;
+            }
+        }
+    }
     private void UpdateLevelSelectionUI(int iNextSelection)
     {
         Debug.Log($"new selection is {iNextSelection}");
@@ -116,9 +142,9 @@ public class LevelSelection : MonoBehaviour
     public void PlayButtonTest()
     {
         // DEBUG TO ELEPHANT SCENE
-        GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(1));
+        GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(1 + _SceneIndexOffset));
         
-        // GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(_CurrentSelection));
+        // GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(_CurrentSelection + _SceneIndexOffset));
     }
 
     public void NavButtonPress(int iDirection)
@@ -166,6 +192,38 @@ public class LevelSelection : MonoBehaviour
             Camera.main.transform.LookAt(_Earth_GO.transform.position);
             yield return null;
         }
+        _IsOrbiting = false;
+    }
+
+    IEnumerator UnlockCutscene(Vector3 iStart, Vector3 iTarget, int iLevel, float iTime)
+    {
+        _IsOrbiting = true;
+        // _InCutscene = true;
+        UpdateLevelSelectionUI(_CurrentSelection);
+        for (float t = 0f; t < iTime; t += Time.deltaTime * _OrbitSpeed * 2f)
+        {
+            Camera.main.transform.position = Vector3.Slerp(iStart, iTarget, t / iTime);
+            Camera.main.transform.LookAt(_Earth_GO.transform.position);
+            yield return null;
+        }
+        // Levels[iLevel].AnimationController.SetTrigger("Unlock");
+        // _InCutscene = false;
+        _IsOrbiting = false;
+    }
+
+    IEnumerator CompleteCutscene(Vector3 iStart, Vector3 iTarget, int iLevel, float iTime)
+    {
+        _IsOrbiting = true;
+        // _InCutscene = true;
+        UpdateLevelSelectionUI(_CurrentSelection);
+        for (float t = 0f; t < iTime; t += Time.deltaTime * _OrbitSpeed * 2f)
+        {
+            Camera.main.transform.position = Vector3.Slerp(iStart, iTarget, t / iTime);
+            Camera.main.transform.LookAt(_Earth_GO.transform.position);
+            yield return null;
+        }
+        // Levels[iLevel].AnimationController.SetTrigger("Complete");
+        // _InCutscene = false;
         _IsOrbiting = false;
     }
 }

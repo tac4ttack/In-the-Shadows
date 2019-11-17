@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 414653736}
   m_Layer: 5
   m_Name: Confirmation_Panel
-  m_TagString: Untagged
+  m_TagString: PauseMenu_ConfirmationDialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -784,7 +784,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6157936547889357544}
-        m_MethodName: ConfirmationNoButtonClick
+        m_MethodName: ConfirmationNoButtonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -975,7 +975,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6157936547889357544}
-        m_MethodName: ConfirmationYesButtonClick
+        m_MethodName: ConfirmationYesButtonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1001,7 +1001,7 @@ GameObject:
   - component: {fileID: 6157936547889357546}
   m_Layer: 5
   m_Name: PauseMenu_UI
-  m_TagString: Untagged
+  m_TagString: PauseMenu_UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1042,12 +1042,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentState: 0
-  TransitionSpeed: 0.1
-  PauseCG: {fileID: 0}
-  BackgroundCG: {fileID: 0}
-  PauseMenuCG: {fileID: 0}
-  SettingsCG: {fileID: 0}
-  ConfirmationPromptCG: {fileID: 0}
+  CurrentConfirmationPromptTarget: 0
+  Pause_CG: {fileID: 0}
+  Background_CG: {fileID: 0}
+  PauseMenu_CG: {fileID: 0}
+  Settings_CG: {fileID: 0}
+  ConfirmationPrompt_CG: {fileID: 0}
+  Restart_BTN: {fileID: 0}
+  Abort_BTN: {fileID: 0}
 --- !u!223 &6157936547889357547
 Canvas:
   m_ObjectHideFlags: 0
@@ -1546,7 +1548,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6157936547889357544}
-        m_MethodName: SettingsButtonClick
+        m_MethodName: SettingsButtonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3663,7 +3665,7 @@ GameObject:
   - component: {fileID: 6157936548434941205}
   m_Layer: 5
   m_Name: Abort_Button
-  m_TagString: Untagged
+  m_TagString: PauseMenu_AbortButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3767,7 +3769,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6157936547889357544}
-        m_MethodName: AbortButtonClick
+        m_MethodName: AbortButtonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3975,7 +3977,7 @@ GameObject:
   - component: {fileID: 6157936548560448003}
   m_Layer: 5
   m_Name: Settings_Panel
-  m_TagString: Untagged
+  m_TagString: PauseMenu_SettingsPanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4520,7 +4522,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6157936547889357544}
-        m_MethodName: ExitButtonClick
+        m_MethodName: ExitButtonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4546,7 +4548,7 @@ GameObject:
   - component: {fileID: 6157936548665729287}
   m_Layer: 5
   m_Name: Restart_Button
-  m_TagString: Untagged
+  m_TagString: PauseMenu_RestartButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4650,7 +4652,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6157936547889357544}
-        m_MethodName: RestartButtonClick
+        m_MethodName: RestartButtonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4780,7 +4782,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6157936547889357544}
-        m_MethodName: ResumeButtonClick
+        m_MethodName: ResumeButtonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5744,7 +5746,7 @@ GameObject:
   - component: {fileID: 6157936548960948373}
   m_Layer: 5
   m_Name: PauseMenu_Panel
-  m_TagString: Untagged
+  m_TagString: PauseMenu_Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8677,7 +8679,7 @@ GameObject:
   - component: {fileID: 6157936549591231065}
   m_Layer: 5
   m_Name: PauseMenu_Background
-  m_TagString: Untagged
+  m_TagString: PauseMenu_Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10125,7 +10127,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6157936547889357544}
-        m_MethodName: SettingsBackButtonClick
+        m_MethodName: SettingsBackButtonPress
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

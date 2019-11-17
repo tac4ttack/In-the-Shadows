@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,8 +17,6 @@ public class GameManager : MonoBehaviour
     public bool DebugMode = false;
     public int CurrentPlayerSlot = -1;
     public int LastPlayedLevel = -1;
-    public List<int> ToUnlock;
-    public List<int> ToComplete;
 
     void Awake()
     {
@@ -45,9 +42,6 @@ public class GameManager : MonoBehaviour
         Players = SaveSystem.LoadPlayers();
         if (Players == null)
             Players = new PlayersData();
-        
-        ToUnlock = new List<int>();
-        ToComplete = new List<int>();
     }
 
     void Start()
@@ -133,7 +127,7 @@ public class InGame_GameState : IState
     public void Enter()
     {
         GameManager.GM.CurrentState = GameManager.GameStates.InGame;
-        SceneManager.LoadScene(_SceneIndex + 2);
+        SceneManager.LoadScene(_SceneIndex);
         // add puzzle level music launch depending on the level id?
     }
 
