@@ -32,7 +32,7 @@ public class PlayersData
     public UnlockQueue[] ToUnlock;
     public CompleteQueue[] ToComplete;
 
-    public int _PuzzlesAmount = 4;
+    public int PuzzlesAmount = 4;
 
     public PlayersData()
     {
@@ -47,10 +47,10 @@ public class PlayersData
         for (int i = 0; i < 3; i++)
         {
             PlayersName[i] = "Player #" + (i + 1);
-            Progression[i].Level = new int[_PuzzlesAmount];
+            Progression[i].Level = new int[PuzzlesAmount];
             ToUnlock[i].q = new List<int>();
             ToComplete[i].q = new List<int>();
-            for (int j = 0; j < _PuzzlesAmount - 1; j++)
+            for (int j = 0; j < PuzzlesAmount - 1; j++)
             {
                 if (j == 0)
                     Progression[i].Level[j] = 1;
@@ -76,8 +76,8 @@ public class PlayersData
         for (int i = 0; i < 3; i++)
         {
             PlayersName[i] = iData.PlayersName[i];
-            Progression[i].Level = new int[_PuzzlesAmount];
-            for (int j = 0; j < _PuzzlesAmount - 1; j++)
+            Progression[i].Level = new int[PuzzlesAmount];
+            for (int j = 0; j < PuzzlesAmount - 1; j++)
             {
                 Progression[i].Level[j] = iData.Progression[i].Level[j];
             }
@@ -94,7 +94,7 @@ public class PlayersData
         if (iSlot >= 0 && iSlot < 3)
         {
             PlayersName[iSlot] = "Player #" + (iSlot + 1);
-            for (int i = 0; i < _PuzzlesAmount - 1; i++)
+            for (int i = 0; i < PuzzlesAmount - 1; i++)
             {
                 if (i == 0)
                     Progression[iSlot].Level[i] = 1;

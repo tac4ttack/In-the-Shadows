@@ -63,34 +63,37 @@ public class PuzzlePiece : MonoBehaviour
 
     void OnMouseDrag()
     {
-        if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift) && !Input.GetMouseButton(1))
-        {
-            if (!RotationConstraints[0])
+        // if (!Utility.IsPointerOverUIObject())
+        // {
+            if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift) && !Input.GetMouseButton(1))
             {
-                this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * _RotationSpeed * -1);
-                // this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0), Time.deltaTime * _RotationSpeed);
-                // this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * _RotationSpeed, Space.Self);
+                if (!RotationConstraints[0])
+                {
+                    this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * _RotationSpeed * -1);
+                    // this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0), Time.deltaTime * _RotationSpeed);
+                    // this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * _RotationSpeed, Space.Self);
 
+                }
+                if (!RotationConstraints[1])
+                {
+                    this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0) * Time.deltaTime * _RotationSpeed);
+                    // this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0), Time.deltaTime * _RotationSpeed);
+                    // this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0), Time.deltaTime * _RotationSpeed, Space.Self);
+                }
             }
-            if (!RotationConstraints[1])
-            {
-                this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0) * Time.deltaTime * _RotationSpeed);
-                // this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0), Time.deltaTime * _RotationSpeed);
-                // this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0), Time.deltaTime * _RotationSpeed, Space.Self);
-            }
-        }
 
-        if (Input.GetMouseButton(1) || (!Input.GetMouseButton(1) && Input.GetMouseButton(0) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))))
-        {
-            if (!TranslationConstraints[0])
+            if (Input.GetMouseButton(1) || (!Input.GetMouseButton(1) && Input.GetMouseButton(0) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))))
             {
-                this.gameObject.transform.Translate(new Vector3(Input.GetAxis("Mouse X"), 0, 0) * Time.deltaTime * _TranslationSpeed * -1, Space.World);
+                if (!TranslationConstraints[0])
+                {
+                    this.gameObject.transform.Translate(new Vector3(Input.GetAxis("Mouse X"), 0, 0) * Time.deltaTime * _TranslationSpeed * -1, Space.World);
+                }
+                if (!TranslationConstraints[1])
+                {
+                    this.gameObject.transform.Translate(new Vector3(0, Input.GetAxis("Mouse Y"), 0) * Time.deltaTime * _TranslationSpeed, Space.World);
+                }
             }
-            if (!TranslationConstraints[1])
-            {
-                this.gameObject.transform.Translate(new Vector3(0, Input.GetAxis("Mouse Y"), 0) * Time.deltaTime * _TranslationSpeed, Space.World);
-            }
-        }
+        // }
     }
 
     private void    CheckSolutions()

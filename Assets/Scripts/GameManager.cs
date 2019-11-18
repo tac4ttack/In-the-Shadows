@@ -78,6 +78,20 @@ public class GameManager : MonoBehaviour
             SaveSystem.SavePlayers(Players);
         }
     }
+
+    public void PushLevelComplete()
+    {
+        Players.ToComplete[CurrentPlayerSlot].q.Add(SceneManager.GetActiveScene().buildIndex - Utility.LevelSceneIndexOffset);
+    }
+
+    public void PushLevelUnlock()
+    {
+        int tmp = SceneManager.GetActiveScene().buildIndex + 1;
+        if (tmp >= Utility.LevelSceneIndexOffset + Players.PuzzlesAmount)
+            Debug.Log("Should launch the end game!");
+        else
+            Players.ToUnlock[CurrentPlayerSlot].q.Add(tmp - Utility.LevelSceneIndexOffset);
+    }
 }
 
 #region Game States
@@ -90,13 +104,17 @@ public class InMainMenu_GameState : IState
         SceneManager.LoadScene(0);
         GameManager.GM.CurrentState = GameManager.GameStates.MainMenu;
         GameManager.GM.DebugMode = false;
-        GameManager.GM.CurrentPlayerSlot = -1;
+        // GameManager.GM.CurrentPlayerSlot = -1;
+        SaveSystem.SavePlayers(GameManager.GM.Players);
         // add main menu music launch?
     }
 
     public void Execute() {}
 
-    public void Exit() {}
+    public void Exit()
+    {
+        SaveSystem.SavePlayers(GameManager.GM.Players);
+    }
 }
 
 public class LevelSelection_GameState : IState
@@ -107,12 +125,16 @@ public class LevelSelection_GameState : IState
     {
         GameManager.GM.CurrentState = GameManager.GameStates.LevelSelection;
         SceneManager.LoadScene(1);
+        SaveSystem.SavePlayers(GameManager.GM.Players);
         // add level selection music launch?
     }
 
     public void Execute() {}
 
-    public void Exit() {}
+    public void Exit()
+    {
+        SaveSystem.SavePlayers(GameManager.GM.Players);
+    }
 }
 
 public class InGame_GameState : IState
@@ -128,11 +150,32 @@ public class InGame_GameState : IState
     {
         GameManager.GM.CurrentState = GameManager.GameStates.InGame;
         SceneManager.LoadScene(_SceneIndex);
+        SaveSystem.SavePlayers(GameManager.GM.Players);
         // add puzzle level music launch depending on the level id?
+    }
+
+    public void Execute() {}
+
+    public void Exit()
+    {
+        SaveSystem.SavePlayers(GameManager.GM.Players);
+    }
+}
+
+/*
+public class EndGame_GameState : IState
+{
+    public EndGame_GameState() { }
+
+    public void Enter()
+    {
+        GameManager.GM.CurrentState = GameManager.GameStates.EndGame;
+        SceneManager.LoadScene(Utility.LevelSceneIndexOffset + GameManager.GM.Players.PuzzlesAmount);
     }
 
     public void Execute() {}
 
     public void Exit() {}
 }
+*/
 #endregion

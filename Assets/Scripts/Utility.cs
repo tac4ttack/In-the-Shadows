@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public static class Utility
 {
     public const float TransitionSpeed = 0.1f;
+    public const int LevelSceneIndexOffset = 2;
 
     public static bool IsPointerOverUIObject()
     {

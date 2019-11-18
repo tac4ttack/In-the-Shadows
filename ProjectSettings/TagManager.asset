@@ -38,6 +38,15 @@ TagManager:
   - LevelSelection_Description_Panel
   - InGame_WinScreen_Camera
   - InGame_PuzzlePiece
+  - InGame_PostProcess
+  - InGame_WinScreen_UI
+  - InGame_WinScreen_MainMenu_Button
+  - InGame_WinScreen_LevelSelection_Button
+  - InGame_WinScreen_Restart_Button
+  - InGame_WinScreen_NextLevel_Button
+  - InGame_WinScreen_ConfirmationPrompt
+  - InGame_WinScreen_Yes_Button
+  - InGame_WinScreen_No_Button
   layers:
   - Default
   - TransparentFX

@@ -32,8 +32,6 @@ public class LevelSelection : MonoBehaviour
     private IEnumerator _OrbitCamCoroutine;
     private bool _IsOrbiting = false;
 
-    private int _SceneIndexOffset = 2;
-
     private PauseMenu _PauseMenuUI;
 
     void Awake()
@@ -85,6 +83,7 @@ public class LevelSelection : MonoBehaviour
 
     void Start()
     {
+        LevelDescriptionPlay_BTN.onClick.AddListener(delegate{PlayButtonPress();});
         NavLeft_BTN.onClick.AddListener(delegate{NavButtonPress(-1);});
         NavRight_BTN.onClick.AddListener(delegate{NavButtonPress(1);});
 
@@ -131,7 +130,7 @@ public class LevelSelection : MonoBehaviour
         }
         
         LevelTitle_TXT.text = Levels[_CurrentSelection].Title;
-        LevelCount_TXT.text = (_CurrentSelection + 1).ToString("D2") + "/" +Levels.Length.ToString("D2");
+        LevelCount_TXT.text = (_CurrentSelection + 1).ToString("D2") + "/" + Levels.Length.ToString("D2");
         LevelDescriptionTitle_TXT.text = Levels[_CurrentSelection].Reference;
         LevelDescriptionContent_TXT.text = Levels[_CurrentSelection].Description;
         LevelDescriptionBestTime_TXT.text = Levels[_CurrentSelection].BestTime;
@@ -139,12 +138,9 @@ public class LevelSelection : MonoBehaviour
         Levels[_CurrentSelection].AnimationController.SetBool("Selected", true);
     }
 
-    public void PlayButtonTest()
+    public void PlayButtonPress()
     {
-        // DEBUG TO ELEPHANT SCENE
-        GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(1 + _SceneIndexOffset));
-        
-        // GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(_CurrentSelection + _SceneIndexOffset));
+        GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(_CurrentSelection + Utility.LevelSceneIndexOffset));
     }
 
     public void NavButtonPress(int iDirection)
