@@ -1674,6 +1674,11 @@ PrefabInstance:
       propertyPath: CurrentPlayerSlot
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3864221782368030891, guid: 968c446b1dab545f0bac8fd3788a4955,
+        type: 3}
+      propertyPath: LastPlayedLevel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5046778860003269956, guid: 968c446b1dab545f0bac8fd3788a4955,
         type: 3}
       propertyPath: m_LocalPosition.x

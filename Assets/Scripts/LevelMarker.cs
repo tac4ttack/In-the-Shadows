@@ -40,13 +40,13 @@ public class LevelMarker : MonoBehaviour
         Assert.IsNotNull(AnimationController, "Animator not found on level marker!");
 
         if (Id == -1)
-            Debug.LogError("ERROR in [" + this.gameObject.name + "]: LevelMarker ID is invalid!");
+            Debug.LogError($"ERROR in [{this.gameObject.name}]: LevelMarker ID is invalid!");
         if (Title == "unset!")
-            Debug.LogError("ERROR in [" + this.gameObject.name + "]: LevelMarker TITLE seems unset!");
+            Debug.LogError($"ERROR in [{this.gameObject.name}]: LevelMarker TITLE seems unset!");
         if (Reference == "unset!")
-            Debug.LogError("ERROR in [" + this.gameObject.name + "]: LevelMarker REFERENCE seems unset!");
+            Debug.LogError($"ERROR in [{this.gameObject.name}]: LevelMarker REFERENCE seems unset!");
         if (Description == "empty!")
-            Debug.LogError("ERROR in [" + this.gameObject.name + "]: LevelMarker DESCRIPTION seems empty!");
+            Debug.LogError($"ERROR in [{this.gameObject.name}]: LevelMarker DESCRIPTION seems empty!");
         if (Id >= 0)
         {
             _Position = this.gameObject.transform.position;

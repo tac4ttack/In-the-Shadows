@@ -85,9 +85,9 @@ public class MainMenu : MonoBehaviour
 
     public void ExitButtonPress()
     {
-        // DEBUG
-        Debug.Log("App should exit!");
-        //App exit!
+        SaveSystem.SavePlayers(GameManager.GM.Players);
+        SaveSystem.SaveSettings(GameManager.GM.Settings);
+        Application.Quit();
     }
 
     public void BackButtonPress()

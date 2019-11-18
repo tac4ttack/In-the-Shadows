@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     public bool DebugMode = false;
     public int CurrentPlayerSlot = -1;
-    public int LastPlayedLevel = -1;
+    public int LastPlayedLevel = 0;
 
     void Awake()
     {
@@ -159,6 +159,7 @@ public class InGame_GameState : IState
     public void Exit()
     {
         SaveSystem.SavePlayers(GameManager.GM.Players);
+        GameManager.GM.LastPlayedLevel = _SceneIndex - Utility.LevelSceneIndexOffset;
     }
 }
 

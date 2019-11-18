@@ -77,10 +77,18 @@ MonoBehaviour:
     - never
     - never
     IsEmpty: 010101
-    DoTutorial: 010101
-    _PuzzlesAmount: 3
+    ToUnlock:
+    - q: 030000000100000002000000
+    - q: 
+    - q: 
+    ToComplete:
+    - q: 020000000300000001000000
+    - q: 
+    - q: 
+    PuzzlesAmount: 4
   DebugMode: 0
-  CurrentSlot: -1
+  CurrentPlayerSlot: -1
+  LastPlayedLevel: 0
 --- !u!114 &676138472
 MonoBehaviour:
   m_ObjectHideFlags: 0
