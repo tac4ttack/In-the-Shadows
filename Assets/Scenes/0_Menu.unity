@@ -5144,6 +5144,11 @@ PrefabInstance:
       propertyPath: Players.Progression.Array.data[2].Level.Array.size
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3864221782368030891, guid: 968c446b1dab545f0bac8fd3788a4955,
+        type: 3}
+      propertyPath: CurrentState
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5046778860003269956, guid: 968c446b1dab545f0bac8fd3788a4955,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6721,7 +6726,7 @@ PrefabInstance:
     - target: {fileID: 6612966248536567097, guid: f82d5f6c7407d4016b597fae7c33452a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 538.39996
+      value: 538.40027
       objectReference: {fileID: 0}
     - target: {fileID: 6612966248114657692, guid: f82d5f6c7407d4016b597fae7c33452a,
         type: 3}

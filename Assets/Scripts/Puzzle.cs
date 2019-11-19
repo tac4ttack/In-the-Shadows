@@ -90,6 +90,9 @@ public class Puzzle : MonoBehaviour
         _WinScreen_NextLevel_BTN.onClick.AddListener(delegate{NextLevelButtonPress();});
         _WinScreen_Prompt_Yes_BTN.onClick.AddListener(delegate{ConfirmationYesButtonPress();});
         _WinScreen_Prompt_No_BTN.onClick.AddListener(delegate{ConfirmationNoButtonPress();});
+
+        if (SceneManager.GetActiveScene().buildIndex + 1 >= Utility.LevelSceneIndexOffset + GameManager.GM.Players.PuzzlesAmount)
+            _WinScreen_NextLevel_BTN.interactable = false;
         PuzzleStateMachine.ChangeState(new Playing_PuzzleState(this));
     }
 
@@ -191,10 +194,9 @@ public class Puzzle : MonoBehaviour
     public void NextLevelButtonPress()
     {
         //DEBUG
-        GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(2));
-        // GameManager.GM.LoadNextLevel();
-        // GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(SceneManager.GetActiveScene().buildIndex));
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        // GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(2));
+
+        GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     #endregion

@@ -16,6 +16,7 @@ public class LevelSelection : MonoBehaviour
     [Header("Elements of Level Selection UI")]
     public Button NavLeft_BTN;
     public Button NavRight_BTN;
+    public CanvasGroup LevelSelectionUI_CG;
     public TextMeshProUGUI LevelTitle_TXT;
     public TextMeshProUGUI LevelCount_TXT;
     public TextMeshProUGUI LevelDescriptionTitle_TXT;
@@ -26,7 +27,7 @@ public class LevelSelection : MonoBehaviour
     public LevelMarker[] Levels;
 
     private int _CurrentSelection = 0;
-    private int _PreviousSelection = 0;
+    private int _PreviousSelection = -1;
 
     private GameObject _Earth_GO;
     public GameObject Earth_GO { get => _Earth_GO; }
@@ -34,9 +35,7 @@ public class LevelSelection : MonoBehaviour
     private IEnumerator _OrbitCamCoroutine;
     private bool _IsOrbiting = false;
     private bool _InCutscene = false;
-
     private readonly Queue<IEnumerator> _CutsceneQueue = new Queue<IEnumerator>();
-
     private PauseMenu _PauseMenuUI;
 
     void Awake()
@@ -48,6 +47,10 @@ public class LevelSelection : MonoBehaviour
         if (NavRight_BTN == null)
             NavRight_BTN = GameObject.FindGameObjectWithTag("LevelSelection_NavRightButton").GetComponent<Button>();
         Assert.IsNotNull(NavRight_BTN, "Right Navigation button not found!");
+
+        if (LevelSelectionUI_CG == null)
+            LevelSelectionUI_CG = GameObject.FindGameObjectWithTag("LevelSelection_Panel").GetComponent<CanvasGroup>();
+        Assert.IsNotNull(LevelSelectionUI_CG, "Level selection UI not found!");
 
         if (LevelTitle_TXT == null)
             LevelTitle_TXT = GameObject.FindGameObjectWithTag("LevelSelection_LevelTitleText").GetComponent<TextMeshProUGUI>();
@@ -84,6 +87,7 @@ public class LevelSelection : MonoBehaviour
         if (_PauseMenuUI == null)
             _PauseMenuUI = GameObject.FindGameObjectWithTag("PauseMenu_UI").GetComponent<PauseMenu>();
         Assert.IsNotNull(_PauseMenuUI, "Pause Menu UI not found in scene!");
+
     }
 
     void Start()
@@ -92,12 +96,17 @@ public class LevelSelection : MonoBehaviour
         NavLeft_BTN.onClick.AddListener(delegate { NavButtonPress(-1); });
         NavRight_BTN.onClick.AddListener(delegate { NavButtonPress(1); });
 
+        _CurrentSelection = GameManager.GM.LastPlayedLevel;
+        
         if (CutsceneQueued())
             LaunchCutscene();
         else
-        {
-            _OrbitCamCoroutine = OrbitCamera(Levels[GameManager.GM.LastPlayedLevel].Position * _CamAltitude, 1f);
-            StartCoroutine(_OrbitCamCoroutine);
+        {   
+            UpdateLevelSelectionUI(_CurrentSelection);
+            Camera.main.transform.position = Levels[_CurrentSelection].Position * _CamAltitude;
+            Camera.main.transform.LookAt(_Earth_GO.transform.position);
+            // _OrbitCamCoroutine = OrbitCamera(Levels[_CurrentSelection].Position * _CamAltitude, 1f);
+            // StartCoroutine(_OrbitCamCoroutine);
         }
     }
 
@@ -122,7 +131,7 @@ public class LevelSelection : MonoBehaviour
 
     private bool CutsceneQueued()
     {
-        if (GameManager.GM.Players.ToUnlock.Length > 0 || GameManager.GM.Players.ToComplete.Length > 0)
+        if (GameManager.GM.Players.ToUnlock[GameManager.GM.CurrentPlayerSlot].q.Count > 0 || GameManager.GM.Players.ToComplete[GameManager.GM.CurrentPlayerSlot].q.Count > 0)
         {
             // Cleaning lists, sorting and remove duplicates
             GameManager.GM.Players.ToUnlock[GameManager.GM.CurrentPlayerSlot].q.Sort();
@@ -135,10 +144,13 @@ public class LevelSelection : MonoBehaviour
             foreach (int id in GameManager.GM.Players.ToComplete[GameManager.GM.CurrentPlayerSlot].q)
             {
                 while (GameManager.GM.Players.ToUnlock[GameManager.GM.CurrentPlayerSlot].q.Contains(id))
+                {
+                    Levels[id].UnlockStatus();
                     GameManager.GM.Players.ToUnlock[GameManager.GM.CurrentPlayerSlot].q.Remove(id);
+                }
             }
 
-            if (GameManager.GM.Players.ToUnlock.Length > 0 || GameManager.GM.Players.ToComplete.Length > 0)
+            if (GameManager.GM.Players.ToUnlock[GameManager.GM.CurrentPlayerSlot].q.Count > 0 || GameManager.GM.Players.ToComplete[GameManager.GM.CurrentPlayerSlot].q.Count > 0)
                 return true;
             else
                 return false;
@@ -149,8 +161,6 @@ public class LevelSelection : MonoBehaviour
 
     private void LaunchCutscene()
     {
-        int previousSelection = _CurrentSelection;
-
         foreach (int id in GameManager.GM.Players.ToComplete[GameManager.GM.CurrentPlayerSlot].q)
         {
             _CutsceneQueue.Enqueue(CompleteCutscene(Levels[id].Position * _CamAltitude, id, 0.5f));
@@ -159,25 +169,19 @@ public class LevelSelection : MonoBehaviour
         {
             _CutsceneQueue.Enqueue(UnlockCutscene(Levels[id].Position * _CamAltitude, id, 0.5f));
         }
-
-        // To Go back to the previously selected level
-        _CurrentSelection = previousSelection;
-        _CutsceneQueue.Enqueue(OrbitCamera(Levels[_CurrentSelection].Position * _CamAltitude, 0.5f));
-
         GameManager.GM.Players.ToComplete[GameManager.GM.CurrentPlayerSlot].q.Clear();
         GameManager.GM.Players.ToUnlock[GameManager.GM.CurrentPlayerSlot].q.Clear();
-
         StartCoroutine(ExecuteCutsceneQueue());
     }
 
-    private void UpdateLevelSelectionUI(int iNextSelection)
+    private void UpdateLevelSelectionUI(int iSelectedLevel)
     {
-        if (iNextSelection == 0)
+        if (iSelectedLevel == 0)
         {
             NavLeft_BTN.animator.SetTrigger(NavLeft_BTN.animationTriggers.disabledTrigger);
             NavRight_BTN.animator.SetTrigger(NavRight_BTN.animationTriggers.normalTrigger);
         }
-        else if (iNextSelection + 1 == Levels.Length)
+        else if (iSelectedLevel + 1 == Levels.Length)
         {
             NavLeft_BTN.animator.SetTrigger(NavLeft_BTN.animationTriggers.normalTrigger);
             NavRight_BTN.animator.SetTrigger(NavRight_BTN.animationTriggers.disabledTrigger);
@@ -188,13 +192,20 @@ public class LevelSelection : MonoBehaviour
             NavRight_BTN.animator.SetTrigger(NavRight_BTN.animationTriggers.normalTrigger);
         }
 
-        LevelTitle_TXT.text = Levels[_CurrentSelection].Title;
-        LevelCount_TXT.text = (_CurrentSelection + 1).ToString("D2") + "/" + Levels.Length.ToString("D2");
-        LevelDescriptionTitle_TXT.text = Levels[_CurrentSelection].Reference;
-        LevelDescriptionContent_TXT.text = Levels[_CurrentSelection].Description;
-        LevelDescriptionBestTime_TXT.text = Levels[_CurrentSelection].BestTime;
-        Levels[_PreviousSelection].AnimationController.SetBool("Selected", false);
-        Levels[_CurrentSelection].AnimationController.SetBool("Selected", true);
+        LevelTitle_TXT.text = Levels[iSelectedLevel].Title;
+        LevelCount_TXT.text = (iSelectedLevel + 1).ToString("D2") + "/" + Levels.Length.ToString("D2");
+        LevelDescriptionTitle_TXT.text = Levels[iSelectedLevel].Reference;
+        LevelDescriptionContent_TXT.text = Levels[iSelectedLevel].Description;
+        LevelDescriptionBestTime_TXT.text = Levels[iSelectedLevel].BestTime;
+        
+        if (Levels[iSelectedLevel].Status == LevelMarker.LevelStatus.Locked && !GameManager.GM.DebugMode)
+            LevelDescriptionPlay_BTN.interactable = false;
+        else
+            LevelDescriptionPlay_BTN.interactable = true;
+
+        if (_PreviousSelection >= 0)
+            Levels[_PreviousSelection].AnimationController.SetBool("Selected", false);
+        Levels[iSelectedLevel].AnimationController.SetBool("Selected", true);
     }
 
     public void PlayButtonPress()
@@ -270,16 +281,11 @@ public class LevelSelection : MonoBehaviour
 
     private IEnumerator UnlockCutscene(Vector3 iTarget, int iLevel, float iTime)
     {
-        // DEBUG
-        Debug.Log($"Unlock cutscene for level #{iLevel}");
-
         Vector3 startPosition = Camera.main.transform.position;
 
-        _CurrentSelection = iLevel;
         _IsOrbiting = true;
         _InCutscene = true;
-        UpdateLevelSelectionUI(_CurrentSelection);
-
+        UpdateLevelSelectionUI(iLevel);
         for (float t = 0f; t < iTime; t += Time.deltaTime * _OrbitSpeed)
         {
             Camera.main.transform.position = Vector3.Slerp(startPosition, iTarget, t / iTime);
@@ -287,25 +293,20 @@ public class LevelSelection : MonoBehaviour
             yield return null;
         }
         Levels[iLevel].AnimationController.SetTrigger("ToUnlock");
-        Levels[iLevel].AnimationController.SetInteger("Status", 1);
+        yield return new WaitForSeconds(1.5f);
         GameManager.GM.Players.Progression[GameManager.GM.CurrentPlayerSlot].Level[iLevel] = 1;
-        yield return new WaitForSeconds(2f);
+        Levels[iLevel].AnimationController.SetBool("Selected", false);
         _IsOrbiting = false;
         _InCutscene = false;
     }
 
     private IEnumerator CompleteCutscene(Vector3 iTarget, int iLevel, float iTime)
     {
-        // DEBUG
-        Debug.Log($"Complete cutscene for level #{iLevel}");
-
         Vector3 startPosition = Camera.main.transform.position;
-
-        _CurrentSelection = iLevel;
+        
         _IsOrbiting = true;
         _InCutscene = true;
-        UpdateLevelSelectionUI(_CurrentSelection);
-
+        UpdateLevelSelectionUI(iLevel);
         for (float t = 0f; t < iTime; t += Time.deltaTime * _OrbitSpeed)
         {
             Camera.main.transform.position = Vector3.Slerp(startPosition, iTarget, t / iTime);
@@ -313,9 +314,12 @@ public class LevelSelection : MonoBehaviour
             yield return null;
         }
         Levels[iLevel].AnimationController.SetTrigger("ToComplete");
-        Levels[iLevel].AnimationController.SetInteger("Status", 2);
+        yield return new WaitForSeconds(1.5f);
         GameManager.GM.Players.Progression[GameManager.GM.CurrentPlayerSlot].Level[iLevel] = 2;
-        yield return new WaitForSeconds(2f);
+        
+        // DEBUG
+        // Levels[iLevel].AnimationController.SetBool("Selected", false);
+
         _IsOrbiting = false;
         _InCutscene = false;
     }

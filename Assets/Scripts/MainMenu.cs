@@ -156,6 +156,7 @@ public class Main_MainMenuState : IState
     {
         GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_MainMenu.MainPanel_CG, 1f, Utility.TransitionSpeed));
         GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_MainMenu.MainButtonsPanel_CG, 1f, Utility.TransitionSpeed));
+        GameManager.GM.CurrentState = GameManager.GameStates.MainMenu;
         _MainMenu.SpaceSystem_GO.SetActive(true);
         _MainMenu.CurrentState = MainMenu.MainMenuStates.Main;
     }

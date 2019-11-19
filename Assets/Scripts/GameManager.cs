@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         SM.SfxSrc.volume = Settings.SFXVolume * Settings.MasterVolume;
         SM.MusicSrc.volume = Settings.MusicVolume * Settings.MasterVolume;
         
-        CurrentState = GameManager.GameStates.MainMenu;
+        CurrentState = GameManager.GameStates.TitleScreen;
     }
 
     public void ClearAllPlayersData()

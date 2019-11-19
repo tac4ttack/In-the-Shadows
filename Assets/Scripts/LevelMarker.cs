@@ -70,4 +70,15 @@ public class LevelMarker : MonoBehaviour
     {
         _LevelSelector.OnMarkerClick(Id);
     }
+
+    public void UnlockStatus()
+    {
+        _Status = LevelStatus.Unlocked;
+        AnimationController.SetInteger("Status", _Status.GetHashCode());
+    }
+    public void CompleteStatus()
+    {
+        _Status = LevelStatus.Completed;
+        AnimationController.SetInteger("Status", _Status.GetHashCode());
+    }
 }

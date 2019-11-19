@@ -15,7 +15,7 @@ public static class Utility
 
         eventData.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         EventSystem.current.RaycastAll(eventData, raycastResults);
-        
+
         return (raycastResults.Count > 0);
     }
 
