@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 public class Puzzle : MonoBehaviour
 {
     public StateMachine PuzzleStateMachine = new StateMachine();
-    public enum PuzzleStates {Playing = 0, Paused, WinScreen, ConfirmationPrompt};
+    public enum PuzzleStates { Playing = 0, Paused, WinScreen, ConfirmationPrompt };
     public PuzzleStates CurrentState;
 
-    public enum ConfirmationPromptTarget {None = 0, MainMenu, LevelSelection, Restart};
+    public enum ConfirmationPromptTarget { None = 0, MainMenu, LevelSelection, Restart };
     public ConfirmationPromptTarget CurrentPromptTarget;
 
     private Camera _WinScreen_Cam;
@@ -38,7 +38,7 @@ public class Puzzle : MonoBehaviour
         if (_PauseMenuUI == null)
             _PauseMenuUI = GameObject.FindGameObjectWithTag("PauseMenu_UI").GetComponent<PauseMenu>();
         Assert.IsNotNull(_PauseMenuUI, "Pause Menu UI not found in scene!");
-    
+
         if (_PostProcess == null)
             _PostProcess = GameObject.FindGameObjectWithTag("InGame_PostProcess").GetComponent<PostProcessVolume>().profile;
         Assert.IsNotNull(_PostProcess, "Post Process Volume not found in scene!");
@@ -59,11 +59,11 @@ public class Puzzle : MonoBehaviour
         if (_WinScreen_LevelSelection_BTN == null)
             _WinScreen_LevelSelection_BTN = GameObject.FindGameObjectWithTag("InGame_WinScreen_LevelSelection_Button").GetComponent<Button>();
         Assert.IsNotNull(_WinScreen_LevelSelection_BTN, "Win screen Level Selection button not found in scene!");
-        
+
         if (_WinScreen_Restart_BTN == null)
             _WinScreen_Restart_BTN = GameObject.FindGameObjectWithTag("InGame_WinScreen_Restart_Button").GetComponent<Button>();
         Assert.IsNotNull(_WinScreen_Restart_BTN, "Win screen Restart button not found in scene!");
-        
+
         if (_WinScreen_NextLevel_BTN == null)
             _WinScreen_NextLevel_BTN = GameObject.FindGameObjectWithTag("InGame_WinScreen_NextLevel_Button").GetComponent<Button>();
         Assert.IsNotNull(_WinScreen_NextLevel_BTN, "Win screen Next Level button not found in scene!");
@@ -84,14 +84,14 @@ public class Puzzle : MonoBehaviour
 
     void Start()
     {
-        _WinScreen_MainMenu_BTN.onClick.AddListener(delegate{QuitButtonPress();});
-        _WinScreen_LevelSelection_BTN.onClick.AddListener(delegate{LevelSelectButtonPress();});
-        _WinScreen_Restart_BTN.onClick.AddListener(delegate{RestartButtonPress();});
-        _WinScreen_NextLevel_BTN.onClick.AddListener(delegate{NextLevelButtonPress();});
-        _WinScreen_Prompt_Yes_BTN.onClick.AddListener(delegate{ConfirmationYesButtonPress();});
-        _WinScreen_Prompt_No_BTN.onClick.AddListener(delegate{ConfirmationNoButtonPress();});
+        _WinScreen_MainMenu_BTN.onClick.AddListener(delegate { QuitButtonPress(); });
+        _WinScreen_LevelSelection_BTN.onClick.AddListener(delegate { LevelSelectButtonPress(); });
+        _WinScreen_Restart_BTN.onClick.AddListener(delegate { RestartButtonPress(); });
+        _WinScreen_NextLevel_BTN.onClick.AddListener(delegate { NextLevelButtonPress(); });
+        _WinScreen_Prompt_Yes_BTN.onClick.AddListener(delegate { ConfirmationYesButtonPress(); });
+        _WinScreen_Prompt_No_BTN.onClick.AddListener(delegate { ConfirmationNoButtonPress(); });
 
-        if (SceneManager.GetActiveScene().buildIndex + 1 >= Utility.LevelSceneIndexOffset + GameManager.GM.Players.PuzzlesAmount)
+        if (Utility.CurrentLevelIndex + 1 >= Utility.PuzzleAmount)
             _WinScreen_NextLevel_BTN.interactable = false;
         PuzzleStateMachine.ChangeState(new Playing_PuzzleState(this));
     }
@@ -103,21 +103,21 @@ public class Puzzle : MonoBehaviour
             switch (_PauseMenuUI.CurrentState)
             {
                 case PauseMenu.PauseMenuStates.Inactive:
-                {
-                    PuzzleStateMachine.ChangeState(new Paused_PuzzleState(this));
-                    _PauseMenuUI.PauseMenuStateMachine.ChangeState((new Active_PauseMenuState(_PauseMenuUI)));
-                }
+                    {
+                        PuzzleStateMachine.ChangeState(new Paused_PuzzleState(this));
+                        _PauseMenuUI.PauseMenuStateMachine.ChangeState((new Active_PauseMenuState(_PauseMenuUI)));
+                    }
                     break;
                 case PauseMenu.PauseMenuStates.Active:
-                {
-                    PuzzleStateMachine.ChangeState(new Playing_PuzzleState(this));
-                    _PauseMenuUI.PauseMenuStateMachine.ChangeState((new Inactive_PauseMenuState(_PauseMenuUI)));
-                }
+                    {
+                        PuzzleStateMachine.ChangeState(new Playing_PuzzleState(this));
+                        _PauseMenuUI.PauseMenuStateMachine.ChangeState((new Inactive_PauseMenuState(_PauseMenuUI)));
+                    }
                     break;
                 case PauseMenu.PauseMenuStates.Settings:
-                {
-                    _PauseMenuUI.PauseMenuStateMachine.GoBackToPreviousState();
-                }
+                    {
+                        _PauseMenuUI.PauseMenuStateMachine.GoBackToPreviousState();
+                    }
                     break;
             }
         }
@@ -131,13 +131,29 @@ public class Puzzle : MonoBehaviour
 
     void CheckPuzzlePieces()
     {
-        bool   tmp = false;
+        bool tmp = false;
         for (int i = 0; i < _PuzzlePieces.Length; i++)
         {
             PuzzlePiece p = (PuzzlePiece)_PuzzlePieces[i];
             tmp = p.isPuzzlePieceValidated;
         }
         _PuzzleValidated = tmp;
+    }
+
+    public void PushLevelComplete()
+    {
+        GameManager.GM.Players.ToComplete[Utility.CurrentPlayer].q.Add(Utility.CurrentLevelIndex);
+    }
+
+    public void PushLevelUnlock()
+    {
+        int tmp = Utility.CurrentLevelIndex + 1;
+        if (tmp >= Utility.LevelSceneIndexOffset + Utility.PuzzleAmount)
+            Debug.Log("Should launch the end game!");
+        else
+        {
+            GameManager.GM.Players.ToUnlock[Utility.CurrentPlayer].q.Add(tmp);
+        }
     }
 
     #region Buttons Logic
@@ -147,25 +163,23 @@ public class Puzzle : MonoBehaviour
         switch (CurrentPromptTarget)
         {
             case Puzzle.ConfirmationPromptTarget.MainMenu:
-            {
-                GameManager.GM.GameStateMachine.ChangeState(new InMainMenu_GameState());
-            }
+                {
+                    GameManager.GM.GameStateMachine.ChangeState(new InMainMenu_GameState());
+                }
                 break;
             case Puzzle.ConfirmationPromptTarget.Restart:
-            {
-                GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(SceneManager.GetActiveScene().buildIndex));
-            }    
+                {
+                    GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(SceneManager.GetActiveScene().buildIndex));
+                }
                 break;
             case Puzzle.ConfirmationPromptTarget.LevelSelection:
-            {
-                GameManager.GM.GameStateMachine.ChangeState(new LevelSelection_GameState());
-            }    
+                {
+                    GameManager.GM.GameStateMachine.ChangeState(new LevelSelection_GameState());
+                }
                 break;
             default:
                 break;
         }
-        GameManager.GM.PushLevelComplete();
-        GameManager.GM.PushLevelUnlock();
     }
 
     public void ConfirmationNoButtonPress()
@@ -188,14 +202,11 @@ public class Puzzle : MonoBehaviour
     public void RestartButtonPress()
     {
         CurrentPromptTarget = Puzzle.ConfirmationPromptTarget.Restart;
-        PuzzleStateMachine.ChangeState(new ConfirmationPrompt_PuzzleState(this, _ConfirmationPrompt_CG));        
+        PuzzleStateMachine.ChangeState(new ConfirmationPrompt_PuzzleState(this, _ConfirmationPrompt_CG));
     }
 
     public void NextLevelButtonPress()
     {
-        //DEBUG
-        // GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(2));
-
         GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
@@ -208,16 +219,16 @@ public class Playing_PuzzleState : IState
 {
     private Puzzle _PuzzleScript;
 
-    public Playing_PuzzleState(Puzzle iPuzzleScript)  => _PuzzleScript = iPuzzleScript;
+    public Playing_PuzzleState(Puzzle iPuzzleScript) => _PuzzleScript = iPuzzleScript;
 
     public void Enter()
     {
         _PuzzleScript.CurrentState = Puzzle.PuzzleStates.Playing;
     }
 
-    public void Execute() {}
+    public void Execute() { }
 
-    public void Exit() {}
+    public void Exit() { }
 }
 
 public class Paused_PuzzleState : IState
@@ -231,10 +242,10 @@ public class Paused_PuzzleState : IState
         _PuzzleScript.CurrentState = Puzzle.PuzzleStates.Paused;
     }
 
-    public void Execute() {}
+    public void Execute() { }
 
     public void Exit()
-    {  
+    {
         _PuzzleScript.CurrentState = Puzzle.PuzzleStates.Playing;
     }
 }
@@ -252,7 +263,7 @@ public class WinScreen_PuzzleState : IState
         _WinCam = iWinCam;
         _WinScreen_CG = iWinScreenCG;
         _PostProcess = iPostProcess;
-    } 
+    }
 
     public void Enter()
     {
@@ -260,11 +271,22 @@ public class WinScreen_PuzzleState : IState
         _WinCam.enabled = true;
         GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_WinScreen_CG, 1f, Utility.TransitionSpeed));
         _PostProcess.GetSetting<DepthOfField>().focusDistance.value = 0.1f;
+
+        int tmp = Utility.CurrentLevelIndex;
+
+        /* Player Data update */
+        GameManager.GM.Players.LastPlayedLevel[Utility.CurrentPlayer] = tmp;
+        if (tmp + 1 < Utility.PuzzleAmount && GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp + 1] == 0)
+            _PuzzleScript.PushLevelUnlock();
+        if (GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp] < 2)
+            _PuzzleScript.PushLevelComplete();
+        GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp] = 2;
+        GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp + 1] = 1;
     }
 
-    public void Execute() {}
+    public void Execute() { }
 
-    public void Exit() {}
+    public void Exit() { }
 }
 
 public class ConfirmationPrompt_PuzzleState : IState
@@ -284,7 +306,7 @@ public class ConfirmationPrompt_PuzzleState : IState
         GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_ConfirmationPrompt, 1f, Utility.TransitionSpeed));
     }
 
-    public void Execute() {}
+    public void Execute() { }
 
     public void Exit()
     {

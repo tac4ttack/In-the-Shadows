@@ -63,7 +63,11 @@ public class MainMenu : MonoBehaviour
         Assert.IsNotNull(DebugModeCheckBox, "Debug Mode Toggle not found!");
     }
 
-    void Start() => MainMenuStateMachine.ChangeState(new TitleScreen_MainMenuState(this, GameObject.FindGameObjectWithTag("MainMenu_PressAnyKeyText").GetComponent<CanvasGroup>()));
+    void Start()
+    {
+        
+        MainMenuStateMachine.ChangeState(new TitleScreen_MainMenuState(this, GameObject.FindGameObjectWithTag("MainMenu_PressAnyKeyText").GetComponent<CanvasGroup>()));
+    }
     void Update() => MainMenuStateMachine.ExecuteState();
 
     #region Buttons logic
@@ -98,6 +102,11 @@ public class MainMenu : MonoBehaviour
     public void PlayPanelBackButtonPress()
     {
         MainMenuStateMachine.ChangeState(new Main_MainMenuState(this));
+    }
+
+    public void ClearAllButtonPress()
+    {
+        GameManager.GM.ClearAllPlayersData();
     }
 
     public void DebugModeToggleCheck()

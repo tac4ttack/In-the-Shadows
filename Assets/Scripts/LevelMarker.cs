@@ -21,7 +21,7 @@ public class LevelMarker : MonoBehaviour
     public string Title { get => _Title; }
     public string Reference { get => _Reference; }
     public Vector3 Position { get => _Position; }
-    public LevelStatus  Status { get => _Status; }
+    public LevelStatus Status { get => _Status; set => _Status = value; }
     public string Description { get => _Description; }
     public string BestTime { get => _BestTime; }
 
@@ -56,9 +56,19 @@ public class LevelMarker : MonoBehaviour
     void Start()
     {
         // Fetch the level status
-        _Status = (LevelStatus)(GameManager.GM.Players.Progression[GameManager.GM.CurrentPlayerSlot].Level[_Id]);
-        AnimationController.SetInteger("Status", _Status.GetHashCode());
-
+        if (GameManager.GM.Players.ToComplete[Utility.CurrentPlayer].q.Contains(_Id))
+        {
+            AnimationController.SetInteger("Status", 1);
+        }
+        else if (GameManager.GM.Players.ToUnlock[Utility.CurrentPlayer].q.Contains(_Id))
+        {   AnimationController.SetInteger("Status", 0);
+        }
+        else
+        {
+            _Status = (LevelStatus)(GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[_Id]);
+            AnimationController.SetInteger("Status", _Status.GetHashCode());
+        }
+        
         // Best time fetch from player data!
         // _BestTime = GameManager.GM.Players[CurrentPlayer].BestTimes[LevelId];
         _BestTime = (Random.Range(0, 24)).ToString("D2")
@@ -73,12 +83,12 @@ public class LevelMarker : MonoBehaviour
 
     public void UnlockStatus()
     {
-        _Status = LevelStatus.Unlocked;
-        AnimationController.SetInteger("Status", _Status.GetHashCode());
+        Status = LevelStatus.Unlocked;
+        AnimationController.SetInteger("Status", Status.GetHashCode());
     }
     public void CompleteStatus()
     {
-        _Status = LevelStatus.Completed;
-        AnimationController.SetInteger("Status", _Status.GetHashCode());
+        Status = LevelStatus.Completed;
+        AnimationController.SetInteger("Status", Status.GetHashCode());
     }
 }

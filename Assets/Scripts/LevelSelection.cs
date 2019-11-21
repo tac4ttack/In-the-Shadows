@@ -96,18 +96,14 @@ public class LevelSelection : MonoBehaviour
         NavLeft_BTN.onClick.AddListener(delegate { NavButtonPress(-1); });
         NavRight_BTN.onClick.AddListener(delegate { NavButtonPress(1); });
 
-        _CurrentSelection = GameManager.GM.LastPlayedLevel;
+        _CurrentSelection = GameManager.GM.Players.LastPlayedLevel[Utility.CurrentPlayer];
+        Camera.main.transform.position = Levels[_CurrentSelection].Position * _CamAltitude;
+        Camera.main.transform.LookAt(_Earth_GO.transform.position);
         
         if (CutsceneQueued())
             LaunchCutscene();
         else
-        {   
             UpdateLevelSelectionUI(_CurrentSelection);
-            Camera.main.transform.position = Levels[_CurrentSelection].Position * _CamAltitude;
-            Camera.main.transform.LookAt(_Earth_GO.transform.position);
-            // _OrbitCamCoroutine = OrbitCamera(Levels[_CurrentSelection].Position * _CamAltitude, 1f);
-            // StartCoroutine(_OrbitCamCoroutine);
-        }
     }
 
     void Update()
@@ -128,29 +124,39 @@ public class LevelSelection : MonoBehaviour
             }
         }
     }
+    private void UpdateLevelMarkers()
+    {
+        foreach (LevelMarker level in Levels)
+        {
+            level.Status = (LevelMarker.LevelStatus)(GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[level.Id]);
+            level.AnimationController.SetInteger("Status", level.Status.GetHashCode());
+        }
+    }
 
     private bool CutsceneQueued()
     {
-        if (GameManager.GM.Players.ToUnlock[GameManager.GM.CurrentPlayerSlot].q.Count > 0 || GameManager.GM.Players.ToComplete[GameManager.GM.CurrentPlayerSlot].q.Count > 0)
+        if (GameManager.GM.Players.ToUnlock[Utility.CurrentPlayer].q.Count > 0 || GameManager.GM.Players.ToComplete[Utility.CurrentPlayer].q.Count > 0)
         {
-            // Cleaning lists, sorting and remove duplicates
-            GameManager.GM.Players.ToUnlock[GameManager.GM.CurrentPlayerSlot].q.Sort();
-            GameManager.GM.Players.ToUnlock[GameManager.GM.CurrentPlayerSlot].q = GameManager.GM.Players.ToUnlock[GameManager.GM.CurrentPlayerSlot].q.Distinct().ToList();
-            GameManager.GM.Players.ToComplete[GameManager.GM.CurrentPlayerSlot].q.Sort();
-            GameManager.GM.Players.ToComplete[GameManager.GM.CurrentPlayerSlot].q = GameManager.GM.Players.ToComplete[GameManager.GM.CurrentPlayerSlot].q.Distinct().ToList();
+            /* Cleaning lists, sorting and remove duplicates */
+            GameManager.GM.Players.ToUnlock[Utility.CurrentPlayer].q.Sort();
+            GameManager.GM.Players.ToUnlock[Utility.CurrentPlayer].q = GameManager.GM.Players.ToUnlock[Utility.CurrentPlayer].q.Distinct().ToList();
+            GameManager.GM.Players.ToComplete[Utility.CurrentPlayer].q.Sort();
+            GameManager.GM.Players.ToComplete[Utility.CurrentPlayer].q = GameManager.GM.Players.ToComplete[Utility.CurrentPlayer].q.Distinct().ToList();
 
-            // If level is in complete queue, search and remove it from the unlock queue.
-            // In the end, the unlock queue should only have one element max.
-            foreach (int id in GameManager.GM.Players.ToComplete[GameManager.GM.CurrentPlayerSlot].q)
+            /*
+                If level is in complete queue, search and remove it from the unlock queue.
+                In the end, the unlock queue should only have one element max.
+            */
+            foreach (int id in GameManager.GM.Players.ToComplete[Utility.CurrentPlayer].q)
             {
-                while (GameManager.GM.Players.ToUnlock[GameManager.GM.CurrentPlayerSlot].q.Contains(id))
+                while (GameManager.GM.Players.ToUnlock[Utility.CurrentPlayer].q.Contains(id))
                 {
                     Levels[id].UnlockStatus();
-                    GameManager.GM.Players.ToUnlock[GameManager.GM.CurrentPlayerSlot].q.Remove(id);
+                    GameManager.GM.Players.ToUnlock[Utility.CurrentPlayer].q.Remove(id);
                 }
             }
 
-            if (GameManager.GM.Players.ToUnlock[GameManager.GM.CurrentPlayerSlot].q.Count > 0 || GameManager.GM.Players.ToComplete[GameManager.GM.CurrentPlayerSlot].q.Count > 0)
+            if (GameManager.GM.Players.ToUnlock[Utility.CurrentPlayer].q.Count > 0 || GameManager.GM.Players.ToComplete[Utility.CurrentPlayer].q.Count > 0)
                 return true;
             else
                 return false;
@@ -161,16 +167,16 @@ public class LevelSelection : MonoBehaviour
 
     private void LaunchCutscene()
     {
-        foreach (int id in GameManager.GM.Players.ToComplete[GameManager.GM.CurrentPlayerSlot].q)
+        foreach (int id in GameManager.GM.Players.ToComplete[Utility.CurrentPlayer].q)
         {
             _CutsceneQueue.Enqueue(CompleteCutscene(Levels[id].Position * _CamAltitude, id, 0.5f));
         }
-        foreach (int id in GameManager.GM.Players.ToUnlock[GameManager.GM.CurrentPlayerSlot].q)
+        foreach (int id in GameManager.GM.Players.ToUnlock[Utility.CurrentPlayer].q)
         {
             _CutsceneQueue.Enqueue(UnlockCutscene(Levels[id].Position * _CamAltitude, id, 0.5f));
         }
-        GameManager.GM.Players.ToComplete[GameManager.GM.CurrentPlayerSlot].q.Clear();
-        GameManager.GM.Players.ToUnlock[GameManager.GM.CurrentPlayerSlot].q.Clear();
+        GameManager.GM.Players.ToComplete[Utility.CurrentPlayer].q.Clear();
+        GameManager.GM.Players.ToUnlock[Utility.CurrentPlayer].q.Clear();
         StartCoroutine(ExecuteCutsceneQueue());
     }
 
@@ -277,6 +283,7 @@ public class LevelSelection : MonoBehaviour
         {
             yield return _CutsceneQueue.Dequeue();
         }
+        UpdateLevelMarkers();
     }
 
     private IEnumerator UnlockCutscene(Vector3 iTarget, int iLevel, float iTime)
@@ -285,6 +292,7 @@ public class LevelSelection : MonoBehaviour
 
         _IsOrbiting = true;
         _InCutscene = true;
+        _CurrentSelection = iLevel;
         UpdateLevelSelectionUI(iLevel);
         for (float t = 0f; t < iTime; t += Time.deltaTime * _OrbitSpeed)
         {
@@ -294,8 +302,11 @@ public class LevelSelection : MonoBehaviour
         }
         Levels[iLevel].AnimationController.SetTrigger("ToUnlock");
         yield return new WaitForSeconds(1.5f);
-        GameManager.GM.Players.Progression[GameManager.GM.CurrentPlayerSlot].Level[iLevel] = 1;
-        Levels[iLevel].AnimationController.SetBool("Selected", false);
+        
+        if (_PreviousSelection >= 0)
+            Levels[_PreviousSelection].AnimationController.SetBool("Selected", false);
+        _PreviousSelection = iLevel;
+        UpdateLevelSelectionUI(iLevel);
         _IsOrbiting = false;
         _InCutscene = false;
     }
@@ -306,6 +317,7 @@ public class LevelSelection : MonoBehaviour
         
         _IsOrbiting = true;
         _InCutscene = true;
+        _CurrentSelection = iLevel;
         UpdateLevelSelectionUI(iLevel);
         for (float t = 0f; t < iTime; t += Time.deltaTime * _OrbitSpeed)
         {
@@ -315,11 +327,8 @@ public class LevelSelection : MonoBehaviour
         }
         Levels[iLevel].AnimationController.SetTrigger("ToComplete");
         yield return new WaitForSeconds(1.5f);
-        GameManager.GM.Players.Progression[GameManager.GM.CurrentPlayerSlot].Level[iLevel] = 2;
-        
-        // DEBUG
-        // Levels[iLevel].AnimationController.SetBool("Selected", false);
 
+        _PreviousSelection = iLevel;
         _IsOrbiting = false;
         _InCutscene = false;
     }

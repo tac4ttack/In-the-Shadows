@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public static class Utility
 {
@@ -46,4 +47,8 @@ public static class Utility
             }
         }
     }
+
+    public static int CurrentLevelIndex => SceneManager.GetActiveScene().buildIndex - Utility.LevelSceneIndexOffset;
+    public static int CurrentPlayer => GameManager.GM.CurrentPlayerSlot;
+    public static int PuzzleAmount => GameManager.GM.Players.PuzzlesAmount;
 }

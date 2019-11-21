@@ -2,11 +2,11 @@
 public class SettingsData
 {
     # region Sound Settings
-    // Default values
+    /* Default values */
     public float DefaultMasterVolume = 1f;
     public float DefaultSFXVolume = 1f;
     public float DefaultMusicVolume = 1f;
-    // Current values
+    /* Current values */
     public float MasterVolume;
     public float PreviousMasterVolume;
     public float SFXVolume;

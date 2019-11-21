@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
 
     public bool DebugMode = false;
     public int CurrentPlayerSlot = -1;
-    public int LastPlayedLevel = 0;
 
     void Awake()
     {
@@ -79,18 +78,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PushLevelComplete()
+    public void UpdatePlayersProgressionPercentage()
     {
-        Players.ToComplete[CurrentPlayerSlot].q.Add(SceneManager.GetActiveScene().buildIndex - Utility.LevelSceneIndexOffset);
-    }
+        int count = 0;
 
-    public void PushLevelUnlock()
-    {
-        int tmp = SceneManager.GetActiveScene().buildIndex + 1;
-        if (tmp >= Utility.LevelSceneIndexOffset + Players.PuzzlesAmount)
-            Debug.Log("Should launch the end game!");
-        else
-            Players.ToUnlock[CurrentPlayerSlot].q.Add(tmp - Utility.LevelSceneIndexOffset);
+        for (int i = 0; i < 3; i++)
+        {
+            count = 0;
+            foreach (int status in Players.Progression[i].Level)
+            {
+                if (status == 2)
+                    count++;
+            }
+            Players.ProgressionPercentage[i] = ((float)count / Utility.PuzzleAmount) * 100f;
+        }
     }
 }
 
@@ -104,7 +105,7 @@ public class InMainMenu_GameState : IState
         SceneManager.LoadScene(0);
         GameManager.GM.CurrentState = GameManager.GameStates.MainMenu;
         GameManager.GM.DebugMode = false;
-        // GameManager.GM.CurrentPlayerSlot = -1;
+        GameManager.GM.UpdatePlayersProgressionPercentage();
         SaveSystem.SavePlayers(GameManager.GM.Players);
         // add main menu music launch?
     }
@@ -133,6 +134,8 @@ public class LevelSelection_GameState : IState
 
     public void Exit()
     {
+        GameManager.GM.Players.LastPlayed[Utility.CurrentPlayer] = System.DateTime.Now.ToString("dd MMM yyyy");
+        GameManager.GM.UpdatePlayersProgressionPercentage();
         SaveSystem.SavePlayers(GameManager.GM.Players);
     }
 }
@@ -158,8 +161,10 @@ public class InGame_GameState : IState
 
     public void Exit()
     {
+        GameManager.GM.Players.LastPlayed[Utility.CurrentPlayer] = System.DateTime.Now.ToString("dd MMM yyyy");
+        GameManager.GM.Players.LastPlayedLevel[Utility.CurrentPlayer] = _SceneIndex - Utility.LevelSceneIndexOffset;
+        GameManager.GM.UpdatePlayersProgressionPercentage();
         SaveSystem.SavePlayers(GameManager.GM.Players);
-        GameManager.GM.LastPlayedLevel = _SceneIndex - Utility.LevelSceneIndexOffset;
     }
 }
 

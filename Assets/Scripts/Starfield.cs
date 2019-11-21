@@ -1,21 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.Assertions;
 public class Starfield : MonoBehaviour
 {
-    public int      StarAmount = 100;
-    public float    StarSize = 0.5f;
-    public float    StarSizeRange = 0.5f;
-    public float    StarFieldWidth = 64.0f;
-    public float    StarFieldHeight = 36.0f;
-    public bool     AddColor = false;
+    public int StarAmount = 100;
+    public float StarSize = 0.5f;
+    public float StarSizeRange = 0.5f;
+    public float StarFieldWidth = 64.0f;
+    public float StarFieldHeight = 36.0f;
+    public bool AddColor = false;
 
-    private float                       _OffsetX;
-    private float                       _OffsetY;
-    private ParticleSystem              _Emitter;
-    private ParticleSystem.Particle[]   _Stars;
+    private float _OffsetX;
+    private float _OffsetY;
+    private ParticleSystem _Emitter;
+    private ParticleSystem.Particle[] _Stars;
+
+    public float ShineSpeed = 0.5f;
+    public float MaxExpand = 0.5f;
+    private float[] _StarsStartSize;
+    private bool[] _StarsBlink;
 
     public float GreenOffset = 0f;
     public float BlueOffset = 0f;
@@ -25,12 +27,9 @@ public class Starfield : MonoBehaviour
         float randomSize;
         float color;
 
-        // StarFieldWidth = Camera.main.pixelWidth;
-        // StarFieldHeight = Camera.main.pixelHeight;
-
         _Emitter = this.GetComponent<ParticleSystem>();
         Assert.IsNotNull(_Emitter, "Particle System component is missing from GameObject!");
-        
+
         _OffsetX = StarFieldWidth * 0.5f;
         _OffsetY = StarFieldHeight * 0.5f;
 
@@ -53,8 +52,8 @@ public class Starfield : MonoBehaviour
                                             Random.Range(0, StarFieldHeight) - _OffsetY,
                                             0);
             _Stars[i].startSize = StarSize * randomSize;
-            
-            _StarsBlink[i] = Random.Range(0f, 1f) > 0.75f ? true : false ;
+
+            _StarsBlink[i] = Random.Range(0f, 1f) > 0.75f ? true : false;
             _StarsStartSize[i] = _Stars[i].startSize;
 
             _Stars[i].startColor = new Color(1.0f, color + GreenOffset, color + BlueOffset, 1.0f);
@@ -62,19 +61,12 @@ public class Starfield : MonoBehaviour
         _Emitter.SetParticles(_Stars, _Stars.Length);
     }
 
-    public float ShineSpeed = 0.5f;
-    public float MaxExpand = 0.5f;
-    private float[] _StarsStartSize;
-    private bool[] _StarsBlink;
-
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.J))
-            Awake();
         for (int i = 0; i < _Stars.Length; i++)
         {
             if (_StarsBlink[i])
-                _Stars[i].startSize = (Mathf.Sin(Time.time * ShineSpeed) + 1.0f) / 2.0f * MaxExpand + _StarsStartSize[i];;
+                _Stars[i].startSize = (Mathf.Sin(Time.time * ShineSpeed) + 1.0f) / 2.0f * MaxExpand + _StarsStartSize[i]; ;
         }
         _Emitter.SetParticles(_Stars, _Stars.Length);
     }

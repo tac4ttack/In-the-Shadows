@@ -27,6 +27,7 @@ public class PlayersData
     public ProgressionArray[] Progression;
     public float[] ProgressionPercentage;
     public string[] LastPlayed;
+    public int[] LastPlayedLevel;
     public bool[] IsEmpty;
     
     public UnlockQueue[] ToUnlock;
@@ -40,6 +41,7 @@ public class PlayersData
         Progression = new ProgressionArray[3];
         ProgressionPercentage = new float[3];
         LastPlayed = new string[3];
+        LastPlayedLevel = new int[3];
         IsEmpty = new bool[3];
         ToUnlock = new UnlockQueue[3];
         ToComplete = new CompleteQueue[3];
@@ -59,6 +61,7 @@ public class PlayersData
             }
             ProgressionPercentage[i] = 0f;
             LastPlayed[i] = "never";
+            LastPlayedLevel[i] = 0;
             IsEmpty[i] = true;
         }
     }
@@ -69,6 +72,7 @@ public class PlayersData
         Progression = new ProgressionArray[3];
         ProgressionPercentage = new float[3];
         LastPlayed = new string[3];
+        LastPlayedLevel = new int[3];
         IsEmpty = new bool[3];
         ToUnlock = new UnlockQueue[3];
         ToComplete = new CompleteQueue[3];
@@ -83,6 +87,7 @@ public class PlayersData
             }
             ProgressionPercentage[i] = iData.ProgressionPercentage[i];
             LastPlayed[i] = iData.LastPlayed[i];
+            LastPlayedLevel[i] = iData.LastPlayedLevel[i];
             IsEmpty[i] = iData.IsEmpty[i];
             ToUnlock[i].q = new List<int>(iData.ToUnlock[i].q);
             ToComplete[i].q = new List<int>(iData.ToComplete[i].q);
@@ -105,6 +110,7 @@ public class PlayersData
             }
             ProgressionPercentage[iSlot] = 0f;
             LastPlayed[iSlot] = "never";
+            LastPlayedLevel[iSlot] = 0;
             IsEmpty[iSlot] = true;
         }
     }
