@@ -17,19 +17,22 @@ public class NewGameDialog : MonoBehaviour
     {
         if (!PlayPanelCanvas)
             PlayPanelCanvas = GameObject.Find("Play_Panel").GetComponent<CanvasGroup>();
+        Assert.IsNotNull(PlayPanelCanvas, "Play panel canvas group not found!");
+
         if (!NewGameDialogTitle)
             NewGameDialogTitle = this.gameObject.transform.Find("NewGameDialogTitle").GetComponent<TextMeshProUGUI>();
+        Assert.IsNotNull(NewGameDialogTitle, "New game title text GameObject not found!");
+
         if (!PlayerNameInput)
             PlayerNameInput = this.gameObject.transform.Find("PlayerNameInputfield").GetComponent<TMP_InputField>();
+        Assert.IsNotNull(PlayerNameInput, "New player name input field not found!");
+
         if (!TutorialToggle)
             TutorialToggle = this.gameObject.transform.Find("Bottom").Find("Bottom_left").Find("SkipTutorial_Checkbox").GetComponent<Toggle>();
+        Assert.IsNotNull(TutorialToggle, "Tutorial skip toggle button not found!");
+
         if (!CreateButton)
             CreateButton = this.gameObject.transform.Find("Bottom").Find("Bottom_right").Find("NewGameCreate_Button").GetComponent<Button>();
-
-        Assert.IsNotNull(PlayPanelCanvas, "Play panel canvas group not found!");
-        Assert.IsNotNull(NewGameDialogTitle, "New game title text GameObject not found!");
-        Assert.IsNotNull(PlayerNameInput, "New player name input field not found!");
-        Assert.IsNotNull(TutorialToggle, "Tutorial skip toggle button not found!");
         Assert.IsNotNull(CreateButton, "New game create button not found!");
     }
 

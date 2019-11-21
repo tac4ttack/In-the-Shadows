@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public SoundManager SM;
 
     public StateMachine GameStateMachine = new StateMachine();
-    public enum GameStates { TitleScreen = 0, MainMenu, LevelSelection, InGame};
+    public enum GameStates { TitleScreen = 0, MainMenu, LevelSelection, InGame };
     public GameStates CurrentState;
 
     public SettingsData Settings;
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
         }
         else if (GM != this)
         {
-            Destroy(gameObject);   
+            Destroy(gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
 
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         // Sound settings loading
         SM.SfxSrc.volume = Settings.SFXVolume * Settings.MasterVolume;
         SM.MusicSrc.volume = Settings.MusicVolume * Settings.MasterVolume;
-        
+
         CurrentState = GameManager.GameStates.TitleScreen;
     }
 
@@ -98,8 +98,8 @@ public class GameManager : MonoBehaviour
 #region Game States
 public class InMainMenu_GameState : IState
 {
-    public InMainMenu_GameState() {}
-    
+    public InMainMenu_GameState() { }
+
     public void Enter()
     {
         SceneManager.LoadScene(0);
@@ -110,7 +110,7 @@ public class InMainMenu_GameState : IState
         // add main menu music launch?
     }
 
-    public void Execute() {}
+    public void Execute() { }
 
     public void Exit()
     {
@@ -120,7 +120,7 @@ public class InMainMenu_GameState : IState
 
 public class LevelSelection_GameState : IState
 {
-    public LevelSelection_GameState() {}
+    public LevelSelection_GameState() { }
 
     public void Enter()
     {
@@ -130,7 +130,7 @@ public class LevelSelection_GameState : IState
         // add level selection music launch?
     }
 
-    public void Execute() {}
+    public void Execute() { }
 
     public void Exit()
     {
@@ -157,7 +157,7 @@ public class InGame_GameState : IState
         // add puzzle level music launch depending on the level id?
     }
 
-    public void Execute() {}
+    public void Execute() { }
 
     public void Exit()
     {

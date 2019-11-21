@@ -2,7 +2,7 @@
 
 public class EarthRotate : MonoBehaviour
 {
-    public  float   RotationSpeed = 1.0f;
+    public float RotationSpeed = 1.0f;
     private Vector3 _RotationAxis = new Vector3(0, 1, 0);
 
     void Update()

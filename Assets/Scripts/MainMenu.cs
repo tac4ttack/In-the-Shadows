@@ -65,7 +65,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        
+
         MainMenuStateMachine.ChangeState(new TitleScreen_MainMenuState(this, GameObject.FindGameObjectWithTag("MainMenu_PressAnyKeyText").GetComponent<CanvasGroup>()));
     }
     void Update() => MainMenuStateMachine.ExecuteState();

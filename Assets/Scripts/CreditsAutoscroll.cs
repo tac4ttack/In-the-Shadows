@@ -4,11 +4,11 @@ using UnityEngine.Assertions;
 public class CreditsAutoscroll : MonoBehaviour
 {
     public float Speed = 0.01f;
-    
+
     private UnityEngine.UI.Scrollbar _Bar;
     private bool _Paused = false;
     private float _Delay = 0f;
-    
+
     void Awake()
     {
         _Bar = GetComponent<UnityEngine.UI.Scrollbar>();
@@ -28,7 +28,6 @@ public class CreditsAutoscroll : MonoBehaviour
             _Bar.value = _Bar.value - Time.deltaTime * Speed;
     }
 
-    
     public void ScrollPause()
     {
         _Paused = true;

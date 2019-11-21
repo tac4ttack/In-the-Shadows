@@ -99,7 +99,7 @@ public class LevelSelection : MonoBehaviour
         _CurrentSelection = GameManager.GM.Players.LastPlayedLevel[Utility.CurrentPlayer];
         Camera.main.transform.position = Levels[_CurrentSelection].Position * _CamAltitude;
         Camera.main.transform.LookAt(_Earth_GO.transform.position);
-        
+
         if (CutsceneQueued())
             LaunchCutscene();
         else
@@ -203,7 +203,7 @@ public class LevelSelection : MonoBehaviour
         LevelDescriptionTitle_TXT.text = Levels[iSelectedLevel].Reference;
         LevelDescriptionContent_TXT.text = Levels[iSelectedLevel].Description;
         LevelDescriptionBestTime_TXT.text = Levels[iSelectedLevel].BestTime;
-        
+
         if (Levels[iSelectedLevel].Status == LevelMarker.LevelStatus.Locked && !GameManager.GM.DebugMode)
             LevelDescriptionPlay_BTN.interactable = false;
         else
@@ -302,7 +302,7 @@ public class LevelSelection : MonoBehaviour
         }
         Levels[iLevel].AnimationController.SetTrigger("ToUnlock");
         yield return new WaitForSeconds(1.5f);
-        
+
         if (_PreviousSelection >= 0)
             Levels[_PreviousSelection].AnimationController.SetBool("Selected", false);
         _PreviousSelection = iLevel;
@@ -314,7 +314,7 @@ public class LevelSelection : MonoBehaviour
     private IEnumerator CompleteCutscene(Vector3 iTarget, int iLevel, float iTime)
     {
         Vector3 startPosition = Camera.main.transform.position;
-        
+
         _IsOrbiting = true;
         _InCutscene = true;
         _CurrentSelection = iLevel;

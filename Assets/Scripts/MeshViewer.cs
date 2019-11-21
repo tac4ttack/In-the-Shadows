@@ -3,7 +3,7 @@ using UnityEngine.Assertions;
 
 public class MeshViewer : MonoBehaviour
 {
-    [SerializeField] private  float  _RotationSpeed = 1.0f;
+    [SerializeField] private float _RotationSpeed = 1.0f;
     [SerializeField] private Vector3 _RotationAxis = new Vector3(0, 1, 0);
     [SerializeField] private Vector3 _ScaleFactor = new Vector3(1f, 1f, 1f);
     [SerializeField] private Mesh _Mesh = null;
@@ -29,7 +29,7 @@ public class MeshViewer : MonoBehaviour
         _MeshRenderer.material = _Material;
         this.transform.localScale = _ScaleFactor;
     }
-    
+
     void Update()
     {
         this.transform.Rotate(_RotationAxis, -1 * _RotationSpeed * Time.deltaTime);

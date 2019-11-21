@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public StateMachine PauseMenuStateMachine = new StateMachine();
-    public enum PauseMenuStates {Inactive = 0, Active, Settings, ConfirmationPrompt};
+    public enum PauseMenuStates { Inactive = 0, Active, Settings, ConfirmationPrompt };
     public PauseMenuStates CurrentState;
-    
-    public enum ConfirmationPromptTarget {None = 0, MainMenu, LevelSelection, Restart};
+
+    public enum ConfirmationPromptTarget { None = 0, MainMenu, LevelSelection, Restart };
     public ConfirmationPromptTarget CurrentPromptTarget;
 
     [Header("Elements of Pause Menu UI")]
@@ -141,9 +141,9 @@ public class Inactive_PauseMenuState : IState
         _PauseMenu.CurrentState = PauseMenu.PauseMenuStates.Inactive;
     }
 
-    public void Execute() {}
+    public void Execute() { }
 
-    public void Exit() {}
+    public void Exit() { }
 }
 
 public class Active_PauseMenuState : IState
@@ -161,7 +161,7 @@ public class Active_PauseMenuState : IState
         Time.timeScale = 0f;
     }
 
-    public void Execute() {}
+    public void Execute() { }
 
     public void Exit()
     {
@@ -182,7 +182,7 @@ public class Settings_PauseMenuState : IState
         _PauseMenu.CurrentState = PauseMenu.PauseMenuStates.Settings;
     }
 
-    public void Execute() {}
+    public void Execute() { }
 
     public void Exit()
     {
@@ -204,10 +204,10 @@ public class ConfirmationPrompt_PauseMenuState : IState
         GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_PauseMenu.ConfirmationPrompt_CG, 1f, Utility.TransitionSpeed));
     }
 
-    public void Execute() {}
+    public void Execute() { }
 
     public void Exit()
-    {   
+    {
         _PauseMenu.CurrentPromptTarget = PauseMenu.ConfirmationPromptTarget.None;
         GameManager.GM.StartCoroutine(Utility.PopOutCanvasGroup(_PauseMenu.ConfirmationPrompt_CG, 1f, Utility.TransitionSpeed));
     }

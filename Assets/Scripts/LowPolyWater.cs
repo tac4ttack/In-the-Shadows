@@ -8,7 +8,7 @@ public class LowPolyWater : MonoBehaviour
     public bool RecalculateNormals = true;
     public bool UseSin = false;
     public bool UsePerlin = true;
-    
+
     private Mesh _Mesh;
     private Vector3[] _Vertices;
     private Vector3[] _BaseVertices;
@@ -41,7 +41,7 @@ public class LowPolyWater : MonoBehaviour
                 vertex.y += Mathf.PerlinNoise(vertex.x + Time.time * PerlinSpeed.x,
                                               vertex.z + Time.time * PerlinSpeed.y) * Scale;
             }
-            
+
             if (UsePerlin == true && UseSin == true)
             {
                 vertex.y += Mathf.PerlinNoise(vertex.x + Time.time * PerlinSpeed.x,

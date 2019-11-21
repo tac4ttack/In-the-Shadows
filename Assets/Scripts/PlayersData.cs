@@ -10,7 +10,7 @@ public class PlayersData
             ProgressionArray[player_slot].Level[level_index]
     */
     [System.Serializable] public struct ProgressionArray { public int[] Level; }
-    
+
     /*
         List storing for which level we have to launch the unlock cutscene
     */
@@ -21,15 +21,13 @@ public class PlayersData
     */
     [System.Serializable] public struct CompleteQueue { public List<int> q; }
 
-
-
     public string[] PlayersName;
     public ProgressionArray[] Progression;
     public float[] ProgressionPercentage;
     public string[] LastPlayed;
     public int[] LastPlayedLevel;
     public bool[] IsEmpty;
-    
+
     public UnlockQueue[] ToUnlock;
     public CompleteQueue[] ToComplete;
 
@@ -104,7 +102,7 @@ public class PlayersData
                 if (i == 0)
                     Progression[iSlot].Level[i] = 1;
                 else
-                    Progression[iSlot].Level[i] = 0;                
+                    Progression[iSlot].Level[i] = 0;
                 ToUnlock[iSlot].q.Clear();
                 ToComplete[iSlot].q.Clear();
             }

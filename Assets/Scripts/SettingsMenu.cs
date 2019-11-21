@@ -12,7 +12,7 @@ public class SettingsMenu : MonoBehaviour
     public TextMeshProUGUI SFXVolumeValue;
     public Slider SFXVolumeSlider;
     private float _PrevSFXVolumeValue;
-    
+
     public TextMeshProUGUI MusicVolumeValue;
     public Slider MusicVolumeSlider;
     private float _PrevMusicVolumeValue;
