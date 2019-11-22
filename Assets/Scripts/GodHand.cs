@@ -13,6 +13,8 @@ public class GodHand : MonoBehaviour
 
     void OnMouseDrag()
     {
+        // DEBUG
+        // Not working, if you dont release the click, as soon as you go out of ui element, the drag is resumed
         if (!Utility.IsPointerOverUIObject())
             _Body.AddTorque(new Vector3(0.5f * Input.GetAxis("Mouse Y"), -0.5f * Input.GetAxis("Mouse X"), 0), ForceMode.Impulse);
     }

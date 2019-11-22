@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public static class Utility
 {
     public const float TransitionSpeed = 0.1f;
     public const int LevelSceneIndexOffset = 2;
+    public static Material Puzzle_Material = AssetDatabase.LoadAssetAtPath("Assets/Materials/PuzzlePiece.mat", typeof(Material)) as Material;
 
     public static bool IsPointerOverUIObject()
     {
@@ -48,7 +50,7 @@ public static class Utility
         }
     }
 
-    public static int CurrentLevelIndex => SceneManager.GetActiveScene().buildIndex - Utility.LevelSceneIndexOffset;
+    public static int CurrentLevelIndex => SceneManager.GetActiveScene().buildIndex - LevelSceneIndexOffset;
     public static int CurrentPlayer => GameManager.GM.CurrentPlayerSlot;
     public static int PuzzleAmount => GameManager.GM.Players.PuzzlesAmount;
 }

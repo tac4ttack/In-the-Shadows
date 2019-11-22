@@ -59,6 +59,7 @@ MonoBehaviour:
     MusicVolume: 1
     PreviousMusicVolume: 1
     SoundMuted: 0
+    ModernControls: 0
   Players:
     PlayersName:
     - 'Player #1'
@@ -76,6 +77,7 @@ MonoBehaviour:
     - never
     - never
     - never
+    LastPlayedLevel: 000000000000000000000000
     IsEmpty: 010101
     ToUnlock:
     - q: 030000000100000002000000
@@ -88,7 +90,6 @@ MonoBehaviour:
     PuzzlesAmount: 4
   DebugMode: 0
   CurrentPlayerSlot: -1
-  LastPlayedLevel: 0
 --- !u!114 &676138472
 MonoBehaviour:
   m_ObjectHideFlags: 0

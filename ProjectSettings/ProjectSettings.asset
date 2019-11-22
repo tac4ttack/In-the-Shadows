@@ -40,7 +40,7 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos:
-  - logo: {fileID: 21300000, guid: ab23d286d1eda4de9bfddddd7d63a804, type: 3}
+  - logo: {fileID: 21300000, guid: fd83e6838f6234d5482305d163f85909, type: 3}
     duration: 2
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
@@ -252,7 +252,8 @@ PlayerSettings:
     height: 180
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
-  resolutionDialogBanner: {fileID: 0}
+  resolutionDialogBanner: {fileID: 2800000, guid: fd83e6838f6234d5482305d163f85909,
+    type: 3}
   m_BuildTargetIcons:
   - m_BuildTarget: 
     m_Icons:
@@ -513,7 +514,7 @@ PlayerSettings:
   ps4attribEyeToEyeDistanceSettingVR: 0
   ps4IncludedModules: []
   monoEnv: 
-  splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: ecd49b13e14c64ef4ac92df82f21c314,
+  splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: ff57fac73cd1942b3aed2470a14ff35b,
     type: 3}
   splashScreenBackgroundSourcePortrait: {fileID: 0}
   spritePackerPolicy: 

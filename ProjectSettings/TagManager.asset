@@ -47,6 +47,7 @@ TagManager:
   - InGame_WinScreen_ConfirmationPrompt
   - InGame_WinScreen_Yes_Button
   - InGame_WinScreen_No_Button
+  - InGame_WinScreen_Background
   layers:
   - Default
   - TransparentFX
@@ -57,12 +58,12 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - Puzzle
-  - PuzzleShadowSurface
   - IgnoreLight
   - WinScreen_UI
-  - 
-  - 
+  - Puzzle
+  - PuzzlePiece
+  - PuzzleShadowCaster
+  - PuzzleShadowSurface
   - 
   - 
   - 
