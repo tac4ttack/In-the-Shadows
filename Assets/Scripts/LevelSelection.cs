@@ -100,6 +100,15 @@ public class LevelSelection : MonoBehaviour
         Camera.main.transform.position = Levels[_CurrentSelection].Position * _CamAltitude;
         Camera.main.transform.LookAt(_Earth_GO.transform.position);
 
+        if (GameManager.GM.DebugMode)
+        {
+            foreach (LevelMarker level in Levels)
+            {
+                if (level.Status != LevelMarker.LevelStatus.Completed)
+                    level.AnimationController.SetInteger("Status", 1);
+            }
+        }
+
         if (CutsceneQueued())
             LaunchCutscene();
         else
