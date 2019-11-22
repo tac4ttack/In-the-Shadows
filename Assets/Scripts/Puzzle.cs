@@ -17,6 +17,7 @@ public class Puzzle : MonoBehaviour
     private PauseMenu _PauseMenuUI;
     private PostProcessProfile _PostProcess;
     private CanvasGroup _WinScreen_CG;
+    private CanvasGroup _WinScreen_Background_CG;
     private CanvasGroup _ConfirmationPrompt_CG;
 
     private Button _WinScreen_MainMenu_BTN;
@@ -47,6 +48,10 @@ public class Puzzle : MonoBehaviour
         if (_WinScreen_CG == null)
             _WinScreen_CG = GameObject.FindGameObjectWithTag("InGame_WinScreen_UI").GetComponent<CanvasGroup>();
         Assert.IsNotNull(_WinScreen_CG, "Win Screen UI not found in scene!");
+
+        if (_WinScreen_Background_CG == null)
+            _WinScreen_Background_CG = GameObject.FindGameObjectWithTag("InGame_WinScreen_Background").GetComponent<CanvasGroup>();
+        Assert.IsNotNull(_WinScreen_Background_CG, "Win Screen background canvas not found in scene!");
 
         if (_ConfirmationPrompt_CG == null)
             _ConfirmationPrompt_CG = GameObject.FindGameObjectWithTag("InGame_WinScreen_ConfirmationPrompt").GetComponent<CanvasGroup>();
@@ -125,7 +130,7 @@ public class Puzzle : MonoBehaviour
         CheckPuzzlePieces();
         if (_PuzzleValidated && CurrentState == PuzzleStates.Playing && CurrentState != PuzzleStates.WinScreen)
         {
-            PuzzleStateMachine.ChangeState(new WinScreen_PuzzleState(this, _WinScreen_Cam, _WinScreen_CG, _PostProcess));
+            PuzzleStateMachine.ChangeState(new WinScreen_PuzzleState(this, _WinScreen_Cam, _WinScreen_CG, _WinScreen_Background_CG, _PostProcess));
         }
     }
 
@@ -255,13 +260,15 @@ public class WinScreen_PuzzleState : IState
     private Puzzle _PuzzleScript;
     private Camera _WinCam;
     private CanvasGroup _WinScreen_CG;
+    private CanvasGroup _WinScreen_Background_CG;
     private PostProcessProfile _PostProcess;
 
-    public WinScreen_PuzzleState(Puzzle iPuzzleScript, Camera iWinCam, CanvasGroup iWinScreenCG, PostProcessProfile iPostProcess)
+    public WinScreen_PuzzleState(Puzzle iPuzzleScript, Camera iWinCam, CanvasGroup iWinScreenCG, CanvasGroup iWinScreenBackgroundCG, PostProcessProfile iPostProcess)
     {
         _PuzzleScript = iPuzzleScript;
         _WinCam = iWinCam;
         _WinScreen_CG = iWinScreenCG;
+        _WinScreen_Background_CG = iWinScreenBackgroundCG;
         _PostProcess = iPostProcess;
     }
 
@@ -269,6 +276,8 @@ public class WinScreen_PuzzleState : IState
     {
         _PuzzleScript.CurrentState = Puzzle.PuzzleStates.WinScreen;
         _WinCam.enabled = true;
+        _WinScreen_Background_CG.blocksRaycasts = true;
+        GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_WinScreen_Background_CG, 1f, Utility.TransitionSpeed));        
         GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_WinScreen_CG, 1f, Utility.TransitionSpeed));
         _PostProcess.GetSetting<DepthOfField>().focusDistance.value = 0.1f;
 
