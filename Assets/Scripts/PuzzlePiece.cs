@@ -1,7 +1,9 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEditor;
+using UnityEngine.EventSystems;
+using UnityEngine.Assertions;
 
-public class PuzzlePiece : MonoBehaviour
+public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [HideInInspector] public bool isPuzzlePieceValidated;
 
@@ -11,30 +13,46 @@ public class PuzzlePiece : MonoBehaviour
     public float RelativeDistanceSolution;
     public bool CheckMirroredRelative;
 
-    public bool[] RotationConstraints = new bool[3];
-    public bool[] TranslationConstraints = new bool[3];
-
-    private float _RotationSpeed = 42f;
-    private float _TranslationSpeed = 10.5f;
-    private float _OrientationBias = 0.035f;
-    private float _DirectionBias = 0.035f;
-    private float _DistanceBias = 0.035f;
+    [System.Serializable] private class RotationConstraints { public bool x = false; public bool y = false; public bool z = false; }
+    [SerializeField] private RotationConstraints _RotationConstraints;
+    [System.Serializable] private class TranslationConstraints { public bool x = false; public bool y = false; public bool z = false; }
+    [SerializeField] private TranslationConstraints _TranslationConstraints;
+    [SerializeField] [Range(0.0001f, 100.0f)] private float _RotationSpeed = 42f;
+    [SerializeField] [Range(0.0001f, 100.0f)] private float _TranslationSpeed = 10.5f;
+    [SerializeField] [Range(0.0f, 1.0f)] private float _OrientationBias = 0.035f;
+    [SerializeField] [Range(0.0f, 1.0f)] private float _DirectionBias = 0.035f;
+    [SerializeField] [Range(0.0f, 1.0f)] private float _DistanceBias = 0.035f;
     private bool _OrientationOK;
     private bool _RelativePositionOK;
     private Quaternion _CurrentOrientation;
     private Vector3 _CurrentPosition;
     private Puzzle _PuzzleContainer;
+    private MeshRenderer _MeshRenderer;
+
+    void Awake()
+    {
+        if (_PuzzleContainer == null)
+            _PuzzleContainer = this.GetComponentInParent<Puzzle>();
+        Assert.IsNotNull(_PuzzleContainer, "Puzzle script not found in puzzle piece parent!");
+
+        if (_MeshRenderer == null)
+            _MeshRenderer = this.GetComponent<MeshRenderer>();
+        Assert.IsNotNull(_MeshRenderer, "Mesh renderer component not found in puzzle piece game object!");
+
+
+        _MeshRenderer.materials[0].color = Color.white;
+    }
 
     void Start()
     {
-        _PuzzleContainer = this.GetComponentInParent<Puzzle>();
         isPuzzlePieceValidated = false;
         _OrientationOK = false;
         _RelativePositionOK = false;
-        RotationConstraints[2] = true;
-        TranslationConstraints[2] = true;
+        _RotationConstraints.z = true;
+        _TranslationConstraints.z = true;
     }
 
+    // DEBUG
     void Update()
     {
         // DEBUG
@@ -43,8 +61,6 @@ public class PuzzlePiece : MonoBehaviour
             Debug.Log(this.gameObject.name);
             Debug.Log(this.gameObject.transform.localRotation);
             Debug.Log(this.gameObject.transform.rotation);
-
-
             // Debug.Log(RelativePuzzlePiece.transform.position - this.gameObject.transform.position);
             // Debug.Log(Vector3.Magnitude(RelativePuzzlePiece.transform.position - this.gameObject.transform.position));            
             // Debug.Log(this.gameObject.transform.localRotation);
@@ -56,45 +72,11 @@ public class PuzzlePiece : MonoBehaviour
     {
         _CurrentOrientation = this.gameObject.transform.localRotation;
         _CurrentPosition = this.gameObject.transform.localPosition;
-
         CheckSolutions();
         isPuzzlePieceValidated = (_OrientationOK && _RelativePositionOK);
     }
 
-    void OnMouseDrag()
-    {
-        // if (!Utility.IsPointerOverUIObject())
-        // {
-        if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift) && !Input.GetMouseButton(1))
-        {
-            if (!RotationConstraints[0])
-            {
-                this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * _RotationSpeed * -1);
-                // this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0), Time.deltaTime * _RotationSpeed);
-                // this.gameObject.transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X"), 0) * Time.deltaTime * _RotationSpeed, Space.Self);
-
-            }
-            if (!RotationConstraints[1])
-            {
-                this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0) * Time.deltaTime * _RotationSpeed);
-                // this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0), Time.deltaTime * _RotationSpeed);
-                // this.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), 0, 0), Time.deltaTime * _RotationSpeed, Space.Self);
-            }
-        }
-
-        if (Input.GetMouseButton(1) || (!Input.GetMouseButton(1) && Input.GetMouseButton(0) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))))
-        {
-            if (!TranslationConstraints[0])
-            {
-                this.gameObject.transform.Translate(new Vector3(Input.GetAxis("Mouse X"), 0, 0) * Time.deltaTime * _TranslationSpeed * -1, Space.World);
-            }
-            if (!TranslationConstraints[1])
-            {
-                this.gameObject.transform.Translate(new Vector3(0, Input.GetAxis("Mouse Y"), 0) * Time.deltaTime * _TranslationSpeed, Space.World);
-            }
-        }
-        // }
-    }
+    #region Solution Check
 
     private void CheckSolutions()
     {
@@ -185,4 +167,83 @@ public class PuzzlePiece : MonoBehaviour
             }
         }
     }
+
+    #endregion
+
+    # region Mesh Manipulatio
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        _MeshRenderer.materials[0].color = Color.green;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (_PuzzleContainer.CurrentState == Puzzle.PuzzleStates.WinScreen)
+            return;
+
+        if (GameManager.GM.Settings.ModernControls)
+        {
+            if (eventData.button == PointerEventData.InputButton.Left)
+            {
+                this.gameObject.transform.Rotate(ComputeRotation(0), Time.deltaTime * _RotationSpeed, Space.Self);
+            }
+            else if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                this.gameObject.transform.Translate(ComputeTranslation(0).normalized * Time.deltaTime * _TranslationSpeed, Space.World);
+            }
+        }
+        else
+        {
+            if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftShift))
+            {
+                  this.gameObject.transform.Translate(ComputeTranslation(0).normalized * Time.deltaTime * _TranslationSpeed, Space.World);
+            }
+            else if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.LeftControl))
+            {
+                this.gameObject.transform.Rotate(ComputeRotation(1), Time.deltaTime * _RotationSpeed, Space.Self);
+            }
+            else if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftShift))
+            {
+                this.gameObject.transform.Rotate(ComputeRotation(2), Time.deltaTime * _RotationSpeed, Space.Self);
+            }
+        }
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        _MeshRenderer.materials[0].color = Color.white;
+    }
+
+    private Vector3 ComputeRotation(int iMod)
+    {
+        Vector3 newRotation = Vector3.zero;
+
+        if (!_RotationConstraints.y && iMod != 2)
+        {
+            newRotation.y = Input.GetAxis("Mouse X") * -1f;
+        }
+        if (!_RotationConstraints.x && iMod != 1)
+        {
+            newRotation.x = Input.GetAxis("Mouse Y");
+        }
+        return newRotation;
+    }
+
+    private Vector3 ComputeTranslation(int iMod)
+    {
+        Vector3 newTranslation = Vector3.zero;
+
+        if (!_TranslationConstraints.y)
+        {
+            newTranslation.y = Input.GetAxis("Mouse Y");
+        }
+        if (!_TranslationConstraints.x)
+        {
+            newTranslation.x = Input.GetAxis("Mouse X") * -1f;
+        }
+        return newTranslation;
+    }
+
+    #endregion
 }

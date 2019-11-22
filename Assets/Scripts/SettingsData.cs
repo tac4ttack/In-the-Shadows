@@ -14,6 +14,7 @@ public class SettingsData
     public float MusicVolume;
     public float PreviousMusicVolume;
     public bool SoundMuted;
+    public bool ModernControls;
     # endregion
 
     public SettingsData()
@@ -25,6 +26,7 @@ public class SettingsData
         MusicVolume = DefaultMusicVolume;
         PreviousMusicVolume = DefaultMusicVolume;
         SoundMuted = false;
+        ModernControls = true;
     }
 
     public SettingsData(SettingsData iData)
@@ -36,5 +38,6 @@ public class SettingsData
         MusicVolume = iData.MusicVolume;
         PreviousMusicVolume = iData.PreviousMusicVolume;
         SoundMuted = iData.SoundMuted;
+        ModernControls = iData.ModernControls;
     }
 }
