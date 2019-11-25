@@ -11,14 +11,12 @@ TagManager:
   - MainMenu_MainPanel
   - MainMenu_MainButtonsPanel
   - MainMenu_PlayPanel
-  - MainMenu_SettingsPanel
   - MainMenu_CreditsPanel
   - MainMenu_SpaceSystem
   - MainMenu_DebugModeToggle
   - MainMenu_PressAnyKeyText
   - PauseMenu_Background
   - PauseMenu_Panel
-  - PauseMenu_SettingsPanel
   - PauseMenu_RestartButton
   - PauseMenu_AbortButton
   - PauseMenu_UI
@@ -48,6 +46,17 @@ TagManager:
   - InGame_WinScreen_Yes_Button
   - InGame_WinScreen_No_Button
   - InGame_WinScreen_Background
+  - Settings_MasterVolume_Text
+  - Settings_MasterVolume_Slider
+  - Settings_SFXVolume_Text
+  - Settings_SFXVolume_Slider
+  - Settings_MusicVolume_Text
+  - Settings_MusicVolume_Slider
+  - Settings_Mute_Checkbox
+  - Settings_FPSCounter_Checkbox
+  - Settings_MouseControls_Checkbox
+  - Settings_Panel
+  - Settings_FXAA_Checkbox
   layers:
   - Default
   - TransparentFX
