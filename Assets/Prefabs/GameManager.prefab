@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5046778860003269956}
   - component: {fileID: 3864221782368030891}
   - component: {fileID: 676138472}
+  - component: {fileID: 4058333739513258335}
   - component: {fileID: 676138470}
   - component: {fileID: 676138471}
   m_Layer: 0
@@ -47,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SM: {fileID: 0}
+  PM: {fileID: 0}
   CurrentState: 0
   Settings:
     DefaultMasterVolume: 1
@@ -59,7 +61,9 @@ MonoBehaviour:
     MusicVolume: 1
     PreviousMusicVolume: 1
     SoundMuted: 0
-    ModernControls: 0
+    MouseControls: 1
+    FPSCounter: 0
+    FXAAEnabled: 1
   Players:
     PlayersName:
     - 'Player #1'
@@ -110,6 +114,18 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f37694c45be5a4ac1863332dd47cd05c, type: 3}
   MusicSrc: {fileID: 0}
   SfxSrc: {fileID: 0}
+--- !u!114 &4058333739513258335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4047314277941617353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5961c98f8cd6b427e8c8b09a6a7604c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!82 &676138470
 AudioSource:
   m_ObjectHideFlags: 0
