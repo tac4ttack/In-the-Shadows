@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [HideInInspector] public static GameManager GM { get; private set; }
     public SoundManager SM;
+    public PostProcessManager PM;
 
     public StateMachine GameStateMachine = new StateMachine();
     public enum GameStates { TitleScreen = 0, MainMenu, LevelSelection, InGame };
@@ -32,7 +33,11 @@ public class GameManager : MonoBehaviour
 
         if (SM == null)
             SM = this.GetComponent<SoundManager>();
-        Assert.IsNotNull(SM, "SoundManager not found!");
+        Assert.IsNotNull(SM, "Sound Manager not found!");
+
+        if (PM == null)
+            PM = this.GetComponent<PostProcessManager>();
+        Assert.IsNotNull(PM, "Postprocess Manager not found!");
 
         Settings = SaveSystem.LoadSettings();
         if (Settings == null)
