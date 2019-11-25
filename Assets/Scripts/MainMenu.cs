@@ -43,7 +43,7 @@ public class MainMenu : MonoBehaviour
         Assert.IsNotNull(PlayPanel_CG, "Play Panel Canvas group not found!");
 
         if (SettingsPanel_CG == null)
-            SettingsPanel_CG = GameObject.FindGameObjectWithTag("MainMenu_SettingsPanel").GetComponent<CanvasGroup>();
+            SettingsPanel_CG = GameObject.FindGameObjectWithTag("Settings_Panel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(SettingsPanel_CG, "Settings Canvas group not found!");
 
         if (CreditsPanel_CG == null)

@@ -182,7 +182,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         if (_PuzzleContainer.CurrentState == Puzzle.PuzzleStates.WinScreen)
             return;
 
-        if (GameManager.GM.Settings.ModernControls)
+        if (GameManager.GM.Settings.MouseControls)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
             {

@@ -36,7 +36,7 @@ public class PauseMenu : MonoBehaviour
         Assert.IsNotNull(PauseMenu_CG, "Pause Menu Canvas group not found!");
 
         if (Settings_CG == null)
-            Settings_CG = GameObject.FindGameObjectWithTag("PauseMenu_SettingsPanel").GetComponent<CanvasGroup>();
+            Settings_CG = GameObject.FindGameObjectWithTag("Settings_Panel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(Settings_CG, "Settings Canvas group not found!");
 
         if (ConfirmationPrompt_CG == null)
