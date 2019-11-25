@@ -15,23 +15,23 @@ public class NewGameDialog : MonoBehaviour
 
     void Awake()
     {
-        if (!PlayPanelCanvas)
+        if (PlayPanelCanvas == null)
             PlayPanelCanvas = GameObject.Find("Play_Panel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(PlayPanelCanvas, "Play panel canvas group not found!");
 
-        if (!NewGameDialogTitle)
+        if (NewGameDialogTitle == null)
             NewGameDialogTitle = this.gameObject.transform.Find("NewGameDialogTitle").GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(NewGameDialogTitle, "New game title text GameObject not found!");
 
-        if (!PlayerNameInput)
+        if (PlayerNameInput == null)
             PlayerNameInput = this.gameObject.transform.Find("PlayerNameInputfield").GetComponent<TMP_InputField>();
         Assert.IsNotNull(PlayerNameInput, "New player name input field not found!");
 
-        if (!TutorialToggle)
+        if (TutorialToggle == null)
             TutorialToggle = this.gameObject.transform.Find("Bottom").Find("Bottom_left").Find("SkipTutorial_Checkbox").GetComponent<Toggle>();
         Assert.IsNotNull(TutorialToggle, "Tutorial skip toggle button not found!");
 
-        if (!CreateButton)
+        if (CreateButton == null)
             CreateButton = this.gameObject.transform.Find("Bottom").Find("Bottom_right").Find("NewGameCreate_Button").GetComponent<Button>();
         Assert.IsNotNull(CreateButton, "New game create button not found!");
     }

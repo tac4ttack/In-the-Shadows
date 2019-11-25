@@ -31,34 +31,34 @@ public class PlayerSlot : MonoBehaviour
             _CurrentSlot.SetActive(false);
         }
 
-        if (!EmptyText_GO)
+        if (EmptyText_GO == null)
             EmptyText_GO = _CurrentSlot.transform.Find("Empty_Text").gameObject;
         Assert.IsNotNull(EmptyText_GO, "Empty placeholder text not found in slot \"" + _CurrentSlot.name + "\"");
 
-        if (!PlayerSlotInfo_GO)
+        if (PlayerSlotInfo_GO == null)
             PlayerSlotInfo_GO = _CurrentSlot.transform.Find("PlayerSlotInfo").gameObject;
 
-        if (!PlayerName_TXT)
+        if (PlayerName_TXT == null)
             PlayerName_TXT = PlayerSlotInfo_GO.transform.Find("PlayerName_Text").GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(PlayerName_TXT, "Player name text not found in slot \"" + _CurrentSlot.name + "\"");
 
-        if (!CompletionRadial_IMG)
+        if (CompletionRadial_IMG == null)
             CompletionRadial_IMG = PlayerSlotInfo_GO.transform.Find("Progression_Radial_Back").Find("Progression_Radial").GetComponent<Image>();
         Assert.IsNotNull(CompletionRadial_IMG, "Completion radial sprite not found in slot \"" + _CurrentSlot.name + "\"");
 
-        if (!CompletionPercentage_TXT)
+        if (CompletionPercentage_TXT == null)
             CompletionPercentage_TXT = CompletionRadial_IMG.transform.Find("Progression_Value").GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(CompletionPercentage_TXT, "Completion percentage text not found in slot \"" + _CurrentSlot.name + "\"");
 
-        if (!LastPlayed_TXT)
+        if (LastPlayed_TXT == null)
             LastPlayed_TXT = PlayerSlotInfo_GO.transform.Find("Bottom").Find("Bottom_left").Find("LastPlayed_Text").GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(LastPlayed_TXT, "Last played text not found in slot \"" + _CurrentSlot.name + "\"");
 
-        if (!ClearSlot_BTN)
+        if (ClearSlot_BTN == null)
             ClearSlot_BTN = PlayerSlotInfo_GO.transform.Find("Bottom").Find("Bottom_right").Find("ClearSlot_Button").GetComponent<Button>();
         Assert.IsNotNull(ClearSlot_BTN, "Clear slot button not found in slot \"" + _CurrentSlot.name + "\"");
 
-        if (!_MainMenuScript)
+        if (_MainMenuScript == null)
             _MainMenuScript = GameObject.FindGameObjectWithTag("MainMenu_UI").GetComponent<MainMenu>();
         Assert.IsNotNull(_MainMenuScript, "Main Menu Script instance not found!");
     }
