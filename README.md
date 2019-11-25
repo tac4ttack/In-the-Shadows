@@ -20,6 +20,8 @@ Dans un premier temps je tiens Ã  avoir un build fonctionnel avant de chercher Ã
 - [tool][used] Blender:
  https://www.blender.org
 
+- [tool][package manager][used] Post Processing
+
 - [script][used][to be rewritten] Low Poly Water:
  http://viclw17.github.io/2016/03/29/low-poly-water/
 
@@ -44,12 +46,11 @@ Dans un premier temps je tiens Ã  avoir un build fonctionnel avant de chercher Ã
 - [file][used] Low Poly Earth v2: 
  https://sketchfab.com/3d-models/low-poly-earthv2-31c7f11f8bfa4ef79949a4ee824ae81f#download
 
+- [file][used?] Elephant: 
+ https://sketchfab.com/3d-models/elephant-566dc22018e44c229a3145425c17bfb1
 
 
 
-
-
-- [package manager][used?] Post Processing
 
 - [file][used?] Low Poly Room: 
  https://sketchfab.com/3d-models/low-poly-room-6efd70b753f24ed2b12541e43154ffdd
