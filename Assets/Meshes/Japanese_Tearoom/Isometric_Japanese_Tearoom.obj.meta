@@ -1,0 +1,456 @@
+fileFormatVersion: 2
+guid: dfc9233d3d4124ed686ced5358875294
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: LowPoly_TeaRoom_Bowl
+    100004: LowPoly_TeaRoom_Cali
+    100006: LowPoly_TeaRoom_Floor
+    100008: LowPoly_TeaRoom_FloorPlanks
+    100010: LowPoly_TeaRoom_Flower_A
+    100012: LowPoly_TeaRoom_Flower_B
+    100014: LowPoly_TeaRoom_Flower_C
+    100016: LowPoly_TeaRoom_Flower_D
+    100018: LowPoly_TeaRoom_Flower_E
+    100020: LowPoly_TeaRoom_FlowerBud_A
+    100022: LowPoly_TeaRoom_FlowerBud_B
+    100024: LowPoly_TeaRoom_FlowerBud_C
+    100026: LowPoly_TeaRoom_FlowerLeaf
+    100028: LowPoly_TeaRoom_FlowerStem_A
+    100030: LowPoly_TeaRoom_FlowerStem_B
+    100032: LowPoly_TeaRoom_FlowerStem_C
+    100034: LowPoly_TeaRoom_FlowerStem_D
+    100036: LowPoly_TeaRoom_FlowerStem_E
+    100038: LowPoly_TeaRoom_Pillow_Blue
+    100040: LowPoly_TeaRoom_Pillow_Green
+    100042: LowPoly_TeaRoom_Pillow_Pink
+    100044: LowPoly_TeaRoom_Pillow_Purple
+    100046: LowPoly_TeaRoom_TeaCups
+    100048: LowPoly_TeaRoom_TeaCupsTray
+    100050: LowPoly_TeaRoom_TeaTable
+    100052: LowPoly_TeaRoom_TeaTableFloor
+    100054: LowPoly_TeaRoom_Vase
+    100056: LowPoly_TeaRoom_WallPainting
+    100058: LowPoly_TeaRoom_Walls
+    100060: LowPoly_TeaRoom_WallsBeam
+    100062: LowPoly_TeaRoom_Window
+    100064: LowPoly_TeaRoom_Window_Round
+    100066: LowPoly_TeaRoom_WindowWoodFrame
+    400000: //RootNode
+    400002: LowPoly_TeaRoom_Bowl
+    400004: LowPoly_TeaRoom_Cali
+    400006: LowPoly_TeaRoom_Floor
+    400008: LowPoly_TeaRoom_FloorPlanks
+    400010: LowPoly_TeaRoom_Flower_A
+    400012: LowPoly_TeaRoom_Flower_B
+    400014: LowPoly_TeaRoom_Flower_C
+    400016: LowPoly_TeaRoom_Flower_D
+    400018: LowPoly_TeaRoom_Flower_E
+    400020: LowPoly_TeaRoom_FlowerBud_A
+    400022: LowPoly_TeaRoom_FlowerBud_B
+    400024: LowPoly_TeaRoom_FlowerBud_C
+    400026: LowPoly_TeaRoom_FlowerLeaf
+    400028: LowPoly_TeaRoom_FlowerStem_A
+    400030: LowPoly_TeaRoom_FlowerStem_B
+    400032: LowPoly_TeaRoom_FlowerStem_C
+    400034: LowPoly_TeaRoom_FlowerStem_D
+    400036: LowPoly_TeaRoom_FlowerStem_E
+    400038: LowPoly_TeaRoom_Pillow_Blue
+    400040: LowPoly_TeaRoom_Pillow_Green
+    400042: LowPoly_TeaRoom_Pillow_Pink
+    400044: LowPoly_TeaRoom_Pillow_Purple
+    400046: LowPoly_TeaRoom_TeaCups
+    400048: LowPoly_TeaRoom_TeaCupsTray
+    400050: LowPoly_TeaRoom_TeaTable
+    400052: LowPoly_TeaRoom_TeaTableFloor
+    400054: LowPoly_TeaRoom_Vase
+    400056: LowPoly_TeaRoom_WallPainting
+    400058: LowPoly_TeaRoom_Walls
+    400060: LowPoly_TeaRoom_WallsBeam
+    400062: LowPoly_TeaRoom_Window
+    400064: LowPoly_TeaRoom_Window_Round
+    400066: LowPoly_TeaRoom_WindowWoodFrame
+    2100000: LowPoly_TeaRoom_BowlMat
+    2100002: LowPoly_TeaRoom_CaliMat
+    2100004: LowPoly_TeaRoom_FloorMat
+    2100006: LowPoly_TeaRoom_FloorPlanksMat
+    2100008: LowPoly_TeaRoom_Flower_AMat
+    2100010: LowPoly_TeaRoom_Flower_BMat
+    2100012: LowPoly_TeaRoom_Flower_CMat
+    2100014: LowPoly_TeaRoom_Flower_DMat
+    2100016: LowPoly_TeaRoom_Flower_EMat
+    2100018: LowPoly_TeaRoom_FlowerBud_AMat
+    2100020: LowPoly_TeaRoom_FlowerBud_BMat
+    2100022: LowPoly_TeaRoom_FlowerBud_CMat
+    2100024: LowPoly_TeaRoom_FlowerLeafMat
+    2100026: LowPoly_TeaRoom_FlowerStem_AMat
+    2100028: LowPoly_TeaRoom_FlowerStem_BMat
+    2100030: LowPoly_TeaRoom_FlowerStem_CMat
+    2100032: LowPoly_TeaRoom_FlowerStem_DMat
+    2100034: LowPoly_TeaRoom_FlowerStem_EMat
+    2100036: LowPoly_TeaRoom_Pillow_BlueMat
+    2100038: LowPoly_TeaRoom_Pillow_GreenMat
+    2100040: LowPoly_TeaRoom_Pillow_PinkMat
+    2100042: LowPoly_TeaRoom_Pillow_PurpleMat
+    2100044: LowPoly_TeaRoom_TeaCupsMat
+    2100046: LowPoly_TeaRoom_TeaCupsTrayMat
+    2100048: LowPoly_TeaRoom_TeaTableMat
+    2100050: LowPoly_TeaRoom_TeaTableFloorMat
+    2100052: LowPoly_TeaRoom_VaseMat
+    2100054: LowPoly_TeaRoom_WallPaintingMat
+    2100056: LowPoly_TeaRoom_WallsMat
+    2100058: LowPoly_TeaRoom_WallsBeamMat
+    2100060: LowPoly_TeaRoom_WindowMat
+    2100062: LowPoly_TeaRoom_Window_RoundMat
+    2100064: LowPoly_TeaRoom_WindowWoodFrameMat
+    2300000: LowPoly_TeaRoom_Bowl
+    2300002: LowPoly_TeaRoom_Cali
+    2300004: LowPoly_TeaRoom_Floor
+    2300006: LowPoly_TeaRoom_FloorPlanks
+    2300008: LowPoly_TeaRoom_Flower_A
+    2300010: LowPoly_TeaRoom_Flower_B
+    2300012: LowPoly_TeaRoom_Flower_C
+    2300014: LowPoly_TeaRoom_Flower_D
+    2300016: LowPoly_TeaRoom_Flower_E
+    2300018: LowPoly_TeaRoom_FlowerBud_A
+    2300020: LowPoly_TeaRoom_FlowerBud_B
+    2300022: LowPoly_TeaRoom_FlowerBud_C
+    2300024: LowPoly_TeaRoom_FlowerLeaf
+    2300026: LowPoly_TeaRoom_FlowerStem_A
+    2300028: LowPoly_TeaRoom_FlowerStem_B
+    2300030: LowPoly_TeaRoom_FlowerStem_C
+    2300032: LowPoly_TeaRoom_FlowerStem_D
+    2300034: LowPoly_TeaRoom_FlowerStem_E
+    2300036: LowPoly_TeaRoom_Pillow_Blue
+    2300038: LowPoly_TeaRoom_Pillow_Green
+    2300040: LowPoly_TeaRoom_Pillow_Pink
+    2300042: LowPoly_TeaRoom_Pillow_Purple
+    2300044: LowPoly_TeaRoom_TeaCups
+    2300046: LowPoly_TeaRoom_TeaCupsTray
+    2300048: LowPoly_TeaRoom_TeaTable
+    2300050: LowPoly_TeaRoom_TeaTableFloor
+    2300052: LowPoly_TeaRoom_Vase
+    2300054: LowPoly_TeaRoom_WallPainting
+    2300056: LowPoly_TeaRoom_Walls
+    2300058: LowPoly_TeaRoom_WallsBeam
+    2300060: LowPoly_TeaRoom_Window
+    2300062: LowPoly_TeaRoom_Window_Round
+    2300064: LowPoly_TeaRoom_WindowWoodFrame
+    3300000: LowPoly_TeaRoom_Bowl
+    3300002: LowPoly_TeaRoom_Cali
+    3300004: LowPoly_TeaRoom_Floor
+    3300006: LowPoly_TeaRoom_FloorPlanks
+    3300008: LowPoly_TeaRoom_Flower_A
+    3300010: LowPoly_TeaRoom_Flower_B
+    3300012: LowPoly_TeaRoom_Flower_C
+    3300014: LowPoly_TeaRoom_Flower_D
+    3300016: LowPoly_TeaRoom_Flower_E
+    3300018: LowPoly_TeaRoom_FlowerBud_A
+    3300020: LowPoly_TeaRoom_FlowerBud_B
+    3300022: LowPoly_TeaRoom_FlowerBud_C
+    3300024: LowPoly_TeaRoom_FlowerLeaf
+    3300026: LowPoly_TeaRoom_FlowerStem_A
+    3300028: LowPoly_TeaRoom_FlowerStem_B
+    3300030: LowPoly_TeaRoom_FlowerStem_C
+    3300032: LowPoly_TeaRoom_FlowerStem_D
+    3300034: LowPoly_TeaRoom_FlowerStem_E
+    3300036: LowPoly_TeaRoom_Pillow_Blue
+    3300038: LowPoly_TeaRoom_Pillow_Green
+    3300040: LowPoly_TeaRoom_Pillow_Pink
+    3300042: LowPoly_TeaRoom_Pillow_Purple
+    3300044: LowPoly_TeaRoom_TeaCups
+    3300046: LowPoly_TeaRoom_TeaCupsTray
+    3300048: LowPoly_TeaRoom_TeaTable
+    3300050: LowPoly_TeaRoom_TeaTableFloor
+    3300052: LowPoly_TeaRoom_Vase
+    3300054: LowPoly_TeaRoom_WallPainting
+    3300056: LowPoly_TeaRoom_Walls
+    3300058: LowPoly_TeaRoom_WallsBeam
+    3300060: LowPoly_TeaRoom_Window
+    3300062: LowPoly_TeaRoom_Window_Round
+    3300064: LowPoly_TeaRoom_WindowWoodFrame
+    4300000: LowPoly_TeaRoom_Bowl
+    4300002: LowPoly_TeaRoom_Cali
+    4300004: LowPoly_TeaRoom_Floor
+    4300006: LowPoly_TeaRoom_FloorPlanks
+    4300008: LowPoly_TeaRoom_Flower_A
+    4300010: LowPoly_TeaRoom_Flower_B
+    4300012: LowPoly_TeaRoom_Flower_C
+    4300014: LowPoly_TeaRoom_Flower_D
+    4300016: LowPoly_TeaRoom_Flower_E
+    4300018: LowPoly_TeaRoom_FlowerBud_A
+    4300020: LowPoly_TeaRoom_FlowerBud_B
+    4300022: LowPoly_TeaRoom_FlowerBud_C
+    4300024: LowPoly_TeaRoom_FlowerLeaf
+    4300026: LowPoly_TeaRoom_FlowerStem_A
+    4300028: LowPoly_TeaRoom_FlowerStem_B
+    4300030: LowPoly_TeaRoom_FlowerStem_C
+    4300032: LowPoly_TeaRoom_FlowerStem_D
+    4300034: LowPoly_TeaRoom_FlowerStem_E
+    4300036: LowPoly_TeaRoom_Pillow_Blue
+    4300038: LowPoly_TeaRoom_Pillow_Green
+    4300040: LowPoly_TeaRoom_Pillow_Pink
+    4300042: LowPoly_TeaRoom_Pillow_Purple
+    4300044: LowPoly_TeaRoom_TeaCups
+    4300046: LowPoly_TeaRoom_TeaCupsTray
+    4300048: LowPoly_TeaRoom_TeaTable
+    4300050: LowPoly_TeaRoom_TeaTableFloor
+    4300052: LowPoly_TeaRoom_Vase
+    4300054: LowPoly_TeaRoom_WallPainting
+    4300056: LowPoly_TeaRoom_Walls
+    4300058: LowPoly_TeaRoom_WallsBeam
+    4300060: LowPoly_TeaRoom_Window
+    4300062: LowPoly_TeaRoom_Window_Round
+    4300064: LowPoly_TeaRoom_WindowWoodFrame
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_BowlMat
+    second: {fileID: 2100000, guid: a097eb95c98f8442a8037536d9ae61b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_CaliMat
+    second: {fileID: 2100000, guid: ae64e7d9e258949f2b17d5152d5275a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FloorMat
+    second: {fileID: 2100000, guid: 7e9510acfbdb342d9b283bdfc2a2c169, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FloorPlanksMat
+    second: {fileID: 2100000, guid: 6bcbda1ea7e344ba88847e220dfa9676, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerBud_AMat
+    second: {fileID: 2100000, guid: 081dd90812330422abba5663ea40768e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerBud_BMat
+    second: {fileID: 2100000, guid: 509b16d5535cb4ffca43c0b27eca5bd6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerBud_CMat
+    second: {fileID: 2100000, guid: 280d6a8faeca9429b914bdad9d502373, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerLeafMat
+    second: {fileID: 2100000, guid: e774996739a8244d3883bd41faa5933a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerStem_AMat
+    second: {fileID: 2100000, guid: f4494b2fca48e4e4db0d5bc91382475a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerStem_BMat
+    second: {fileID: 2100000, guid: 659df8e675a134fe280c070f4ddeab49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerStem_CMat
+    second: {fileID: 2100000, guid: 4334ea579d80741329b670a7b14ad54d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerStem_DMat
+    second: {fileID: 2100000, guid: 6af28215db45b4af98d9402c64235c59, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerStem_EMat
+    second: {fileID: 2100000, guid: f98a539a60d4b464cbc8e8143a7e173e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Flower_AMat
+    second: {fileID: 2100000, guid: 64c77139db9b947279162a73128c0729, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Flower_BMat
+    second: {fileID: 2100000, guid: 89419c849fa584f7386e522d24376b3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Flower_CMat
+    second: {fileID: 2100000, guid: 9841e343a96d94aab934d396f7f2b1e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Flower_DMat
+    second: {fileID: 2100000, guid: eef3b13341621406692de81337db2406, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Flower_EMat
+    second: {fileID: 2100000, guid: 927621c1bb3b54bd983e2e525ce4d2ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Pillow_BlueMat
+    second: {fileID: 2100000, guid: 633f349a02d464f3fa627da4b900bb52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Pillow_GreenMat
+    second: {fileID: 2100000, guid: c49614e7e5dc2465d8238cbb4942af70, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Pillow_PinkMat
+    second: {fileID: 2100000, guid: 15e2bd4bd16864941ae90f0c380b44a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Pillow_PurpleMat
+    second: {fileID: 2100000, guid: 45242e52a320244c597862a73ad450ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_TeaCupsMat
+    second: {fileID: 2100000, guid: ff27c227c46024095a89b5facc85a7bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_TeaCupsTrayMat
+    second: {fileID: 2100000, guid: 0e204981540d84b379c305c4189aa73b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_TeaTableFloorMat
+    second: {fileID: 2100000, guid: 5216ca60c81b949e0abef20ba5d96efe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_TeaTableMat
+    second: {fileID: 2100000, guid: f16619f5d7d5049aaa77414be4782f7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_VaseMat
+    second: {fileID: 2100000, guid: 8f7b30814eee8463f9e988a68f1fb14b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_WallPaintingMat
+    second: {fileID: 2100000, guid: a69d39e11ebb14585bc48384dc5a861f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_WallsBeamMat
+    second: {fileID: 2100000, guid: 36035bda3ea554c30bb022484f8005d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_WallsMat
+    second: {fileID: 2100000, guid: 8727b07247c3b4d53bea773a5758ac5d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_WindowMat
+    second: {fileID: 2100000, guid: f4b3d471d7319484c9d4e7a5098452ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_WindowWoodFrameMat
+    second: {fileID: 2100000, guid: b1866bccaeb4745f99bb768cb474f90a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Window_RoundMat
+    second: {fileID: 2100000, guid: 188ae44178c6f481b936fe92a19bed9c, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 1
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 1
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
