@@ -41,24 +41,21 @@ Dans un premier temps je tiens Ã  avoir un build fonctionnel avant de chercher Ã
  https://fertile-soil-productions.itch.io/modular-terrain-pack
 
 - [file][used] Low Poly Moon:
- https://sketchfab.com/3d-models/dear-mum-and-dad-i-have-made-it-to-the-moon-fb662136712744f4b1290f65033e8f06#download
+ https://sketchfab.com/3d-models/dear-mum-and-dad-i-have-made-it-to-the-moon-fb662136712744f4b1290f65033e8f06
 
 - [file][used] Low Poly Earth v2: 
- https://sketchfab.com/3d-models/low-poly-earthv2-31c7f11f8bfa4ef79949a4ee824ae81f#download
+ https://sketchfab.com/3d-models/low-poly-earthv2-31c7f11f8bfa4ef79949a4ee824ae81f
 
-- [file][used?] Elephant: 
+- [file][used] Elephant: 
  https://sketchfab.com/3d-models/elephant-566dc22018e44c229a3145425c17bfb1
 
+- [file][used] Isometric Japanese Team Room:
+ https://sketchfab.com/3d-models/isometric-japanese-tea-room-b422c6839b72424ead4c015596c5a7d5
 
 
 
 - [file][used?] Low Poly Room: 
  https://sketchfab.com/3d-models/low-poly-room-6efd70b753f24ed2b12541e43154ffdd
-
-- [file][used?] Isometric Japanese Team Room:
- https://sketchfab.com/3d-models/isometric-japanese-tea-room-b422c6839b72424ead4c015596c5a7d5#download
-
-
 
 - [file] Tile36:
  https://cc0textures.com/view.php?tex=Tiles36
