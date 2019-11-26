@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using UnityEngine.EventSystems;
 using UnityEngine.Assertions;
 
 public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [HideInInspector] public bool isPuzzlePieceValidated;
+    [HideInInspector] public bool isPuzzlePieceValidated = false;
 
     public Quaternion[] OrientationSolutions;
     public GameObject RelativePuzzlePiece;
@@ -13,44 +12,22 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public float RelativeDistanceSolution;
     public bool CheckMirroredRelative;
 
-    [System.Serializable] private class RotationConstraints { public bool x = false; public bool y = false; public bool z = false; }
+    [System.Serializable] private class RotationConstraints { public bool x = false; public bool y = false; public bool z = true; }
     [SerializeField] private RotationConstraints _RotationConstraints;
-    [System.Serializable] private class TranslationConstraints { public bool x = false; public bool y = false; public bool z = false; }
+    [System.Serializable] private class TranslationConstraints { public bool x = true; public bool y = true; public bool z = true; }
     [SerializeField] private TranslationConstraints _TranslationConstraints;
     [SerializeField] [Range(0.0001f, 100.0f)] private float _RotationSpeed = 42f;
     [SerializeField] [Range(0.0001f, 100.0f)] private float _TranslationSpeed = 10.5f;
     [SerializeField] [Range(0.0f, 1.0f)] private float _OrientationBias = 0.035f;
     [SerializeField] [Range(0.0f, 1.0f)] private float _DirectionBias = 0.035f;
     [SerializeField] [Range(0.0f, 1.0f)] private float _DistanceBias = 0.035f;
-    private bool _OrientationOK;
-    private bool _RelativePositionOK;
+    private bool _OrientationOK = false;
+    private bool _RelativePositionOK = false;
     private Quaternion _CurrentOrientation;
     private Vector3 _CurrentPosition;
     private Puzzle _PuzzleContainer;
     private MeshRenderer _MeshRenderer;
-
-    void Awake()
-    {
-        if (_PuzzleContainer == null)
-            _PuzzleContainer = this.GetComponentInParent<Puzzle>();
-        Assert.IsNotNull(_PuzzleContainer, "Puzzle script not found in puzzle piece parent!");
-
-        if (_MeshRenderer == null)
-            _MeshRenderer = this.GetComponent<MeshRenderer>();
-        Assert.IsNotNull(_MeshRenderer, "Mesh renderer component not found in puzzle piece game object!");
-
-
-        _MeshRenderer.materials[0].color = Color.white;
-    }
-
-    void Start()
-    {
-        isPuzzlePieceValidated = false;
-        _OrientationOK = false;
-        _RelativePositionOK = false;
-        _RotationConstraints.z = true;
-        _TranslationConstraints.z = true;
-    }
+    private GameObject _AxisHints;
 
     // DEBUG
     void Update()
@@ -67,6 +44,33 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             // Debug.Log("\n");
         }
     }
+
+    void Awake()
+    {
+        if (_AxisHints == null)
+            _AxisHints = GameObject.FindGameObjectWithTag("Axis_Hints");
+        Assert.IsNotNull(_AxisHints, "Axis hints GameObject not found in scene!");
+        _AxisHints.SetActive(false);
+
+        if (_PuzzleContainer == null)
+            _PuzzleContainer = this.GetComponentInParent<Puzzle>();
+        Assert.IsNotNull(_PuzzleContainer, "Puzzle script not found in puzzle piece parent!");
+
+        if (_MeshRenderer == null)
+            _MeshRenderer = this.GetComponentInChildren<MeshRenderer>();
+            // _MeshRenderer = this.GetComponent<MeshRenderer>();
+        Assert.IsNotNull(_MeshRenderer, "Mesh renderer component not found in puzzle piece game object!");
+
+        _MeshRenderer.materials[0].color = Color.white;
+    }
+
+    // Init at declaration
+    // void Start()
+    // {
+    //     isPuzzlePieceValidated = false;
+    //     _OrientationOK = false;
+    //     _RelativePositionOK = false;
+    // }
 
     void FixedUpdate()
     {
@@ -119,7 +123,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         }
         else
         {
-            _OrientationOK = true;
+            _OrientationOK = false;
         }
     }
 
@@ -175,6 +179,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnBeginDrag(PointerEventData eventData)
     {
         _MeshRenderer.materials[0].color = Color.green;
+        _AxisHints.SetActive(true);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -182,6 +187,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         if (_PuzzleContainer.CurrentState == Puzzle.PuzzleStates.WinScreen)
             return;
 
+        
         if (GameManager.GM.Settings.MouseControls)
         {
             if (eventData.button == PointerEventData.InputButton.Left)
@@ -190,14 +196,14 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             }
             else if (eventData.button == PointerEventData.InputButton.Right)
             {
-                this.gameObject.transform.Translate(ComputeTranslation(0).normalized * Time.deltaTime * _TranslationSpeed, Space.World);
+                this.gameObject.transform.Translate(ComputeTranslation(0).normalized * Time.deltaTime * _TranslationSpeed, Space.Self);
             }
         }
         else
         {
             if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftShift))
             {
-                  this.gameObject.transform.Translate(ComputeTranslation(0).normalized * Time.deltaTime * _TranslationSpeed, Space.World);
+                this.gameObject.transform.Translate(ComputeTranslation(0).normalized * Time.deltaTime * _TranslationSpeed, Space.Self);
             }
             else if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.LeftControl))
             {
@@ -208,11 +214,13 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                 this.gameObject.transform.Rotate(ComputeRotation(2), Time.deltaTime * _RotationSpeed, Space.Self);
             }
         }
+        _AxisHints.transform.rotation = this.gameObject.transform.rotation;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         _MeshRenderer.materials[0].color = Color.white;
+        _AxisHints.SetActive(false);
     }
 
     private Vector3 ComputeRotation(int iMod)
@@ -225,7 +233,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         }
         if (!_RotationConstraints.x && iMod != 1)
         {
-            newRotation.x = Input.GetAxis("Mouse Y");
+            newRotation.x = Input.GetAxis("Mouse Y") * -1f;
         }
         return newRotation;
     }

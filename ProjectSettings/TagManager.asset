@@ -57,6 +57,7 @@ TagManager:
   - Settings_MouseControls_Checkbox
   - Settings_Panel
   - Settings_FXAA_Checkbox
+  - Axis_Hints
   layers:
   - Default
   - TransparentFX
