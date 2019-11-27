@@ -46,13 +46,18 @@ Dans un premier temps je tiens Ã  avoir un build fonctionnel avant de chercher Ã
 - [file][used] Low Poly Earth v2: 
  https://sketchfab.com/3d-models/low-poly-earthv2-31c7f11f8bfa4ef79949a4ee824ae81f
 
-- [file][used] Elephant: 
+- [file][used] Low Poly Elephant: 
  https://sketchfab.com/3d-models/elephant-566dc22018e44c229a3145425c17bfb1
 
 - [file][used] Isometric Japanese Team Room:
  https://sketchfab.com/3d-models/isometric-japanese-tea-room-b422c6839b72424ead4c015596c5a7d5
 
 
+- [file][used?] Crocodile:
+ https://sketchfab.com/3d-models/crocodile-63c056b2ac3049b594af60313e124e7b
+
+- [file][used?] Low Poly Crocodile:
+ https://sketchfab.com/3d-models/caiman-alligator-lowpoly-1ce91697022a43bd98fed14c8e1dbf27
 
 - [file][used?] Low Poly Room: 
  https://sketchfab.com/3d-models/low-poly-room-6efd70b753f24ed2b12541e43154ffdd
