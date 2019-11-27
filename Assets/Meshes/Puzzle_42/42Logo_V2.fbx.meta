@@ -1,16 +1,22 @@
 fileFormatVersion: 2
-guid: 3815eaf65283f4cc1b3990395182eac5
+guid: 56460922b9978447d99df6c197d4f981
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: No Name
-    2100002: Mat_Elephant_Puzzle
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: elephant
-    4300002: Elephant_Puzzle_V2
+    100000: 2_Logo_Puzzle_V2
+    100002: //RootNode
+    100004: 4_Logo_Puzzle_V2
+    400000: 2_Logo_Puzzle_V2
+    400002: //RootNode
+    400004: 4_Logo_Puzzle_V2
+    2100000: Mat_2_Logo_Puzzle
+    2100002: Mat_4_Logo_Puzzle
+    2300000: 2_Logo_Puzzle_V2
+    2300002: 4_Logo_Puzzle_V2
+    3300000: 2_Logo_Puzzle_V2
+    3300002: 4_Logo_Puzzle_V2
+    4300000: 2_Logo_Puzzle_V2
+    4300002: 4_Logo_Puzzle_V2
   externalObjects: {}
   materials:
     importMaterials: 1
