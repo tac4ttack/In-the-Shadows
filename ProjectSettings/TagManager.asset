@@ -58,6 +58,11 @@ TagManager:
   - Settings_Panel
   - Settings_FXAA_Checkbox
   - Axis_Hints
+  - NewGameDialog_Title_Text
+  - NewGameDialog_PlayerName_Input
+  - NewGameDialog_SkipTutorial_Toggle
+  - NewGameDialog_Create_Button
+  - NewGameDialog_Back_Button
   layers:
   - Default
   - TransparentFX

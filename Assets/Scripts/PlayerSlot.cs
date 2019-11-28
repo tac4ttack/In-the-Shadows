@@ -25,6 +25,10 @@ public class PlayerSlot : MonoBehaviour
         _CurrentSlot = this.gameObject;
         Assert.IsNotNull(_CurrentSlot, "Slot GameObject not found!");
 
+        if (_MainMenuScript == null)
+            _MainMenuScript = GameObject.FindGameObjectWithTag("MainMenu_UI").GetComponent<MainMenu>();
+        Assert.IsNotNull(_MainMenuScript, "Main Menu script not found in scene!");
+
         if (SlotID < 0 || SlotID > 3)
         {
             Debug.LogError("Invalid SlotID for \"" + _CurrentSlot.name + "\" player slot GameObject.\nDesactivating player slot Gameobject.");
@@ -57,10 +61,6 @@ public class PlayerSlot : MonoBehaviour
         if (ClearSlot_BTN == null)
             ClearSlot_BTN = PlayerSlotInfo_GO.transform.Find("Bottom").Find("Bottom_right").Find("ClearSlot_Button").GetComponent<Button>();
         Assert.IsNotNull(ClearSlot_BTN, "Clear slot button not found in slot \"" + _CurrentSlot.name + "\"");
-
-        if (_MainMenuScript == null)
-            _MainMenuScript = GameObject.FindGameObjectWithTag("MainMenu_UI").GetComponent<MainMenu>();
-        Assert.IsNotNull(_MainMenuScript, "Main Menu Script instance not found!");
     }
 
     void Start()

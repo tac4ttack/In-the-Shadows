@@ -277,8 +277,8 @@ public class NewPlayerPrompt_MainMenuState : IState
 
     public void Exit()
     {
-        _NewGameDialog.PlayerNameInput.text = "";
-        _NewGameDialog.TutorialToggle.isOn = false;
+        _NewGameDialog.PlayerName.text = "";
+        _NewGameDialog.TutorialSkip.isOn = false;
         _NewGameDialog.CurrentSlot = -1;
         GameManager.GM.StartCoroutine(Utility.PopOutCanvasGroup(_MainMenu.NewPlayerPrompt_CG, 1f, Utility.TransitionSpeed));
     }
