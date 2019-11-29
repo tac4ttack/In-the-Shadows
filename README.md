@@ -52,6 +52,8 @@ Dans un premier temps je tiens Ã  avoir un build fonctionnel avant de chercher Ã
 - [file][used] Isometric Japanese Team Room:
  https://sketchfab.com/3d-models/isometric-japanese-tea-room-b422c6839b72424ead4c015596c5a7d5
 
+- [script][used] Shadow Drawer:
+ https://github.com/keijiro/ShadowDrawer
 
 - [file][used?] Crocodile:
  https://sketchfab.com/3d-models/crocodile-63c056b2ac3049b594af60313e124e7b
