@@ -5479,7 +5479,7 @@ PrefabInstance:
     - target: {fileID: 6612966248968662360, guid: f82d5f6c7407d4016b597fae7c33452a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 240.85
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6612966248968662360, guid: f82d5f6c7407d4016b597fae7c33452a,
         type: 3}
@@ -6709,7 +6709,7 @@ PrefabInstance:
     - target: {fileID: 6612966248536567097, guid: f82d5f6c7407d4016b597fae7c33452a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 538.4001
+      value: 538.39996
       objectReference: {fileID: 0}
     - target: {fileID: 6612966249717673509, guid: f82d5f6c7407d4016b597fae7c33452a,
         type: 3}
@@ -7331,5 +7331,67 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6612966248968662361, guid: f82d5f6c7407d4016b597fae7c33452a,
+        type: 3}
+      propertyPath: m_TagString
+      value: NewGameDialog_Title_Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612966249611885370, guid: f82d5f6c7407d4016b597fae7c33452a,
+        type: 3}
+      propertyPath: m_TagString
+      value: NewGameDialog_PlayerName_Input
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612966249611885368, guid: f82d5f6c7407d4016b597fae7c33452a,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612966248919499004, guid: f82d5f6c7407d4016b597fae7c33452a,
+        type: 3}
+      propertyPath: m_TagString
+      value: NewGameDialog_Create_Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612966249912988430, guid: f82d5f6c7407d4016b597fae7c33452a,
+        type: 3}
+      propertyPath: m_TagString
+      value: NewGameDialog_SkipTutorial_Toggle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612966250036599271, guid: f82d5f6c7407d4016b597fae7c33452a,
+        type: 3}
+      propertyPath: m_TagString
+      value: NewGameDialog_Back_Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612966248919499002, guid: f82d5f6c7407d4016b597fae7c33452a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612966248919499002, guid: f82d5f6c7407d4016b597fae7c33452a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6612966249332384800}
+    - target: {fileID: 6612966248919499002, guid: f82d5f6c7407d4016b597fae7c33452a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackButtonPress
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612966250036599269, guid: f82d5f6c7407d4016b597fae7c33452a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f82d5f6c7407d4016b597fae7c33452a, type: 3}
+--- !u!114 &6612966249332384800 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6612966249936411285, guid: f82d5f6c7407d4016b597fae7c33452a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6612966249332384799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1615fe62d74894d688c9cc33da2e1d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
