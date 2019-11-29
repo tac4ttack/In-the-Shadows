@@ -27,7 +27,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private Vector3 _CurrentPosition;
     private Puzzle _PuzzleContainer;
     private MeshRenderer _MeshRenderer;
-    private GameObject _AxisHints;
+    private AxisHints _AxisHints;
 
     // DEBUG
     void Update()
@@ -35,22 +35,20 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         // DEBUG
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log(this.gameObject.name);
-            Debug.Log(this.gameObject.transform.localRotation);
-            Debug.Log(this.gameObject.transform.rotation);
-            // Debug.Log(RelativePuzzlePiece.transform.position - this.gameObject.transform.position);
-            // Debug.Log(Vector3.Magnitude(RelativePuzzlePiece.transform.position - this.gameObject.transform.position));            
-            // Debug.Log(this.gameObject.transform.localRotation);
-            // Debug.Log("\n");
+            Debug.Log($"Name = {this.gameObject.name}\n"
+                    +$"LocalRotation = {this.gameObject.transform.localRotation}\n"
+                    +$"Rotation = {this.gameObject.transform.rotation}\n"
+                    +$"Relative Position Vector3 = {RelativePuzzlePiece.transform.position - this.gameObject.transform.position}\n"
+                    +$"Relative Distance = {Vector3.Magnitude(RelativePuzzlePiece.transform.position - this.gameObject.transform.position)}\n");
         }
     }
 
     void Awake()
     {
         if (_AxisHints == null)
-            _AxisHints = GameObject.FindGameObjectWithTag("Axis_Hints");
+            _AxisHints = GameObject.FindGameObjectWithTag("Axis_Hints").GetComponent<AxisHints>();
         Assert.IsNotNull(_AxisHints, "Axis hints GameObject not found in scene!");
-        _AxisHints.SetActive(false);
+        _AxisHints.Enable(false);
 
         if (_PuzzleContainer == null)
             _PuzzleContainer = this.GetComponentInParent<Puzzle>();
@@ -179,7 +177,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnBeginDrag(PointerEventData eventData)
     {
         _MeshRenderer.materials[0].color = Color.green;
-        _AxisHints.SetActive(true);
+        _AxisHints.Enable(true);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -220,7 +218,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnEndDrag(PointerEventData eventData)
     {
         _MeshRenderer.materials[0].color = Color.white;
-        _AxisHints.SetActive(false);
+        _AxisHints.Enable(false);
     }
 
     private Vector3 ComputeRotation(int iMod)
