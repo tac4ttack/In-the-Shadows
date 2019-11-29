@@ -37,7 +37,8 @@ public class NewGameDialog : MonoBehaviour
         if (_Create_BTN == null)
             _Create_BTN = GameObject.FindGameObjectWithTag("NewGameDialog_Create_Button").GetComponent<Button>();
         Assert.IsNotNull(_Create_BTN, "New game create button not found!");
-        _Create_BTN.onClick.AddListener(delegate { CreateButtonPress(); _MainMenuScript.BackButtonPress(); });
+        _Create_BTN.onClick.AddListener(delegate { CreateButtonPress(); });
+        _Create_BTN.onClick.AddListener(delegate { _MainMenuScript.BackButtonPress(); });
 
         if (_Back_BTN == null)
             _Back_BTN = GameObject.FindGameObjectWithTag("NewGameDialog_Back_Button").GetComponent<Button>();
