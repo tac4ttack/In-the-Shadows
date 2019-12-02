@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/4_Teapot.unity
     guid: 317431e879c5c457aaa194de296473de
   - enabled: 1
-    path: Assets/Scenes/5_Globe.unity
+    path: Assets/Scenes/5_Crocodile.unity
+    guid: da77b8cc3c3d84b3ba8935b2de185b16
+  - enabled: 1
+    path: Assets/Scenes/6_Globe.unity
     guid: b0d849401a0c94ba8afc42dc5fe055bd
   m_configObjects: {}

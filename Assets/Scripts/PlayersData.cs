@@ -31,7 +31,7 @@ public class PlayersData
     public UnlockQueue[] ToUnlock;
     public CompleteQueue[] ToComplete;
 
-    public int PuzzlesAmount = 4;
+    public int PuzzlesAmount = 5;
 
     public PlayersData()
     {
