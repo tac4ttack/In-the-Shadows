@@ -18,44 +18,13 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _BackTex:
-        m_Texture: {fileID: 2800000, guid: 390dddafb63884bb3a08fd46e04a5892, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DownTex:
-        m_Texture: {fileID: 2800000, guid: e71007f91c30b4a4b94b8d89876d5356, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _FrontTex:
-        m_Texture: {fileID: 2800000, guid: bf091e8f61a0e422ca7095789f906f19, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _LeftTex:
-        m_Texture: {fileID: 2800000, guid: 00320988266c4497894fd37d9b097410, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _RightTex:
-        m_Texture: {fileID: 2800000, guid: 438af9fce22034ec4b922bcc0a0ff59a, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _UpTex:
-        m_Texture: {fileID: 2800000, guid: 39029f2da560d43e9a4dcdb8639542e7, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Floats:
-    - _AtmosphereThickness: 0.42
-    - _Exposure: 1
-    - _Rotation: 0
+    - _AtmosphereThickness: 0.15
+    - _Exposure: 1.3
     - _SunDisk: 2
-    - _SunSize: 0.138
-    - _SunSizeConvergence: 10
+    - _SunSize: 0.04
+    - _SunSizeConvergence: 5
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _GroundColor: {r: 0.10964756, g: 0.24259798, b: 0.3018868, a: 1}
-    - _SkyTint: {r: 0, g: 0.4716981, b: 0.16491121, a: 1}
-    - _Tint: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+    - _GroundColor: {r: 0.097187616, g: 0.16469967, b: 0.2264151, a: 1}
+    - _SkyTint: {r: 0.06112723, g: 0.2509804, b: 0.4716981, a: 1}
