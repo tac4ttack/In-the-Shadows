@@ -66,9 +66,9 @@ MonoBehaviour:
     FXAAEnabled: 1
   Players:
     PlayersName:
-    - 'Player #1'
-    - 'Player #2'
-    - 'Player #3'
+    - Player #1
+    - Player #2
+    - Player #3
     Progression:
     - Level: 010000000000000000000000
     - Level: 010000000000000000000000
