@@ -63,6 +63,7 @@ TagManager:
   - NewGameDialog_SkipTutorial_Toggle
   - NewGameDialog_Create_Button
   - NewGameDialog_Back_Button
+  - InGame_PuzzleLight
   layers:
   - Default
   - TransparentFX
