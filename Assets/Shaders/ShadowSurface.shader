@@ -1,6 +1,9 @@
 Shader "Custom/ShadowSurface"
 {
-    Properties { _ShadowColor ("Color", Color) = (0, 0, 0, 0.6) }
+    Properties
+    {
+        _ShadowColor ("Color", Color) = (0, 0, 0, 0.6)
+    }
 
     CGINCLUDE
     #include "UnityCG.cginc"
@@ -35,7 +38,7 @@ Shader "Custom/ShadowSurface"
         // Depth fill pass
         Pass
         {
-            ColorMask 0
+            ColorMask A
 
             CGPROGRAM
             #pragma vertex vert
