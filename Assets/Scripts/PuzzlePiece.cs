@@ -13,9 +13,9 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public bool CheckMirroredRelative;
 
     [System.Serializable] private class RotationConstraints { public bool x = false; public bool y = false; public bool z = true; }
-    [SerializeField] private RotationConstraints _RotationConstraints;
+    [SerializeField] private RotationConstraints _RotationConstraints = new RotationConstraints();
     [System.Serializable] private class TranslationConstraints { public bool x = true; public bool y = true; public bool z = true; }
-    [SerializeField] private TranslationConstraints _TranslationConstraints;
+    [SerializeField] private TranslationConstraints _TranslationConstraints = new TranslationConstraints();
     [SerializeField] [Range(0.0001f, 100.0f)] private float _RotationSpeed = 42f;
     [SerializeField] [Range(0.0001f, 100.0f)] private float _TranslationSpeed = 10.5f;
     [SerializeField] [Range(0.0f, 1.0f)] private float _OrientationBias = 0.035f;
@@ -135,7 +135,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     */
 
     //  DEBUG -> Need to test if the mirror check is good!
-    //  DEBUG -> Need to adjust the BIASes!
+    //  DEBUG -> Need to adjust the BIASES!
 
     private bool CheckRelativePosition()
     {
@@ -172,7 +172,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     #endregion
 
-    # region Mesh Manipulatio
+    # region Mesh Manipulation
 
     public void OnBeginDrag(PointerEventData eventData)
     {
