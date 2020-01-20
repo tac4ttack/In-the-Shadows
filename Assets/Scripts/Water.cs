@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class LowPolyWater : MonoBehaviour
+public class Water : MonoBehaviour
 {
     public float Scale = 1.0f;
     public Vector2 SinSpeed = new Vector2(1.0f, 1.0f);
