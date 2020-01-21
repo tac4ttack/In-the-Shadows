@@ -11,10 +11,10 @@ Shader "Candle Flame Shader"
 		_CoreColor("Core Color", Color) = (0.6149418,0.9056604,0.2947668,0)
 		_OuterColor("Outer Color", Color) = (0,0.1070013,1,0)
 		_BaseColor("Base Color", Color) = (0,0.7069087,1,0)
-		_NoiseScale("Noise Scale", Range(0 , 1)) = 0
-		_FlameFlickerSpeed("Flame Flicker Speed", Range(0 , 1)) = 0
-		_NoiseSample("Noise Sample", 2D) = "white" {}
-		_WindStrength("Wind Strength", Range(0 , 10)) = 0
+		_NoiseScaler("Noise Scale", Range(0 , 1)) = 0
+		_FlameSpeed("Flame Flicker Speed", Range(0 , 1)) = 0
+		_Noise("Noise Sample", 2D) = "white" {}
+		_Wind("Wind Strength", Range(0 , 10)) = 0
 		_FlameBillboard("Flame Billboard", 2D) = "white" {}
 		_FakeGlow("Fake Glow", Range(0 , 1)) = 0
 		[HideInInspector] _texcoord("", 2D) = "white" {}
@@ -44,27 +44,30 @@ Shader "Candle Flame Shader"
 		uniform float _FakeGlow;
 		uniform float _BrightnessMultiplier;
 
-		uniform float4 _NoiseSample_ST;
-		uniform sampler2D _NoiseSample;
-		uniform float _FlameFlickerSpeed;
-		uniform float _NoiseScale;
-		uniform float _WindStrength;
+		uniform float4 _Noise_ST;
+		uniform sampler2D _Noise;
+		uniform float _FlameSpeed;
+		uniform float _NoiseScaler;
+		uniform float _Wind;
 
 		void vertexDataFunc(inout appdata_full v, out Input o)
 		{
 			UNITY_INITIALIZE_OUTPUT(Input, o);
-			//Calculate new billboard vertex position and normal;
+			
+			// Calculate new billboard vertex position and normal;
 			float3 upCamVec = float3(0, 1, 0);
 			float3 forwardCamVec = -normalize (UNITY_MATRIX_V._m20_m21_m22);
 			float3 rightCamVec = normalize(UNITY_MATRIX_V._m00_m01_m02);
 			float4x4 rotationCamMatrix = float4x4(rightCamVec, 0, upCamVec, 0, forwardCamVec, 0, 0, 0, 0, 1);
+
 			v.normal = normalize(mul(float4(v.normal , 0), rotationCamMatrix)).xyz;
 			v.vertex.x *= length(unity_ObjectToWorld._m00_m10_m20);
 			v.vertex.y *= length(unity_ObjectToWorld._m01_m11_m21);
 			v.vertex.z *= length(unity_ObjectToWorld._m02_m12_m22);
 			v.vertex = mul(v.vertex, rotationCamMatrix);
 			v.vertex.xyz += unity_ObjectToWorld._m03_m13_m23;
-			//Need to nullify rotation inserted by generated surface shader;
+			
+			// Need to nullify rotation inserted by generated surface shader;
 			v.vertex = mul(unity_WorldToObject, v.vertex);
 		}
 
@@ -75,14 +78,18 @@ Shader "Candle Flame Shader"
 
 		void surf(Input i , inout SurfaceOutput o)
 		{
-			float2 appendResult35 = (float2(-_FlameFlickerSpeed , -_FlameFlickerSpeed));
-			float3 ase_worldPos = i.worldPos;
-			float2 appendResult43 = (float2(ase_worldPos.x , ase_worldPos.y));
-			float2 uv0_NoiseSample = i.uv_texcoord * _NoiseSample_ST.xy + _NoiseSample_ST.zw;
-			float2 panner36 = (1.0 * _Time.y * appendResult35 + ((appendResult43 * 0.1) + (_NoiseScale * uv0_NoiseSample)));
-			float4 tex2DNode4 = tex2D(_FlameBillboard, (i.uv_texcoord + (i.uv_texcoord.y * i.uv_texcoord.y * ((tex2D(_NoiseSample, panner36)).rg - float2(0,0)) * _WindStrength)));
+			float2 noiseSample_UV = i.uv_texcoord * _Noise_ST.xy + _Noise_ST.zw;
+			
+			float2 distortionXY =  (1.0 * _Time.y * (float2(-_FlameSpeed , -_FlameSpeed))
+							+ (((float2(i.worldPos.x , i.worldPos.y)) * 0.1)
+							+ (_NoiseScaler * noiseSample_UV)));
+
+			float4 noisedMainTextureSample = tex2D(_FlameBillboard, (i.uv_texcoord + (i.uv_texcoord.y * i.uv_texcoord.y * ((tex2D(_Noise, distortionXY)).rg - float2(0,0)) * _Wind)));
 			float2 uv_FlameBillboard = i.uv_texcoord * _FlameBillboard_ST.xy + _FlameBillboard_ST.zw;
-			o.Emission = (_BrightnessMultiplier * ((tex2DNode4.r * _CoreColor) + (tex2DNode4.g * _OuterColor) + (tex2DNode4.b * _BaseColor) + (tex2D(_FlameBillboard, uv_FlameBillboard).a * _FakeGlow * _OuterColor))).rgb;
+			
+			// We output final color to emission for achieving "glowing + wobble" effect
+			// Emission.RGB = Brightness * ((DistortedMainTexture.Red * CoreColor) + (DistortedMainTexture.Green * OuterColor) + (DistortedMainTexture.Blue * BaseColor) + (UnalteredMainTexture.Alpha * FakeGlow * OuterColor))
+			o.Emission = (_BrightnessMultiplier * ((noisedMainTextureSample.r * _CoreColor) + (noisedMainTextureSample.g * _OuterColor) + (noisedMainTextureSample.b * _BaseColor) + (tex2D(_FlameBillboard, uv_FlameBillboard).a * _FakeGlow * _OuterColor))).rgb;
 			o.Alpha = 1;
 		}
 
