@@ -55,14 +55,17 @@ Dans un premier temps je tiens Ã  avoir un build fonctionnel avant de chercher Ã
 - [script][used] Shadow Drawer:
  https://github.com/keijiro/ShadowDrawer
 
-- [file][used?] Crocodile:
+- [file][used] Low Poly Room: 
+ https://sketchfab.com/3d-models/low-poly-room-6efd70b753f24ed2b12541e43154ffdd
+
+- [file][used] Crocodile:
  https://sketchfab.com/3d-models/crocodile-63c056b2ac3049b594af60313e124e7b
 
-- [file][used?] Low Poly Crocodile:
+- [file][used] Low Poly Crocodile:
  https://sketchfab.com/3d-models/caiman-alligator-lowpoly-1ce91697022a43bd98fed14c8e1dbf27
 
-- [file][used?] Low Poly Room: 
- https://sketchfab.com/3d-models/low-poly-room-6efd70b753f24ed2b12541e43154ffdd
+- [file][used?] Low Poly Clouds:
+ https://sketchfab.com/3d-models/low-poly-cloud-81910476b24d4fc5a73c908d6c2a38a2
 
 - [file] Tile36:
  https://cc0textures.com/view.php?tex=Tiles36
