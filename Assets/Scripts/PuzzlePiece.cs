@@ -38,8 +38,9 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             Debug.Log($"Name = {this.gameObject.name}\n"
                     +$"LocalRotation = {this.gameObject.transform.localRotation}\n"
                     +$"Rotation = {this.gameObject.transform.rotation}\n"
-                    +$"Relative Position Vector3 = {RelativePuzzlePiece.transform.position - this.gameObject.transform.position}\n"
-                    +$"Relative Distance = {Vector3.Magnitude(RelativePuzzlePiece.transform.position - this.gameObject.transform.position)}\n");
+                    // +$"Relative Position Vector3 = {RelativePuzzlePiece.transform.position - this.gameObject.transform.position}\n"
+                    // +$"Relative Distance = {Vector3.Magnitude(RelativePuzzlePiece.transform.position - this.gameObject.transform.position)}\n"
+                    );
         }
     }
 
@@ -48,7 +49,6 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         if (_AxisHints == null)
             _AxisHints = GameObject.FindGameObjectWithTag("Axis_Hints").GetComponent<AxisHints>();
         Assert.IsNotNull(_AxisHints, "Axis hints GameObject not found in scene!");
-        _AxisHints.Enable(false);
 
         if (_PuzzleContainer == null)
             _PuzzleContainer = this.GetComponentInParent<Puzzle>();
@@ -56,19 +56,15 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
         if (_MeshRenderer == null)
             _MeshRenderer = this.GetComponentInChildren<MeshRenderer>();
-            // _MeshRenderer = this.GetComponent<MeshRenderer>();
         Assert.IsNotNull(_MeshRenderer, "Mesh renderer component not found in puzzle piece game object!");
 
-        _MeshRenderer.materials[0].color = Color.white;
     }
 
-    // Init at declaration
-    // void Start()
-    // {
-    //     isPuzzlePieceValidated = false;
-    //     _OrientationOK = false;
-    //     _RelativePositionOK = false;
-    // }
+    void Start()
+    {
+        _AxisHints.Enable(false);
+        _MeshRenderer.materials[0].color = Color.white;
+    }
 
     void FixedUpdate()
     {
