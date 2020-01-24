@@ -26,6 +26,7 @@ public class Puzzle : MonoBehaviour
     private Button _WinScreen_NextLevel_BTN;
     private Button _WinScreen_Prompt_Yes_BTN;
     private Button _WinScreen_Prompt_No_BTN;
+    private ConfettisSpawner _WinScreen_ConfettisSpawner;
 
     [SerializeField] private PuzzlePiece[] _PuzzlePieces;
     [SerializeField] private bool _PuzzleValidated = false;
@@ -76,9 +77,14 @@ public class Puzzle : MonoBehaviour
         if (_WinScreen_Prompt_Yes_BTN == null)
             _WinScreen_Prompt_Yes_BTN = GameObject.FindGameObjectWithTag("InGame_WinScreen_Yes_Button").GetComponent<Button>();
         Assert.IsNotNull(_WinScreen_Prompt_Yes_BTN, "Win screen Yes confirmation prompt button not found in scene!");
+        
         if (_WinScreen_Prompt_No_BTN == null)
             _WinScreen_Prompt_No_BTN = GameObject.FindGameObjectWithTag("InGame_WinScreen_No_Button").GetComponent<Button>();
         Assert.IsNotNull(_WinScreen_Prompt_No_BTN, "Win screen No confirmation prompt button not found in scene!");
+
+        if (_WinScreen_ConfettisSpawner == null)
+            _WinScreen_ConfettisSpawner = GameObject.FindGameObjectWithTag("InGame_ConfettisSpawner").GetComponent<ConfettisSpawner>();
+        Assert.IsNotNull(_WinScreen_ConfettisSpawner, "Win screen confettis spawner not found in scene!");
 
         GameObject[] tmp = GameObject.FindGameObjectsWithTag("InGame_PuzzlePiece");
         _PuzzlePieces = new PuzzlePiece[tmp.Length];
@@ -130,7 +136,7 @@ public class Puzzle : MonoBehaviour
         CheckPuzzlePieces();
         if (_PuzzleValidated && CurrentState == PuzzleStates.Playing && CurrentState != PuzzleStates.WinScreen)
         {
-            PuzzleStateMachine.ChangeState(new WinScreen_PuzzleState(this, _WinScreen_Cam, _WinScreen_CG, _WinScreen_Background_CG, _PostProcess));
+            PuzzleStateMachine.ChangeState(new WinScreen_PuzzleState(this, _WinScreen_Cam, _WinScreen_CG, _WinScreen_Background_CG, _PostProcess, _WinScreen_ConfettisSpawner));
         }
     }
 
@@ -262,14 +268,21 @@ public class WinScreen_PuzzleState : IState
     private CanvasGroup _WinScreen_CG;
     private CanvasGroup _WinScreen_Background_CG;
     private PostProcessProfile _PostProcess;
+    private ConfettisSpawner _ConfettisSpawner;
 
-    public WinScreen_PuzzleState(Puzzle iPuzzleScript, Camera iWinCam, CanvasGroup iWinScreenCG, CanvasGroup iWinScreenBackgroundCG, PostProcessProfile iPostProcess)
+    public WinScreen_PuzzleState(Puzzle iPuzzleScript,
+                                Camera iWinCam,
+                                CanvasGroup iWinScreenCG,
+                                CanvasGroup iWinScreenBackgroundCG,
+                                PostProcessProfile iPostProcess,
+                                ConfettisSpawner iConfettisSpawner)
     {
         _PuzzleScript = iPuzzleScript;
         _WinCam = iWinCam;
         _WinScreen_CG = iWinScreenCG;
         _WinScreen_Background_CG = iWinScreenBackgroundCG;
         _PostProcess = iPostProcess;
+        _ConfettisSpawner = iConfettisSpawner;
     }
 
     public void Enter()
@@ -280,6 +293,7 @@ public class WinScreen_PuzzleState : IState
         GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_WinScreen_Background_CG, 1f, Utility.TransitionSpeed));        
         GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_WinScreen_CG, 1f, Utility.TransitionSpeed));
         _PostProcess.GetSetting<DepthOfField>().focusDistance.value = 0.1f;
+        _ConfettisSpawner.enabled = true;
 
         int tmp = Utility.CurrentLevelIndex;
 

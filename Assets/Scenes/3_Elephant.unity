@@ -41650,6 +41650,21 @@ PrefabInstance:
       propertyPath: _ScaleFactor.z
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 705560759791813027, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750798091921045770, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1750798091921045771, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: m_Name
+      value: Confettis_PS_1
+      objectReference: {fileID: 0}
     - target: {fileID: 2844967270460783858, guid: c4b89a892b54a4b75b4858eae826bb02,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -41710,9 +41725,19 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5250059412542029269, guid: c4b89a892b54a4b75b4858eae826bb02,
+    - target: {fileID: 3783847566431202561, guid: c4b89a892b54a4b75b4858eae826bb02,
         type: 3}
-      propertyPath: m_Alpha
+      propertyPath: m_Name
+      value: Confettis_PS_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250059411827885850, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250059412542029265, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5250059412580104948, guid: c4b89a892b54a4b75b4858eae826bb02,
@@ -41745,10 +41770,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5250059412903818595, guid: c4b89a892b54a4b75b4858eae826bb02,
+    - target: {fileID: 5250059412580104949, guid: c4b89a892b54a4b75b4858eae826bb02,
         type: 3}
-      propertyPath: m_Alpha
-      value: 1
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5250059412984172612, guid: c4b89a892b54a4b75b4858eae826bb02,
         type: 3}
@@ -41795,6 +41820,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5433091982083128493, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: m_Name
+      value: Confettis_PS_5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5915631069913371827, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6298454739919767622, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6307998488380181478, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6515551792653218355, guid: c4b89a892b54a4b75b4858eae826bb02,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -41804,6 +41849,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7127823521456929343, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: m_Name
+      value: Confettis_PS_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552637603334825569, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: m_Name
+      value: Confettis_PS_8
       objectReference: {fileID: 0}
     - target: {fileID: 8020178292067915445, guid: c4b89a892b54a4b75b4858eae826bb02,
         type: 3}
@@ -41824,6 +41879,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8099798276643604575, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: m_Name
+      value: Confettis_PS_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116247641338504215, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: m_Name
+      value: Confettis_PS_6
       objectReference: {fileID: 0}
     - target: {fileID: 8182612581131093769, guid: c4b89a892b54a4b75b4858eae826bb02,
         type: 3}
@@ -41864,6 +41929,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251071585595568193, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8251071585595568196, guid: c4b89a892b54a4b75b4858eae826bb02,
         type: 3}
@@ -42150,10 +42220,60 @@ PrefabInstance:
       propertyPath: TrailModule.widthOverTrail.scalar
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 8251071585595568196, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.maxCurve.m_Curve.Array.data[0].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251071585595568196, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.maxCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251071585595568196, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.maxCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251071585595568196, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.maxCurve.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251071585595568196, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minCurve.m_Curve.Array.data[0].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251071585595568196, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251071585595568196, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251071585595568196, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minCurve.m_Curve.Array.data[1].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251071585595568196, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].cycleCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8251071585595568198, guid: c4b89a892b54a4b75b4858eae826bb02,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 491
+      objectReference: {fileID: 0}
+    - target: {fileID: 8251071585595568198, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8251071585595568199, guid: c4b89a892b54a4b75b4858eae826bb02,
         type: 3}
@@ -42384,6 +42504,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312436819257546861, guid: c4b89a892b54a4b75b4858eae826bb02,
+        type: 3}
+      propertyPath: m_Name
+      value: Confettis_PS_7
       objectReference: {fileID: 0}
     - target: {fileID: 9163121436041780126, guid: c4b89a892b54a4b75b4858eae826bb02,
         type: 3}

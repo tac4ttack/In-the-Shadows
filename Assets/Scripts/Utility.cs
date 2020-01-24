@@ -22,6 +22,22 @@ public static class Utility
         return (raycastResults.Count > 0);
     }
 
+    public static int NoRepeatRandom(int iMin, int iMax, int iPrev)
+    {
+        int i = Random.Range(iMin, iMax);
+        while (i == iPrev)
+            i = Random.Range(iMin, iMax);
+        return i;
+    }
+
+    public static float NoRepeatRandom(float iMin, float iMax, float iPrev)
+    {
+        float i = Random.Range(iMin, iMax);
+        while (i == iPrev)
+            i = Random.Range(iMin, iMax);
+        return i;
+    }
+
     public static IEnumerator PopInCanvasGroup(CanvasGroup iCanvasGroup, float iTime, float iSpeed, float iTargetAlpha = 1f)
     {
         if (iCanvasGroup != null)

@@ -64,6 +64,8 @@ TagManager:
   - NewGameDialog_Create_Button
   - NewGameDialog_Back_Button
   - InGame_PuzzleLight
+  - PS_Confettis
+  - InGame_ConfettisSpawner
   layers:
   - Default
   - TransparentFX
