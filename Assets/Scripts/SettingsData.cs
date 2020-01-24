@@ -28,7 +28,7 @@ public class SettingsData
         MusicVolume = DefaultMusicVolume;
         PreviousMusicVolume = DefaultMusicVolume;
         SoundMuted = false;
-        MouseControls = true;
+        MouseControls = false;
         FPSCounter = false;
         FXAAEnabled = true;
     }
