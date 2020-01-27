@@ -3,7 +3,7 @@
 	based on tutorial by Puck Loves Games (https://www.patreon.com/posts/animated-candle-21053825)
 */
 
-Shader "Candle Flame Shader"
+Shader "Custom/Candle Flame Shader"
 {
 	Properties
 	{
