@@ -28,6 +28,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private Puzzle _PuzzleContainer;
     private MeshRenderer _MeshRenderer;
     private AxisHints _AxisHints;
+    private Color _BaseColor;
 
     // DEBUG
     void Update()
@@ -63,7 +64,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     void Start()
     {
         _AxisHints.Enable(false);
-        _MeshRenderer.materials[0].color = Color.white;
+        _BaseColor = _MeshRenderer.materials[0].color;
     }
 
     void FixedUpdate()
@@ -190,14 +191,14 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             }
             else if (eventData.button == PointerEventData.InputButton.Right)
             {
-                this.gameObject.transform.Translate(ComputeTranslation(0).normalized * Time.deltaTime * _TranslationSpeed, Space.Self);
+                this.gameObject.transform.Translate(ComputeTranslation(0).normalized * Time.deltaTime * _TranslationSpeed, Space.World);
             }
         }
         else
         {
             if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftShift))
             {
-                this.gameObject.transform.Translate(ComputeTranslation(0).normalized * Time.deltaTime * _TranslationSpeed, Space.Self);
+                this.gameObject.transform.Translate(ComputeTranslation(0).normalized * Time.deltaTime * _TranslationSpeed, Space.World);
             }
             else if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.LeftControl))
             {
@@ -213,7 +214,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        _MeshRenderer.materials[0].color = Color.white;
+        _MeshRenderer.materials[0].color = _BaseColor;
         _AxisHints.Enable(false);
     }
 
@@ -221,11 +222,11 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         Vector3 newRotation = Vector3.zero;
 
-        if (!_RotationConstraints.y && iMod != 2)
+        if (!_RotationConstraints.y && iMod == 1)
         {
             newRotation.y = Input.GetAxis("Mouse X") * -1f;
         }
-        if (!_RotationConstraints.x && iMod != 1)
+        if (!_RotationConstraints.x && iMod == 2)
         {
             newRotation.x = Input.GetAxis("Mouse Y") * -1f;
         }
