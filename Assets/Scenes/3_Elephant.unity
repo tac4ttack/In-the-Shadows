@@ -6475,11 +6475,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3044943518735889230, guid: 5c090f8dfb6b941ecb6787e3ba56170a,
-        type: 3}
-      propertyPath: m_Shadows.m_NormalBias
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4316560492461979893, guid: 5c090f8dfb6b941ecb6787e3ba56170a,
         type: 3}
       propertyPath: m_Name
@@ -41631,25 +41626,38 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1964596462, guid: c4b89a892b54a4b75b4858eae826bb02, type: 3}
+      propertyPath: _Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1964596462, guid: c4b89a892b54a4b75b4858eae826bb02, type: 3}
       propertyPath: _Mesh
       value: 
-      objectReference: {fileID: 4300000, guid: 0a38e4c0fdc2d45efa5063650e5b9a25, type: 3}
+      objectReference: {fileID: 4013497458107145052, guid: fb7c8c6496e25428081d5c79f7cb871b,
+        type: 3}
     - target: {fileID: 1964596462, guid: c4b89a892b54a4b75b4858eae826bb02, type: 3}
       propertyPath: _Material
       value: 
       objectReference: {fileID: 2100000, guid: 3198c857841bd4c3d8d96db04e0a0468, type: 2}
     - target: {fileID: 1964596462, guid: c4b89a892b54a4b75b4858eae826bb02, type: 3}
       propertyPath: _ScaleFactor.x
-      value: 60
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 1964596462, guid: c4b89a892b54a4b75b4858eae826bb02, type: 3}
       propertyPath: _ScaleFactor.y
-      value: 60
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 1964596462, guid: c4b89a892b54a4b75b4858eae826bb02, type: 3}
       propertyPath: _ScaleFactor.z
-      value: 60
+      value: 70
       objectReference: {fileID: 0}
+    - target: {fileID: 1964596462, guid: c4b89a892b54a4b75b4858eae826bb02, type: 3}
+      propertyPath: _Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fc4c7a3afe78b432da3f3a67f85701a3, type: 2}
+    - target: {fileID: 1964596462, guid: c4b89a892b54a4b75b4858eae826bb02, type: 3}
+      propertyPath: _Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: b1a067f9839ab4f34834223cbe1a5443, type: 2}
     - target: {fileID: 705560759791813027, guid: c4b89a892b54a4b75b4858eae826bb02,
         type: 3}
       propertyPath: Loop

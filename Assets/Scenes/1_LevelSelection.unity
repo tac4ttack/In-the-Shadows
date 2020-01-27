@@ -361,7 +361,7 @@ PrefabInstance:
     - target: {fileID: 4178894601596786885, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4178894601596786885, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
@@ -406,7 +406,7 @@ PrefabInstance:
     - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: _Id
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
@@ -866,7 +866,7 @@ PrefabInstance:
     - target: {fileID: 4178894601596786885, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4178894601596786885, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
@@ -911,12 +911,12 @@ PrefabInstance:
     - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: _Id
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: _Title
-      value: It's not round, it's ovale!
+      value: CROCTITLE
       objectReference: {fileID: 0}
     - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
@@ -926,8 +926,7 @@ PrefabInstance:
     - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: _Description
-      value: Rumors say that a long time ago, earthlings thought they were living
-        on a disc... silly humans!
+      value: CROC DESCRIPTION
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f9cf458a21934204be4d66f9a93f122, type: 3}
@@ -1838,6 +1837,7 @@ Material:
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
+    - _Sharpness: 0
     - _SpecularPower: 2
     - _Stencil: 0
     - _StencilComp: 8
@@ -3980,8 +3980,8 @@ Transform:
   m_Children:
   - {fileID: 406997805}
   - {fileID: 33455806}
-  - {fileID: 2101104956}
   - {fileID: 528149833}
+  - {fileID: 2101104956}
   - {fileID: 1654593185}
   m_Father: {fileID: 0}
   m_RootOrder: 4
