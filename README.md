@@ -6,6 +6,9 @@ Ce projet est le premier de ce type que je réalise, cette première itération 
 N'ayant que très peu d'expérience dans le domaine il est évident que l'architecture et le design général seront sujet à critiques.
 Dans un premier temps je tiens à avoir un build fonctionnel avant de chercher à utiliser les design patterns communs dans ce domaine.
 
+# Création de niveaux:
+- Pour la création de niveau avec puzzle autorisant les translations, il faut s'assurer que le plan sur lequel translate la pièce du puzzle soit parallèle avec le plan formé par les axes X et Y du repère du monde!
+
 # Assets et outils utilisés:
 - [package manager][used] Text Mesh Pro
 
@@ -46,8 +49,8 @@ Dans un premier temps je tiens à avoir un build fonctionnel avant de chercher �
 - [file][used] Low Poly Earth v2: 
  https://sketchfab.com/3d-models/low-poly-earthv2-31c7f11f8bfa4ef79949a4ee824ae81f
 
-- [file][used] Low Poly Elephant: 
- https://sketchfab.com/3d-models/elephant-566dc22018e44c229a3145425c17bfb1
+- [file][used] Elenfant: 
+ https://sketchfab.com/3d-models/elenfant-d9a1361bb7324e678ca21169533093d1
 
 - [file][used] Isometric Japanese Team Room:
  https://sketchfab.com/3d-models/isometric-japanese-tea-room-b422c6839b72424ead4c015596c5a7d5
