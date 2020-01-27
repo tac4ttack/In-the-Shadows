@@ -142,13 +142,22 @@ public class Puzzle : MonoBehaviour
 
     void CheckPuzzlePieces()
     {
-        bool tmp = false;
+        bool[] tmp = new bool[_PuzzlePieces.Length];
+        bool result = true;
+
         for (int i = 0; i < _PuzzlePieces.Length; i++)
         {
             PuzzlePiece p = (PuzzlePiece)_PuzzlePieces[i];
-            tmp = p.isPuzzlePieceValidated;
+            tmp[i] = p.isPuzzlePieceValidated;
         }
-        _PuzzleValidated = tmp;
+
+        for (int i = 0; i < tmp.Length; i++)
+        {
+            if (tmp[i] == false)
+                result = false;
+        }
+        
+        _PuzzleValidated = result;
     }
 
     public void PushLevelComplete()
@@ -304,7 +313,8 @@ public class WinScreen_PuzzleState : IState
         if (GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp] < 2)
             _PuzzleScript.PushLevelComplete();
         GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp] = 2;
-        GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp + 1] = 1;
+        if (tmp + 1 < Utility.PuzzleAmount)
+            GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp + 1] = 1;
     }
 
     public void Execute() { }
