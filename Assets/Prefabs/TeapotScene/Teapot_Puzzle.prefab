@@ -48,10 +48,17 @@ MonoBehaviour:
   OrientationSolutions:
   - {x: 0, y: -0.1, z: 0, w: 1}
   - {x: 0, y: 1, z: 0, w: 0.2}
+  _OrientationSolutions:
+  - {x: 0, y: -0.1, z: 0, w: 1}
+  - {x: 0, y: 1, z: 0, w: 0.2}
   RelativePuzzlePiece: {fileID: 0}
+  _RelativePuzzlePiece: {fileID: 0}
   RelativeDirectionSolution: {x: 0, y: 0, z: 0}
+  _RelativeDirectionSolution: {x: 0, y: 0, z: 0}
   RelativeDistanceSolution: 0
+  _RelativeDistanceSolution: 0
   CheckMirroredRelative: 0
+  _CheckMirroredRelative: 0
   _RotationConstraints:
     x: 0
     y: 0

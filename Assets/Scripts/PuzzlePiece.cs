@@ -5,13 +5,11 @@ using UnityEngine.Assertions;
 public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [HideInInspector] public bool isPuzzlePieceValidated = false;
-
-    public Quaternion[] OrientationSolutions;
-    public GameObject RelativePuzzlePiece;
-    public Vector3 RelativeDirectionSolution;
-    public float RelativeDistanceSolution;
-    public bool CheckMirroredRelative;
-
+    [SerializeField] private Quaternion[] _OrientationSolutions = null;
+    [SerializeField] private GameObject _RelativePuzzlePiece = null;
+    [SerializeField] private Vector3 _RelativeDirectionSolution = Vector3.zero;
+    [SerializeField] private float _RelativeDistanceSolution = 0f;
+    [SerializeField] private bool _CheckMirroredRelative = false;
     [System.Serializable] private class RotationConstraints { public bool x = false; public bool y = false; public bool z = true; }
     [SerializeField] private RotationConstraints _RotationConstraints = new RotationConstraints();
     [System.Serializable] private class TranslationConstraints { public bool x = true; public bool y = true; public bool z = true; }
@@ -36,12 +34,16 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         // DEBUG
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log($"Name = {this.gameObject.name}\n"
+            string debugString = $"Name = {this.gameObject.name}\n"
                     +$"LocalRotation = {this.gameObject.transform.localRotation}\n"
-                    +$"Rotation = {this.gameObject.transform.rotation}\n"
-                    // +$"Relative Position Vector3 = {RelativePuzzlePiece.transform.position - this.gameObject.transform.position}\n"
-                    // +$"Relative Distance = {Vector3.Magnitude(RelativePuzzlePiece.transform.position - this.gameObject.transform.position)}\n"
-                    );
+                    +$"Rotation = {this.gameObject.transform.rotation}\n";
+            if (_RelativePuzzlePiece)
+            {
+                debugString +=
+                $"Relative Position Vector3 = {_RelativePuzzlePiece.transform.position - this.gameObject.transform.position}\n"
+                +$"Relative Distance = {Vector3.Magnitude(_RelativePuzzlePiece.transform.position - this.gameObject.transform.position)}\n";
+            }
+            Debug.Log(debugString); 
         }
     }
 
@@ -92,11 +94,11 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
      */
     private void CheckOrientation()
     {
-        if (OrientationSolutions.Length > 0)
+        if (_OrientationSolutions.Length > 0)
         {
-            for (int i = 0; i < OrientationSolutions.Length; i++)
+            for (int i = 0; i < _OrientationSolutions.Length; i++)
             {
-                Quaternion q = (Quaternion)OrientationSolutions[i];
+                Quaternion q = (Quaternion)_OrientationSolutions[i];
                 if (((q.x >= _CurrentOrientation.x - _OrientationBias && q.x <= _CurrentOrientation.x + _OrientationBias)
                     && (q.y >= _CurrentOrientation.y - _OrientationBias && q.y <= _CurrentOrientation.y + _OrientationBias)
                     && (q.z >= _CurrentOrientation.z - _OrientationBias && q.z <= _CurrentOrientation.z + _OrientationBias)
@@ -136,27 +138,27 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     private bool CheckRelativePosition()
     {
-        if (!RelativePuzzlePiece)
+        if (!_RelativePuzzlePiece)
         {
             return true;
         }
         else
         {
-            Vector3 currentRelativeDirection = RelativePuzzlePiece.transform.position - this.gameObject.transform.position;
+            Vector3 currentRelativeDirection = _RelativePuzzlePiece.transform.position - this.gameObject.transform.position;
             float currentRelativeDistance = currentRelativeDirection.magnitude;
 
-            if ((RelativeDistanceSolution >= currentRelativeDistance - _DistanceBias && RelativeDistanceSolution <= currentRelativeDistance + _DistanceBias)
-                && (RelativeDirectionSolution.x >= currentRelativeDirection.x - _DirectionBias && RelativeDirectionSolution.x <= currentRelativeDirection.x + _DirectionBias)
-                && (RelativeDirectionSolution.y >= currentRelativeDirection.y - _DirectionBias && RelativeDirectionSolution.y <= currentRelativeDirection.y + _DirectionBias)
-                && (RelativeDirectionSolution.z >= currentRelativeDirection.z - _DirectionBias && RelativeDirectionSolution.z <= currentRelativeDirection.z + _DirectionBias))
+            if ((_RelativeDistanceSolution >= currentRelativeDistance - _DistanceBias && _RelativeDistanceSolution <= currentRelativeDistance + _DistanceBias)
+                && (_RelativeDirectionSolution.x >= currentRelativeDirection.x - _DirectionBias && _RelativeDirectionSolution.x <= currentRelativeDirection.x + _DirectionBias)
+                && (_RelativeDirectionSolution.y >= currentRelativeDirection.y - _DirectionBias && _RelativeDirectionSolution.y <= currentRelativeDirection.y + _DirectionBias)
+                && (_RelativeDirectionSolution.z >= currentRelativeDirection.z - _DirectionBias && _RelativeDirectionSolution.z <= currentRelativeDirection.z + _DirectionBias))
             {
                 return true;
             }
-            if (CheckMirroredRelative
-                && (RelativeDistanceSolution >= currentRelativeDistance - _DistanceBias && RelativeDistanceSolution <= currentRelativeDistance + _DistanceBias)
-                && (-RelativeDirectionSolution.x >= currentRelativeDirection.x - _DirectionBias && -RelativeDirectionSolution.x <= currentRelativeDirection.x + _DirectionBias)
-                && (RelativeDirectionSolution.y >= currentRelativeDirection.y - _DirectionBias && RelativeDirectionSolution.y <= currentRelativeDirection.y + _DirectionBias)
-                && (RelativeDirectionSolution.z >= currentRelativeDirection.z - _DirectionBias && RelativeDirectionSolution.z <= currentRelativeDirection.z + _DirectionBias))
+            else if (_CheckMirroredRelative
+                && (_RelativeDistanceSolution >= currentRelativeDistance - _DistanceBias && _RelativeDistanceSolution <= currentRelativeDistance + _DistanceBias)
+                && (-_RelativeDirectionSolution.x >= currentRelativeDirection.x - _DirectionBias && -_RelativeDirectionSolution.x <= currentRelativeDirection.x + _DirectionBias)
+                && (_RelativeDirectionSolution.y >= currentRelativeDirection.y - _DirectionBias && _RelativeDirectionSolution.y <= currentRelativeDirection.y + _DirectionBias)
+                && (_RelativeDirectionSolution.z >= currentRelativeDirection.z - _DirectionBias && _RelativeDirectionSolution.z <= currentRelativeDirection.z + _DirectionBias))
             {
                 return true;
             }
@@ -175,13 +177,18 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         _MeshRenderer.materials[0].color = Color.green;
         _AxisHints.Enable(true);
+        Cursor.visible = false;
+
+        MeshRenderer current = this.gameObject.GetComponentInChildren<MeshRenderer>();
+        MeshRenderer tmp = _RelativePuzzlePiece.GetComponentInChildren<MeshRenderer>();
+        if (current != tmp)
+            tmp.enabled = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (_PuzzleContainer.CurrentState == Puzzle.PuzzleStates.WinScreen)
             return;
-
         
         if (GameManager.GM.Settings.MouseControls)
         {
@@ -216,6 +223,12 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         _MeshRenderer.materials[0].color = _BaseColor;
         _AxisHints.Enable(false);
+        Cursor.visible = true;
+
+        MeshRenderer current = this.gameObject.GetComponentInChildren<MeshRenderer>();
+        MeshRenderer tmp = _RelativePuzzlePiece.GetComponentInChildren<MeshRenderer>();
+        if (current != tmp)
+            tmp.enabled = true;
     }
 
     private Vector3 ComputeRotation(int iMod)

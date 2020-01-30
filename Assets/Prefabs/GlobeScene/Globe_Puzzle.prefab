@@ -74,7 +74,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c90c80e1e3ca34738964ccf0d6067343, type: 2}
+  - {fileID: 2100000, guid: 03cf4b7fda4ef4a87bff96e8d90b75de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -278,7 +278,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3928979995663339170}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.4499998, y: 1.3599999, z: 2.9199998}
+  m_LocalPosition: {x: 1.08, y: 1.3599999, z: 4.38}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 3928979994455646343}
@@ -298,13 +298,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPuzzlePieceValidated: 0
-  OrientationSolutions:
+  _OrientationSolutions:
   - {x: 0, y: -0.7, z: 0, w: 0.7}
-  - {x: 0.7, y: 0, z: 0.7, w: 0}
-  RelativePuzzlePiece: {fileID: 0}
-  RelativeDirectionSolution: {x: 0, y: 0, z: 0}
-  RelativeDistanceSolution: 0
-  CheckMirroredRelative: 0
+  - {x: 0, y: 0.7, z: 0, w: 0.7}
+  _RelativePuzzlePiece: {fileID: 3928979995926354058}
+  _RelativeDirectionSolution: {x: 0, y: 0, z: 0}
+  _RelativeDistanceSolution: 0.025
+  _CheckMirroredRelative: 1
   _RotationConstraints:
     x: 0
     y: 0
@@ -313,11 +313,11 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 1
-  _RotationSpeed: 42
-  _TranslationSpeed: 1
-  _OrientationBias: 0.035
-  _DirectionBias: 0.035
-  _DistanceBias: 0.035
+  _RotationSpeed: 100
+  _TranslationSpeed: 2
+  _OrientationBias: 0.08
+  _DirectionBias: 0.08
+  _DistanceBias: 0.025
 --- !u!1 &3928979995887175847
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +435,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3928979995926354058}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.45, y: 1.36, z: 2.92}
+  m_LocalPosition: {x: 1.0799961, y: 1.36, z: 1.8699992}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 3928979996376215516}
@@ -455,13 +455,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPuzzlePieceValidated: 0
-  OrientationSolutions:
+  _OrientationSolutions:
   - {x: 0, y: 0.7, z: 0, w: 0.7}
   - {x: 0, y: -0.7, z: 0, w: 0.7}
-  RelativePuzzlePiece: {fileID: 0}
-  RelativeDirectionSolution: {x: 0, y: 0, z: 0}
-  RelativeDistanceSolution: 0
-  CheckMirroredRelative: 0
+  _RelativePuzzlePiece: {fileID: 3928979995663339170}
+  _RelativeDirectionSolution: {x: 0, y: 0, z: 0}
+  _RelativeDistanceSolution: 0.025
+  _CheckMirroredRelative: 1
   _RotationConstraints:
     x: 0
     y: 0
@@ -470,11 +470,11 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 1
-  _RotationSpeed: 42
-  _TranslationSpeed: 1
-  _OrientationBias: 0.035
-  _DirectionBias: 0.035
-  _DistanceBias: 0.035
+  _RotationSpeed: 100
+  _TranslationSpeed: 2
+  _OrientationBias: 0.08
+  _DirectionBias: 0.08
+  _DistanceBias: 0.025
 --- !u!1 &3928979996376215517
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +502,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3928979996376215517}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.54, y: 0, z: 3.209}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3928979994913433515}
@@ -549,7 +549,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c90c80e1e3ca34738964ccf0d6067343, type: 2}
+  - {fileID: 2100000, guid: a8a58e2ed7a89471a83dc4358c2b640b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -594,9 +594,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3928979996434765240}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -39.1, y: 15.42, z: 25.01}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.60000014, y: 0.6, z: 0.60000014}
   m_Children:
   - {fileID: 3928979995887175846}
   - {fileID: 3928979995926354061}
