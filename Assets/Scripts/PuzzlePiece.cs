@@ -180,9 +180,12 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         Cursor.visible = false;
 
         MeshRenderer current = this.gameObject.GetComponentInChildren<MeshRenderer>();
-        MeshRenderer tmp = _RelativePuzzlePiece.GetComponentInChildren<MeshRenderer>();
-        if (current != tmp)
-            tmp.enabled = false;
+        if (_RelativePuzzlePiece)
+        {
+            MeshRenderer tmp = _RelativePuzzlePiece.GetComponentInChildren<MeshRenderer>();
+            if (current != tmp)
+                tmp.enabled = false;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -226,9 +229,12 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         Cursor.visible = true;
 
         MeshRenderer current = this.gameObject.GetComponentInChildren<MeshRenderer>();
-        MeshRenderer tmp = _RelativePuzzlePiece.GetComponentInChildren<MeshRenderer>();
-        if (current != tmp)
-            tmp.enabled = true;
+        if (_RelativePuzzlePiece != null)
+        {
+            MeshRenderer tmp = _RelativePuzzlePiece.GetComponentInChildren<MeshRenderer>();
+            if (current != tmp)
+                tmp.enabled = true;
+        }
     }
 
     private Vector3 ComputeRotation(int iMod)
