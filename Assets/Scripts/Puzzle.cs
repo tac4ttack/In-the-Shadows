@@ -133,21 +133,21 @@ public class Puzzle : MonoBehaviour
             }
         }
 
-        CheckPuzzlePieces();
+        _PuzzleValidated = Utility.CheckPuzzlePieces(_PuzzlePieces);
         if (_PuzzleValidated && CurrentState == PuzzleStates.Playing && CurrentState != PuzzleStates.WinScreen)
         {
             PuzzleStateMachine.ChangeState(new WinScreen_PuzzleState(this, _WinScreen_Cam, _WinScreen_CG, _WinScreen_Background_CG, _PostProcess, _WinScreen_ConfettisSpawner));
         }
     }
 
-    void CheckPuzzlePieces()
+    /*bool CheckPuzzlePieces(PuzzlePiece[] iPuzzlePiecesArray)
     {
-        bool[] tmp = new bool[_PuzzlePieces.Length];
+        bool[] tmp = new bool[iPuzzlePiecesArray.Length];
         bool result = true;
 
-        for (int i = 0; i < _PuzzlePieces.Length; i++)
+        for (int i = 0; i < iPuzzlePiecesArray.Length; i++)
         {
-            PuzzlePiece p = (PuzzlePiece)_PuzzlePieces[i];
+            PuzzlePiece p = (PuzzlePiece)iPuzzlePiecesArray[i];
             tmp[i] = p.isPuzzlePieceValidated;
         }
 
@@ -157,8 +157,8 @@ public class Puzzle : MonoBehaviour
                 result = false;
         }
         
-        _PuzzleValidated = result;
-    }
+        return result;
+    } */
 
     public void PushLevelComplete()
     {

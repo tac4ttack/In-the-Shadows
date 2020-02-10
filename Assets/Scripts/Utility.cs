@@ -66,6 +66,26 @@ public static class Utility
         }
     }
 
+    public static bool CheckPuzzlePieces(PuzzlePiece[] iPuzzlePiecesArray)
+    {
+        bool[] tmp = new bool[iPuzzlePiecesArray.Length];
+        bool result = true;
+
+        for (int i = 0; i < iPuzzlePiecesArray.Length; i++)
+        {
+            PuzzlePiece p = (PuzzlePiece)iPuzzlePiecesArray[i];
+            tmp[i] = p.isPuzzlePieceValidated;
+        }
+
+        for (int i = 0; i < tmp.Length; i++)
+        {
+            if (tmp[i] == false)
+                result = false;
+        }
+
+        return result;
+    }
+
     public static int CurrentLevelIndex => SceneManager.GetActiveScene().buildIndex - LevelSceneIndexOffset;
     public static int CurrentPlayer => GameManager.GM.CurrentPlayerSlot;
     public static int PuzzleAmount => GameManager.GM.Players.PuzzlesAmount;
