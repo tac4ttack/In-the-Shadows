@@ -92,7 +92,7 @@ Transform:
   m_GameObject: {fileID: 4178894601596786886}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.027548213, y: 0.02754821, z: 0.027548207}
   m_Children:
   - {fileID: 491037590370702581}
   m_Father: {fileID: 0}
@@ -129,12 +129,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121ff28e59cf346fca806a9e163953db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Id: -1
-  _Title: unset!
-  _Reference: unset!
+  _Id: 4
+  _Title: It's not round, it's ovale!
+  _Reference: '#GALILE.04'
   _Position: {x: 0, y: 0, z: 0}
   _Status: 0
-  _Description: empty!
+  _Description: 'It seems that people used to burn each other alive, especially when
+    making scientificaly acurate assumptions.
+
+
+    The artefact we need to recover
+    would have guaranteed its owner the best place at the stake party!'
   _BestTime: 00:00:00
   AnimationController: {fileID: 0}
 --- !u!135 &6213894125267129619
