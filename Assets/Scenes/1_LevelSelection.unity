@@ -384,9 +384,14 @@ PrefabInstance:
       value: 'People from this place love dried leaves.
 
 
-        They can be very
-        creative finding new ways of consumming dried leaves but it seems we forgot
-        a basic one...'
+        They love it so
+        much that it comes in the making of the second most drank beverage of this
+        planet.
+
+
+        They can be very creative finding new ways of consumming
+        dried leaves but it seems we forgot the main tool used for the most basic
+        one...'
       objectReference: {fileID: 0}
     - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
@@ -1399,7 +1404,7 @@ PrefabInstance:
     - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: _Title
-      value: Dumbo is missing!
+      value: I am not a human being...
       objectReference: {fileID: 0}
     - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
@@ -1409,15 +1414,16 @@ PrefabInstance:
     - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: _Description
-      value: 'We made a huge mistake...
+      value: '... I am not a man! I am an animal! I... am... a mastodon!
 
 
-        By big mistake I mean we forgot
-        the largest living land animal from the planet''s last era.
+        We
+        made a huge mistake, by big mistake we mean missing the largest living land
+        animal from the planet''s last era.
 
 
-        It
-        is a quite easy first assignement so don''t disappoint us! '
+        It is a quite easy first assignement
+        so don''t disappoint us!'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f9cf458a21934204be4d66f9a93f122, type: 3}
@@ -2870,11 +2876,11 @@ PrefabInstance:
 
         Some
         silly folks like to hangout for months in deserts and kill with bare hands
-        some scaly ferocious creatures.
+        scaly ferocious creatures.
 
 
-        Your mission is to recover this
-        poor creature...'
+        Your mission is to recover this poor
+        creature...'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f9cf458a21934204be4d66f9a93f122, type: 3}
@@ -3557,11 +3563,16 @@ PrefabInstance:
     - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: _Description
-      value: 'Welcome cadet!
+      value: 'Greetings employee!
 
 
-        You can use this subreality room if you need
-        a quick reminder on how to do your job.'
+        If you need a little reminder on how
+        to do your job, you can do this course that will teach you how to manipulate
+        and recover missing artefacts from our Ghola planetoid.
+
+
+        Don''t
+        disappoint us, the altairians dollars must flow, in our bank account of course.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f9cf458a21934204be4d66f9a93f122, type: 3}
