@@ -331,22 +331,22 @@ PrefabInstance:
     - target: {fileID: 4178894601596786885, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.31934938
+      value: 0.28783226
       objectReference: {fileID: 0}
     - target: {fileID: 4178894601596786885, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.59486926
+      value: -0.5982679
       objectReference: {fileID: 0}
     - target: {fileID: 4178894601596786885, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.27803698
+      value: 0.32033607
       objectReference: {fileID: 0}
     - target: {fileID: 4178894601596786885, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6832585
+      value: 0.6757314
       objectReference: {fileID: 0}
     - target: {fileID: 4178894601596786885, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
@@ -356,22 +356,42 @@ PrefabInstance:
     - target: {fileID: 4178894601596786885, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 50.102
+      value: 50.56
       objectReference: {fileID: 0}
     - target: {fileID: 4178894601596786885, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -82.088005
+      value: -79.253006
       objectReference: {fileID: 0}
     - target: {fileID: 4178894601596786885, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 8.01
       objectReference: {fileID: 0}
     - target: {fileID: 4178894601596786886, guid: 8f9cf458a21934204be4d66f9a93f122,
         type: 3}
       propertyPath: m_Name
       value: Level_Teapot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Id
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Description
+      value: 'People from this place love dried leaves.
+
+
+        They can be very
+        creative finding new ways of consumming dried leaves but it seems we forgot
+        a basic one...'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Reference
+      value: '#TEHAHTIM.03'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f9cf458a21934204be4d66f9a93f122, type: 3}
@@ -828,8 +848,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1370,6 +1390,34 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Level_Elephant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Id
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Title
+      value: Dumbo is missing!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Reference
+      value: '#DUMB.01'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Description
+      value: 'We made a huge mistake...
+
+
+        By big mistake I mean we forgot
+        the largest living land animal from the planet''s last era.
+
+
+        It
+        is a quite easy first assignement so don''t disappoint us! '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f9cf458a21934204be4d66f9a93f122, type: 3}
@@ -2799,6 +2847,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level_Croco
       objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Id
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Reference
+      value: '#CRCO.02'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Title
+      value: Mick Dundee's favorite
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Description
+      value: 'To fight the wild, you have to get some wild first.
+
+
+        Some
+        silly folks like to hangout for months in deserts and kill with bare hands
+        some scaly ferocious creatures.
+
+
+        Your mission is to recover this
+        poor creature...'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f9cf458a21934204be4d66f9a93f122, type: 3}
 --- !u!4 &1513763871 stripped
@@ -3456,6 +3533,35 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Level_Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Id
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Title
+      value: SubReality training course
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Reference
+      value: '#NOOB.00'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Status
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Description
+      value: 'Welcome cadet!
+
+
+        You can use this subreality room if you need
+        a quick reminder on how to do your job.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f9cf458a21934204be4d66f9a93f122, type: 3}
