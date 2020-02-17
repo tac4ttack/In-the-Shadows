@@ -140,26 +140,6 @@ public class Puzzle : MonoBehaviour
         }
     }
 
-    /*bool CheckPuzzlePieces(PuzzlePiece[] iPuzzlePiecesArray)
-    {
-        bool[] tmp = new bool[iPuzzlePiecesArray.Length];
-        bool result = true;
-
-        for (int i = 0; i < iPuzzlePiecesArray.Length; i++)
-        {
-            PuzzlePiece p = (PuzzlePiece)iPuzzlePiecesArray[i];
-            tmp[i] = p.isPuzzlePieceValidated;
-        }
-
-        for (int i = 0; i < tmp.Length; i++)
-        {
-            if (tmp[i] == false)
-                result = false;
-        }
-        
-        return result;
-    } */
-
     public void PushLevelComplete()
     {
         GameManager.GM.Players.ToComplete[Utility.CurrentPlayer].q.Add(Utility.CurrentLevelIndex);
@@ -296,9 +276,13 @@ public class WinScreen_PuzzleState : IState
 
     public void Enter()
     {
+        // DEBUG
+        Debug.Break();
+
         _PuzzleScript.CurrentState = Puzzle.PuzzleStates.WinScreen;
         _WinCam.enabled = true;
         _WinScreen_Background_CG.blocksRaycasts = true;
+        _WinScreen_Background_CG.interactable = true;
         GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_WinScreen_Background_CG, 1f, Utility.TransitionSpeed));        
         GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_WinScreen_CG, 1f, Utility.TransitionSpeed));
         _PostProcess.GetSetting<DepthOfField>().focusDistance.value = 0.1f;
@@ -319,7 +303,11 @@ public class WinScreen_PuzzleState : IState
 
     public void Execute() { }
 
-    public void Exit() { }
+    public void Exit()
+    {
+        _WinScreen_Background_CG.blocksRaycasts = false;
+        _WinScreen_Background_CG.interactable = false;
+    }
 }
 
 public class ConfirmationPrompt_PuzzleState : IState

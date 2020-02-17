@@ -28,25 +28,6 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private AxisHints _AxisHints;
     private Color _BaseColor;
 
-    // DEBUG
-    void Update()
-    {
-        // DEBUG
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            string debugString = $"Name = {this.gameObject.name}\n"
-                    +$"LocalRotation = {this.gameObject.transform.localRotation}\n"
-                    +$"Rotation = {this.gameObject.transform.rotation}\n";
-            if (_RelativePuzzlePiece)
-            {
-                debugString +=
-                $"Relative Position Vector3 = {_RelativePuzzlePiece.transform.position - this.gameObject.transform.position}\n"
-                +$"Relative Distance = {Vector3.Magnitude(_RelativePuzzlePiece.transform.position - this.gameObject.transform.position)}\n";
-            }
-            Debug.Log(debugString); 
-        }
-    }
-
     void Awake()
     {
         if (_AxisHints == null)
@@ -60,7 +41,6 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         if (_MeshRenderer == null)
             _MeshRenderer = this.GetComponentInChildren<MeshRenderer>();
         Assert.IsNotNull(_MeshRenderer, "Mesh renderer component not found in puzzle piece game object!");
-
     }
 
     void Start()
@@ -76,6 +56,66 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         CheckSolutions();
         isPuzzlePieceValidated = (_OrientationOK && _RelativePositionOK);
     }
+
+    #region Settings Setters
+
+    public void SetRotationConstraint(bool[] iConstraint)
+    {
+        if (iConstraint.Length == 3)
+        {
+            _RotationConstraints.x = iConstraint[0];
+            _RotationConstraints.y = iConstraint[1];
+            _RotationConstraints.z = iConstraint[2];
+        }
+    }
+
+    public void SetTranslationConstraint(bool[] iConstraint)
+    {
+        if (iConstraint.Length == 3)
+        {
+            _TranslationConstraints.x = iConstraint[0];
+            _TranslationConstraints.y = iConstraint[1];
+            _TranslationConstraints.z = iConstraint[2];
+        }
+    }
+
+    public void SetRotationSolutions(Quaternion[] iSolutions)
+    {
+        if (iSolutions != null && iSolutions.Length > 0)
+            _OrientationSolutions = iSolutions;
+    }
+
+    public void SetDirectionSolution(Vector3 iDirection)
+    {
+        if (iDirection != null)
+            _RelativeDirectionSolution = iDirection;
+    }
+
+    public void SetDistanceSolution(float iDistance)
+    {
+        _RelativeDistanceSolution = Mathf.Abs(iDistance);
+    }
+
+    public void SetRelativePuzzle(GameObject iPuzzle)
+    {
+        if (iPuzzle != null)
+            _RelativePuzzlePiece = iPuzzle;
+    }
+
+    public void SetBiases(float iOrientation, float iDirection, float iDistance)
+    {
+        _OrientationBias = Mathf.Abs(iOrientation);
+        _DirectionBias = Mathf.Abs(iDirection);
+        _DistanceBias = Mathf.Abs(iDistance);
+    }
+
+    public void SetSpeeds(float iRotSpeed, float iTraSpeed)
+    {
+        _RotationSpeed = Mathf.Abs(iRotSpeed);
+        _TranslationSpeed = Mathf.Abs(iTraSpeed);
+    }
+
+    #endregion
 
     #region Solution Check
 
@@ -132,10 +172,6 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         
         Will verify if the relative direction AND the relative distance are the planned ones.
     */
-
-    //  DEBUG -> Need to test if the mirror check is good!
-    //  DEBUG -> Need to adjust the BIASES!
-
     private bool CheckRelativePosition()
     {
         if (!_RelativePuzzlePiece)
@@ -234,6 +270,8 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             MeshRenderer tmp = _RelativePuzzlePiece.GetComponentInChildren<MeshRenderer>();
             if (current != tmp)
                 tmp.enabled = true;
+            
+            
         }
     }
 
@@ -241,11 +279,11 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         Vector3 newRotation = Vector3.zero;
 
-        if (!_RotationConstraints.y && iMod == 1)
+        if (!_RotationConstraints.y && (iMod == 1 || iMod == 0))
         {
             newRotation.y = Input.GetAxis("Mouse X") * -1f;
         }
-        if (!_RotationConstraints.x && iMod == 2)
+        if (!_RotationConstraints.x && (iMod == 2 || iMod == 0))
         {
             newRotation.x = Input.GetAxis("Mouse Y") * -1f;
         }
@@ -262,7 +300,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         }
         if (!_TranslationConstraints.x)
         {
-            newTranslation.x = Input.GetAxis("Mouse X") * -1f;
+            newTranslation.x = Input.GetAxis("Mouse X") * 1f;
         }
         return newTranslation;
     }

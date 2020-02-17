@@ -66,6 +66,14 @@ TagManager:
   - InGame_PuzzleLight
   - PS_Confettis
   - InGame_ConfettisSpawner
+  - Tutorial_UI
+  - Tutorial_Title
+  - Tutorial_Content
+  - Tutorial_Next
+  - Tutorial_Panel
+  - Tutorial_Picture
+  - Tutorial_GuideWall
+  - Tutorial_Prev
   layers:
   - Default
   - TransparentFX
