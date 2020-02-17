@@ -1,4 +1,4 @@
-Shader "Custom/ShadowSurface"
+Shader "Custom/Shadow Only Surface"
 {
     Properties
     {

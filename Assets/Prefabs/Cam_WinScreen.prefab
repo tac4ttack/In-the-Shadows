@@ -1188,7 +1188,7 @@ CanvasGroup:
   m_GameObject: {fileID: 5250059412903818605}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 1
+  m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &5250059412984172613
@@ -2243,7 +2243,8 @@ MonoBehaviour:
   _RotationAxis: {x: 0, y: 1, z: 0}
   _ScaleFactor: {x: 200, y: 200, z: 200}
   _Mesh: {fileID: 4300000, guid: 71aac5f5a6f594799bd1913f4661066a, type: 2}
-  _Material: {fileID: 2100000, guid: 59b14c82803384ac285514a2ff093720, type: 2}
+  _Materials:
+  - {fileID: 0}
 --- !u!1 &8251071585970173538
 GameObject:
   m_ObjectHideFlags: 0
