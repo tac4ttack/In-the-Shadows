@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public bool DebugMode = false;
     public int CurrentPlayerSlot = -1;
 
+    private Konami _Code;
+
     void Awake()
     {
         // Singleton setup
@@ -46,6 +48,9 @@ public class GameManager : MonoBehaviour
         Players = SaveSystem.LoadPlayers();
         if (Players == null)
             Players = new PlayersData();
+
+        if (_Code == null)
+            _Code = this.GetComponent<Konami>();
     }
 
     void Start()
@@ -97,6 +102,12 @@ public class GameManager : MonoBehaviour
             }
             Players.ProgressionPercentage[i] = ((float)count / Utility.PuzzleAmount) * 100f;
         }
+    }
+
+    void Update()
+    {
+        if (_Code.IsValid)
+            SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[0]);
     }
 }
 
