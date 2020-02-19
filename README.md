@@ -22,6 +22,34 @@ Dans un premier temps je tiens Ã  avoir un build fonctionnel avant de chercher Ã
  http://alexcpeterson.com/spacescape/
 - [tool][used] Blender:
  https://www.blender.org
+ 
+- [SFX] Fallout 2 Interface sounds:
+ https://www.sounds-resource.com/pc_computer/fallout2/sound/26532/
+
+- [SFX] Fireworks Explosion Fizz:
+ https://freesound.org/people/soundscalpel.com/sounds/110391/
+
+- [SFX] Success02:
+ https://freesound.org/people/rhodesmas/sounds/320652/
+
+- [SONG] Visage Of The Pale Queen - Nycto: 
+https://soundcloud.com/nyctomusic/nycto-visage-of-the-pale-queen
+
+- [SONG] Rounding - Savfk:
+ https://soundcloud.com/savfk/rounding
+
+- [SONG] Retro Dreamscape - Twin Musicom:
+http://www.twinmusicom.org/
+
+- [SONG] Intuit - Kevin MacLeod
+ https://incompetech.filmmusic.io/song/3922-intuit
+License: http://creativecommons.org/licenses/by/4.0/
+
+- [SONG] Listen To The Rain - Mark Tyner:
+ https://soundcloud.com/marktyner/listen-to-the-rain
+
+- [SONG] Wild - KV
+ https://soundcloud.com/kvmusicprod/wild
 
 - [tool][package manager][used] Post Processing
 
@@ -67,38 +95,5 @@ Dans un premier temps je tiens Ã  avoir un build fonctionnel avant de chercher Ã
 - [file][used] Low Poly Crocodile:
  https://sketchfab.com/3d-models/caiman-alligator-lowpoly-1ce91697022a43bd98fed14c8e1dbf27
 
-- [file][used?] Low Poly Clouds:
+- [file][used] Low Poly Clouds:
  https://sketchfab.com/3d-models/low-poly-cloud-81910476b24d4fc5a73c908d6c2a38a2
-
-- [file] Tile36:
- https://cc0textures.com/view.php?tex=Tiles36
-
-- [file] Modular House Collection:
-  https://fertile-soil-productions.itch.io/modular-house-collection
-
-- [file] Low Poly Nature Pack:
- https://jhan-gutierrez.itch.io/low-poly-nature-pack
-
-- [file] Low Poly Rock Pack - 001:
- https://emerald-eel-entertainment.itch.io/low-poly-rock-pack-001
-
-- [file] Simplistic Low Poly Nature:
- https://acornbringer.itch.io/assets-simplistic-low-poly-nature
-
-- [file] Low Poly Nature Pack:
- https://jhan-gutierrez.itch.io/low-poly-nature-pack
-
-- [file] Low Poly Forest Pack:
- https://jaks.itch.io/lowpolyforestpack
-
-- [file] Poly Desert Freebies:
- https://runemarkstudio.itch.io/poly-desert
-
-- [file] 3D Isometric Rooms:
- https://davidjakubec.itch.io/3d-isometric-rooms
-
-- [file] Ultimate Nature Pack:
- https://quaternius.itch.io/150-lowpoly-nature-models
-
-- [file] Low Poly Planets: 
- https://motherboardmage.itch.io/low-poly-planets
