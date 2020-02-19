@@ -13,5 +13,14 @@ MonoBehaviour:
   m_Name: Card_3
   m_EditorClassIdentifier: Assembly-CSharp::TutorialCard
   Title: Translation
-  Content: 
-  Picture: {fileID: 0}
+  Content: 'Move the object horizontally and vertically axis so its shadow match
+    the outline.
+
+
+    To do so use "Left Click + CTRL" and hold on the object while
+    dragging it to move it.
+
+
+    The 3 axis on the bottom right corner help you
+    visualize object''s orientation but in that case it won''t be helpful ;)'
+  Picture: {fileID: 937518683407367969, guid: f5401890f767a48a392191afeaf5ea6d, type: 3}

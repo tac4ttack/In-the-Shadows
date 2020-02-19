@@ -24,20 +24,6 @@ public class Tutorial : MonoBehaviour
     [ColorUsageAttribute(true, true)] public Color GuideEmissionHue = new Color(0.45f, 1.96f, 2f, 1f);
     [ColorUsageAttribute(true, true)] public Color GuideEmissionValidHue = new Color(0.053f, 1f, 0f, 1f);
 
-    [SerializeField] private Vector3[] _Positions = new Vector3[]{   new Vector3(8.62f, -1.599f, -1.915f),
-                                                    new Vector3(1.99f, -0.99f, -0.55f),
-                                                    new Vector3(0f, -1.599f, -1.915f),
-                                                    new Vector3(-1f, -7.8f, -1.915f),
-                                                    new Vector3(12.85f, -4.09f, -0.55f)
-                                                };
-    [SerializeField] private Quaternion[] _Orientations = new Quaternion[]{ Quaternion.Euler(98f, 16f, 0f),
-                                                                            Quaternion.Euler(0f, -75f, 0f),
-                                                                            Quaternion.Euler(-0.45f, 16f, 0f),
-                                                                            Quaternion.Euler(90f, 200f, 0f),
-                                                                            Quaternion.Euler(90f, -69f, 0f)
-                                                                            };
-
-
     void Awake()
     {
         if (Tutorial_CG == null)
@@ -84,7 +70,7 @@ public class Tutorial : MonoBehaviour
         */
         GameObject[] tmp = GameObject.FindGameObjectsWithTag("InGame_PuzzlePiece");
         PuzzlePieces = new PuzzlePiece[tmp.Length - 1];
-        for (int i = 0; i < tmp.Length; i++)
+        for (int i = 0;i < tmp.Length;i++)
         {
                 if (i == 2)
                     DummyPuzzlePiece = tmp[i].GetComponent<PuzzlePiece>();
@@ -94,8 +80,8 @@ public class Tutorial : MonoBehaviour
         Assert.IsNotNull(PuzzlePieces, "No Puzzle pieces found in scene!");
 
         TutorialStateMachine.ChangeState(TutorialSteps[CurrentStep]);
-        Tutorial_Prev_BTN.onClick.AddListener(delegate { TutorialPrevButtonPress(); }); 
-        Tutorial_Next_BTN.onClick.AddListener(delegate { TutorialNextButtonPress(); }); 
+        Tutorial_Prev_BTN.onClick.AddListener(delegate { TutorialPrevButtonPress();});
+        Tutorial_Next_BTN.onClick.AddListener(delegate { TutorialNextButtonPress();});
     }
 
     void Update()
@@ -111,12 +97,12 @@ public class Tutorial : MonoBehaviour
             Tutorial_Content_TXT.text = iCard.Content;
             if (iCard.Picture)
             {
-                Tutorial_Pic_IMG.enabled = true;            
+                Tutorial_Pic_IMG.enabled = true;    
                 Tutorial_Pic_IMG.sprite = iCard.Picture;
             }
             else
             {
-                Tutorial_Pic_IMG.enabled = false;            
+                Tutorial_Pic_IMG.enabled = false;    
             }
         }
     }
@@ -125,6 +111,7 @@ public class Tutorial : MonoBehaviour
 
     public void TutorialPrevButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         switch (CurrentStep)
         {
             case 1:
@@ -150,6 +137,7 @@ public class Tutorial : MonoBehaviour
 
     public void TutorialNextButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         switch (CurrentStep)
         {
             case 0:
@@ -193,10 +181,9 @@ public class Tutorial_Step_0 : IState
         _TutorialScript.CurrentStep = 0;
         _TutorialScript.FillInCard(_TutorialScript.Cards[_TutorialScript.CurrentStep]);
 
-        _TutorialScript.Tutorial_Prev_BTN.interactable = false;
         _TutorialScript.Tutorial_Prev_BTN.gameObject.SetActive(false);
+        _TutorialScript.Tutorial_Prev_BTN.interactable = false;
         _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(true);
-
         _TutorialScript.Tutorial_Next_BTN.interactable = true;
 
         _TutorialScript.PuzzlePieces[0].gameObject.SetActive(false);
@@ -213,6 +200,7 @@ public class Tutorial_Step_0 : IState
 public class Tutorial_Step_1 : IState
 {
     private Tutorial _TutorialScript;
+    private bool _Unlocked = false;
 
     public Tutorial_Step_1(Tutorial iTutorialScript) => _TutorialScript = iTutorialScript;
 
@@ -256,13 +244,19 @@ public class Tutorial_Step_1 : IState
     {
         if (_TutorialScript.PuzzlePieces[0].isPuzzlePieceValidated)
         {
+            if (_Unlocked == false)
+            {
+                GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[6]);
+                _Unlocked = true;
+            }
             _TutorialScript.Tutorial_Next_BTN.interactable = true;
             _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_EmissionColor"), _TutorialScript.GuideEmissionValidHue);
         }
         else
         {
+            _Unlocked = false;
             _TutorialScript.Tutorial_Next_BTN.interactable = false;
-            _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_EmissionColor"), _TutorialScript.GuideEmissionHue);            
+            _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_EmissionColor"), _TutorialScript.GuideEmissionHue);    
         }
     }
 
@@ -272,6 +266,7 @@ public class Tutorial_Step_1 : IState
 public class Tutorial_Step_2 : IState
 {
     private Tutorial _TutorialScript;
+    private bool _Unlocked = false;
 
     public Tutorial_Step_2(Tutorial iTutorialScript) => _TutorialScript = iTutorialScript;
 
@@ -280,6 +275,7 @@ public class Tutorial_Step_2 : IState
         _TutorialScript.CurrentStep = 2;
         _TutorialScript.FillInCard(_TutorialScript.Cards[_TutorialScript.CurrentStep]);
 
+        _TutorialScript.Tutorial_Prev_BTN.gameObject.SetActive(true);
         _TutorialScript.Tutorial_Prev_BTN.interactable = true;
         _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(true);
         _TutorialScript.Tutorial_Next_BTN.interactable = false;
@@ -314,13 +310,19 @@ public class Tutorial_Step_2 : IState
     {
         if (_TutorialScript.PuzzlePieces[1].isPuzzlePieceValidated)
         {
+            if (_Unlocked == false)
+            {
+                GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[6]);
+                _Unlocked = true;
+            }
             _TutorialScript.Tutorial_Next_BTN.interactable = true;
             _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_EmissionColor"), _TutorialScript.GuideEmissionValidHue);
         }
         else
         {
+            _Unlocked = false;
             _TutorialScript.Tutorial_Next_BTN.interactable = false;
-            _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_EmissionColor"), _TutorialScript.GuideEmissionHue);            
+            _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_EmissionColor"), _TutorialScript.GuideEmissionHue);    
         }
     }
 
@@ -330,6 +332,7 @@ public class Tutorial_Step_2 : IState
 public class Tutorial_Step_3 : IState
 {
     private Tutorial _TutorialScript;
+    private bool _Unlocked = false;
 
     public Tutorial_Step_3(Tutorial iTutorialScript) => _TutorialScript = iTutorialScript;
 
@@ -338,6 +341,7 @@ public class Tutorial_Step_3 : IState
         _TutorialScript.CurrentStep = 3;
         _TutorialScript.FillInCard(_TutorialScript.Cards[_TutorialScript.CurrentStep]);
 
+        _TutorialScript.Tutorial_Prev_BTN.gameObject.SetActive(true);        
         _TutorialScript.Tutorial_Prev_BTN.interactable = true;
         _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(true);
         _TutorialScript.Tutorial_Next_BTN.interactable = false;
@@ -346,7 +350,7 @@ public class Tutorial_Step_3 : IState
         _TutorialScript.PuzzlePieces[0].transform.localRotation = Quaternion.Euler(-0.45f, 16f, 0f);
         _TutorialScript.PuzzlePieces[0].SetRotationConstraint(new bool[] {true, true, true});
         _TutorialScript.PuzzlePieces[0].SetTranslationConstraint(new bool[] {false, false, true});
-        _TutorialScript.PuzzlePieces[0].SetDirectionSolution(new Vector3(2.2f, 0.2f, 0f));
+        _TutorialScript.PuzzlePieces[0].SetDirectionSolution(new Vector3(2.2f, 0.2f, -0.5f));
         _TutorialScript.PuzzlePieces[0].SetRotationSolutions(new Quaternion[]{new Quaternion(0f, 0.1f, 0f, 1f)});
         _TutorialScript.PuzzlePieces[0].SetDistanceSolution(2.25f);
         _TutorialScript.PuzzlePieces[0].gameObject.SetActive(true);
@@ -365,20 +369,26 @@ public class Tutorial_Step_3 : IState
         if (tmp == null)
                 throw new FileNotFoundException("Target asset not found in Resources folder!");
         _TutorialScript.GuideWall_MAT.SetTexture(Shader.PropertyToID("_MainTex"), tmp);
-        _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_EmissionColor"), _TutorialScript.GuideEmissionHue);            
+        _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_EmissionColor"), _TutorialScript.GuideEmissionHue);    
     }
 
     public void Execute()
     {
         if (_TutorialScript.PuzzlePieces[0].isPuzzlePieceValidated)
         {
+            if (_Unlocked == false)
+            {
+                GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[6]);
+                _Unlocked = true;
+            }
             _TutorialScript.Tutorial_Next_BTN.interactable = true;
             _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_EmissionColor"), _TutorialScript.GuideEmissionValidHue);
         }
         else
         {
+            _Unlocked = false;
             _TutorialScript.Tutorial_Next_BTN.interactable = false;
-            _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_EmissionColor"), _TutorialScript.GuideEmissionHue);            
+            _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_EmissionColor"), _TutorialScript.GuideEmissionHue);    
         }
     }
 
@@ -388,6 +398,7 @@ public class Tutorial_Step_3 : IState
 public class Tutorial_Step_4 : IState
 {
     private Tutorial _TutorialScript;
+    private bool _Unlocked = false;
 
     public Tutorial_Step_4(Tutorial iTutorialScript) => _TutorialScript = iTutorialScript;
 
@@ -396,10 +407,11 @@ public class Tutorial_Step_4 : IState
         _TutorialScript.CurrentStep = 4;
         _TutorialScript.FillInCard(_TutorialScript.Cards[_TutorialScript.CurrentStep]);
 
+        _TutorialScript.Tutorial_Prev_BTN.gameObject.SetActive(true);
         _TutorialScript.Tutorial_Prev_BTN.interactable = true;
-        _TutorialScript.Tutorial_Next_BTN.interactable = false;
-        _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(false);
+        _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(true);
         _TutorialScript.Tutorial_Next_BTN.GetComponentInChildren<TextMeshProUGUI>().text = "finish";
+        _TutorialScript.Tutorial_Next_BTN.interactable = false;
 
         _TutorialScript.PuzzlePieces[0].transform.localPosition = new Vector3(2.014084f, -0.191252f, -0.4065721f);
         _TutorialScript.PuzzlePieces[0].transform.localRotation = Quaternion.Euler(220f, 90f, 0f);
@@ -409,7 +421,7 @@ public class Tutorial_Step_4 : IState
         _TutorialScript.PuzzlePieces[0].SetRotationSolutions(new Quaternion[]{
                                                                         new Quaternion(0.0f, 0.1f, 0.0f, 1f),
                                                                         new Quaternion(0.0f, -0.2f, 0.0f, -1f)});
-        _TutorialScript.PuzzlePieces[0].SetDistanceSolution(2.10f);
+        _TutorialScript.PuzzlePieces[0].SetDistanceSolution(2.15f);
         _TutorialScript.PuzzlePieces[0].gameObject.SetActive(true);
 
         _TutorialScript.PuzzlePieces[1].transform.localPosition = new Vector3(10.89755f, -0.8364128f, -2.199829f);
@@ -420,7 +432,7 @@ public class Tutorial_Step_4 : IState
         _TutorialScript.PuzzlePieces[1].SetRotationSolutions(new Quaternion[]{
                                                                         new Quaternion(-0.1f, 0.0f, -1.0f, 0f),
                                                                         new Quaternion(-0.2f, 0.0f, -1.0f, 0f)});
-        _TutorialScript.PuzzlePieces[1].SetDistanceSolution(2.10f);
+        _TutorialScript.PuzzlePieces[1].SetDistanceSolution(2.15f);
         _TutorialScript.PuzzlePieces[1].gameObject.SetActive(true);
 
         _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_Color"), _TutorialScript.GuideAlbedoHue);
@@ -428,22 +440,26 @@ public class Tutorial_Step_4 : IState
         if (tmp == null)
                 throw new FileNotFoundException("Target asset not found in Resources folder!");
         _TutorialScript.GuideWall_MAT.SetTexture(Shader.PropertyToID("_MainTex"), tmp);
-        _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_EmissionColor"), _TutorialScript.GuideEmissionHue);            
+        _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_EmissionColor"), _TutorialScript.GuideEmissionHue);    
     }
 
     public void Execute()
     {
         if (Utility.CheckPuzzlePieces(_TutorialScript.PuzzlePieces))
         {
-            _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(true);
+            if (_Unlocked == false)
+            {
+                GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[6]);
+                _Unlocked = true;
+            }
             _TutorialScript.Tutorial_Next_BTN.interactable = true;
             _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_EmissionColor"), _TutorialScript.GuideEmissionValidHue);
         }
         else
         {
-            _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(false);
+            _Unlocked = false;
             _TutorialScript.Tutorial_Next_BTN.interactable = false;
-            _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_EmissionColor"), _TutorialScript.GuideEmissionHue);            
+            _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_EmissionColor"), _TutorialScript.GuideEmissionHue);    
         }
     }
 

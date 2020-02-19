@@ -13,5 +13,15 @@ MonoBehaviour:
   m_Name: Card_1
   m_EditorClassIdentifier: Assembly-CSharp::TutorialCard
   Title: Horizontal Rotation
-  Content: 
-  Picture: {fileID: 0}
+  Content: 'Rotate the object on its horizontal axis so its shadow match the outline.
+
+
+    To
+    do so use "Left Click" and hold on the object while dragging it vertically to
+    rotate it.
+
+
+    The 3 axis on the bottom right corner help you visualize object''s
+    orientation. '
+  Picture: {fileID: -4323358168787579289, guid: f5401890f767a48a392191afeaf5ea6d,
+    type: 3}

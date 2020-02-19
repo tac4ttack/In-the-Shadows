@@ -4,6 +4,6 @@ using UnityEngine;
 public class TutorialCard : ScriptableObject
 {
     [SerializeField] public string Title;
-    [SerializeField] [Multiline] public string Content;
+    [SerializeField] [TextArea(10, 20)] public string Content;
     [SerializeField] public Sprite Picture;
 }

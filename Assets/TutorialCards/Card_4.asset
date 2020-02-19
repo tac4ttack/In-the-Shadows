@@ -13,5 +13,15 @@ MonoBehaviour:
   m_Name: Card_4
   m_EditorClassIdentifier: Assembly-CSharp::TutorialCard
   Title: Into Practice
-  Content: 
-  Picture: {fileID: 0}
+  Content: 'It''s time to put in practice everything learn right before.
+
+
+    Move
+    and rotate the objects so their shadows match the outlines.
+
+
+    It should be
+    pretty easy for a so much talented employee like you but you chose to do this
+    course so you''ll have to finish it successfully!'
+  Picture: {fileID: -6806519318997315445, guid: f5401890f767a48a392191afeaf5ea6d,
+    type: 3}

@@ -17,14 +17,10 @@ MonoBehaviour:
 
 
     To
-    recover an artefact you have to manipulate its volume so its projected shadow''s
-    shape reveals its true silhouette.
+    recover an artefact you have to manipulate it so its projected shadow''s shape
+    reveals the silhouette matching its true form.
 
 
-    We will see how to rotate and move the
-    volume using your mouse controller.
-
-
-    Follow the instructions and at the
-    end you should be good to go for your first true assigment!'
-  Picture: {fileID: 0}
+    Follow the instructions
+    and at the end you should be good to go for your first true assigment!'
+  Picture: {fileID: 4267702064752197430, guid: f5401890f767a48a392191afeaf5ea6d, type: 3}
