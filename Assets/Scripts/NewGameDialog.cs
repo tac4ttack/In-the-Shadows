@@ -60,6 +60,7 @@ public class NewGameDialog : MonoBehaviour
 
     private void CreateButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         PlayerName.text = PlayerName.text.Trim();
         GameManager.GM.CreateNewPlayer(CurrentSlot, PlayerName.text, !(TutorialSkip.isOn));
     }

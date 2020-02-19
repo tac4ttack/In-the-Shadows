@@ -63,39 +63,46 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         PauseMenuStateMachine.ChangeState(new Inactive_PauseMenuState(this));
     }
 
     public void RestartButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         CurrentPromptTarget = PauseMenu.ConfirmationPromptTarget.Restart;
         PauseMenuStateMachine.ChangeState(new ConfirmationPrompt_PauseMenuState(this));
     }
 
     public void AbortButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         CurrentPromptTarget = PauseMenu.ConfirmationPromptTarget.LevelSelection;
         PauseMenuStateMachine.ChangeState(new ConfirmationPrompt_PauseMenuState(this));
     }
 
     public void ExitButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         CurrentPromptTarget = PauseMenu.ConfirmationPromptTarget.MainMenu;
         PauseMenuStateMachine.ChangeState(new ConfirmationPrompt_PauseMenuState(this));
     }
 
     public void SettingsButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         PauseMenuStateMachine.ChangeState(new Settings_PauseMenuState(this));
     }
 
     public void SettingsBackButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         PauseMenuStateMachine.GoBackToPreviousState();
     }
 
     public void ConfirmationYesButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         switch (CurrentPromptTarget)
         {
             case PauseMenu.ConfirmationPromptTarget.MainMenu:
@@ -114,11 +121,13 @@ public class PauseMenu : MonoBehaviour
 
     public void ConfirmationNoButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         PauseMenuStateMachine.GoBackToPreviousState();
     }
 
     public void PauseMenuButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         PauseMenuStateMachine.ChangeState(new Active_PauseMenuState(this));
     }
 

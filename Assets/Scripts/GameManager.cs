@@ -58,8 +58,8 @@ public class GameManager : MonoBehaviour
         // Sound settings loading
         SM.SfxSrc.volume = Settings.SFXVolume * Settings.MasterVolume;
         SM.MusicSrc.volume = Settings.MusicVolume * Settings.MasterVolume;
-
         CurrentState = GameManager.GameStates.TitleScreen;
+        GameManager.GM.SM.MusicSrc.PlayOneShot(GameManager.GM.SM.Musics[0]);
     }
 
     public void ClearAllPlayersData()
@@ -123,7 +123,8 @@ public class InMainMenu_GameState : IState
         GameManager.GM.DebugMode = false;
         GameManager.GM.UpdatePlayersProgressionPercentage();
         SaveSystem.SavePlayers(GameManager.GM.Players);
-        // add main menu music launch?
+        GameManager.GM.SM.MusicSrc.Stop();
+        GameManager.GM.SM.MusicSrc.PlayOneShot(GameManager.GM.SM.Musics[0]);
     }
 
     public void Execute() { }
@@ -131,6 +132,7 @@ public class InMainMenu_GameState : IState
     public void Exit()
     {
         SaveSystem.SavePlayers(GameManager.GM.Players);
+        GameManager.GM.SM.MusicSrc.Stop();
     }
 }
 
@@ -143,7 +145,8 @@ public class LevelSelection_GameState : IState
         GameManager.GM.CurrentState = GameManager.GameStates.LevelSelection;
         SceneManager.LoadScene(1);
         SaveSystem.SavePlayers(GameManager.GM.Players);
-        // add level selection music launch?
+        GameManager.GM.SM.MusicSrc.Stop();
+        GameManager.GM.SM.MusicSrc.PlayOneShot(GameManager.GM.SM.Musics[1]);
     }
 
     public void Execute() { }
@@ -153,6 +156,7 @@ public class LevelSelection_GameState : IState
         GameManager.GM.Players.LastPlayed[Utility.CurrentPlayer] = System.DateTime.Now.ToString("dd MMM yyyy");
         GameManager.GM.UpdatePlayersProgressionPercentage();
         SaveSystem.SavePlayers(GameManager.GM.Players);
+        GameManager.GM.SM.MusicSrc.Stop();
     }
 }
 
@@ -170,7 +174,8 @@ public class InGame_GameState : IState
         GameManager.GM.CurrentState = GameManager.GameStates.InGame;
         SceneManager.LoadScene(_SceneIndex);
         SaveSystem.SavePlayers(GameManager.GM.Players);
-        // add puzzle level music launch depending on the level id?
+        GameManager.GM.SM.MusicSrc.Stop();
+        GameManager.GM.SM.MusicSrc.PlayOneShot(GameManager.GM.SM.Musics[_SceneIndex]);
     }
 
     public void Execute() { }
@@ -181,23 +186,8 @@ public class InGame_GameState : IState
         GameManager.GM.Players.LastPlayedLevel[Utility.CurrentPlayer] = _SceneIndex - Utility.LevelSceneIndexOffset;
         GameManager.GM.UpdatePlayersProgressionPercentage();
         SaveSystem.SavePlayers(GameManager.GM.Players);
+        GameManager.GM.SM.MusicSrc.Stop();
     }
 }
 
-/*
-public class EndGame_GameState : IState
-{
-    public EndGame_GameState() { }
-
-    public void Enter()
-    {
-        GameManager.GM.CurrentState = GameManager.GameStates.EndGame;
-        SceneManager.LoadScene(Utility.LevelSceneIndexOffset + GameManager.GM.Players.PuzzlesAmount);
-    }
-
-    public void Execute() {}
-
-    public void Exit() {}
-}
-*/
 #endregion

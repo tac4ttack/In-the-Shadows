@@ -95,12 +95,14 @@ public class PlayerSlot : MonoBehaviour
 
     public void ClearSlot_BTNPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         GameManager.GM.Players.ResetTargetPlayer(SlotID);
         SaveSystem.SavePlayers(GameManager.GM.Players);
     }
 
     public void SlotPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         if (Empty)
         {
             _MainMenuScript.MainMenuStateMachine.ChangeState(new NewPlayerPrompt_MainMenuState(_MainMenuScript, SlotID));

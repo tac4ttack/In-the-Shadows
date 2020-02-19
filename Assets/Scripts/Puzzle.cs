@@ -17,6 +17,7 @@ public class Puzzle : MonoBehaviour
     private PauseMenu _PauseMenuUI;
     private PostProcessProfile _PostProcess;
     private CanvasGroup _WinScreen_CG;
+    private CanvasGroup _WinScreen_Panel_CG;
     private CanvasGroup _WinScreen_Background_CG;
     private CanvasGroup _ConfirmationPrompt_CG;
 
@@ -49,6 +50,10 @@ public class Puzzle : MonoBehaviour
         if (_WinScreen_CG == null)
             _WinScreen_CG = GameObject.FindGameObjectWithTag("InGame_WinScreen_UI").GetComponent<CanvasGroup>();
         Assert.IsNotNull(_WinScreen_CG, "Win Screen UI not found in scene!");
+
+        if (_WinScreen_Panel_CG == null)
+            _WinScreen_Panel_CG = GameObject.FindGameObjectWithTag("InGame_WinScreen_Panel").GetComponent<CanvasGroup>();
+        Assert.IsNotNull(_WinScreen_Panel_CG, "Win Screen UI panel canvas group not found in scene!");
 
         if (_WinScreen_Background_CG == null)
             _WinScreen_Background_CG = GameObject.FindGameObjectWithTag("InGame_WinScreen_Background").GetComponent<CanvasGroup>();
@@ -136,7 +141,7 @@ public class Puzzle : MonoBehaviour
         _PuzzleValidated = Utility.CheckPuzzlePieces(_PuzzlePieces);
         if (_PuzzleValidated && CurrentState == PuzzleStates.Playing && CurrentState != PuzzleStates.WinScreen)
         {
-            PuzzleStateMachine.ChangeState(new WinScreen_PuzzleState(this, _WinScreen_Cam, _WinScreen_CG, _WinScreen_Background_CG, _PostProcess, _WinScreen_ConfettisSpawner));
+            PuzzleStateMachine.ChangeState(new WinScreen_PuzzleState(this, _WinScreen_Cam, _WinScreen_CG, _WinScreen_Panel_CG, _WinScreen_Background_CG, _PostProcess, _WinScreen_ConfettisSpawner));
         }
     }
 
@@ -160,6 +165,7 @@ public class Puzzle : MonoBehaviour
 
     public void ConfirmationYesButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         switch (CurrentPromptTarget)
         {
             case Puzzle.ConfirmationPromptTarget.MainMenu:
@@ -184,29 +190,34 @@ public class Puzzle : MonoBehaviour
 
     public void ConfirmationNoButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);        
         PuzzleStateMachine.GoBackToPreviousState();
     }
 
     public void QuitButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);        
         CurrentPromptTarget = Puzzle.ConfirmationPromptTarget.MainMenu;
         PuzzleStateMachine.ChangeState(new ConfirmationPrompt_PuzzleState(this, _ConfirmationPrompt_CG));
     }
 
     public void LevelSelectButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         CurrentPromptTarget = Puzzle.ConfirmationPromptTarget.LevelSelection;
         PuzzleStateMachine.ChangeState(new ConfirmationPrompt_PuzzleState(this, _ConfirmationPrompt_CG));
     }
 
     public void RestartButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         CurrentPromptTarget = Puzzle.ConfirmationPromptTarget.Restart;
         PuzzleStateMachine.ChangeState(new ConfirmationPrompt_PuzzleState(this, _ConfirmationPrompt_CG));
     }
 
     public void NextLevelButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
@@ -255,6 +266,7 @@ public class WinScreen_PuzzleState : IState
     private Puzzle _PuzzleScript;
     private Camera _WinCam;
     private CanvasGroup _WinScreen_CG;
+    private CanvasGroup _WinScreen_Panel_CG;
     private CanvasGroup _WinScreen_Background_CG;
     private PostProcessProfile _PostProcess;
     private ConfettisSpawner _ConfettisSpawner;
@@ -262,6 +274,7 @@ public class WinScreen_PuzzleState : IState
     public WinScreen_PuzzleState(Puzzle iPuzzleScript,
                                 Camera iWinCam,
                                 CanvasGroup iWinScreenCG,
+                                CanvasGroup iWinScreen_Panel_CG,
                                 CanvasGroup iWinScreenBackgroundCG,
                                 PostProcessProfile iPostProcess,
                                 ConfettisSpawner iConfettisSpawner)
@@ -269,6 +282,7 @@ public class WinScreen_PuzzleState : IState
         _PuzzleScript = iPuzzleScript;
         _WinCam = iWinCam;
         _WinScreen_CG = iWinScreenCG;
+        _WinScreen_Panel_CG = iWinScreen_Panel_CG;
         _WinScreen_Background_CG = iWinScreenBackgroundCG;
         _PostProcess = iPostProcess;
         _ConfettisSpawner = iConfettisSpawner;
@@ -276,11 +290,10 @@ public class WinScreen_PuzzleState : IState
 
     public void Enter()
     {
-        // DEBUG
-        Debug.Break();
-
         _PuzzleScript.CurrentState = Puzzle.PuzzleStates.WinScreen;
         _WinCam.enabled = true;
+        _WinScreen_Panel_CG.interactable = true;        
+        _WinScreen_Panel_CG.blocksRaycasts = true;
         _WinScreen_Background_CG.blocksRaycasts = true;
         _WinScreen_Background_CG.interactable = true;
         GameManager.GM.StartCoroutine(Utility.PopInCanvasGroup(_WinScreen_Background_CG, 1f, Utility.TransitionSpeed));        
@@ -299,6 +312,8 @@ public class WinScreen_PuzzleState : IState
         GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp] = 2;
         if (tmp + 1 < Utility.PuzzleAmount)
             GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp + 1] = 1;
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[10]);
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[11]);
     }
 
     public void Execute() { }
@@ -307,6 +322,7 @@ public class WinScreen_PuzzleState : IState
     {
         _WinScreen_Background_CG.blocksRaycasts = false;
         _WinScreen_Background_CG.interactable = false;
+        GameManager.GM.SM.SfxSrc.Stop();
     }
 }
 

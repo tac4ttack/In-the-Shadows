@@ -71,21 +71,25 @@ public class MainMenu : MonoBehaviour
 
     public void PlayButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         MainMenuStateMachine.ChangeState(new Play_MainMenuState(this));
     }
 
     public void SettingsButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         MainMenuStateMachine.ChangeState(new Settings_MainMenuState(this));
     }
 
     public void CreditsButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         MainMenuStateMachine.ChangeState(new Credits_MainMenuState(this));
     }
 
     public void ExitButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         SaveSystem.SavePlayers(GameManager.GM.Players);
         SaveSystem.SaveSettings(GameManager.GM.Settings);
         Application.Quit();
@@ -93,21 +97,25 @@ public class MainMenu : MonoBehaviour
 
     public void BackButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         MainMenuStateMachine.GoBackToPreviousState();
     }
 
     public void PlayPanelBackButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         MainMenuStateMachine.ChangeState(new Main_MainMenuState(this));
     }
 
     public void ClearAllButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         GameManager.GM.ClearAllPlayersData();
     }
 
     public void DebugModeToggleCheck()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[2]);        
         GameManager.GM.DebugMode = DebugModeCheckBox.isOn;
     }
 

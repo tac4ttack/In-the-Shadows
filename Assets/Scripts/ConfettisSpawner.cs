@@ -66,6 +66,7 @@ public class ConfettisSpawner : MonoBehaviour
                 
         yield return new WaitForSeconds(iDelay);
 
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[9]);
         GameObject spawn = GameObject.Instantiate<GameObject>(TargetToSpawn, this.transform, true);
         spawn.transform.localPosition = randomPosition;
     }

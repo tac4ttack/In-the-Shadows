@@ -225,12 +225,14 @@ public class LevelSelection : MonoBehaviour
 
     public void PlayButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         if (!_InCutscene)
             GameManager.GM.GameStateMachine.ChangeState(new InGame_GameState(_CurrentSelection + Utility.LevelSceneIndexOffset));
     }
 
     public void NavButtonPress(int iDirection)
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         int nextSelection = _CurrentSelection + iDirection;
 
         if (!_InCutscene)
@@ -251,6 +253,7 @@ public class LevelSelection : MonoBehaviour
 
     public void OnMarkerClick(int iId)
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         if (!_InCutscene)
         {
             RaycastHit hit;
@@ -283,6 +286,7 @@ public class LevelSelection : MonoBehaviour
             Camera.main.transform.LookAt(_Earth_GO.transform.position);
             yield return null;
         }
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[4]);
         _IsOrbiting = false;
     }
 
@@ -310,6 +314,7 @@ public class LevelSelection : MonoBehaviour
             yield return null;
         }
         Levels[iLevel].AnimationController.SetTrigger("ToUnlock");
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[5]);
         yield return new WaitForSeconds(1.5f);
 
         if (_PreviousSelection >= 0)
@@ -334,6 +339,7 @@ public class LevelSelection : MonoBehaviour
             Camera.main.transform.LookAt(_Earth_GO.transform.position);
             yield return null;
         }
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[3]);
         Levels[iLevel].AnimationController.SetTrigger("ToComplete");
         yield return new WaitForSeconds(1.5f);
 

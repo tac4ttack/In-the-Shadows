@@ -2,6 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.Assertions;
 
+[SelectionBase]
 public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [HideInInspector] public bool isPuzzlePieceValidated = false;
@@ -48,6 +49,36 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         _AxisHints.Enable(false);
         _BaseColor = _MeshRenderer.materials[0].color;
     }
+
+// DEBUG
+#if UNITY_EDITOR
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            string debugString = $"Name = {this.gameObject.name}\n"
+                    +$"LocalRotation = {this.gameObject.transform.localRotation}\n"
+                    +$"Rotation = {this.gameObject.transform.rotation}\n";
+
+            if (_RelativePuzzlePiece)
+            {
+                Vector3 debugRelDir = _RelativePuzzlePiece.transform.position - this.gameObject.transform.position;
+                float debugRelDist = debugRelDir.magnitude;
+                bool relDirTest = (_RelativeDirectionSolution.x >= debugRelDir.x - _DirectionBias && _RelativeDirectionSolution.x <= debugRelDir.x + _DirectionBias)
+                                && (_RelativeDirectionSolution.y >= debugRelDir.y - _DirectionBias && _RelativeDirectionSolution.y <= debugRelDir.y + _DirectionBias)
+                                && (_RelativeDirectionSolution.z >= debugRelDir.z - _DirectionBias && _RelativeDirectionSolution.z <= debugRelDir.z + _DirectionBias);
+                bool relDistTest = (_RelativeDistanceSolution >= debugRelDist - _DistanceBias && _RelativeDistanceSolution <= debugRelDist + _DistanceBias);
+
+                debugString +=
+                $"Relative Position Vector3 = {_RelativePuzzlePiece.transform.position - this.gameObject.transform.position}\n"
+                +$"Relative Distance = {Vector3.Magnitude(_RelativePuzzlePiece.transform.position - this.gameObject.transform.position)}\n"
+                +$"Orientation check = {_OrientationOK}\nRel.Dir Check = {relDirTest}\nRel.Dist Check = {relDistTest}";
+            }
+            Debug.Log(debugString);
+        }
+    }
+#endif
+
 
     void FixedUpdate()
     {
@@ -214,6 +245,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         _MeshRenderer.materials[0].color = Color.green;
         _AxisHints.Enable(true);
         Cursor.visible = false;
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[0]);
 
         MeshRenderer current = this.gameObject.GetComponentInChildren<MeshRenderer>();
         if (_RelativePuzzlePiece)
@@ -263,6 +295,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         _MeshRenderer.materials[0].color = _BaseColor;
         _AxisHints.Enable(false);
         Cursor.visible = true;
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[7]);
 
         MeshRenderer current = this.gameObject.GetComponentInChildren<MeshRenderer>();
         if (_RelativePuzzlePiece != null)

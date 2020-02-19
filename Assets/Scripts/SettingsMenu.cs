@@ -137,6 +137,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void MuteCheckboxToggle()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[2]);
         if (_MuteCheckbox.isOn && !_InitFlag)
         {
             Debug.Log("Mute switched to ON!");
@@ -165,6 +166,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void FPSCounterCheckboxToggle()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[2]);
         if (_FPSCounterCheckbox.isOn && !_InitFlag)
         {
             GameManager.GM.Settings.FPSCounter = true;
@@ -177,6 +179,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void MouseControlsCheckboxToggle()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[2]);
         if (_MouseControlsCheckbox.isOn && !_InitFlag)
         {
             GameManager.GM.Settings.MouseControls = true;
@@ -189,6 +192,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void FXAACheckboxToggle()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[2]);
         if (_FXAACheckbox.isOn && !_InitFlag)
         {
             GameManager.GM.Settings.FXAAEnabled = true;
@@ -202,6 +206,7 @@ public class SettingsMenu : MonoBehaviour
 
     public void ResetToDefaultsButtonPress()
     {
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
         _MasterVolumeSlider.value = GameManager.GM.Settings.DefaultMasterVolume;
         GameManager.GM.Settings.PreviousMasterVolume = GameManager.GM.Settings.DefaultMasterVolume;
         _SFXVolumeSlider.value = GameManager.GM.Settings.DefaultSFXVolume;
@@ -215,10 +220,8 @@ public class SettingsMenu : MonoBehaviour
         SaveSystem.SaveSettings(GameManager.GM.Settings);
     }
 
-    // DEBUG
     public void TestSoundButtonPress()
     {
-        // DEBUG SFX
-        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[0]);
+        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[3]);
     }
 }
