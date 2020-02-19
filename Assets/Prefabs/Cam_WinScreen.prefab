@@ -697,7 +697,7 @@ GameObject:
   - component: {fileID: 5250059411827885852}
   m_Layer: 10
   m_Name: WinScreen_Panel
-  m_TagString: Untagged
+  m_TagString: InGame_WinScreen_Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -762,8 +762,8 @@ CanvasGroup:
   m_GameObject: {fileID: 5250059411827885851}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &5250059411827885855
 MonoBehaviour:
@@ -1376,6 +1376,7 @@ GameObject:
   - component: {fileID: 5250059413132715293}
   - component: {fileID: 5250059413132715294}
   - component: {fileID: 5250059413132715295}
+  - component: {fileID: 3195171950493070826}
   m_Layer: 10
   m_Name: MainMenu_Button
   m_TagString: InGame_WinScreen_MainMenu_Button
@@ -1494,6 +1495,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3195171950493070826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5250059413132715289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8977e755dcbb041f28cc1ad2ab4eb5d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5807015272738613574
 GameObject:
   m_ObjectHideFlags: 0
@@ -2528,6 +2541,7 @@ GameObject:
   - component: {fileID: 8251071586074169008}
   - component: {fileID: 8251071586074169011}
   - component: {fileID: 8251071586074169010}
+  - component: {fileID: 2824671174907364342}
   m_Layer: 10
   m_Name: NextLevel_Button
   m_TagString: InGame_WinScreen_NextLevel_Button
@@ -2646,6 +2660,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2824671174907364342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8251071586074169020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8977e755dcbb041f28cc1ad2ab4eb5d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8251071586160279112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2763,6 +2789,7 @@ GameObject:
   - component: {fileID: 8251071586197185896}
   - component: {fileID: 8251071586197185899}
   - component: {fileID: 8251071586197185898}
+  - component: {fileID: 8694725110429005233}
   m_Layer: 10
   m_Name: Restart_Button
   m_TagString: InGame_WinScreen_Restart_Button
@@ -2881,6 +2908,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8694725110429005233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8251071586197185908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8977e755dcbb041f28cc1ad2ab4eb5d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8251071586391898941
 GameObject:
   m_ObjectHideFlags: 0
@@ -3141,6 +3180,7 @@ GameObject:
   - component: {fileID: 8251071587225222989}
   - component: {fileID: 8251071587225222988}
   - component: {fileID: 8251071587225222991}
+  - component: {fileID: 4550963884224255147}
   m_Layer: 10
   m_Name: LevelSelect_Button
   m_TagString: InGame_WinScreen_LevelSelection_Button
@@ -3259,3 +3299,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4550963884224255147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8251071587225222985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8977e755dcbb041f28cc1ad2ab4eb5d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

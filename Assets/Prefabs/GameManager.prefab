@@ -55,6 +55,8 @@ MonoBehaviour:
     DefaultMasterVolume: 1
     DefaultSFXVolume: 1
     DefaultMusicVolume: 1
+    DefaultSpeedRotation: 42
+    DefaultSpeedTranslation: 1
     MasterVolume: 1
     PreviousMasterVolume: 1
     SFXVolume: 1
@@ -65,6 +67,8 @@ MonoBehaviour:
     MouseControls: 1
     FPSCounter: 0
     FXAAEnabled: 1
+    SpeedRotation: 42
+    SpeedTranslation: 1
   Players:
     PlayersName:
     - Player #1
@@ -108,11 +112,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Musics:
-  - {fileID: 8300000, guid: 3908b4708a6454e12a4a498564c5938a, type: 3}
-  - {fileID: 8300000, guid: 633249a2c487b411fbfd4635c1fcc5e0, type: 3}
-  - {fileID: 8300000, guid: ed8eb6dbd865a4bc5995444eb633a280, type: 3}
+  - {fileID: 8300000, guid: c4dd2ebe60aaf446c94d751a47414f7d, type: 3}
+  - {fileID: 8300000, guid: 8cbe5f80f48bd47f789acf8fdcd051e4, type: 3}
+  - {fileID: 8300000, guid: d6d464386df5e4d17b11d63a1da762c2, type: 3}
+  - {fileID: 8300000, guid: fe8787d5b2d4442619b6d8c67d3e0272, type: 3}
+  - {fileID: 8300000, guid: 10a6d476e4d5543d8be0d0951b09a1de, type: 3}
+  - {fileID: 8300000, guid: 391bee044d8a5476eb8288632b9b4018, type: 3}
+  - {fileID: 8300000, guid: 6af3090cec3254e86b5f6944a4e5c1fc, type: 3}
   Sfx:
-  - {fileID: 8300000, guid: f37694c45be5a4ac1863332dd47cd05c, type: 3}
+  - {fileID: 8300000, guid: 85402f1a2e5674d5aba8fbe2a661bf2f, type: 3}
+  - {fileID: 8300000, guid: 34ad57dbd0fc74173b0bb43042136b51, type: 3}
+  - {fileID: 8300000, guid: 396aec7a8739944efa311f9f63d05d25, type: 3}
+  - {fileID: 8300000, guid: 75d37ef227e6e4e19803a38128fe0c59, type: 3}
+  - {fileID: 8300000, guid: 5c225d36b1dd34552b629c9cffcd1f0a, type: 3}
+  - {fileID: 8300000, guid: bea67eb06f7e44a078d0efdb9942a39a, type: 3}
+  - {fileID: 8300000, guid: 832ac6ea6201a4e6cae9404dccc60d44, type: 3}
+  - {fileID: 8300000, guid: ad5c03aaa0a49483581779f85bf57539, type: 3}
+  - {fileID: 8300000, guid: 29866cb68d788439b9f3bed6155db947, type: 3}
+  - {fileID: 8300000, guid: a4cd0c8f1850e47e197ec1a232429a84, type: 3}
+  - {fileID: 8300000, guid: 96a6d2527b217477495e44be5a985776, type: 3}
+  - {fileID: 8300000, guid: 3e4525c76a4a74e29b121b56fc4831b3, type: 3}
   MusicSrc: {fileID: 0}
   SfxSrc: {fileID: 0}
 --- !u!114 &4058333739513258335
@@ -141,7 +160,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
