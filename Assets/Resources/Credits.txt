@@ -1,0 +1,137 @@
+<size=150%><u>In The Shadows</u></size>
+
+
+A <color=#4490A9><i>42 school</i></color> project for the <color=#4490A9><i>Unity3D Engine</i></color> course.
+
+The goal was to recreate a small game prototype like <color=#4490A9><i>Shadowmatic</i></color>, a puzzle game made for mobile devices in 2015.
+
+More info about the original game at <color=#4490A9><i><size=60%>http://www.shadowmatic.com</size></i></color>.
+
+Project's page: <color=#4490A9><i><size=60%>https://tacattack.itch.io/in-the-shadows</size></i></color>
+
+Source code: <color=#4490A9><i><size=60%>https://github.com/tac4ttack/In-the-Shadows/</size></i></color>
+
+
+<size=125%><u>3D Assets:</u></size>
+
+* LowPoly Environment Pack *
+<color=#4490A9><i><size=60%>https://korveen.itch.io/lowpoly-environment-pack</size></i></color>
+
+* Low Poly Foliage Pack - 001 *
+<color=#4490A9><i><size=60%>https://emerald-eel-entertainment.itch.io/low-poly-foliage-pack-001</size></i></color>
+
+* Modular Terrain Pack *
+<color=#4490A9><i><size=60%>https://fertile-soil-productions.itch.io/modular-terrain-pack</size></i></color>
+
+* Low Poly Moon *
+<color=#4490A9><i><size=60%>https://sketchfab.com/3d-models/dear-mum-and-dad-i-have-made-it-to-the-moon-fb662136712744f4b1290f65033e8f06</size></i></color>
+
+* Low Poly Earth v2 *
+<color=#4490A9><i><size=60%>https://sketchfab.com/3d-models/low-poly-earthv2-31c7f11f8bfa4ef79949a4ee824ae81f</size></i></color>
+
+* Elenfant *
+<color=#4490A9><i><size=60%>https://sketchfab.com/3d-models/elenfant-d9a1361bb7324e678ca21169533093d1</size></i></color>
+
+* Isometric Japanese Team Room *
+<color=#4490A9><i><size=60%>https://sketchfab.com/3d-models/isometric-japanese-tea-room-b422c6839b72424ead4c015596c5a7d5</size></i></color>
+
+* Shadow Drawer *
+<color=#4490A9><i><size=60%>https://github.com/keijiro/ShadowDrawer</size></i></color>
+
+* Low Poly Room *
+<color=#4490A9><i><size=60%>https://sketchfab.com/3d-models/low-poly-room-6efd70b753f24ed2b12541e43154ffdd</size></i></color>
+
+* Crocodile *
+<color=#4490A9><i><size=60%>https://sketchfab.com/3d-models/crocodile-63c056b2ac3049b594af60313e124e7b</size></i></color>
+
+* Low Poly Crocodile *
+<color=#4490A9><i><size=60%>https://sketchfab.com/3d-models/caiman-alligator-lowpoly-1ce91697022a43bd98fed14c8e1dbf27</size></i></color>
+
+* Low Poly Clouds *
+<color=#4490A9><i><size=60%>https://sketchfab.com/3d-models/low-poly-cloud-81910476b24d4fc5a73c908d6c2a38a2</size></i></color>
+
+
+
+<size=125%><u>Sound Effects:</u></size>
+
+* "Fallout 2" by Black Isle studio *
+<color=#4490A9><i><size=60%>https://fallout.bethesda.net/</size></i></color>
+
+* Fireworks Explosion Fizz *
+<color=#4490A9><i><size=60%>https://freesound.org/people/soundscalpel.com/sounds/110391/</size></i></color>
+
+* Success02 *
+<color=#4490A9><i><size=60%>https://freesound.org/people/rhodesmas/sounds/320652/</size></i></color>
+
+
+
+<size=125%><u>Musics:</u></size>
+
+* "Visage Of The Pale Queen" by Nycto *
+<color=#4490A9><i><size=60%>https://soundcloud.com/nyctomusic/nycto-visage-of-the-pale-queen
+http://creativecommons.org/licenses/by/3.0/</size></i></color>
+
+* "Rounding" by Savfk *
+<color=#4490A9><i><size=60%>https://soundcloud.com/savfk/rounding
+http://creativecommons.org/licenses/by/3.0/</size></i></color>
+
+* "Retro Dreamscape" by Twin Musicom *
+<color=#4490A9><i><size=60%>http://www.twinmusicom.org/
+http://creativecommons.org/licenses/by/4.0/</size></i></color>
+
+* "Intuit" by Kevin MacLeod *
+<color=#4490A9><i><size=60%>https://incompetech.filmmusic.io/song/3922-intuit
+http://creativecommons.org/licenses/by/4.0/</size></i></color>
+
+* "Listen To The Rain" by Mark Tyner *
+<color=#4490A9><i><size=60%>https://soundcloud.com/marktyner/listen-to-the-rain
+http://creativecommons.org/licenses/by/3.0/</size></i></color>
+
+* "Wild" by KV *
+<color=#4490A9><i><size=60%>https://soundcloud.com/kvmusicprod/wild
+http://creativecommons.org/licenses/by/4.0/</size></i></color>
+
+
+
+<size=125%><u>Tools:</u></size>
+
+* Blender *
+<color=#4490A9><i><size=60%>https://www.blender.org</size></i></color>
+
+* Adobe Photoshop * 
+<color=#4490A9><i><size=60%>https://www.adobe.com/fr/products/photoshop.html</size></i></color>
+
+* Text Mesh Pro *
+<color=#4490A9><i><size=60%>http://digitalnativestudios.com/</size></i></color>
+
+* Post Processing *
+<color=#4490A9><i><size=60%>https://docs.unity3d.com/Packages/com.unity.postprocessing@2.3/manual/index.html</size></i></color>
+
+* Polybrush *
+<color=#4490A9><i><size=60%>http://www.procore3d.com/polybrush/</size></i></color>
+
+* "Low Poly Water" and "Flat shading" techniques *
+<color=#4490A9><i><size=60%>http://viclw17.github.io/2016/03/29/low-poly-water/
+https://answers.unity.com/questions/798510/flat-shading.html</size></i></color>
+
+
+
+<size=125%><u>Text Fonts:</u></size>
+
+* Potra *
+<color=#4490A9><i><size=60%>https://www.dafont.com/fr/potra</size></i></color>
+
+* Rezland *
+<color=#4490A9><i><size=60%>https://www.dafont.com/fr/rezland</size></i></color>
+
+* Conthrax *
+<color=#4490A9><i><size=60%>https://www.dafont.com/fr/conthrax</size></i></color>
+
+* SpaceScape *
+<color=#4490A9><i><size=60%>http://alexcpeterson.com/spacescape/</size></i></color>
+
+
+
+<size=125%><u>Special thanks:</u></size>
+
+<color=#4490A9><i>Cassoul</i></color> and the <color=#4490A9><i>ELFIOR-NAN-BRASI</i></color> posse for bearing me during the creation of this project, <color=#4490A9><i>my family and Ghanima the cat</i></color>, and of course anyone I am not able to remember right now.
