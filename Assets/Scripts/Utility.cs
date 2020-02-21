@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 
 public static class Utility
 {
     public const float TransitionSpeed = 0.1f;
     public const int LevelSceneIndexOffset = 2;
-    public static Material Puzzle_Material = AssetDatabase.LoadAssetAtPath("Assets/Materials/PuzzlePiece.mat", typeof(Material)) as Material;
+    public static Material Puzzle_Material = Resources.Load("Assets/Materials/PuzzlePiece.mat") as Material;
 
     public static bool IsPointerOverUIObject()
     {
