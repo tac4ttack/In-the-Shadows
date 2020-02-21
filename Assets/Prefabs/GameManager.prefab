@@ -112,9 +112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Musics:
-  - {fileID: 8300000, guid: c4dd2ebe60aaf446c94d751a47414f7d, type: 3}
+  - {fileID: 8300000, guid: 5a579282a3399481e8ea0401df032bd4, type: 3}
   - {fileID: 8300000, guid: 8cbe5f80f48bd47f789acf8fdcd051e4, type: 3}
-  - {fileID: 8300000, guid: d6d464386df5e4d17b11d63a1da762c2, type: 3}
+  - {fileID: 8300000, guid: 6710048346e904351952a1f82dcd461c, type: 3}
   - {fileID: 8300000, guid: fe8787d5b2d4442619b6d8c67d3e0272, type: 3}
   - {fileID: 8300000, guid: 10a6d476e4d5543d8be0d0951b09a1de, type: 3}
   - {fileID: 8300000, guid: 391bee044d8a5476eb8288632b9b4018, type: 3}

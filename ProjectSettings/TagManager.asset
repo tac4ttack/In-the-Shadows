@@ -75,6 +75,8 @@ TagManager:
   - Tutorial_GuideWall
   - Tutorial_Prev
   - InGame_WinScreen_Panel
+  - MainMenu_CreditsButton
+  - MainMenu_CreditsContainer
   layers:
   - Default
   - TransparentFX
