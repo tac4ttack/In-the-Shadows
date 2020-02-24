@@ -9,7 +9,11 @@ public class AxisHints : MonoBehaviour
         _Axis = this.transform.GetComponentsInChildren<MeshRenderer>();
         if (_Axis.Length != 3 || _Axis == null)
         {
+            // DEBUG
+            #if UNITY_EDITOR
             Debug.LogError("AxisHint gameObject is corrupted");
+            #endif
+            
             return;
         }
     }

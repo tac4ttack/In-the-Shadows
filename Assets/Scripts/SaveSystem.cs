@@ -28,7 +28,11 @@ public static class SaveSystem
         }
         else
         {
+            // DEBUG
+            #if UNITY_EDITOR
             Debug.LogWarning("Settings data file not found in " + settingsPath);
+            #endif
+
             return null;
         }
     }
@@ -57,7 +61,11 @@ public static class SaveSystem
         }
         else
         {
+            // DEBUG
+            #if UNITY_EDITOR
             Debug.LogWarning("Players data file not found in " + playersPath);
+            #endif
+            
             return null;
         }
     }

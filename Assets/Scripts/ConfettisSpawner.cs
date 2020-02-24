@@ -20,7 +20,11 @@ public class ConfettisSpawner : MonoBehaviour
     {
         if (TargetToSpawn == null)
         {
+            // DEBUG
+            #if UNITY_EDITOR
             Debug.LogWarning("No spawnable GameObject set up, fetching default one!");
+            #endif
+            
             TargetToSpawn = Resources.Load<GameObject>("Confettis_ParticleSystem");
             if (TargetToSpawn == null)
                 throw new FileNotFoundException("Spawn target asset not found in Resources folder!");

@@ -39,6 +39,8 @@ public class LevelMarker : MonoBehaviour
             AnimationController = this.GetComponent<Animator>();
         Assert.IsNotNull(AnimationController, "Animator not found on level marker!");
 
+        // DEBUG
+        #if UNITY_EDITOR
         if (Id == -1)
             Debug.LogError($"ERROR in [{this.gameObject.name}]: LevelMarker ID is invalid!");
         if (Title == "unset!")
@@ -47,6 +49,8 @@ public class LevelMarker : MonoBehaviour
             Debug.LogError($"ERROR in [{this.gameObject.name}]: LevelMarker REFERENCE seems unset!");
         if (Description == "empty!")
             Debug.LogError($"ERROR in [{this.gameObject.name}]: LevelMarker DESCRIPTION seems empty!");
+        #endif
+
         if (Id >= 0)
         {
             _Position = this.gameObject.transform.position;
@@ -70,8 +74,7 @@ public class LevelMarker : MonoBehaviour
             AnimationController.SetInteger("Status", _Status.GetHashCode());
         }
 
-        // Best time fetch from player data!
-        // _BestTime = GameManager.GM.Players[CurrentPlayer].BestTimes[LevelId];
+        // Best time fetch from player data, not used at the moment
         _BestTime = (Random.Range(0, 24)).ToString("D2")
             + ":" + (Random.Range(0, 60)).ToString("D2")
             + ":" + (Random.Range(0, 60)).ToString("D2");

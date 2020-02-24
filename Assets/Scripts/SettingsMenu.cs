@@ -140,7 +140,6 @@ public class SettingsMenu : MonoBehaviour
         GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[2]);
         if (_MuteCheckbox.isOn && !_InitFlag)
         {
-            Debug.Log("Mute switched to ON!");
             GameManager.GM.Settings.SoundMuted = true;
             _MasterVolumeSlider.interactable = false;
             _SFXVolumeSlider.interactable = false;
@@ -152,7 +151,6 @@ public class SettingsMenu : MonoBehaviour
         }
         else if (!_MuteCheckbox.isOn && !_InitFlag)
         {
-            Debug.Log("Mute switched to OFF!");
             GameManager.GM.Settings.SoundMuted = false;
             _MasterVolumeSlider.interactable = true;
             _SFXVolumeSlider.interactable = true;

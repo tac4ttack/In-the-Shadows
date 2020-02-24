@@ -55,7 +55,14 @@ public class NewGameDialog : MonoBehaviour
             _NewGameDialogTitle.text = "New Game #" + (CurrentSlot + 1);
         }
         else
+        {
+            // DEBUG
+            #if UNITY_EDITOR
             Debug.LogError("New Game Dialog Error: wrong slot id -> " + iSlot);
+            #endif
+            
+            ;
+        }
     }
 
     private void CreateButtonPress()
