@@ -60,13 +60,10 @@ public class Tutorial : MonoBehaviour
                                         new Tutorial_Step_2(this),
                                         new Tutorial_Step_3(this),
                                         new Tutorial_Step_4(this)};
-    }
 
-    void Start()
-    {
         /*
-            Tutorial puzzle pieces fetching
-            DUMMY piece MUST BE in the last place of the Puzzle script's puzzle pieces array
+        Tutorial puzzle pieces fetching
+        DUMMY piece MUST BE in the last place of the Puzzle script's puzzle pieces array
         */
         GameObject[] tmp = GameObject.FindGameObjectsWithTag("InGame_PuzzlePiece");
         PuzzlePieces = new PuzzlePiece[tmp.Length - 1];
@@ -79,9 +76,10 @@ public class Tutorial : MonoBehaviour
         }
         Assert.IsNotNull(PuzzlePieces, "No Puzzle pieces found in scene!");
 
-        TutorialStateMachine.ChangeState(TutorialSteps[CurrentStep]);
         Tutorial_Prev_BTN.onClick.AddListener(delegate { TutorialPrevButtonPress();});
         Tutorial_Next_BTN.onClick.AddListener(delegate { TutorialNextButtonPress();});
+
+        TutorialStateMachine.ChangeState(TutorialSteps[CurrentStep]);
     }
 
     void Update()
@@ -186,7 +184,22 @@ public class Tutorial_Step_0 : IState
         _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(true);
         _TutorialScript.Tutorial_Next_BTN.interactable = true;
 
+        _TutorialScript.PuzzlePieces[0].transform.localPosition = new Vector3(8.62f, -1.599f, -1.915f);
+        _TutorialScript.PuzzlePieces[0].transform.localRotation = Quaternion.Euler(98f, 16f, 0f);
+        _TutorialScript.PuzzlePieces[0].SetRotationConstraint(new bool[] {false, true, true});
+        _TutorialScript.PuzzlePieces[0].SetTranslationConstraint(new bool[] {true, true, true});
+        _TutorialScript.PuzzlePieces[0].SetDirectionSolution(new Vector3(2.2f, 0.2f, 0f));
+        _TutorialScript.PuzzlePieces[0].SetRotationSolutions(new Quaternion[]{new Quaternion(0f, 0.1f, 0f, 1f)});
+        _TutorialScript.PuzzlePieces[0].SetDistanceSolution(2.25f);
         _TutorialScript.PuzzlePieces[0].gameObject.SetActive(false);
+        
+        _TutorialScript.PuzzlePieces[1].transform.localPosition = new Vector3(1.99f, -0.99f, -0.55f);
+        _TutorialScript.PuzzlePieces[1].transform.localRotation = Quaternion.Euler(0f, 24f, 0f);
+        _TutorialScript.PuzzlePieces[1].SetRotationConstraint(new bool[] {true, true, true});
+        _TutorialScript.PuzzlePieces[1].SetTranslationConstraint(new bool[] {true, true, true});
+        _TutorialScript.PuzzlePieces[1].SetDirectionSolution(new Vector3(-2.2f, -0.2f, 0f));
+        _TutorialScript.PuzzlePieces[1].SetRotationSolutions(new Quaternion[]{new Quaternion(0f, 0.2f, 0f, 1f)});
+        _TutorialScript.PuzzlePieces[1].SetDistanceSolution(2.25f);
         _TutorialScript.PuzzlePieces[1].gameObject.SetActive(false);
 
         _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_Color"), new Color(1, 1, 1, 0));

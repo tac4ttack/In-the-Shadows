@@ -28,6 +28,7 @@ public class Puzzle : MonoBehaviour
     private Button _WinScreen_Prompt_Yes_BTN;
     private Button _WinScreen_Prompt_No_BTN;
     private ConfettisSpawner _WinScreen_ConfettisSpawner;
+    public bool WinScreen_FirstPop = true;
 
     [SerializeField] private PuzzlePiece[] _PuzzlePieces;
     [SerializeField] private bool _PuzzleValidated = false;
@@ -96,17 +97,18 @@ public class Puzzle : MonoBehaviour
         for (int i = 0; i < tmp.Length; i++)
             _PuzzlePieces[i] = tmp[i].GetComponent<PuzzlePiece>();
         Assert.IsNotNull(_PuzzlePieces, "No Puzzle pieces found in scene!");
-    }
 
-    void Start()
-    {
         _WinScreen_MainMenu_BTN.onClick.AddListener(delegate { QuitButtonPress(); });
         _WinScreen_LevelSelection_BTN.onClick.AddListener(delegate { LevelSelectButtonPress(); });
         _WinScreen_Restart_BTN.onClick.AddListener(delegate { RestartButtonPress(); });
         _WinScreen_NextLevel_BTN.onClick.AddListener(delegate { NextLevelButtonPress(); });
         _WinScreen_Prompt_Yes_BTN.onClick.AddListener(delegate { ConfirmationYesButtonPress(); });
         _WinScreen_Prompt_No_BTN.onClick.AddListener(delegate { ConfirmationNoButtonPress(); });
+        
+    }
 
+    void Start()
+    {
         if (Utility.CurrentLevelIndex + 1 >= Utility.PuzzleAmount)
             _WinScreen_NextLevel_BTN.interactable = false;
         PuzzleStateMachine.ChangeState(new Playing_PuzzleState(this));
@@ -139,6 +141,7 @@ public class Puzzle : MonoBehaviour
         }
 
         _PuzzleValidated = Utility.CheckPuzzlePieces(_PuzzlePieces);
+
         if (_PuzzleValidated && CurrentState == PuzzleStates.Playing && CurrentState != PuzzleStates.WinScreen)
         {
             PuzzleStateMachine.ChangeState(new WinScreen_PuzzleState(this, _WinScreen_Cam, _WinScreen_CG, _WinScreen_Panel_CG, _WinScreen_Background_CG, _PostProcess, _WinScreen_ConfettisSpawner));
@@ -153,8 +156,16 @@ public class Puzzle : MonoBehaviour
     public void PushLevelUnlock()
     {
         int tmp = Utility.CurrentLevelIndex + 1;
+
         if (tmp >= Utility.LevelSceneIndexOffset + Utility.PuzzleAmount)
+        {
+            // DEBUG
+            #if UNITY_EDITOR
             Debug.Log("Should launch the end game!");
+            #endif
+            
+            ;
+        }
         else
         {
             GameManager.GM.Players.ToUnlock[Utility.CurrentPlayer].q.Add(tmp);
@@ -312,8 +323,13 @@ public class WinScreen_PuzzleState : IState
         GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp] = 2;
         if (tmp + 1 < Utility.PuzzleAmount)
             GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp + 1] = 1;
-        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[10]);
-        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[11]);
+        
+        if (_PuzzleScript.WinScreen_FirstPop)
+        {
+            GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[10]);
+            GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[11]);
+        }
+        _PuzzleScript.WinScreen_FirstPop = false;
     }
 
     public void Execute() { }

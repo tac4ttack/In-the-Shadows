@@ -582,7 +582,7 @@ GameObject:
   - component: {fileID: 3928979996434765243}
   m_Layer: 11
   m_Name: Globe_Puzzle
-  m_TagString: Untagged
+  m_TagString: InGame_PuzzleContainer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1059,7 +1059,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Last played: 21/12/2019'
+  m_text: 'Last played: <i><size=75%>21/12/2019</size></i>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 08701dcd95e574f9bb80fa115006633b, type: 2}
   m_sharedMaterial: {fileID: 21691621002212930, guid: 08701dcd95e574f9bb80fa115006633b,

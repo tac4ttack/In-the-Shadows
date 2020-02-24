@@ -5529,6 +5529,16 @@ PrefabInstance:
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1454737380803629258, guid: f82d5f6c7407d4016b597fae7c33452a,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454737380803629258, guid: f82d5f6c7407d4016b597fae7c33452a,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3822509438829862871, guid: f82d5f6c7407d4016b597fae7c33452a,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -6319,7 +6329,7 @@ PrefabInstance:
     - target: {fileID: 6612966248536567097, guid: f82d5f6c7407d4016b597fae7c33452a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.03622939
+      value: -0.000922476
       objectReference: {fileID: 0}
     - target: {fileID: 6612966248536567097, guid: f82d5f6c7407d4016b597fae7c33452a,
         type: 3}
@@ -7877,6 +7887,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2019554077}
     m_Modifications:
+    - target: {fileID: 675195419044251252, guid: 2deea67b1799c4534a2e9da965e0784f,
+        type: 3}
+      propertyPath: m_TagString
+      value: MainMenu_Earth
+      objectReference: {fileID: 0}
     - target: {fileID: 6618256994726791848, guid: 2deea67b1799c4534a2e9da965e0784f,
         type: 3}
       propertyPath: m_Name

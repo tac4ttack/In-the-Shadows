@@ -398,6 +398,11 @@ PrefabInstance:
       propertyPath: _Reference
       value: '#TEHAHTIM.03'
       objectReference: {fileID: 0}
+    - target: {fileID: 8893499354076152644, guid: 8f9cf458a21934204be4d66f9a93f122,
+        type: 3}
+      propertyPath: _Title
+      value: Taste like hot water
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f9cf458a21934204be4d66f9a93f122, type: 3}
 --- !u!1 &333202322

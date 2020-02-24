@@ -20,6 +20,9 @@ public class PauseMenu : MonoBehaviour
     public CanvasGroup ConfirmationPrompt_CG;
     private Button _Restart_BTN;
     private Button _Abort_BTN;
+    
+    private Puzzle _PuzzleScript;
+
 
     void Awake()
     {
@@ -54,9 +57,16 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
+        if (GameManager.GM.CurrentState == GameManager.GameStates.InGame)
+        {
+            if (_PuzzleScript == null)
+                _PuzzleScript = GameObject.FindGameObjectWithTag("InGame_PuzzleContainer").GetComponent<Puzzle>();
+            Assert.IsNotNull(_PuzzleScript, "Puzzle script not found!");
+        }
+
+        PauseMenuStateMachine.ChangeState(new Inactive_PauseMenuState(this));
         _Restart_BTN.gameObject.SetActive(GameManager.GM.CurrentState == GameManager.GameStates.InGame);
         _Abort_BTN.gameObject.SetActive(GameManager.GM.CurrentState == GameManager.GameStates.InGame);
-        PauseMenuStateMachine.ChangeState(new Inactive_PauseMenuState(this));
     }
 
     #region Buttons Logic
@@ -64,6 +74,8 @@ public class PauseMenu : MonoBehaviour
     public void ResumeButtonPress()
     {
         GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
+        if (GameManager.GM.CurrentState == GameManager.GameStates.InGame)
+            _PuzzleScript.PuzzleStateMachine.ChangeState(new Playing_PuzzleState(_PuzzleScript));
         PauseMenuStateMachine.ChangeState(new Inactive_PauseMenuState(this));
     }
 

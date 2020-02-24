@@ -6480,6 +6480,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elephant_Puzzle
       objectReference: {fileID: 0}
+    - target: {fileID: 4316560492461979893, guid: 5c090f8dfb6b941ecb6787e3ba56170a,
+        type: 3}
+      propertyPath: m_TagString
+      value: InGame_PuzzleContainer
+      objectReference: {fileID: 0}
     - target: {fileID: 8399260114253429170, guid: 5c090f8dfb6b941ecb6787e3ba56170a,
         type: 3}
       propertyPath: m_LocalPosition.x

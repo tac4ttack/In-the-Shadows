@@ -81,21 +81,24 @@ public class LevelSelection : MonoBehaviour
         Assert.IsNotNull(_Earth_GO, "Earth GameObject is missing from the scene!");
 
         Levels = GameObject.FindGameObjectWithTag("LevelSelection_Map").GetComponentsInChildren<LevelMarker>();
+        
+        // DEBUG
+        #if UNITY_EDITOR
         if (Levels.Length <= 0)
             Debug.LogError("Level list can't be empty!");
+        #endif
 
         if (_PauseMenuUI == null)
             _PauseMenuUI = GameObject.FindGameObjectWithTag("PauseMenu_UI").GetComponent<PauseMenu>();
         Assert.IsNotNull(_PauseMenuUI, "Pause Menu UI not found in scene!");
-
+        
+        LevelDescriptionPlay_BTN.onClick.AddListener(delegate { PlayButtonPress(); });
+        NavLeft_BTN.onClick.AddListener(delegate { NavButtonPress(-1); });
+        NavRight_BTN.onClick.AddListener(delegate { NavButtonPress(1); });
     }
 
     void Start()
     {
-        LevelDescriptionPlay_BTN.onClick.AddListener(delegate { PlayButtonPress(); });
-        NavLeft_BTN.onClick.AddListener(delegate { NavButtonPress(-1); });
-        NavRight_BTN.onClick.AddListener(delegate { NavButtonPress(1); });
-
         _CurrentSelection = GameManager.GM.Players.LastPlayedLevel[Utility.CurrentPlayer];
         Camera.main.transform.position = Levels[_CurrentSelection].Position * _CamAltitude;
         Camera.main.transform.LookAt(_Earth_GO.transform.position);

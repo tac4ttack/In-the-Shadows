@@ -77,6 +77,8 @@ TagManager:
   - InGame_WinScreen_Panel
   - MainMenu_CreditsButton
   - MainMenu_CreditsContainer
+  - MainMenu_Earth
+  - InGame_PuzzleContainer
   layers:
   - Default
   - TransparentFX

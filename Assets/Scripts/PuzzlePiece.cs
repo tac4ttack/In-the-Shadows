@@ -42,18 +42,24 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         if (_MeshRenderer == null)
             _MeshRenderer = this.GetComponentInChildren<MeshRenderer>();
         Assert.IsNotNull(_MeshRenderer, "Mesh renderer component not found in puzzle piece game object!");
+
+        _BaseColor = _MeshRenderer.materials[0].color;
     }
 
     void Start()
     {
         _AxisHints.Enable(false);
-        _BaseColor = _MeshRenderer.materials[0].color;
     }
 
-// DEBUG
-#if UNITY_EDITOR
     void Update()
     {
+        _CurrentOrientation = this.gameObject.transform.localRotation;
+        _CurrentPosition = this.gameObject.transform.localPosition;
+        CheckSolutions();
+        isPuzzlePieceValidated = (_OrientationOK && _RelativePositionOK);
+
+        // DEBUG
+        #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Space))
         {
             string debugString = $"Name = {this.gameObject.name}\n"
@@ -76,16 +82,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             }
             Debug.Log(debugString);
         }
-    }
-#endif
-
-
-    void FixedUpdate()
-    {
-        _CurrentOrientation = this.gameObject.transform.localRotation;
-        _CurrentPosition = this.gameObject.transform.localPosition;
-        CheckSolutions();
-        isPuzzlePieceValidated = (_OrientationOK && _RelativePositionOK);
+        #endif
     }
 
     #region Settings Setters

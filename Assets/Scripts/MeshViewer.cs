@@ -32,7 +32,6 @@ public class MeshViewer : MonoBehaviour
         for (int i = 0; i < _Materials.Length; i++)
             tmp[i] = _Materials[i];
         _MeshRenderer.materials = tmp;
-
     }
 
     void Update()

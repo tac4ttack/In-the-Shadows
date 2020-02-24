@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 2396105553482777517}
   m_Layer: 11
   m_Name: Puzzle_Elephant
-  m_TagString: Untagged
+  m_TagString: InGame_PuzzleContainer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -360,17 +360,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPuzzlePieceValidated: 0
-  OrientationSolutions:
-  - {x: 0.7, y: -0.1, z: 0.1, w: 0.7}
   _OrientationSolutions:
   - {x: 0.7, y: -0.1, z: 0.1, w: 0.7}
-  RelativePuzzlePiece: {fileID: 0}
   _RelativePuzzlePiece: {fileID: 0}
-  RelativeDirectionSolution: {x: 0, y: 0, z: 0}
   _RelativeDirectionSolution: {x: 0, y: 0, z: 0}
-  RelativeDistanceSolution: 0
   _RelativeDistanceSolution: 0
-  CheckMirroredRelative: 0
   _CheckMirroredRelative: 0
   _RotationConstraints:
     x: 0

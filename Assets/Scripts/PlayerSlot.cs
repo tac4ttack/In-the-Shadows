@@ -31,7 +31,11 @@ public class PlayerSlot : MonoBehaviour
 
         if (SlotID < 0 || SlotID > 3)
         {
+            // DEBUG
+            #if UNITY_EDITOR
             Debug.LogError("Invalid SlotID for \"" + _CurrentSlot.name + "\" player slot GameObject.\nDesactivating player slot Gameobject.");
+            #endif
+
             _CurrentSlot.SetActive(false);
         }
 
@@ -89,7 +93,7 @@ public class PlayerSlot : MonoBehaviour
             PlayerName_TXT.text = GameManager.GM.Players.PlayersName[SlotID];
             CompletionRadial_IMG.fillAmount = GameManager.GM.Players.ProgressionPercentage[SlotID] / 100f;
             CompletionPercentage_TXT.text = Mathf.RoundToInt(GameManager.GM.Players.ProgressionPercentage[SlotID]) + "%";
-            LastPlayed_TXT.text = "Last played: " + GameManager.GM.Players.LastPlayed[SlotID];
+            LastPlayed_TXT.text = "Last played: <i><size=75%>" + GameManager.GM.Players.LastPlayed[SlotID] + "</size></i>";
         }
     }
 

@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour
 
         if (_Code == null)
             _Code = this.GetComponent<Konami>();
+        
+        CurrentState = GameManager.GameStates.TitleScreen;
     }
 
     void Start()
@@ -58,7 +60,6 @@ public class GameManager : MonoBehaviour
         // Sound settings loading
         SM.SfxSrc.volume = Settings.SFXVolume * Settings.MasterVolume;
         SM.MusicSrc.volume = Settings.MusicVolume * Settings.MasterVolume;
-        CurrentState = GameManager.GameStates.TitleScreen;
         GameManager.GM.SM.MusicSrc.PlayOneShot(GameManager.GM.SM.Musics[0]);
     }
 
@@ -108,6 +109,20 @@ public class GameManager : MonoBehaviour
     {
         if (_Code.IsValid)
             SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[0]);
+
+        if (Input.GetKeyDown(KeyCode.PageUp))
+        {
+            QualitySettings.IncreaseLevel();
+            Debug.Log(QualitySettings.GetQualityLevel());
+        }   
+        if (Input.GetKeyDown(KeyCode.PageDown))
+        {
+            QualitySettings.DecreaseLevel();
+            Debug.Log(QualitySettings.GetQualityLevel());
+        }   
+        if (Input.GetKeyDown(KeyCode.Home))
+            Debug.Log(QualitySettings.GetQualityLevel());
+        
     }
 }
 
