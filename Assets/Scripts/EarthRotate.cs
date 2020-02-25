@@ -7,6 +7,11 @@ public class EarthRotate : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"EARTH ROTATE - {this.name} - Awake()");
+        #endif
+
         this.transform.localRotation = Quaternion.Euler(0f, Random.Range(0f, 359f), 0f);
     }
     

@@ -10,6 +10,11 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"SOUND MANAGER - {this.name} - Awake()");
+        #endif
+        
         List<AudioSource> AS = new List<AudioSource>();
         GetComponents<AudioSource>(AS);
         

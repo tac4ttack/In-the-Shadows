@@ -9,6 +9,11 @@ public class MoonRotate : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"MOON ROTATE - {this.name} - Awake()");
+        #endif
+        
         if (_Earth == null)
             _Earth = GameObject.FindGameObjectWithTag("MainMenu_Earth");
         Assert.IsNotNull(_Earth, "Earth GameObject not set or found!");

@@ -22,6 +22,11 @@ public class MainMenu : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"MAIN MENU - {this.name} - Awake()");
+        #endif
+
         if (BackgroundPanel_CG == null)
             BackgroundPanel_CG = GameObject.FindGameObjectWithTag("MainMenu_Background").GetComponent<CanvasGroup>();
         Assert.IsNotNull(BackgroundPanel_CG, "Background Canvas group not found!");
@@ -63,8 +68,18 @@ public class MainMenu : MonoBehaviour
         Assert.IsNotNull(DebugModeCheckBox, "Debug Mode Toggle not found!");
     }
 
+    #if UNITY_EDITOR || DEVELOPMENT_BUILD
+    // DEBUG
+    void Start()
+    {
+        Debug.Log($"MAIN MENU - {this.name} - Start()");
+
+        MainMenuStateMachine.ChangeState(new TitleScreen_MainMenuState(this, GameObject.FindGameObjectWithTag("MainMenu_PressAnyKeyText").GetComponent<CanvasGroup>()));
+    }
+    #else
     void Start() => MainMenuStateMachine.ChangeState(new TitleScreen_MainMenuState(this, GameObject.FindGameObjectWithTag("MainMenu_PressAnyKeyText").GetComponent<CanvasGroup>()));
-    
+    #endif
+
     void Update() => MainMenuStateMachine.ExecuteState();
 
     #region Buttons logic

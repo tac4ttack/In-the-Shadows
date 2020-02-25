@@ -18,6 +18,11 @@ public class ConfettisSpawner : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"CONFETTIS SPAWNER - {this.name} - Awake()");
+        #endif
+
         if (TargetToSpawn == null)
         {
             // DEBUG
@@ -36,6 +41,11 @@ public class ConfettisSpawner : MonoBehaviour
 
     void Start()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"CONFETTIS SPAWNER - {this.name} - Start()");
+        #endif
+        
         if (SpawnMode == SpawnModes.OneShot)
         {
             for (int i = 0; i < SpawnPositions.Length; i++)

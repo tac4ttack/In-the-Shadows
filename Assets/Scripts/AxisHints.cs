@@ -6,6 +6,11 @@ public class AxisHints : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"AXIS HINT - {this.name} - Awake()");
+        #endif
+        
         _Axis = this.transform.GetComponentsInChildren<MeshRenderer>();
         if (_Axis.Length != 3 || _Axis == null)
         {

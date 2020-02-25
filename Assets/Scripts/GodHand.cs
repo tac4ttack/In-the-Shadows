@@ -7,6 +7,11 @@ public class GodHand : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"GOD HAND - {this.name} - Awake()");
+        #endif
+        
         _Body = GetComponent<Rigidbody>();
         Assert.IsNotNull(_Body, "Rigid body not found for " + this.name + " GameObject!");
     }

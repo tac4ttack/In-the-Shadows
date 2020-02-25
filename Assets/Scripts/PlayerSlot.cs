@@ -22,6 +22,11 @@ public class PlayerSlot : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"PLAYER SLOT - {this.name} - Awake()");
+        #endif
+
         _CurrentSlot = this.gameObject;
         Assert.IsNotNull(_CurrentSlot, "Slot GameObject not found!");
 
@@ -69,6 +74,11 @@ public class PlayerSlot : MonoBehaviour
 
     void Start()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"PLAYER SLOT - {this.name} - Start()");
+        #endif
+
         Empty = GameManager.GM.Players.IsEmpty[SlotID];
         FetchSlotInfo();
     }

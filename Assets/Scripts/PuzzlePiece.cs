@@ -31,6 +31,11 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"PUZZLE PIECE - {this.name} - Awake()");
+        #endif
+
         if (_AxisHints == null)
             _AxisHints = GameObject.FindGameObjectWithTag("Axis_Hints").GetComponent<AxisHints>();
         Assert.IsNotNull(_AxisHints, "Axis hints GameObject not found in scene!");
@@ -48,6 +53,11 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     void Start()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"PUZZLE PIECE - {this.name} - Start()");
+        #endif
+
         _AxisHints.Enable(false);
     }
 

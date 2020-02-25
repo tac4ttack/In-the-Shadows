@@ -27,6 +27,11 @@ public class SettingsMenu : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"SETTINGS MENU - {this.name} - Awake()");
+        #endif
+
         if (_SettingsMenu_Script == null)
             _SettingsMenu_Script = GameObject.FindGameObjectWithTag("Settings_Panel").GetComponent<SettingsMenu>();
         Assert.IsNotNull(_SettingsMenu_Script, "Settings panel with menu script not found!");
@@ -81,6 +86,11 @@ public class SettingsMenu : MonoBehaviour
 
     void Start()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"SETTINGS MENU - {this.name} - Start()");
+        #endif
+
         InitSoundSettings(GameManager.GM.Settings);
         InitGeneralSettings(GameManager.GM.Settings);
         _InitFlag = false;

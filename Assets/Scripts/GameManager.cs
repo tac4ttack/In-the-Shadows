@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"GAME MANAGER - {this.name} - Awake()");
+        #endif
+
         // Singleton setup
         if (GM == null)
         {
@@ -57,6 +62,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"GAME MANAGER - {this.name} - Start()");
+        #endif
+
         // Sound settings loading
         SM.SfxSrc.volume = Settings.SFXVolume * Settings.MasterVolume;
         SM.MusicSrc.volume = Settings.MusicVolume * Settings.MasterVolume;

@@ -13,8 +13,13 @@ public class Water : MonoBehaviour
     private Vector3[] _Vertices;
     private Vector3[] _BaseVertices;
 
-    void Start()
+    void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"WATER - {this.name} - Awake()");
+        #endif
+
         _Mesh = GetComponent<MeshFilter>().mesh;
 
         // Fetch the plane vertices

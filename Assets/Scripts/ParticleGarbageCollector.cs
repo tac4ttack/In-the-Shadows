@@ -8,6 +8,11 @@ public class ParticleGarbageCollector : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"PARTICLE GARBAGE COLLECTOR - {this.name} - Awake()");
+        #endif
+        
         _Emitters = new List<ParticleSystem>(this.gameObject.GetComponentsInChildren<ParticleSystem>());
         Assert.IsNotNull(_Emitters, "No particle system found in children!");
         Assert.IsTrue((_Emitters.Count > 0), "Particle system array is empty!");

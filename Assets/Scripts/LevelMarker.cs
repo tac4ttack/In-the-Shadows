@@ -27,6 +27,11 @@ public class LevelMarker : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"LEVEL MARKER - {this.name} - Awake()");
+        #endif
+
         if (_Collider == null)
             _Collider = this.GetComponent<SphereCollider>();
         Assert.IsNotNull(_Collider, "Sphere Collider not found on level marker!");
@@ -59,6 +64,11 @@ public class LevelMarker : MonoBehaviour
 
     void Start()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"LEVEL MARKER - {this.name} - Start()");
+        #endif
+        
         // Fetch the level status
         if (GameManager.GM.Players.ToComplete[Utility.CurrentPlayer].q.Contains(_Id))
         {

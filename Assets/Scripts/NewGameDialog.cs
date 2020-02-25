@@ -17,6 +17,11 @@ public class NewGameDialog : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"NEW GAME DIALOG - {this.name} - Awake()");
+        #endif
+
         if (_MainMenuScript == null)
             _MainMenuScript = GameObject.FindGameObjectWithTag("MainMenu_UI").GetComponent<MainMenu>();
         Assert.IsNotNull(_MainMenuScript, "Main Menu script not found in scene!");

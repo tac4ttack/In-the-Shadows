@@ -40,6 +40,11 @@ public class LevelSelection : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"LEVEL SELECTION - {this.name} - Awake()");
+        #endif
+        
         if (NavLeft_BTN == null)
             NavLeft_BTN = GameObject.FindGameObjectWithTag("LevelSelection_NavLeftButton").GetComponent<Button>();
         Assert.IsNotNull(NavLeft_BTN, "Left Navigation button not found!");
@@ -99,6 +104,11 @@ public class LevelSelection : MonoBehaviour
 
     void Start()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"LEVEL SELECTION - {this.name} - Start()");
+        #endif
+
         _CurrentSelection = GameManager.GM.Players.LastPlayedLevel[Utility.CurrentPlayer];
         Camera.main.transform.position = Levels[_CurrentSelection].Position * _CamAltitude;
         Camera.main.transform.LookAt(_Earth_GO.transform.position);
@@ -136,6 +146,7 @@ public class LevelSelection : MonoBehaviour
             }
         }
     }
+
     private void UpdateLevelMarkers()
     {
         foreach (LevelMarker level in Levels)

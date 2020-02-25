@@ -15,6 +15,11 @@ public class CreditsAutoscroll : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"CREDITS AUTOSCROLL - {this.name} - Awake()");
+        #endif
+        
         if (_Bar == null)
             _Bar = GetComponent<UnityEngine.UI.Scrollbar>();
         Assert.IsNotNull(_Bar, "Scroll bar component not found!");

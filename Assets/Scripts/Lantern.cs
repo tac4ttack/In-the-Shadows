@@ -29,6 +29,11 @@ public class Lantern : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"LANTERN - {this.name} - Awake()");
+        #endif
+
         if (_LanternLight == null)
             _LanternLight = this.GetComponent<Light>();
         Assert.IsNotNull(_LanternLight, "No light component found on current GameObject!");

@@ -35,6 +35,11 @@ public class Puzzle : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"PUZZLE - {this.name} - Awake()");
+        #endif
+
         if (_WinScreen_Cam == null)
             _WinScreen_Cam = GameObject.FindWithTag("InGame_WinScreen_Camera").GetComponent<Camera>();
         Assert.IsNotNull(_WinScreen_Cam, "Win Screen Camera not found in scene!");
@@ -109,6 +114,11 @@ public class Puzzle : MonoBehaviour
 
     void Start()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"PUZZLE - {this.name} - Start()");
+        #endif
+
         if (Utility.CurrentLevelIndex + 1 >= Utility.PuzzleAmount)
             _WinScreen_NextLevel_BTN.interactable = false;
         PuzzleStateMachine.ChangeState(new Playing_PuzzleState(this));

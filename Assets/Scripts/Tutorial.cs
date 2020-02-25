@@ -26,6 +26,11 @@ public class Tutorial : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"TUTORIAL - {this.name} - Awake()");
+        #endif
+        
         if (Tutorial_CG == null)
             Tutorial_CG = GameObject.FindGameObjectWithTag("Tutorial_Panel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(Tutorial_CG, "Tutorial panel canvas group not found in scene!");

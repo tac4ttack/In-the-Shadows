@@ -14,6 +14,11 @@ public class MeshViewer : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"MESH VIEWER - {this.name} - Awake()");
+        #endif
+        
         if (_MeshFilter == null)
             _MeshFilter = this.GetComponent<MeshFilter>();
         Assert.IsNotNull(_MeshFilter, "No mesh filter component found on mesh viewer!");

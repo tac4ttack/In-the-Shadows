@@ -26,6 +26,11 @@ public class PauseMenu : MonoBehaviour
 
     void Awake()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"PAUSE MENU - {this.name} - Awake()");
+        #endif
+
         if (Pause_CG == null)
             Pause_CG = this.gameObject.GetComponent<CanvasGroup>();
         Assert.IsNotNull(Pause_CG, "Pause Menu UI Canvas group not found!");
@@ -57,6 +62,11 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        // DEBUG
+        Debug.Log($"PAUSE MENU - {this.name} - Start()");
+        #endif
+
         if (GameManager.GM.CurrentState == GameManager.GameStates.InGame)
         {
             if (_PuzzleScript == null)
