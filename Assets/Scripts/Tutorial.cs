@@ -70,21 +70,15 @@ public class Tutorial : MonoBehaviour
         Tutorial puzzle pieces fetching
         DUMMY piece MUST BE in the last place of the Puzzle script's puzzle pieces array
         */
-        GameObject[] tmp = GameObject.FindGameObjectsWithTag("InGame_PuzzlePiece");
-        PuzzlePieces = new PuzzlePiece[tmp.Length - 1];
-        for (int i = 0;i < tmp.Length;i++)
-        {
-                if (i == 2)
-                    DummyPuzzlePiece = tmp[i].GetComponent<PuzzlePiece>();
-                else
-                    PuzzlePieces[i] = tmp[i].GetComponent<PuzzlePiece>();
-        }
-        Assert.IsNotNull(PuzzlePieces, "No Puzzle pieces found in scene!");
-
+        PuzzlePieces = new PuzzlePiece[2];
+        PuzzlePieces[0] = GameObject.Find("PuzzlePiece_4").GetComponent<PuzzlePiece>();
+        PuzzlePieces[1] = GameObject.Find("PuzzlePiece_2").GetComponent<PuzzlePiece>();
+        DummyPuzzlePiece = GameObject.Find("DUMMY").GetComponent<PuzzlePiece>();
+    
         Tutorial_Prev_BTN.onClick.AddListener(delegate { TutorialPrevButtonPress();});
         Tutorial_Next_BTN.onClick.AddListener(delegate { TutorialNextButtonPress();});
 
-        TutorialStateMachine.ChangeState(TutorialSteps[CurrentStep]);
+        TutorialStateMachine.ChangeState(TutorialSteps[0]);
     }
 
     void Update()
@@ -186,25 +180,11 @@ public class Tutorial_Step_0 : IState
 
         _TutorialScript.Tutorial_Prev_BTN.gameObject.SetActive(false);
         _TutorialScript.Tutorial_Prev_BTN.interactable = false;
-        _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(true);
         _TutorialScript.Tutorial_Next_BTN.interactable = true;
+        _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(true);
 
-        _TutorialScript.PuzzlePieces[0].transform.localPosition = new Vector3(8.62f, -1.599f, -1.915f);
-        _TutorialScript.PuzzlePieces[0].transform.localRotation = Quaternion.Euler(98f, 16f, 0f);
-        _TutorialScript.PuzzlePieces[0].SetRotationConstraint(new bool[] {false, true, true});
-        _TutorialScript.PuzzlePieces[0].SetTranslationConstraint(new bool[] {true, true, true});
-        _TutorialScript.PuzzlePieces[0].SetDirectionSolution(new Vector3(2.2f, 0.2f, 0f));
-        _TutorialScript.PuzzlePieces[0].SetRotationSolutions(new Quaternion[]{new Quaternion(0f, 0.1f, 0f, 1f)});
-        _TutorialScript.PuzzlePieces[0].SetDistanceSolution(2.25f);
         _TutorialScript.PuzzlePieces[0].gameObject.SetActive(false);
         
-        _TutorialScript.PuzzlePieces[1].transform.localPosition = new Vector3(1.99f, -0.99f, -0.55f);
-        _TutorialScript.PuzzlePieces[1].transform.localRotation = Quaternion.Euler(0f, 24f, 0f);
-        _TutorialScript.PuzzlePieces[1].SetRotationConstraint(new bool[] {true, true, true});
-        _TutorialScript.PuzzlePieces[1].SetTranslationConstraint(new bool[] {true, true, true});
-        _TutorialScript.PuzzlePieces[1].SetDirectionSolution(new Vector3(-2.2f, -0.2f, 0f));
-        _TutorialScript.PuzzlePieces[1].SetRotationSolutions(new Quaternion[]{new Quaternion(0f, 0.2f, 0f, 1f)});
-        _TutorialScript.PuzzlePieces[1].SetDistanceSolution(2.25f);
         _TutorialScript.PuzzlePieces[1].gameObject.SetActive(false);
 
         _TutorialScript.GuideWall_MAT.SetColor(Shader.PropertyToID("_Color"), new Color(1, 1, 1, 0));
@@ -229,8 +209,8 @@ public class Tutorial_Step_1 : IState
         
         _TutorialScript.Tutorial_Prev_BTN.interactable = true;
         _TutorialScript.Tutorial_Prev_BTN.gameObject.SetActive(true);
-        _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(true);
         _TutorialScript.Tutorial_Next_BTN.interactable = false;
+        _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(true);
 
         _TutorialScript.PuzzlePieces[0].transform.localPosition = new Vector3(8.62f, -1.599f, -1.915f);
         _TutorialScript.PuzzlePieces[0].transform.localRotation = Quaternion.Euler(98f, 16f, 0f);
@@ -293,10 +273,10 @@ public class Tutorial_Step_2 : IState
         _TutorialScript.CurrentStep = 2;
         _TutorialScript.FillInCard(_TutorialScript.Cards[_TutorialScript.CurrentStep]);
 
-        _TutorialScript.Tutorial_Prev_BTN.gameObject.SetActive(true);
         _TutorialScript.Tutorial_Prev_BTN.interactable = true;
-        _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(true);
+        _TutorialScript.Tutorial_Prev_BTN.gameObject.SetActive(true);
         _TutorialScript.Tutorial_Next_BTN.interactable = false;
+        _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(true);
 
         _TutorialScript.PuzzlePieces[0].gameObject.SetActive(false);
         _TutorialScript.PuzzlePieces[0].transform.localPosition = new Vector3(8.62f, -1.599f, -1.915f);
@@ -359,10 +339,10 @@ public class Tutorial_Step_3 : IState
         _TutorialScript.CurrentStep = 3;
         _TutorialScript.FillInCard(_TutorialScript.Cards[_TutorialScript.CurrentStep]);
 
-        _TutorialScript.Tutorial_Prev_BTN.gameObject.SetActive(true);        
         _TutorialScript.Tutorial_Prev_BTN.interactable = true;
-        _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(true);
+        _TutorialScript.Tutorial_Prev_BTN.gameObject.SetActive(true);        
         _TutorialScript.Tutorial_Next_BTN.interactable = false;
+        _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(true);
 
         _TutorialScript.PuzzlePieces[0].transform.localPosition = new Vector3(0f, -1.599f, -1.915f);
         _TutorialScript.PuzzlePieces[0].transform.localRotation = Quaternion.Euler(-0.45f, 16f, 0f);
@@ -425,11 +405,11 @@ public class Tutorial_Step_4 : IState
         _TutorialScript.CurrentStep = 4;
         _TutorialScript.FillInCard(_TutorialScript.Cards[_TutorialScript.CurrentStep]);
 
-        _TutorialScript.Tutorial_Prev_BTN.gameObject.SetActive(true);
         _TutorialScript.Tutorial_Prev_BTN.interactable = true;
+        _TutorialScript.Tutorial_Prev_BTN.gameObject.SetActive(true);
+        _TutorialScript.Tutorial_Next_BTN.interactable = false;
         _TutorialScript.Tutorial_Next_BTN.gameObject.SetActive(true);
         _TutorialScript.Tutorial_Next_BTN.GetComponentInChildren<TextMeshProUGUI>().text = "finish";
-        _TutorialScript.Tutorial_Next_BTN.interactable = false;
 
         _TutorialScript.PuzzlePieces[0].transform.localPosition = new Vector3(2.014084f, -0.191252f, -0.4065721f);
         _TutorialScript.PuzzlePieces[0].transform.localRotation = Quaternion.Euler(220f, 90f, 0f);
