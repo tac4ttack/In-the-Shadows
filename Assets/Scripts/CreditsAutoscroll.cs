@@ -30,12 +30,12 @@ public class CreditsAutoscroll : MonoBehaviour
             _Credits_Text = "Credits text is missing!";
 
         if (_Credits_BTN == null)
-            _Credits_BTN = GameObject.FindGameObjectWithTag("MainMenu_CreditsButton").GetComponent<Button>();
+            _Credits_BTN = GameObject.FindGameObjectWithTag("Main Menu/Credits Button").GetComponent<Button>();
         Assert.IsNotNull(_Credits_BTN, "Credits button not found!");
         _Credits_BTN.onClick.AddListener(delegate { ResetScroll(); });
     
         if (_Credits_TextContainer == null)
-            _Credits_TextContainer = GameObject.FindGameObjectWithTag("MainMenu_CreditsContainer").GetComponent<TextMeshProUGUI>();
+            _Credits_TextContainer = GameObject.FindGameObjectWithTag("Main Menu/Credits Container").GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(_Credits_TextContainer, "Credits text container not found!");
         
         _Credits_TextContainer.text = _Credits_Text;

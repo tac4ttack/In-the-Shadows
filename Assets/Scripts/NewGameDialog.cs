@@ -23,30 +23,30 @@ public class NewGameDialog : MonoBehaviour
         #endif
 
         if (_MainMenuScript == null)
-            _MainMenuScript = GameObject.FindGameObjectWithTag("MainMenu_UI").GetComponent<MainMenu>();
+            _MainMenuScript = GameObject.FindGameObjectWithTag("Main Menu/UI").GetComponent<MainMenu>();
         Assert.IsNotNull(_MainMenuScript, "Main Menu script not found in scene!");
 
         if (_NewGameDialogTitle == null)
-            _NewGameDialogTitle = GameObject.FindGameObjectWithTag("NewGameDialog_Title_Text").GetComponent<TextMeshProUGUI>();
+            _NewGameDialogTitle = GameObject.FindGameObjectWithTag("New Game Dialog/Title Text").GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(_NewGameDialogTitle, "New game title text GameObject not found!");
 
         if (PlayerName == null)
-            PlayerName = GameObject.FindGameObjectWithTag("NewGameDialog_PlayerName_Input").GetComponent<TMP_InputField>();
+            PlayerName = GameObject.FindGameObjectWithTag("New Game Dialog/Player Name Input").GetComponent<TMP_InputField>();
         Assert.IsNotNull(PlayerName, "New player name input field not found!");
         PlayerName.onValueChanged.AddListener(delegate { PlayerNameInputValueChange(); });
 
         if (TutorialSkip == null)
-            TutorialSkip = GameObject.FindGameObjectWithTag("NewGameDialog_SkipTutorial_Toggle").GetComponent<Toggle>();
+            TutorialSkip = GameObject.FindGameObjectWithTag("New Game Dialog/Skip Tutorial Toggle").GetComponent<Toggle>();
         Assert.IsNotNull(TutorialSkip, "Tutorial skip toggle button not found!");
 
         if (_Create_BTN == null)
-            _Create_BTN = GameObject.FindGameObjectWithTag("NewGameDialog_Create_Button").GetComponent<Button>();
+            _Create_BTN = GameObject.FindGameObjectWithTag("New Game Dialog/Create Button").GetComponent<Button>();
         Assert.IsNotNull(_Create_BTN, "New game create button not found!");
         _Create_BTN.onClick.AddListener(delegate { CreateButtonPress(); });
         _Create_BTN.onClick.AddListener(delegate { _MainMenuScript.BackButtonPress(); });
 
         if (_Back_BTN == null)
-            _Back_BTN = GameObject.FindGameObjectWithTag("NewGameDialog_Back_Button").GetComponent<Button>();
+            _Back_BTN = GameObject.FindGameObjectWithTag("New Game Dialog/Back Button").GetComponent<Button>();
         Assert.IsNotNull(_Back_BTN, "New game back button not found!");
         _Back_BTN.onClick.AddListener(delegate { _MainMenuScript.BackButtonPress(); });
     }

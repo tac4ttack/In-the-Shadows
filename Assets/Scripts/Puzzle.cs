@@ -41,63 +41,63 @@ public class Puzzle : MonoBehaviour
         #endif
 
         if (_WinScreen_Cam == null)
-            _WinScreen_Cam = GameObject.FindWithTag("InGame_WinScreen_Camera").GetComponent<Camera>();
+            _WinScreen_Cam = GameObject.FindWithTag("In Game/Win Screen/Camera").GetComponent<Camera>();
         Assert.IsNotNull(_WinScreen_Cam, "Win Screen Camera not found in scene!");
 
         if (_PauseMenuUI == null)
-            _PauseMenuUI = GameObject.FindGameObjectWithTag("PauseMenu_UI").GetComponent<PauseMenu>();
+            _PauseMenuUI = GameObject.FindGameObjectWithTag("Pause Menu/UI").GetComponent<PauseMenu>();
         Assert.IsNotNull(_PauseMenuUI, "Pause Menu UI not found in scene!");
 
         if (_PostProcess == null)
-            _PostProcess = GameObject.FindGameObjectWithTag("InGame_PostProcess").GetComponent<PostProcessVolume>().profile;
+            _PostProcess = GameObject.FindGameObjectWithTag("In Game/Post Process").GetComponent<PostProcessVolume>().profile;
         Assert.IsNotNull(_PostProcess, "Post Process Volume not found in scene!");
         _PostProcess.GetSetting<DepthOfField>().focusDistance.value = 3f;
 
         if (_WinScreen_CG == null)
-            _WinScreen_CG = GameObject.FindGameObjectWithTag("InGame_WinScreen_UI").GetComponent<CanvasGroup>();
+            _WinScreen_CG = GameObject.FindGameObjectWithTag("In Game/Win Screen/UI").GetComponent<CanvasGroup>();
         Assert.IsNotNull(_WinScreen_CG, "Win Screen UI not found in scene!");
 
         if (_WinScreen_Panel_CG == null)
-            _WinScreen_Panel_CG = GameObject.FindGameObjectWithTag("InGame_WinScreen_Panel").GetComponent<CanvasGroup>();
+            _WinScreen_Panel_CG = GameObject.FindGameObjectWithTag("In Game/Win Screen/Panel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(_WinScreen_Panel_CG, "Win Screen UI panel canvas group not found in scene!");
 
         if (_WinScreen_Background_CG == null)
-            _WinScreen_Background_CG = GameObject.FindGameObjectWithTag("InGame_WinScreen_Background").GetComponent<CanvasGroup>();
+            _WinScreen_Background_CG = GameObject.FindGameObjectWithTag("In Game/Win Screen/Background").GetComponent<CanvasGroup>();
         Assert.IsNotNull(_WinScreen_Background_CG, "Win Screen background canvas not found in scene!");
 
         if (_ConfirmationPrompt_CG == null)
-            _ConfirmationPrompt_CG = GameObject.FindGameObjectWithTag("InGame_WinScreen_ConfirmationPrompt").GetComponent<CanvasGroup>();
+            _ConfirmationPrompt_CG = GameObject.FindGameObjectWithTag("In Game/Win Screen/Confirmation Prompt").GetComponent<CanvasGroup>();
         Assert.IsNotNull(_ConfirmationPrompt_CG, "Confirmation Prompt Canvas group not found!");
 
         if (_WinScreen_MainMenu_BTN == null)
-            _WinScreen_MainMenu_BTN = GameObject.FindGameObjectWithTag("InGame_WinScreen_MainMenu_Button").GetComponent<Button>();
+            _WinScreen_MainMenu_BTN = GameObject.FindGameObjectWithTag("In Game/Win Screen/Main Menu Button").GetComponent<Button>();
         Assert.IsNotNull(_WinScreen_MainMenu_BTN, "Win screen Main Menu button not found in scene!");
 
         if (_WinScreen_LevelSelection_BTN == null)
-            _WinScreen_LevelSelection_BTN = GameObject.FindGameObjectWithTag("InGame_WinScreen_LevelSelection_Button").GetComponent<Button>();
+            _WinScreen_LevelSelection_BTN = GameObject.FindGameObjectWithTag("In Game/Win Screen/Level Selection Button").GetComponent<Button>();
         Assert.IsNotNull(_WinScreen_LevelSelection_BTN, "Win screen Level Selection button not found in scene!");
 
         if (_WinScreen_Restart_BTN == null)
-            _WinScreen_Restart_BTN = GameObject.FindGameObjectWithTag("InGame_WinScreen_Restart_Button").GetComponent<Button>();
+            _WinScreen_Restart_BTN = GameObject.FindGameObjectWithTag("In Game/Win Screen/Restart Button").GetComponent<Button>();
         Assert.IsNotNull(_WinScreen_Restart_BTN, "Win screen Restart button not found in scene!");
 
         if (_WinScreen_NextLevel_BTN == null)
-            _WinScreen_NextLevel_BTN = GameObject.FindGameObjectWithTag("InGame_WinScreen_NextLevel_Button").GetComponent<Button>();
+            _WinScreen_NextLevel_BTN = GameObject.FindGameObjectWithTag("In Game/Win Screen/Next Level Button").GetComponent<Button>();
         Assert.IsNotNull(_WinScreen_NextLevel_BTN, "Win screen Next Level button not found in scene!");
 
         if (_WinScreen_Prompt_Yes_BTN == null)
-            _WinScreen_Prompt_Yes_BTN = GameObject.FindGameObjectWithTag("InGame_WinScreen_Yes_Button").GetComponent<Button>();
+            _WinScreen_Prompt_Yes_BTN = GameObject.FindGameObjectWithTag("In Game/Win Screen/Yes Button").GetComponent<Button>();
         Assert.IsNotNull(_WinScreen_Prompt_Yes_BTN, "Win screen Yes confirmation prompt button not found in scene!");
         
         if (_WinScreen_Prompt_No_BTN == null)
-            _WinScreen_Prompt_No_BTN = GameObject.FindGameObjectWithTag("InGame_WinScreen_No_Button").GetComponent<Button>();
+            _WinScreen_Prompt_No_BTN = GameObject.FindGameObjectWithTag("In Game/Win Screen/No Button").GetComponent<Button>();
         Assert.IsNotNull(_WinScreen_Prompt_No_BTN, "Win screen No confirmation prompt button not found in scene!");
 
         if (_WinScreen_ConfettisSpawner == null)
-            _WinScreen_ConfettisSpawner = GameObject.FindGameObjectWithTag("InGame_ConfettisSpawner").GetComponent<ConfettisSpawner>();
+            _WinScreen_ConfettisSpawner = GameObject.FindGameObjectWithTag("In Game/Confettis Spawner").GetComponent<ConfettisSpawner>();
         Assert.IsNotNull(_WinScreen_ConfettisSpawner, "Win screen confettis spawner not found in scene!");
 
-        GameObject[] tmp = GameObject.FindGameObjectsWithTag("InGame_PuzzlePiece");
+        GameObject[] tmp = GameObject.FindGameObjectsWithTag("In Game/Puzzle Piece");
         _PuzzlePieces = new PuzzlePiece[tmp.Length];
         for (int i = 0; i < tmp.Length; i++)
             _PuzzlePieces[i] = tmp[i].GetComponent<PuzzlePiece>();

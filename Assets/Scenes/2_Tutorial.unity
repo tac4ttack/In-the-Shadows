@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 138031452}
   m_Layer: 14
   m_Name: Wall_Front
-  m_TagString: Tutorial_GuideWall
+  m_TagString: Tutorial/Guide Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -720,7 +720,7 @@ GameObject:
   - component: {fileID: 141506353}
   m_Layer: 5
   m_Name: Tutorial_UI
-  m_TagString: Tutorial_UI
+  m_TagString: Tutorial/UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -854,7 +854,7 @@ GameObject:
   - component: {fileID: 173781050}
   m_Layer: 5
   m_Name: Tutorial_Picture
-  m_TagString: Tutorial_Picture
+  m_TagString: Tutorial/Picture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2239,7 +2239,7 @@ GameObject:
   - component: {fileID: 654545773}
   m_Layer: 5
   m_Name: Tutorial_Next_Button
-  m_TagString: Tutorial_Next
+  m_TagString: Tutorial/Next
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2844,7 +2844,7 @@ GameObject:
   - component: {fileID: 1320131691}
   m_Layer: 5
   m_Name: 'Tutorial_Prev_Button '
-  m_TagString: Tutorial_Prev
+  m_TagString: Tutorial/Prev
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2989,7 +2989,7 @@ GameObject:
   - component: {fileID: 1337911305}
   m_Layer: 5
   m_Name: Tutorial_Panel
-  m_TagString: Tutorial_Panel
+  m_TagString: Tutorial/Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3147,7 +3147,7 @@ GameObject:
   - component: {fileID: 1581886721}
   m_Layer: 5
   m_Name: Tutorial_Content
-  m_TagString: Tutorial_Content
+  m_TagString: Tutorial/Content
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3387,7 +3387,7 @@ GameObject:
   - component: {fileID: 1854177848}
   m_Layer: 5
   m_Name: Tutorial_Title
-  m_TagString: Tutorial_Title
+  m_TagString: Tutorial/Title
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5604,7 +5604,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 718416563, guid: 6577a58128cb04a7a933964aba5032e1, type: 3}
       propertyPath: m_TagString
-      value: InGame_PuzzlePiece
+      value: In Game/Puzzle Piece
       objectReference: {fileID: 0}
     - target: {fileID: 3232181046478232198, guid: 6577a58128cb04a7a933964aba5032e1,
         type: 3}
@@ -5664,12 +5664,12 @@ PrefabInstance:
     - target: {fileID: 3795072651141769434, guid: 6577a58128cb04a7a933964aba5032e1,
         type: 3}
       propertyPath: m_TagString
-      value: InGame_PuzzlePiece
+      value: In Game/Puzzle Piece
       objectReference: {fileID: 0}
     - target: {fileID: 5738851976775888699, guid: 6577a58128cb04a7a933964aba5032e1,
         type: 3}
       propertyPath: m_TagString
-      value: InGame_PuzzlePiece
+      value: In Game/Puzzle Piece
       objectReference: {fileID: 0}
     - target: {fileID: 7182302415202622401, guid: 6577a58128cb04a7a933964aba5032e1,
         type: 3}

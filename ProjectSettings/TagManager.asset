@@ -4,81 +4,81 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - MainMenu_NewGameDialog
-  - MainMenu_UI
-  - MainMenu_Background
-  - MainMenu_TitleScreenPanel
-  - MainMenu_MainPanel
-  - MainMenu_MainButtonsPanel
-  - MainMenu_PlayPanel
-  - MainMenu_CreditsPanel
-  - MainMenu_SpaceSystem
-  - MainMenu_DebugModeToggle
+  - Main Menu/New Game Dialog
+  - Main Menu/UI
+  - Main Menu/Background
+  - Main Menu/Title Screen Panel
+  - Main Menu/Main Panel
+  - Main Menu/Main Buttons Panel
+  - Main Menu/Play Panel
+  - Main Menu/Credits Panel
+  - Main Menu/Space System
+  - Main Menu/Debug Mode Toggle
   - MainMenu_PressAnyKeyText
-  - PauseMenu_Background
-  - PauseMenu_Panel
-  - PauseMenu_RestartButton
-  - PauseMenu_AbortButton
-  - PauseMenu_UI
-  - PauseMenu_ConfirmationDialog
-  - LevelSelection_PauseMenuButton
-  - LevelSelection_NavLeftButton
-  - LevelSelection_NavRightButton
-  - LevelSelection_LevelTitleText
-  - LevelSelection_LevelCountText
-  - LevelSelection_Map
-  - LevelSelection_Description_TitleText
-  - LevelSelection_Description_ContentText
-  - LevelSelection_Description_BestTimeText
-  - LevelSelection_Description_PlayButton
-  - LevelSelection_Earth
-  - LevelSelection_Panel
-  - LevelSelection_Description_Panel
-  - InGame_WinScreen_Camera
-  - InGame_PuzzlePiece
-  - InGame_PostProcess
-  - InGame_WinScreen_UI
-  - InGame_WinScreen_MainMenu_Button
-  - InGame_WinScreen_LevelSelection_Button
-  - InGame_WinScreen_Restart_Button
-  - InGame_WinScreen_NextLevel_Button
-  - InGame_WinScreen_ConfirmationPrompt
-  - InGame_WinScreen_Yes_Button
-  - InGame_WinScreen_No_Button
-  - InGame_WinScreen_Background
-  - Settings_MasterVolume_Text
-  - Settings_MasterVolume_Slider
-  - Settings_SFXVolume_Text
-  - Settings_SFXVolume_Slider
-  - Settings_MusicVolume_Text
-  - Settings_MusicVolume_Slider
-  - Settings_Mute_Checkbox
-  - Settings_FPSCounter_Checkbox
-  - Settings_MouseControls_Checkbox
-  - Settings_Panel
-  - Settings_FXAA_Checkbox
+  - Pause Menu/Background
+  - Pause Menu/Panel
+  - Pause Menu/Restart Button
+  - Pause Menu/Abort Button
+  - Pause Menu/UI
+  - Pause Menu/Confirmation Dialog
+  - Level Selection/Pause Menu Button
+  - Level Selection/Nav Left Button
+  - Level Selection/Nav Right Button
+  - Level Selection/Level Title Text
+  - Level Selection/Level Count Text
+  - Level Selection/Map
+  - Level Selection/Description/Title Text
+  - Level Selection/Description/Content Text
+  - Level Selection/Description/Best Time Text
+  - Level Selection/Description/Play Button
+  - Level Selection/Earth
+  - Level Selection/Panel
+  - Level Selection/Description/Panel
+  - In Game/Win Screen/Camera
+  - In Game/Puzzle Piece
+  - In Game/Post Process
+  - In Game/Win Screen/UI
+  - In Game/Win Screen/Main Menu Button
+  - In Game/Win Screen/Level Selection Button
+  - In Game/Win Screen/Restart Button
+  - In Game/Win Screen/Next Level Button
+  - In Game/Win Screen/Confirmation Prompt
+  - In Game/Win Screen/Yes Button
+  - In Game/Win Screen/No Button
+  - In Game/Win Screen/Background
+  - Settings/Master Volume Text
+  - Settings/Master Volume Slider
+  - Settings/SFX Volume Text
+  - Settings/SFX Volume Slider
+  - Settings/Music Volume Text
+  - Settings/Music Volume Slider
+  - Settings/Mute Checkbox
+  - Settings/FPS Counter Checkbox
+  - Settings/Mouse Controls Checkbox
+  - Settings/Panel
+  - Settings/FXAA Checkbox
   - Axis_Hints
-  - NewGameDialog_Title_Text
-  - NewGameDialog_PlayerName_Input
-  - NewGameDialog_SkipTutorial_Toggle
-  - NewGameDialog_Create_Button
-  - NewGameDialog_Back_Button
-  - InGame_PuzzleLight
-  - PS_Confettis
-  - InGame_ConfettisSpawner
-  - Tutorial_UI
-  - Tutorial_Title
-  - Tutorial_Content
-  - Tutorial_Next
-  - Tutorial_Panel
-  - Tutorial_Picture
-  - Tutorial_GuideWall
-  - Tutorial_Prev
-  - InGame_WinScreen_Panel
-  - MainMenu_CreditsButton
-  - MainMenu_CreditsContainer
-  - MainMenu_Earth
-  - InGame_PuzzleContainer
+  - New Game Dialog/Title Text
+  - New Game Dialog/Player Name Input
+  - New Game Dialog/Skip Tutorial Toggle
+  - New Game Dialog/Create Button
+  - New Game Dialog/Back Button
+  - In Game/Puzzle Light
+  - Particle System/Confettis
+  - In Game/Confettis Spawner
+  - Tutorial/UI
+  - Tutorial/Title
+  - Tutorial/Content
+  - Tutorial/Next
+  - Tutorial/Panel
+  - Tutorial/Picture
+  - Tutorial/Guide Wall
+  - Tutorial/Prev
+  - In Game/Win Screen/Panel
+  - Main Menu/Credits Button
+  - Main Menu/Credits Container
+  - Main Menu/Earth
+  - In Game/Puzzle Container
   layers:
   - Default
   - TransparentFX

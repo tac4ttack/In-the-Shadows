@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 333202324}
   m_Layer: 5
   m_Name: DescriptionContent_Text
-  m_TagString: LevelSelection_Description_ContentText
+  m_TagString: Level Selection/Description/Content Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -811,7 +811,7 @@ GameObject:
   - component: {fileID: 602958915}
   m_Layer: 5
   m_Name: DescriptionBestTime_Text
-  m_TagString: LevelSelection_Description_BestTimeText
+  m_TagString: Level Selection/Description/Best Time Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1223,7 +1223,7 @@ GameObject:
   - component: {fileID: 1045308464}
   m_Layer: 5
   m_Name: Menu_Button
-  m_TagString: LevelSelection_PauseMenuButton
+  m_TagString: Level Selection/Pause Menu Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1618,7 +1618,7 @@ GameObject:
   - component: {fileID: 1111639086}
   m_Layer: 5
   m_Name: PlayLevel_Button
-  m_TagString: LevelSelection_Description_PlayButton
+  m_TagString: Level Selection/Description/Play Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1809,7 +1809,7 @@ GameObject:
   - component: {fileID: 1230131293}
   m_Layer: 5
   m_Name: LevelTitle_Text
-  m_TagString: LevelSelection_LevelTitleText
+  m_TagString: Level Selection/Level Title Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2303,7 +2303,7 @@ GameObject:
   - component: {fileID: 1383863245}
   m_Layer: 5
   m_Name: DescriptionTitle_Text
-  m_TagString: LevelSelection_Description_TitleText
+  m_TagString: Level Selection/Description/Title Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2670,7 +2670,7 @@ GameObject:
   - component: {fileID: 1480435985}
   m_Layer: 5
   m_Name: LevelSelection_Panel
-  m_TagString: LevelSelection_Panel
+  m_TagString: Level Selection/Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2986,7 +2986,7 @@ GameObject:
   - component: {fileID: 1573751460}
   m_Layer: 5
   m_Name: LevelDescription_Panel
-  m_TagString: LevelSelection_Description_Panel
+  m_TagString: Level Selection/Description/Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3167,7 +3167,7 @@ PrefabInstance:
     - target: {fileID: 2801440209057794174, guid: 9407048cc08e54d3b98db7bd9a7f1eae,
         type: 3}
       propertyPath: m_TagString
-      value: LevelSelection_NavRightButton
+      value: Level Selection/Nav Right Button
       objectReference: {fileID: 0}
     - target: {fileID: 2801440209057794175, guid: 9407048cc08e54d3b98db7bd9a7f1eae,
         type: 3}
@@ -3334,7 +3334,7 @@ GameObject:
   - component: {fileID: 1669612732}
   m_Layer: 5
   m_Name: LevelCount_Text
-  m_TagString: LevelSelection_LevelCountText
+  m_TagString: Level Selection/Level Count Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3734,7 +3734,7 @@ GameObject:
   - component: {fileID: 2001224315}
   m_Layer: 0
   m_Name: LevelSelection_Map
-  m_TagString: LevelSelection_Map
+  m_TagString: Level Selection/Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3950,7 +3950,7 @@ PrefabInstance:
     - target: {fileID: 2801440209057794174, guid: 9407048cc08e54d3b98db7bd9a7f1eae,
         type: 3}
       propertyPath: m_TagString
-      value: LevelSelection_NavLeftButton
+      value: Level Selection/Nav Left Button
       objectReference: {fileID: 0}
     - target: {fileID: 2801440209057794175, guid: 9407048cc08e54d3b98db7bd9a7f1eae,
         type: 3}
@@ -4243,7 +4243,7 @@ PrefabInstance:
     - target: {fileID: 5162994931858431908, guid: 765f9682e02ba4963b65d4b5b652189e,
         type: 3}
       propertyPath: m_TagString
-      value: LevelSelection_Earth
+      value: Level Selection/Earth
       objectReference: {fileID: 0}
     - target: {fileID: 5162994932125078207, guid: 765f9682e02ba4963b65d4b5b652189e,
         type: 3}

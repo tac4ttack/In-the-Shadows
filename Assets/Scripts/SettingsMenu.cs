@@ -33,53 +33,53 @@ public class SettingsMenu : MonoBehaviour
         #endif
 
         if (_SettingsMenu_Script == null)
-            _SettingsMenu_Script = GameObject.FindGameObjectWithTag("Settings_Panel").GetComponent<SettingsMenu>();
+            _SettingsMenu_Script = GameObject.FindGameObjectWithTag("Settings/Panel").GetComponent<SettingsMenu>();
         Assert.IsNotNull(_SettingsMenu_Script, "Settings panel with menu script not found!");
 
         if (_MasterVolumeValue == null)
-            _MasterVolumeValue = GameObject.FindGameObjectWithTag("Settings_MasterVolume_Text").GetComponent<TextMeshProUGUI>();
+            _MasterVolumeValue = GameObject.FindGameObjectWithTag("Settings/Master Volume Text").GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(_MasterVolumeValue, "Master volume text value component is missing!");
 
         if (_MasterVolumeSlider == null)
-            _MasterVolumeSlider = GameObject.FindGameObjectWithTag("Settings_MasterVolume_Slider").GetComponent<Slider>();
+            _MasterVolumeSlider = GameObject.FindGameObjectWithTag("Settings/Master Volume Slider").GetComponent<Slider>();
         Assert.IsNotNull(_MasterVolumeSlider, "Master volume slider is missing!");
         _MasterVolumeSlider.onValueChanged.AddListener(delegate { UpdateMasterVolume(); });
 
         if (_SFXVolumeValue == null)
-            _SFXVolumeValue = GameObject.FindGameObjectWithTag("Settings_SFXVolume_Text").GetComponent<TextMeshProUGUI>();
+            _SFXVolumeValue = GameObject.FindGameObjectWithTag("Settings/SFX Volume Text").GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(_SFXVolumeValue, "SFX volume text value component is missing!");
 
         if (_SFXVolumeSlider == null)
-            _SFXVolumeSlider = GameObject.FindGameObjectWithTag("Settings_SFXVolume_Slider").GetComponent<Slider>();
+            _SFXVolumeSlider = GameObject.FindGameObjectWithTag("Settings/SFX Volume Slider").GetComponent<Slider>();
         Assert.IsNotNull(_SFXVolumeSlider, "SFX volume slider is missing!");
         _SFXVolumeSlider.onValueChanged.AddListener(delegate { UpdateSFXVolume(); });
 
         if (_MusicVolumeValue == null)
-            _MusicVolumeValue = GameObject.FindGameObjectWithTag("Settings_MusicVolume_Text").GetComponent<TextMeshProUGUI>();
+            _MusicVolumeValue = GameObject.FindGameObjectWithTag("Settings/Music Volume Text").GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(_MusicVolumeValue, "Music volume text value component is missing!");
 
         if (_MusicVolumeSlider == null)
-            _MusicVolumeSlider = GameObject.FindGameObjectWithTag("Settings_MusicVolume_Slider").GetComponent<Slider>();
+            _MusicVolumeSlider = GameObject.FindGameObjectWithTag("Settings/Music Volume Slider").GetComponent<Slider>();
         Assert.IsNotNull(_MusicVolumeSlider, "Music volume slider is missing!");
         _MusicVolumeSlider.onValueChanged.AddListener(delegate { UpdateMusicVolume(); });
 
         if (_MuteCheckbox == null)
-            _MuteCheckbox = GameObject.FindGameObjectWithTag("Settings_Mute_Checkbox").GetComponent<Toggle>();
+            _MuteCheckbox = GameObject.FindGameObjectWithTag("Settings/Mute Checkbox").GetComponent<Toggle>();
         Assert.IsNotNull(_MuteCheckbox, "Mute checkbox is missing!");
         _MuteCheckbox.onValueChanged.AddListener(delegate { MuteCheckboxToggle(); });
 
         if (_FPSCounterCheckbox == null)
-            _FPSCounterCheckbox = GameObject.FindGameObjectWithTag("Settings_FPSCounter_Checkbox").GetComponent<Toggle>();
+            _FPSCounterCheckbox = GameObject.FindGameObjectWithTag("Settings/FPS Counter Checkbox").GetComponent<Toggle>();
         Assert.IsNotNull(_MuteCheckbox, "FPS Counter checkbox is missing!");
         _MuteCheckbox.onValueChanged.AddListener(delegate { FPSCounterCheckboxToggle(); });
 
         if (_MouseControlsCheckbox == null)
-            _MouseControlsCheckbox = GameObject.FindGameObjectWithTag("Settings_MouseControls_Checkbox").GetComponent<Toggle>();
+            _MouseControlsCheckbox = GameObject.FindGameObjectWithTag("Settings/Mouse Controls Checkbox").GetComponent<Toggle>();
         Assert.IsNotNull(_MouseControlsCheckbox, "Mouse controls checkbox is missing!");
         _MouseControlsCheckbox.onValueChanged.AddListener(delegate { MouseControlsCheckboxToggle(); });
 
         if (_FXAACheckbox == null)
-            _FXAACheckbox = GameObject.FindGameObjectWithTag("Settings_FXAA_Checkbox").GetComponent<Toggle>();
+            _FXAACheckbox = GameObject.FindGameObjectWithTag("Settings/FXAA Checkbox").GetComponent<Toggle>();
         Assert.IsNotNull(_FXAACheckbox, "FXAA checkbox is missing!");
         _FXAACheckbox.onValueChanged.AddListener(delegate { FXAACheckboxToggle(); });
     }

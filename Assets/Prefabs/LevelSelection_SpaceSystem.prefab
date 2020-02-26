@@ -41,7 +41,7 @@ PrefabInstance:
     - target: {fileID: 675195419044251252, guid: 2deea67b1799c4534a2e9da965e0784f,
         type: 3}
       propertyPath: m_TagString
-      value: LevelSelection_Earth
+      value: Level Selection/Earth
       objectReference: {fileID: 0}
     - target: {fileID: 6618256994726791848, guid: 2deea67b1799c4534a2e9da965e0784f,
         type: 3}

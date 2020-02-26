@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6933005368176994363}
   m_Layer: 10
   m_Name: Confettis_ParticleSystem
-  m_TagString: PS_Confettis
+  m_TagString: Particle System/Confettis
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

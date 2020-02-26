@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7542266969636220430}
   m_Layer: 12
   m_Name: PuzzlePiece_0
-  m_TagString: InGame_PuzzlePiece
+  m_TagString: In Game/Puzzle Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 9099296629466191520}
   m_Layer: 11
   m_Name: Teapot_Puzzle
-  m_TagString: InGame_PuzzleContainer
+  m_TagString: In Game/Puzzle Container
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

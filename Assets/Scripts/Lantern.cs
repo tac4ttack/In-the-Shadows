@@ -39,11 +39,11 @@ public class Lantern : MonoBehaviour
         Assert.IsNotNull(_LanternLight, "No light component found on current GameObject!");
 
         if (_PuzzleLight == null)
-            _PuzzleLight = GameObject.FindGameObjectWithTag("InGame_PuzzleLight");
+            _PuzzleLight = GameObject.FindGameObjectWithTag("In Game/Puzzle Light");
         Assert.IsNotNull(_PuzzleLight, "No puzzle light GameObject found in scene!");
 
         if (_PuzzleSpotLight == null)
-            _PuzzleSpotLight = GameObject.FindGameObjectWithTag("InGame_PuzzleLight").GetComponent<Light>();
+            _PuzzleSpotLight = GameObject.FindGameObjectWithTag("In Game/Puzzle Light").GetComponent<Light>();
         Assert.IsNotNull(_PuzzleSpotLight, "No puzzle light found in scene!");
 
         _StartLanternIntensity = _LanternLight.intensity;

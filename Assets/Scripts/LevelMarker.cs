@@ -37,7 +37,7 @@ public class LevelMarker : MonoBehaviour
         Assert.IsNotNull(_Collider, "Sphere Collider not found on level marker!");
 
         if (_LevelSelector == null)
-            _LevelSelector = GameObject.FindGameObjectWithTag("LevelSelection_Panel").GetComponent<LevelSelection>();
+            _LevelSelector = GameObject.FindGameObjectWithTag("Level Selection/Panel").GetComponent<LevelSelection>();
         Assert.IsNotNull(_LevelSelector, "Level Selection script not found!");
 
         if (AnimationController == null)

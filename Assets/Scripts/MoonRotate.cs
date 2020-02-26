@@ -15,7 +15,7 @@ public class MoonRotate : MonoBehaviour
         #endif
         
         if (_Earth == null)
-            _Earth = GameObject.FindGameObjectWithTag("MainMenu_Earth");
+            _Earth = GameObject.FindGameObjectWithTag("Main Menu/Earth");
         Assert.IsNotNull(_Earth, "Earth GameObject not set or found!");
     }
 

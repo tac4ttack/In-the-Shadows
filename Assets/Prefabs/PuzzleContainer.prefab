@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 2559776559367601256}
   m_Layer: 12
   m_Name: PuzzlePiece_0
-  m_TagString: InGame_PuzzlePiece
+  m_TagString: In Game/Puzzle Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

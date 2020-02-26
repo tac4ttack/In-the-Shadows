@@ -31,7 +31,7 @@ public class PlayerSlot : MonoBehaviour
         Assert.IsNotNull(_CurrentSlot, "Slot GameObject not found!");
 
         if (_MainMenuScript == null)
-            _MainMenuScript = GameObject.FindGameObjectWithTag("MainMenu_UI").GetComponent<MainMenu>();
+            _MainMenuScript = GameObject.FindGameObjectWithTag("Main Menu/UI").GetComponent<MainMenu>();
         Assert.IsNotNull(_MainMenuScript, "Main Menu script not found in scene!");
 
         if (SlotID < 0 || SlotID > 3)

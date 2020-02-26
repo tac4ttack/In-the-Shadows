@@ -37,7 +37,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         #endif
 
         if (_AxisHints == null)
-            _AxisHints = GameObject.FindGameObjectWithTag("Axis_Hints").GetComponent<AxisHints>();
+            _AxisHints = GameObject.FindGameObjectWithTag("Axis Hints").GetComponent<AxisHints>();
         Assert.IsNotNull(_AxisHints, "Axis hints GameObject not found in scene!");
 
         if (_PuzzleContainer == null)

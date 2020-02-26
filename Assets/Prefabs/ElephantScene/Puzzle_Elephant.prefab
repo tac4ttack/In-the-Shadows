@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 2396105553482777517}
   m_Layer: 11
   m_Name: Puzzle_Elephant
-  m_TagString: InGame_PuzzleContainer
+  m_TagString: In Game/Puzzle Container
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 4011612723099433731}
   m_Layer: 12
   m_Name: PuzzlePiece_0
-  m_TagString: InGame_PuzzlePiece
+  m_TagString: In Game/Puzzle Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

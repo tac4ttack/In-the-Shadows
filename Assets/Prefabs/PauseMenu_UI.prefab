@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 414653736}
   m_Layer: 5
   m_Name: Confirmation_Panel
-  m_TagString: PauseMenu_ConfirmationDialog
+  m_TagString: Pause Menu/Confirmation Dialog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1345,7 +1345,7 @@ GameObject:
   - component: {fileID: 3069751400335067655}
   m_Layer: 5
   m_Name: SFXVolume_Slider
-  m_TagString: Settings_SFXVolume_Slider
+  m_TagString: Settings/SFX Volume Slider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1458,7 +1458,7 @@ GameObject:
   - component: {fileID: 1941360563392371097}
   m_Layer: 5
   m_Name: MouseControls_Checkbox
-  m_TagString: Settings_MouseControls_Checkbox
+  m_TagString: Settings/Mouse Controls Checkbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2200,7 +2200,7 @@ GameObject:
   - component: {fileID: 4411794276840867428}
   m_Layer: 5
   m_Name: FPSCounter_Checkbox
-  m_TagString: Settings_FPSCounter_Checkbox
+  m_TagString: Settings/FPS Counter Checkbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2381,7 +2381,7 @@ GameObject:
   - component: {fileID: 6564834054659033601}
   m_Layer: 5
   m_Name: MusicVolume_Slider
-  m_TagString: Settings_MusicVolume_Slider
+  m_TagString: Settings/Music Volume Slider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2908,7 +2908,7 @@ GameObject:
   - component: {fileID: 6398499773134748620}
   m_Layer: 5
   m_Name: SFXVolume_Value
-  m_TagString: Settings_SFXVolume_Text
+  m_TagString: Settings/SFX Volume Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3064,7 +3064,7 @@ GameObject:
   - component: {fileID: 5865961016824499050}
   m_Layer: 5
   m_Name: Mute_Checkbox
-  m_TagString: Settings_Mute_Checkbox
+  m_TagString: Settings/Mute Checkbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3211,7 +3211,7 @@ GameObject:
   - component: {fileID: 7176465993581046299}
   m_Layer: 5
   m_Name: MusicVolume_Value
-  m_TagString: Settings_MusicVolume_Text
+  m_TagString: Settings/Music Volume Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3902,7 +3902,7 @@ GameObject:
   - component: {fileID: 6157936547889357546}
   m_Layer: 5
   m_Name: PauseMenu_UI
-  m_TagString: PauseMenu_UI
+  m_TagString: Pause Menu/UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4991,7 +4991,7 @@ GameObject:
   - component: {fileID: 5474269023530056018}
   m_Layer: 5
   m_Name: Abort_Button
-  m_TagString: PauseMenu_AbortButton
+  m_TagString: Pause Menu/Abort Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5310,7 +5310,7 @@ GameObject:
   - component: {fileID: 6157936548560448003}
   m_Layer: 5
   m_Name: Settings_Panel
-  m_TagString: Settings_Panel
+  m_TagString: Settings/Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5618,7 +5618,7 @@ GameObject:
   - component: {fileID: 2997266437445961718}
   m_Layer: 5
   m_Name: Restart_Button
-  m_TagString: PauseMenu_RestartButton
+  m_TagString: Pause Menu/Restart Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6282,7 +6282,7 @@ GameObject:
   - component: {fileID: 6157936548960948373}
   m_Layer: 5
   m_Name: PauseMenu_Panel
-  m_TagString: PauseMenu_Panel
+  m_TagString: Pause Menu/Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7017,7 +7017,7 @@ GameObject:
   - component: {fileID: 6157936549591231065}
   m_Layer: 5
   m_Name: PauseMenu_Background
-  m_TagString: PauseMenu_Background
+  m_TagString: Pause Menu/Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7741,7 +7741,7 @@ GameObject:
   - component: {fileID: 4418165217547850474}
   m_Layer: 5
   m_Name: MasterVolume_Slider
-  m_TagString: Settings_MasterVolume_Slider
+  m_TagString: Settings/Master Volume Slider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7854,7 +7854,7 @@ GameObject:
   - component: {fileID: 7227346715670112243}
   m_Layer: 5
   m_Name: MasterVolume_Value
-  m_TagString: Settings_MasterVolume_Text
+  m_TagString: Settings/Master Volume Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8166,7 +8166,7 @@ GameObject:
   - component: {fileID: 5354717029409641474}
   m_Layer: 5
   m_Name: FXAA_Checkbox
-  m_TagString: Settings_FXAA_Checkbox
+  m_TagString: Settings/FXAA Checkbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

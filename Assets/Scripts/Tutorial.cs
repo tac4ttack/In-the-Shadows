@@ -32,33 +32,33 @@ public class Tutorial : MonoBehaviour
         #endif
         
         if (Tutorial_CG == null)
-            Tutorial_CG = GameObject.FindGameObjectWithTag("Tutorial_Panel").GetComponent<CanvasGroup>();
+            Tutorial_CG = GameObject.FindGameObjectWithTag("Tutorial/Panel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(Tutorial_CG, "Tutorial panel canvas group not found in scene!");
 
         if (Tutorial_Title_TXT == null)
-            Tutorial_Title_TXT = GameObject.FindGameObjectWithTag("Tutorial_Title").GetComponent<TextMeshProUGUI>();
+            Tutorial_Title_TXT = GameObject.FindGameObjectWithTag("Tutorial/Title").GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(Tutorial_Title_TXT, "Tutorial panel title text not found in scene!");
 
         if (Tutorial_Content_TXT == null)
-            Tutorial_Content_TXT = GameObject.FindGameObjectWithTag("Tutorial_Content").GetComponent<TextMeshProUGUI>();
+            Tutorial_Content_TXT = GameObject.FindGameObjectWithTag("Tutorial/Content").GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(Tutorial_Content_TXT, "Tutorial panel content text not found in scene!");
 
         if (Tutorial_Pic_IMG == null)
-            Tutorial_Pic_IMG = GameObject.FindGameObjectWithTag("Tutorial_Picture").GetComponent<Image>();
+            Tutorial_Pic_IMG = GameObject.FindGameObjectWithTag("Tutorial/Picture").GetComponent<Image>();
         Assert.IsNotNull(Tutorial_Pic_IMG, "Tutorial panel image not found in scene!");
 
         if (Tutorial_Prev_BTN == null)
-            Tutorial_Prev_BTN = GameObject.FindGameObjectWithTag("Tutorial_Prev").GetComponent<Button>();
+            Tutorial_Prev_BTN = GameObject.FindGameObjectWithTag("Tutorial/Prev").GetComponent<Button>();
         Assert.IsNotNull(Tutorial_Prev_BTN, "Tutorial panel previous button not found in scene!");
         Tutorial_Prev_BTN.interactable = false;
         
         if (Tutorial_Next_BTN == null)
-            Tutorial_Next_BTN = GameObject.FindGameObjectWithTag("Tutorial_Next").GetComponent<Button>();
+            Tutorial_Next_BTN = GameObject.FindGameObjectWithTag("Tutorial/Next").GetComponent<Button>();
         Assert.IsNotNull(Tutorial_Next_BTN, "Tutorial panel next button not found in scene!");
         Tutorial_Next_BTN.interactable = false;
 
         if (GuideWall_MAT == null)
-            GuideWall_MAT = GameObject.FindGameObjectWithTag("Tutorial_GuideWall").GetComponent<MeshRenderer>().materials[1];
+            GuideWall_MAT = GameObject.FindGameObjectWithTag("Tutorial/Guide Wall").GetComponent<MeshRenderer>().materials[1];
 
         TutorialSteps = new IState[5] { new Tutorial_Step_0(this),
                                         new Tutorial_Step_1(this),

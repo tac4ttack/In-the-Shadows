@@ -46,46 +46,47 @@ public class LevelSelection : MonoBehaviour
         #endif
         
         if (NavLeft_BTN == null)
-            NavLeft_BTN = GameObject.FindGameObjectWithTag("LevelSelection_NavLeftButton").GetComponent<Button>();
+            NavLeft_BTN = GameObject.FindGameObjectWithTag("Level Selection/Nav Left Button").GetComponent<Button>();
         Assert.IsNotNull(NavLeft_BTN, "Left Navigation button not found!");
 
         if (NavRight_BTN == null)
-            NavRight_BTN = GameObject.FindGameObjectWithTag("LevelSelection_NavRightButton").GetComponent<Button>();
+            NavRight_BTN = GameObject.FindGameObjectWithTag("Level Selection/Nav Right Button").GetComponent<Button>();
         Assert.IsNotNull(NavRight_BTN, "Right Navigation button not found!");
 
         if (LevelSelectionUI_CG == null)
-            LevelSelectionUI_CG = GameObject.FindGameObjectWithTag("LevelSelection_Panel").GetComponent<CanvasGroup>();
+            LevelSelectionUI_CG = GameObject.FindGameObjectWithTag("Level Selection/Panel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(LevelSelectionUI_CG, "Level selection UI not found!");
 
         if (LevelTitle_TXT == null)
-            LevelTitle_TXT = GameObject.FindGameObjectWithTag("LevelSelection_LevelTitleText").GetComponent<TextMeshProUGUI>();
+            LevelTitle_TXT = GameObject.FindGameObjectWithTag("Level Selection/Level Title Text").GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(LevelTitle_TXT, "Level Title text placeholder not found!");
 
         if (LevelCount_TXT == null)
-            LevelCount_TXT = GameObject.FindGameObjectWithTag("LevelSelection_LevelCountText").GetComponent<TextMeshProUGUI>();
+            LevelCount_TXT = GameObject.FindGameObjectWithTag("Level Selection/Level Count Text").GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(LevelCount_TXT, "Level Count text placeholder not found!");
 
         if (LevelDescriptionTitle_TXT == null)
-            LevelDescriptionTitle_TXT = GameObject.FindGameObjectWithTag("LevelSelection_Description_TitleText").GetComponent<TextMeshProUGUI>();
+            LevelDescriptionTitle_TXT = GameObject.FindGameObjectWithTag("Level Selection/Description/Title Text").GetComponent<TextMeshProUGUI>();
         Assert.IsNotNull(LevelDescriptionTitle_TXT, "Level Description Title text placeholder not found!");
 
         if (LevelDescriptionContent_TXT == null)
-            LevelDescriptionContent_TXT = GameObject.FindGameObjectWithTag("LevelSelection_Description_ContentText").GetComponent<TextMeshProUGUI>(); ;
+            LevelDescriptionContent_TXT = GameObject.FindGameObjectWithTag("Level Selection/Description/Content Text").GetComponent<TextMeshProUGUI>(); ;
         Assert.IsNotNull(LevelDescriptionContent_TXT, "Level Description Content text placeholder not found!");
 
         if (LevelDescriptionBestTime_TXT == null)
-            LevelDescriptionBestTime_TXT = GameObject.FindGameObjectWithTag("LevelSelection_Description_BestTimeText").GetComponent<TextMeshProUGUI>(); ;
+            LevelDescriptionBestTime_TXT = GameObject.FindGameObjectWithTag("Level Selection/Description/Best Time Text").GetComponent<TextMeshProUGUI>(); ;
         Assert.IsNotNull(LevelDescriptionBestTime_TXT, "Level Description Best Time text placeholder not found!");
 
         if (LevelDescriptionPlay_BTN == null)
-            LevelDescriptionPlay_BTN = GameObject.FindGameObjectWithTag("LevelSelection_Description_PlayButton").GetComponent<Button>(); ;
+            LevelDescriptionPlay_BTN = GameObject.FindGameObjectWithTag("Level Selection/Description/Play Button").GetComponent<Button>(); ;
         Assert.IsNotNull(LevelDescriptionPlay_BTN, "Level Description Play button not found!");
 
         if (_Earth_GO == null)
-            _Earth_GO = GameObject.FindGameObjectWithTag("LevelSelection_Earth");
+            _Earth_GO = GameObject.FindGameObjectWithTag("Level Selection/Earth");
         Assert.IsNotNull(_Earth_GO, "Earth GameObject is missing from the scene!");
 
-        Levels = GameObject.FindGameObjectWithTag("LevelSelection_Map").GetComponentsInChildren<LevelMarker>();
+        Levels = GameObject.FindGameObjectWithTag("Level Selection/Map").GetComponentsInChildren<LevelMarker>();
+
         
         // DEBUG
         #if UNITY_EDITOR
@@ -94,7 +95,7 @@ public class LevelSelection : MonoBehaviour
         #endif
 
         if (_PauseMenuUI == null)
-            _PauseMenuUI = GameObject.FindGameObjectWithTag("PauseMenu_UI").GetComponent<PauseMenu>();
+            _PauseMenuUI = GameObject.FindGameObjectWithTag("Pause Menu/UI").GetComponent<PauseMenu>();
         Assert.IsNotNull(_PauseMenuUI, "Pause Menu UI not found in scene!");
         
         LevelDescriptionPlay_BTN.onClick.AddListener(delegate { PlayButtonPress(); });

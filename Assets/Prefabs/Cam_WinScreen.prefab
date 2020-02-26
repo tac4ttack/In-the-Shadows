@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 4987740580884096549}
   m_Layer: 10
   m_Name: Yes_Button
-  m_TagString: InGame_WinScreen_Yes_Button
+  m_TagString: In Game/Win Screen/Yes Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -697,7 +697,7 @@ GameObject:
   - component: {fileID: 5250059411827885852}
   m_Layer: 10
   m_Name: WinScreen_Panel
-  m_TagString: InGame_WinScreen_Panel
+  m_TagString: In Game/Win Screen/Panel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -851,7 +851,7 @@ GameObject:
   - component: {fileID: 5250059412542029264}
   m_Layer: 10
   m_Name: WinScreen_Background
-  m_TagString: InGame_WinScreen_Background
+  m_TagString: In Game/Win Screen/Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1130,7 +1130,7 @@ GameObject:
   - component: {fileID: 5250059412903818595}
   m_Layer: 10
   m_Name: WinScreen_UI
-  m_TagString: InGame_WinScreen_UI
+  m_TagString: In Game/Win Screen/UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1379,7 +1379,7 @@ GameObject:
   - component: {fileID: 3195171950493070826}
   m_Layer: 10
   m_Name: MainMenu_Button
-  m_TagString: InGame_WinScreen_MainMenu_Button
+  m_TagString: In Game/Win Screen/Main Menu Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1521,7 +1521,7 @@ GameObject:
   - component: {fileID: 8266532450080458089}
   m_Layer: 10
   m_Name: No_Button
-  m_TagString: InGame_WinScreen_No_Button
+  m_TagString: In Game/Win Screen/No Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1638,7 +1638,7 @@ GameObject:
   - component: {fileID: 705560759791813027}
   m_Layer: 10
   m_Name: ConfettisSpawner
-  m_TagString: InGame_ConfettisSpawner
+  m_TagString: In Game/Confettis Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1805,7 +1805,7 @@ GameObject:
   - component: {fileID: 8382347870311017063}
   m_Layer: 10
   m_Name: Confirmation_Panel
-  m_TagString: InGame_WinScreen_ConfirmationPrompt
+  m_TagString: In Game/Win Screen/Confirmation Prompt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2544,7 +2544,7 @@ GameObject:
   - component: {fileID: 2824671174907364342}
   m_Layer: 10
   m_Name: NextLevel_Button
-  m_TagString: InGame_WinScreen_NextLevel_Button
+  m_TagString: In Game/Win Screen/Next Level Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2792,7 +2792,7 @@ GameObject:
   - component: {fileID: 8694725110429005233}
   m_Layer: 10
   m_Name: Restart_Button
-  m_TagString: InGame_WinScreen_Restart_Button
+  m_TagString: In Game/Win Screen/Restart Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3105,7 +3105,7 @@ GameObject:
   - component: {fileID: 8251071587024159233}
   m_Layer: 10
   m_Name: Cam_WinScreen
-  m_TagString: InGame_WinScreen_Camera
+  m_TagString: In Game/Win Screen/Camera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3183,7 +3183,7 @@ GameObject:
   - component: {fileID: 4550963884224255147}
   m_Layer: 10
   m_Name: LevelSelect_Button
-  m_TagString: InGame_WinScreen_LevelSelection_Button
+  m_TagString: In Game/Win Screen/Level Selection Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

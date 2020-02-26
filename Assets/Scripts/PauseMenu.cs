@@ -36,27 +36,27 @@ public class PauseMenu : MonoBehaviour
         Assert.IsNotNull(Pause_CG, "Pause Menu UI Canvas group not found!");
 
         if (Background_CG == null)
-            Background_CG = GameObject.FindGameObjectWithTag("PauseMenu_Background").GetComponent<CanvasGroup>();
+            Background_CG = GameObject.FindGameObjectWithTag("Pause Menu/Background").GetComponent<CanvasGroup>();
         Assert.IsNotNull(Background_CG, "Pause Menu Background Canvas group not found!");
 
         if (PauseMenu_CG == null)
-            PauseMenu_CG = GameObject.FindGameObjectWithTag("PauseMenu_Panel").GetComponent<CanvasGroup>();
+            PauseMenu_CG = GameObject.FindGameObjectWithTag("Pause Menu/Panel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(PauseMenu_CG, "Pause Menu Canvas group not found!");
 
         if (Settings_CG == null)
-            Settings_CG = GameObject.FindGameObjectWithTag("Settings_Panel").GetComponent<CanvasGroup>();
+            Settings_CG = GameObject.FindGameObjectWithTag("Settings/Panel").GetComponent<CanvasGroup>();
         Assert.IsNotNull(Settings_CG, "Settings Canvas group not found!");
 
         if (ConfirmationPrompt_CG == null)
-            ConfirmationPrompt_CG = GameObject.FindGameObjectWithTag("PauseMenu_ConfirmationDialog").GetComponent<CanvasGroup>();
+            ConfirmationPrompt_CG = GameObject.FindGameObjectWithTag("Pause Menu/Confirmation Dialog").GetComponent<CanvasGroup>();
         Assert.IsNotNull(ConfirmationPrompt_CG, "Confirmation Prompt Canvas group not found!");
 
         if (_Restart_BTN == null)
-            _Restart_BTN = GameObject.FindGameObjectWithTag("PauseMenu_RestartButton").GetComponent<Button>();
+            _Restart_BTN = GameObject.FindGameObjectWithTag("Pause Menu/Restart Button").GetComponent<Button>();
         Assert.IsNotNull(_Restart_BTN, "Restart button not found!");
 
         if (_Abort_BTN == null)
-            _Abort_BTN = GameObject.FindGameObjectWithTag("PauseMenu_AbortButton").GetComponent<Button>();
+            _Abort_BTN = GameObject.FindGameObjectWithTag("Pause Menu/Abort Button").GetComponent<Button>();
         Assert.IsNotNull(_Abort_BTN, "Abort button not found!");
     }
 
@@ -70,7 +70,7 @@ public class PauseMenu : MonoBehaviour
         if (GameManager.GM.CurrentState == GameManager.GameStates.InGame)
         {
             if (_PuzzleScript == null)
-                _PuzzleScript = GameObject.FindGameObjectWithTag("InGame_PuzzleContainer").GetComponent<Puzzle>();
+                _PuzzleScript = GameObject.FindGameObjectWithTag("In Game/Puzzle Container").GetComponent<Puzzle>();
             Assert.IsNotNull(_PuzzleScript, "Puzzle script not found!");
         }
 
