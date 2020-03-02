@@ -27,8 +27,8 @@ public class LevelMarker : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"LEVEL MARKER - {this.name} - Awake()");
         #endif
 
@@ -64,8 +64,8 @@ public class LevelMarker : MonoBehaviour
 
     void Start()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"LEVEL MARKER - {this.name} - Start()");
         #endif
         

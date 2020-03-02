@@ -7,8 +7,8 @@ public class GodHand : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"GOD HAND - {this.name} - Awake()");
         #endif
         

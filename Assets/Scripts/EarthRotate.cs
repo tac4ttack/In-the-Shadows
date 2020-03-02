@@ -7,8 +7,8 @@ public class EarthRotate : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"EARTH ROTATE - {this.name} - Awake()");
         #endif
 

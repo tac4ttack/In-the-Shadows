@@ -27,8 +27,8 @@ public class SettingsMenu : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"SETTINGS MENU - {this.name} - Awake()");
         #endif
 
@@ -86,8 +86,8 @@ public class SettingsMenu : MonoBehaviour
 
     void Start()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"SETTINGS MENU - {this.name} - Start()");
         #endif
 

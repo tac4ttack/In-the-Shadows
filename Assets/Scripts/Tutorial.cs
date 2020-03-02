@@ -26,8 +26,8 @@ public class Tutorial : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"TUTORIAL - {this.name} - Awake()");
         #endif
         

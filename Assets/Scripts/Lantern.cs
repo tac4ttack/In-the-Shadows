@@ -29,8 +29,8 @@ public class Lantern : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"LANTERN - {this.name} - Awake()");
         #endif
 

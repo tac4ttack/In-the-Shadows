@@ -14,8 +14,8 @@ public class MeshViewer : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"MESH VIEWER - {this.name} - Awake()");
         #endif
         

@@ -8,8 +8,8 @@ public class ParticleGarbageCollector : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"PARTICLE GARBAGE COLLECTOR - {this.name} - Awake()");
         #endif
         

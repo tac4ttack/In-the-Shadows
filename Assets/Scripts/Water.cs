@@ -15,8 +15,8 @@ public class Water : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"WATER - {this.name} - Awake()");
         #endif
 

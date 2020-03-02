@@ -17,8 +17,8 @@ public class NewGameDialog : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"NEW GAME DIALOG - {this.name} - Awake()");
         #endif
 

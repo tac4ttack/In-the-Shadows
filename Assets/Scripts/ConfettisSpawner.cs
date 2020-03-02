@@ -18,15 +18,15 @@ public class ConfettisSpawner : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"CONFETTIS SPAWNER - {this.name} - Awake()");
         #endif
 
         if (TargetToSpawn == null)
         {
             // DEBUG
-            #if UNITY_EDITOR
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
             Debug.LogWarning("No spawnable GameObject set up, fetching default one!");
             #endif
             
@@ -41,8 +41,8 @@ public class ConfettisSpawner : MonoBehaviour
 
     void Start()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"CONFETTIS SPAWNER - {this.name} - Start()");
         #endif
         

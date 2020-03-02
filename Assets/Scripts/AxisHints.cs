@@ -6,8 +6,8 @@ public class AxisHints : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"AXIS HINT - {this.name} - Awake()");
         #endif
         
@@ -15,7 +15,7 @@ public class AxisHints : MonoBehaviour
         if (_Axis.Length != 3 || _Axis == null)
         {
             // DEBUG
-            #if UNITY_EDITOR
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
             Debug.LogError("AxisHint gameObject is corrupted");
             #endif
             

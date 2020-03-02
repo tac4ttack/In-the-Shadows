@@ -24,8 +24,8 @@ public class Starfield : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"STAR FIELD - {this.name} - Awake()");
         #endif
         

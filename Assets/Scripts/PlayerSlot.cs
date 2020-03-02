@@ -22,8 +22,8 @@ public class PlayerSlot : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"PLAYER SLOT - {this.name} - Awake()");
         #endif
 
@@ -37,7 +37,7 @@ public class PlayerSlot : MonoBehaviour
         if (SlotID < 0 || SlotID > 3)
         {
             // DEBUG
-            #if UNITY_EDITOR
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
             Debug.LogError("Invalid SlotID for \"" + _CurrentSlot.name + "\" player slot GameObject.\nDesactivating player slot Gameobject.");
             #endif
 
@@ -74,8 +74,8 @@ public class PlayerSlot : MonoBehaviour
 
     void Start()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"PLAYER SLOT - {this.name} - Start()");
         #endif
 

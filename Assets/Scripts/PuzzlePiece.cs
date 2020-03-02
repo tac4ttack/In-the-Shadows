@@ -31,8 +31,8 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"PUZZLE PIECE - {this.name} - Awake()");
         #endif
 
@@ -53,8 +53,8 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     void Start()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"PUZZLE PIECE - {this.name} - Start()");
         #endif
 
@@ -69,7 +69,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         isPuzzlePieceValidated = (_OrientationOK && _RelativePositionOK);
 
         // DEBUG
-        #if UNITY_EDITOR
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         if (Input.GetKeyDown(KeyCode.Space))
         {
             string debugString = $"Name = {this.gameObject.name}\n"

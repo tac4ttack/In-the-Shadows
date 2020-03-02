@@ -6,6 +6,11 @@ public static class SaveSystem
 {
     public static void SaveSettings(SettingsData iData)
     {
+        // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.Log("SAVE SYSTEM - Saving settings data");
+        #endif
+
         BinaryFormatter formatter = new BinaryFormatter();
         string settingsPath = Application.persistentDataPath + "/settings.bin";
         FileStream settingsSaveStream = new FileStream(settingsPath, FileMode.Create);
@@ -16,6 +21,11 @@ public static class SaveSystem
 
     public static SettingsData LoadSettings()
     {
+        // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.Log("SAVE SYSTEM - Loading settings data");
+        #endif
+
         string settingsPath = Application.persistentDataPath + "/settings.bin";
 
         if (File.Exists(settingsPath))
@@ -29,7 +39,7 @@ public static class SaveSystem
         else
         {
             // DEBUG
-            #if UNITY_EDITOR
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
             Debug.LogWarning("Settings data file not found in " + settingsPath);
             #endif
 
@@ -39,6 +49,11 @@ public static class SaveSystem
 
     public static void SavePlayers(PlayersData iData)
     {
+        // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.Log("SAVE SYSTEM - Saving players data");
+        #endif
+
         BinaryFormatter formatter = new BinaryFormatter();
         string playersPath = Application.persistentDataPath + "/players.bin";
         FileStream playersSaveStream = new FileStream(playersPath, FileMode.Create);
@@ -49,6 +64,11 @@ public static class SaveSystem
 
     public static PlayersData LoadPlayers()
     {
+        // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
+        Debug.Log("SAVE SYSTEM - Loading players data");
+        #endif
+
         string playersPath = Application.persistentDataPath + "/players.bin";
 
         if (File.Exists(playersPath))
@@ -62,7 +82,7 @@ public static class SaveSystem
         else
         {
             // DEBUG
-            #if UNITY_EDITOR
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
             Debug.LogWarning("Players data file not found in " + playersPath);
             #endif
             

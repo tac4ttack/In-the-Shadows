@@ -35,8 +35,8 @@ public class Puzzle : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"PUZZLE - {this.name} - Awake()");
         #endif
 
@@ -114,8 +114,8 @@ public class Puzzle : MonoBehaviour
 
     void Start()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"PUZZLE - {this.name} - Start()");
         #endif
 
