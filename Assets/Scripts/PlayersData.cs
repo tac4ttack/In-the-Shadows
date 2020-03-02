@@ -43,6 +43,7 @@ public class PlayersData
         IsEmpty = new bool[3];
         ToUnlock = new UnlockQueue[3];
         ToComplete = new CompleteQueue[3];
+        PuzzlesAmount = 5;
 
         for (int i = 0; i < 3; i++)
         {
@@ -50,7 +51,7 @@ public class PlayersData
             Progression[i].Level = new int[PuzzlesAmount];
             ToUnlock[i].q = new List<int>();
             ToComplete[i].q = new List<int>();
-            for (int j = 0; j < PuzzlesAmount - 1; j++)
+            for (int j = 0; j < PuzzlesAmount; j++)
             {
                 if (j == 0)
                     Progression[i].Level[j] = 1;
@@ -74,12 +75,13 @@ public class PlayersData
         IsEmpty = new bool[3];
         ToUnlock = new UnlockQueue[3];
         ToComplete = new CompleteQueue[3];
+        PuzzlesAmount = 5;
 
         for (int i = 0; i < 3; i++)
         {
             PlayersName[i] = iData.PlayersName[i];
             Progression[i].Level = new int[PuzzlesAmount];
-            for (int j = 0; j < PuzzlesAmount - 1; j++)
+            for (int j = 0; j < PuzzlesAmount; j++)
             {
                 Progression[i].Level[j] = iData.Progression[i].Level[j];
             }
