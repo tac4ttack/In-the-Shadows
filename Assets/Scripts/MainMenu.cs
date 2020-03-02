@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -20,10 +21,12 @@ public class MainMenu : MonoBehaviour
     public GameObject SpaceSystem_GO;
     public Toggle DebugModeCheckBox;
 
+    private TextMeshProUGUI _Version_TXT;
+
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"MAIN MENU - {this.name} - Awake()");
         #endif
 
@@ -66,10 +69,15 @@ public class MainMenu : MonoBehaviour
         if (DebugModeCheckBox == null)
             DebugModeCheckBox = GameObject.FindGameObjectWithTag("Main Menu/Debug Mode Toggle").GetComponent<Toggle>();
         Assert.IsNotNull(DebugModeCheckBox, "Debug Mode Toggle not found!");
+
+        if (_Version_TXT == null)
+            _Version_TXT = GameObject.FindGameObjectWithTag("Main Menu/Version Text").GetComponent<TextMeshProUGUI>();
+        Assert.IsNotNull(DebugModeCheckBox, "Version text not found!");
+        _Version_TXT.text = "Version " + Application.version;
     }
 
-    #if UNITY_EDITOR || DEVELOPMENT_BUILD
     // DEBUG
+    #if UNITY_EDITOR || DEVELOPMENT_BUILD
     void Start()
     {
         Debug.Log($"MAIN MENU - {this.name} - Start()");
