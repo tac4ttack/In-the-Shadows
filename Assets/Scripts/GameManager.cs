@@ -56,7 +56,9 @@ public class GameManager : MonoBehaviour
 
         if (_Code == null)
             _Code = this.GetComponent<Konami>();
-        
+
+        QualitySettings.SetQualityLevel(0);
+
         CurrentState = GameManager.GameStates.TitleScreen;
     }
 

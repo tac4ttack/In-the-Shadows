@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
     public CanvasGroup NewPlayerPrompt_CG;
     public GameObject SpaceSystem_GO;
     public Toggle DebugModeCheckBox;
+    public Button Settings_Back_BTN;
 
     private TextMeshProUGUI _Version_TXT;
 
@@ -72,8 +73,13 @@ public class MainMenu : MonoBehaviour
 
         if (_Version_TXT == null)
             _Version_TXT = GameObject.FindGameObjectWithTag("Main Menu/Version Text").GetComponent<TextMeshProUGUI>();
-        Assert.IsNotNull(DebugModeCheckBox, "Version text not found!");
+        Assert.IsNotNull(_Version_TXT, "Version text not found!");
         _Version_TXT.text = "Version " + Application.version;
+
+        if (Settings_Back_BTN == null)
+            Settings_Back_BTN = GameObject.FindGameObjectWithTag("Settings/Back button").GetComponent<Button>();
+        Assert.IsNotNull(Settings_Back_BTN, "Settings back button not found!");
+        Settings_Back_BTN.onClick.AddListener(delegate { BackButtonPress(); });
     }
 
     // DEBUG

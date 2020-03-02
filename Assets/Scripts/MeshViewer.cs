@@ -39,7 +39,7 @@ public class MeshViewer : MonoBehaviour
         _MeshRenderer.materials = tmp;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         this.transform.Rotate(_RotationAxis, -1 * _RotationSpeed * Time.deltaTime);
     }

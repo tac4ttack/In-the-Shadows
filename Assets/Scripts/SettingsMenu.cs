@@ -22,7 +22,6 @@ public class SettingsMenu : MonoBehaviour
     private bool _InitFlag = true;
     private Toggle _MuteCheckbox;
     private Toggle _FPSCounterCheckbox;
-    private Toggle _MouseControlsCheckbox;
     private Toggle _FXAACheckbox;
 
     void Awake()
@@ -71,12 +70,7 @@ public class SettingsMenu : MonoBehaviour
         if (_FPSCounterCheckbox == null)
             _FPSCounterCheckbox = GameObject.FindGameObjectWithTag("Settings/FPS Counter Checkbox").GetComponent<Toggle>();
         Assert.IsNotNull(_MuteCheckbox, "FPS Counter checkbox is missing!");
-        _MuteCheckbox.onValueChanged.AddListener(delegate { FPSCounterCheckboxToggle(); });
-
-        if (_MouseControlsCheckbox == null)
-            _MouseControlsCheckbox = GameObject.FindGameObjectWithTag("Settings/Mouse Controls Checkbox").GetComponent<Toggle>();
-        Assert.IsNotNull(_MouseControlsCheckbox, "Mouse controls checkbox is missing!");
-        _MouseControlsCheckbox.onValueChanged.AddListener(delegate { MouseControlsCheckboxToggle(); });
+        _FPSCounterCheckbox.onValueChanged.AddListener(delegate { FPSCounterCheckboxToggle(); });
 
         if (_FXAACheckbox == null)
             _FXAACheckbox = GameObject.FindGameObjectWithTag("Settings/FXAA Checkbox").GetComponent<Toggle>();
@@ -93,6 +87,7 @@ public class SettingsMenu : MonoBehaviour
 
         InitSoundSettings(GameManager.GM.Settings);
         InitGeneralSettings(GameManager.GM.Settings);
+        GameManager.GM.PM.InitCamAntialiasing();
         _InitFlag = false;
     }
 
@@ -110,7 +105,6 @@ public class SettingsMenu : MonoBehaviour
     private void InitGeneralSettings(SettingsData iData)
     {
         _FPSCounterCheckbox.isOn = iData.FPSCounter;
-        _MouseControlsCheckbox.isOn = iData.MouseControls;
         _FXAACheckbox.isOn = iData.FXAAEnabled;
     }
 
@@ -185,19 +179,6 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
-    public void MouseControlsCheckboxToggle()
-    {
-        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[2]);
-        if (_MouseControlsCheckbox.isOn && !_InitFlag)
-        {
-            GameManager.GM.Settings.MouseControls = true;
-        }
-        else if (!_MouseControlsCheckbox.isOn && !_InitFlag)
-        {
-            GameManager.GM.Settings.MouseControls = false;
-        }
-    }
-
     public void FXAACheckboxToggle()
     {
         GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[2]);
@@ -215,16 +196,28 @@ public class SettingsMenu : MonoBehaviour
     public void ResetToDefaultsButtonPress()
     {
         GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
+
         _MasterVolumeSlider.value = GameManager.GM.Settings.DefaultMasterVolume;
         GameManager.GM.Settings.PreviousMasterVolume = GameManager.GM.Settings.DefaultMasterVolume;
+        _MasterVolumeSlider.interactable = true;
+        
         _SFXVolumeSlider.value = GameManager.GM.Settings.DefaultSFXVolume;
         GameManager.GM.Settings.PreviousSFXVolume = GameManager.GM.Settings.DefaultSFXVolume;
+        _SFXVolumeSlider.interactable = true;
+        
         _MusicVolumeSlider.value = GameManager.GM.Settings.DefaultMusicVolume;
         GameManager.GM.Settings.PreviousMusicVolume = GameManager.GM.Settings.DefaultMusicVolume;
-        GameManager.GM.Settings.SoundMuted = false;
-        _MasterVolumeSlider.interactable = true;
-        _SFXVolumeSlider.interactable = true;
         _MusicVolumeSlider.interactable = true;
+
+        GameManager.GM.Settings.SoundMuted = false;
+        _MuteCheckbox.isOn = false;
+
+        GameManager.GM.Settings.FXAAEnabled = true;
+        _FXAACheckbox.isOn = true;
+
+        GameManager.GM.Settings.FPSCounter = false;
+        _FPSCounterCheckbox.isOn = false;
+
         SaveSystem.SaveSettings(GameManager.GM.Settings);
     }
 

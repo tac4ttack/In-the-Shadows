@@ -80,6 +80,11 @@ TagManager:
   - Main Menu/Press Any Key Text
   - Main Menu/Version Text
   - Axis Hints
+  - FPS Counter
+  - Tutorial_Piece_DUMMY
+  - Tutorial_Piece_4
+  - Tutorial_Piece_2
+  - Settings/Back button
   layers:
   - Default
   - TransparentFX

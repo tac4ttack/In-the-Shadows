@@ -298,7 +298,7 @@ public class LevelSelection : MonoBehaviour
         _IsOrbiting = true;
         UpdateLevelSelectionUI(_CurrentSelection);
 
-        for (float t = 0f; t < iTime; t += Time.fixedDeltaTime * _OrbitSpeed)
+        for (float t = 0f; t < iTime; t += Time.deltaTime * _OrbitSpeed)
         {
             Camera.main.transform.position = Vector3.Slerp(startPosition, iTarget, t / iTime);
             Camera.main.transform.LookAt(_Earth_GO.transform.position);
@@ -325,7 +325,7 @@ public class LevelSelection : MonoBehaviour
         _InCutscene = true;
         _CurrentSelection = iLevel;
         UpdateLevelSelectionUI(iLevel);
-        for (float t = 0f; t < iTime; t += Time.fixedDeltaTime * _OrbitSpeed)
+        for (float t = 0f; t < iTime; t += Time.deltaTime * _OrbitSpeed)
         {
             Camera.main.transform.position = Vector3.Slerp(startPosition, iTarget, t / iTime);
             Camera.main.transform.LookAt(_Earth_GO.transform.position);
@@ -351,7 +351,7 @@ public class LevelSelection : MonoBehaviour
         _InCutscene = true;
         _CurrentSelection = iLevel;
         UpdateLevelSelectionUI(iLevel);
-        for (float t = 0f; t < iTime; t += Time.fixedDeltaTime * _OrbitSpeed)
+        for (float t = 0f; t < iTime; t += Time.deltaTime * _OrbitSpeed)
         {
             Camera.main.transform.position = Vector3.Slerp(startPosition, iTarget, t / iTime);
             Camera.main.transform.LookAt(_Earth_GO.transform.position);

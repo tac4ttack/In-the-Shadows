@@ -5,6 +5,9 @@ public class SettingsData
     /* Default values */
     public float DefaultMasterVolume = 1f;
     public float DefaultSFXVolume = 1f;
+    public bool DefaultMute = false;
+    public bool DefaultFPSCounter = false;
+    public bool DefaultFXAA = true;
     public float DefaultMusicVolume = 1f;
     public float DefaultSpeedRotation = 42f;
     public float DefaultSpeedTranslation = 1f;
@@ -16,7 +19,6 @@ public class SettingsData
     public float MusicVolume;
     public float PreviousMusicVolume;
     public bool SoundMuted;
-    public bool MouseControls;
     public bool FPSCounter;
     public bool FXAAEnabled;
     public float SpeedRotation;
@@ -31,10 +33,9 @@ public class SettingsData
         PreviousSFXVolume = DefaultSFXVolume;
         MusicVolume = DefaultMusicVolume;
         PreviousMusicVolume = DefaultMusicVolume;
-        SoundMuted = false;
-        MouseControls = false;
-        FPSCounter = false;
-        FXAAEnabled = true;
+        SoundMuted = DefaultMute;
+        FPSCounter = DefaultFPSCounter;
+        FXAAEnabled = DefaultFXAA;
         SpeedRotation = DefaultSpeedRotation;
         SpeedTranslation = DefaultSpeedTranslation;
     }
@@ -48,7 +49,6 @@ public class SettingsData
         MusicVolume = iData.MusicVolume;
         PreviousMusicVolume = iData.PreviousMusicVolume;
         SoundMuted = iData.SoundMuted;
-        MouseControls = iData.MouseControls;
         FPSCounter = iData.FPSCounter;
         FXAAEnabled = iData.FXAAEnabled;
         SpeedRotation = iData.SpeedRotation;

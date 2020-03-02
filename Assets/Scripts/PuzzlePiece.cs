@@ -59,6 +59,8 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         #endif
 
         _AxisHints.Enable(false);
+        _RotationSpeed = GameManager.GM.Settings.SpeedRotation;
+        _TranslationSpeed = GameManager.GM.Settings.SpeedTranslation;
     }
 
     void Update()
@@ -267,18 +269,6 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         if (_PuzzleContainer.CurrentState == Puzzle.PuzzleStates.WinScreen)
             return;
-        
-        if (GameManager.GM.Settings.MouseControls)
-        {
-            if (eventData.button == PointerEventData.InputButton.Left)
-            {
-                this.gameObject.transform.Rotate(ComputeRotation(0), Time.deltaTime * _RotationSpeed, Space.Self);
-            }
-            else if (eventData.button == PointerEventData.InputButton.Right)
-            {
-                this.gameObject.transform.Translate(ComputeTranslation(0).normalized * Time.deltaTime * _TranslationSpeed, Space.World);
-            }
-        }
         else
         {
             if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftControl) && !Input.GetKey(KeyCode.LeftShift))
