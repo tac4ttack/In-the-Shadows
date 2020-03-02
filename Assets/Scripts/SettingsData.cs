@@ -9,8 +9,8 @@ public class SettingsData
     public bool DefaultFPSCounter = false;
     public bool DefaultFXAA = true;
     public float DefaultMusicVolume = 1f;
-    public float DefaultSpeedRotation = 42f;
-    public float DefaultSpeedTranslation = 1f;
+    public float DefaultSpeedRotation = 4.2f;
+    public float DefaultSpeedTranslation = 2.0f;
     /* Current values */
     public float MasterVolume;
     public float PreviousMasterVolume;

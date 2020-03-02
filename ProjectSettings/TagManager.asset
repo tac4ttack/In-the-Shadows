@@ -81,10 +81,11 @@ TagManager:
   - Main Menu/Version Text
   - Axis Hints
   - FPS Counter
-  - Tutorial_Piece_DUMMY
-  - Tutorial_Piece_4
-  - Tutorial_Piece_2
   - Settings/Back button
+  - Settings/Rotation Speed Text
+  - Settings/Rotation Speed Slider
+  - Settings/Translation Speed Text
+  - Settings/Translation Speed Slider
   layers:
   - Default
   - TransparentFX

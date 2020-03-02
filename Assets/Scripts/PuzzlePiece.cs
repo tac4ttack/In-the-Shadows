@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Assertions;
 
@@ -15,8 +16,8 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     [SerializeField] private RotationConstraints _RotationConstraints = new RotationConstraints();
     [System.Serializable] private class TranslationConstraints { public bool x = true; public bool y = true; public bool z = true; }
     [SerializeField] private TranslationConstraints _TranslationConstraints = new TranslationConstraints();
-    [SerializeField] [Range(0.0001f, 100.0f)] private float _RotationSpeed = 42f;
-    [SerializeField] [Range(0.0001f, 100.0f)] private float _TranslationSpeed = 10.5f;
+    [SerializeField] [Range(0.0001f, 100.0f)] private float _RotationSpeed = 4.2f;
+    [SerializeField] [Range(0.0001f, 100.0f)] private float _TranslationSpeed = 2.5f;
     [SerializeField] [Range(0.0f, 1.0f)] private float _OrientationBias = 0.035f;
     [SerializeField] [Range(0.0f, 1.0f)] private float _DirectionBias = 0.035f;
     [SerializeField] [Range(0.0f, 1.0f)] private float _DistanceBias = 0.035f;
@@ -59,8 +60,13 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         #endif
 
         _AxisHints.Enable(false);
-        _RotationSpeed = GameManager.GM.Settings.SpeedRotation;
+        _RotationSpeed = GameManager.GM.Settings.SpeedRotation * 10;
         _TranslationSpeed = GameManager.GM.Settings.SpeedTranslation;
+
+        Slider rotationSpeedSlider = GameObject.FindGameObjectWithTag("Settings/Rotation Speed Slider").GetComponent<Slider>();
+        rotationSpeedSlider.onValueChanged.AddListener(delegate { SetSpeeds(GameManager.GM.Settings.SpeedRotation * 10, GameManager.GM.Settings.SpeedTranslation); });
+        Slider translationSpeedSlider = GameObject.FindGameObjectWithTag("Settings/Translation Speed Slider").GetComponent<Slider>();
+        translationSpeedSlider.onValueChanged.AddListener(delegate { SetSpeeds(GameManager.GM.Settings.SpeedRotation * 10, GameManager.GM.Settings.SpeedTranslation); });
     }
 
     void Update()

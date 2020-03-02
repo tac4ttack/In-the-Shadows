@@ -19,6 +19,14 @@ public class SettingsMenu : MonoBehaviour
     private Slider _MusicVolumeSlider;
     private float _PrevMusicVolumeValue;
 
+    private TextMeshProUGUI _RotationSpeedValue;
+    private Slider _RotationSpeedSlider;
+    private float _PrevRotationSpeedValue;
+
+    private TextMeshProUGUI _TranslationSpeedValue;
+    private Slider _TranslationSpeedSlider;
+    private float _PrevTranslationSpeedValue;
+
     private bool _InitFlag = true;
     private Toggle _MuteCheckbox;
     private Toggle _FPSCounterCheckbox;
@@ -76,6 +84,24 @@ public class SettingsMenu : MonoBehaviour
             _FXAACheckbox = GameObject.FindGameObjectWithTag("Settings/FXAA Checkbox").GetComponent<Toggle>();
         Assert.IsNotNull(_FXAACheckbox, "FXAA checkbox is missing!");
         _FXAACheckbox.onValueChanged.AddListener(delegate { FXAACheckboxToggle(); });
+
+        if (_RotationSpeedValue == null)
+            _RotationSpeedValue = GameObject.FindGameObjectWithTag("Settings/Rotation Speed Text").GetComponent<TextMeshProUGUI>();
+        Assert.IsNotNull(_RotationSpeedValue, "Rotation speed text value component is missing!");
+
+        if (_RotationSpeedSlider == null)
+            _RotationSpeedSlider = GameObject.FindGameObjectWithTag("Settings/Rotation Speed Slider").GetComponent<Slider>();
+        Assert.IsNotNull(_RotationSpeedSlider, "Rotation speed slider is missing!");
+        _RotationSpeedSlider.onValueChanged.AddListener(delegate { UpdateRotationSpeed(); });
+
+        if (_TranslationSpeedValue == null)
+            _TranslationSpeedValue = GameObject.FindGameObjectWithTag("Settings/Translation Speed Text").GetComponent<TextMeshProUGUI>();
+        Assert.IsNotNull(_TranslationSpeedValue, "Rotation speed text value component is missing!");
+
+        if (_TranslationSpeedSlider == null)
+            _TranslationSpeedSlider = GameObject.FindGameObjectWithTag("Settings/Translation Speed Slider").GetComponent<Slider>();
+        Assert.IsNotNull(_TranslationSpeedSlider, "Translation speed slider is missing!");
+        _TranslationSpeedSlider.onValueChanged.AddListener(delegate { UpdateTranslationSpeed(); });
     }
 
     void Start()
@@ -106,6 +132,8 @@ public class SettingsMenu : MonoBehaviour
     {
         _FPSCounterCheckbox.isOn = iData.FPSCounter;
         _FXAACheckbox.isOn = iData.FXAAEnabled;
+        _RotationSpeedSlider.value = iData.SpeedRotation;
+        _TranslationSpeedSlider.value = iData.SpeedTranslation;
     }
 
     public void UpdateMasterVolume()
@@ -136,6 +164,20 @@ public class SettingsMenu : MonoBehaviour
         GameManager.GM.SM.MusicSrc.volume = GameManager.GM.Settings.MusicVolume * GameManager.GM.Settings.MasterVolume;
         if (!GameManager.GM.Settings.SoundMuted)
             GameManager.GM.Settings.PreviousMusicVolume = GameManager.GM.Settings.MusicVolume;
+        SaveSystem.SaveSettings(GameManager.GM.Settings);
+    }
+
+    public void UpdateRotationSpeed()
+    {
+        GameManager.GM.Settings.SpeedRotation = _RotationSpeedSlider.value;
+        _RotationSpeedValue.text = _RotationSpeedSlider.value.ToString("0.00");
+        SaveSystem.SaveSettings(GameManager.GM.Settings);
+    }
+
+    public void UpdateTranslationSpeed()
+    {
+        GameManager.GM.Settings.SpeedTranslation = _TranslationSpeedSlider.value;
+        _TranslationSpeedValue.text = _TranslationSpeedSlider.value.ToString("0.00");
         SaveSystem.SaveSettings(GameManager.GM.Settings);
     }
 
@@ -217,6 +259,9 @@ public class SettingsMenu : MonoBehaviour
 
         GameManager.GM.Settings.FPSCounter = false;
         _FPSCounterCheckbox.isOn = false;
+
+        _RotationSpeedSlider.value = GameManager.GM.Settings.DefaultSpeedRotation;
+        _TranslationSpeedSlider.value = GameManager.GM.Settings.DefaultSpeedTranslation;
 
         SaveSystem.SaveSettings(GameManager.GM.Settings);
     }
