@@ -14,7 +14,6 @@ TagManager:
   - Main Menu/Credits Panel
   - Main Menu/Space System
   - Main Menu/Debug Mode Toggle
-  - MainMenu_PressAnyKeyText
   - Pause Menu/Background
   - Pause Menu/Panel
   - Pause Menu/Restart Button
@@ -57,7 +56,6 @@ TagManager:
   - Settings/Mouse Controls Checkbox
   - Settings/Panel
   - Settings/FXAA Checkbox
-  - Axis_Hints
   - New Game Dialog/Title Text
   - New Game Dialog/Player Name Input
   - New Game Dialog/Skip Tutorial Toggle
@@ -79,6 +77,9 @@ TagManager:
   - Main Menu/Credits Container
   - Main Menu/Earth
   - In Game/Puzzle Container
+  - Main Menu/Press Any Key Text
+  - Main Menu/Version Text
+  - Axis Hints
   layers:
   - Default
   - TransparentFX
