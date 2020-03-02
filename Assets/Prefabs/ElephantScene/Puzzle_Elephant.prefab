@@ -234,6 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentState: 0
   CurrentPromptTarget: 0
+  WinScreen_FirstPop: 1
   _PuzzlePieces: []
   _PuzzleValidated: 0
 --- !u!1 &7845806442441959186

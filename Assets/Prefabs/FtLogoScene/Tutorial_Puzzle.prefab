@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 718416565}
   m_Layer: 12
   m_Name: DUMMY
-  m_TagString: Tutorial_Piece_DUMMY
+  m_TagString: In Game/Puzzle Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 8063472617060571191}
   m_Layer: 12
   m_Name: PuzzlePiece_4
-  m_TagString: Tutorial_Piece_4
+  m_TagString: In Game/Puzzle Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 7317126764391644219}
   m_Layer: 12
   m_Name: PuzzlePiece_2
-  m_TagString: Tutorial_Piece_2
+  m_TagString: In Game/Puzzle Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
