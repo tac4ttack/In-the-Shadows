@@ -22,8 +22,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"GAME MANAGER - {this.name} - Awake()");
         #endif
 
@@ -62,15 +62,15 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"GAME MANAGER - {this.name} - Start()");
         #endif
 
         // Sound settings loading
         SM.SfxSrc.volume = Settings.SFXVolume * Settings.MasterVolume;
         SM.MusicSrc.volume = Settings.MusicVolume * Settings.MasterVolume;
-        GameManager.GM.SM.MusicSrc.PlayOneShot(GameManager.GM.SM.Musics[0]);
+        GameManager.GM.SM.PlayMusic(GameManager.GM.SM.Musics[0]);
     }
 
     public void ClearAllPlayersData()
@@ -123,16 +123,24 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.PageUp))
         {
             QualitySettings.IncreaseLevel();
+            // DEBUG
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
             Debug.Log(QualitySettings.GetQualityLevel());
+            #endif
         }   
         if (Input.GetKeyDown(KeyCode.PageDown))
         {
             QualitySettings.DecreaseLevel();
+            // DEBUG
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
             Debug.Log(QualitySettings.GetQualityLevel());
-        }   
+            #endif
+        }
+        // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         if (Input.GetKeyDown(KeyCode.Home))
             Debug.Log(QualitySettings.GetQualityLevel());
-        
+        #endif
     }
 }
 
@@ -147,9 +155,8 @@ public class InMainMenu_GameState : IState
         GameManager.GM.CurrentState = GameManager.GameStates.MainMenu;
         GameManager.GM.DebugMode = false;
         GameManager.GM.UpdatePlayersProgressionPercentage();
-        SaveSystem.SavePlayers(GameManager.GM.Players);
         GameManager.GM.SM.MusicSrc.Stop();
-        GameManager.GM.SM.MusicSrc.PlayOneShot(GameManager.GM.SM.Musics[0]);
+        GameManager.GM.SM.PlayMusic(GameManager.GM.SM.Musics[0]);
     }
 
     public void Execute() { }
@@ -169,9 +176,8 @@ public class LevelSelection_GameState : IState
     {
         GameManager.GM.CurrentState = GameManager.GameStates.LevelSelection;
         SceneManager.LoadScene(1);
-        SaveSystem.SavePlayers(GameManager.GM.Players);
         GameManager.GM.SM.MusicSrc.Stop();
-        GameManager.GM.SM.MusicSrc.PlayOneShot(GameManager.GM.SM.Musics[1]);
+        GameManager.GM.SM.PlayMusic(GameManager.GM.SM.Musics[1]);
     }
 
     public void Execute() { }
@@ -198,9 +204,8 @@ public class InGame_GameState : IState
     {
         GameManager.GM.CurrentState = GameManager.GameStates.InGame;
         SceneManager.LoadScene(_SceneIndex);
-        SaveSystem.SavePlayers(GameManager.GM.Players);
         GameManager.GM.SM.MusicSrc.Stop();
-        GameManager.GM.SM.MusicSrc.PlayOneShot(GameManager.GM.SM.Musics[_SceneIndex]);
+        GameManager.GM.SM.PlayMusic(GameManager.GM.SM.Musics[_SceneIndex]);
     }
 
     public void Execute() { }

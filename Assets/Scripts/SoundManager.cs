@@ -10,25 +10,32 @@ public class SoundManager : MonoBehaviour
 
     private void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"SOUND MANAGER - {this.name} - Awake()");
         #endif
-        
+
         List<AudioSource> AS = new List<AudioSource>();
         GetComponents<AudioSource>(AS);
-        
+
         // DEBUG
-        #if UNITY_EDITOR
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         if (AS.Count != 2)
-        {
             Debug.LogError("SoundManager does not seems to have the correct number of Audio sources");
-        }
         #endif
 
         if (MusicSrc == null)
             MusicSrc = AS[0];
         if (SfxSrc == null)
             SfxSrc = AS[1];
+    }
+
+    public void PlayMusic(AudioClip iClip)
+    {
+        if (iClip)
+        {
+            MusicSrc.clip = iClip;
+            MusicSrc.Play();
+        }
     }
 }
