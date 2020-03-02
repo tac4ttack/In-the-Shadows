@@ -40,8 +40,8 @@ public class LevelSelection : MonoBehaviour
 
     void Awake()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"LEVEL SELECTION - {this.name} - Awake()");
         #endif
         
@@ -85,14 +85,19 @@ public class LevelSelection : MonoBehaviour
             _Earth_GO = GameObject.FindGameObjectWithTag("Level Selection/Earth");
         Assert.IsNotNull(_Earth_GO, "Earth GameObject is missing from the scene!");
 
-        Levels = GameObject.FindGameObjectWithTag("Level Selection/Map").GetComponentsInChildren<LevelMarker>();
-
-        
+        LevelMarker[] tmp = GameObject.FindGameObjectWithTag("Level Selection/Map").GetComponentsInChildren<LevelMarker>();
+        Levels = new LevelMarker[tmp.Length];
         // DEBUG
         #if UNITY_EDITOR
+        if (tmp.Length <= 0)
+            Debug.LogError("No level markers present in scene!");
         if (Levels.Length <= 0)
             Debug.LogError("Level list can't be empty!");
         #endif
+        for (int i = 0; i < tmp.Length; i++)
+        {
+            Levels[tmp[i].Id] = tmp[i];
+        }
 
         if (_PauseMenuUI == null)
             _PauseMenuUI = GameObject.FindGameObjectWithTag("Pause Menu/UI").GetComponent<PauseMenu>();
@@ -105,8 +110,8 @@ public class LevelSelection : MonoBehaviour
 
     void Start()
     {
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         // DEBUG
+        #if UNITY_EDITOR || DEVELOPMENT_BUILD
         Debug.Log($"LEVEL SELECTION - {this.name} - Start()");
         #endif
 
@@ -248,21 +253,19 @@ public class LevelSelection : MonoBehaviour
     public void NavButtonPress(int iDirection)
     {
         GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[1]);
-        int nextSelection = _CurrentSelection + iDirection;
 
+        int nextSelection = Mathf.Clamp(_CurrentSelection + iDirection, 0, Levels.Length - 1);
+        
         if (!_InCutscene)
         {
-            if (nextSelection >= 0 && nextSelection < Levels.Length)
-            {
-                _PreviousSelection = _CurrentSelection;
-                _CurrentSelection = nextSelection;
+            _PreviousSelection = _CurrentSelection;
+            _CurrentSelection = nextSelection;
 
-                if (_IsOrbiting && !_InCutscene && _OrbitCamCoroutine != null)
-                    StopCoroutine(_OrbitCamCoroutine);
+            if (_IsOrbiting && !_InCutscene && _OrbitCamCoroutine != null)
+                StopCoroutine(_OrbitCamCoroutine);
 
-                _OrbitCamCoroutine = OrbitCamera(Levels[_CurrentSelection].Position * _CamAltitude, 1f);
-                StartCoroutine(_OrbitCamCoroutine);
-            }
+            _OrbitCamCoroutine = OrbitCamera(Levels[_CurrentSelection].Position * _CamAltitude, 1f);
+            StartCoroutine(_OrbitCamCoroutine);
         }
     }
 
@@ -295,7 +298,7 @@ public class LevelSelection : MonoBehaviour
         _IsOrbiting = true;
         UpdateLevelSelectionUI(_CurrentSelection);
 
-        for (float t = 0f; t < iTime; t += Time.deltaTime * _OrbitSpeed)
+        for (float t = 0f; t < iTime; t += Time.fixedDeltaTime * _OrbitSpeed)
         {
             Camera.main.transform.position = Vector3.Slerp(startPosition, iTarget, t / iTime);
             Camera.main.transform.LookAt(_Earth_GO.transform.position);
@@ -322,7 +325,7 @@ public class LevelSelection : MonoBehaviour
         _InCutscene = true;
         _CurrentSelection = iLevel;
         UpdateLevelSelectionUI(iLevel);
-        for (float t = 0f; t < iTime; t += Time.deltaTime * _OrbitSpeed)
+        for (float t = 0f; t < iTime; t += Time.fixedDeltaTime * _OrbitSpeed)
         {
             Camera.main.transform.position = Vector3.Slerp(startPosition, iTarget, t / iTime);
             Camera.main.transform.LookAt(_Earth_GO.transform.position);
@@ -348,7 +351,7 @@ public class LevelSelection : MonoBehaviour
         _InCutscene = true;
         _CurrentSelection = iLevel;
         UpdateLevelSelectionUI(iLevel);
-        for (float t = 0f; t < iTime; t += Time.deltaTime * _OrbitSpeed)
+        for (float t = 0f; t < iTime; t += Time.fixedDeltaTime * _OrbitSpeed)
         {
             Camera.main.transform.position = Vector3.Slerp(startPosition, iTarget, t / iTime);
             Camera.main.transform.LookAt(_Earth_GO.transform.position);
