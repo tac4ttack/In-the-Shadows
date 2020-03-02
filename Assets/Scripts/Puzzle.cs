@@ -326,19 +326,24 @@ public class WinScreen_PuzzleState : IState
 
         /* Player Data update */
         GameManager.GM.Players.LastPlayedLevel[Utility.CurrentPlayer] = tmp;
+        
         if (tmp + 1 < Utility.PuzzleAmount && GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp + 1] == 0)
+        {
             _PuzzleScript.PushLevelUnlock();
+            GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp + 1] = 1;
+        }   
+
         if (GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp] < 2)
             _PuzzleScript.PushLevelComplete();
+
         GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp] = 2;
-        if (tmp + 1 < Utility.PuzzleAmount)
-            GameManager.GM.Players.Progression[Utility.CurrentPlayer].Level[tmp + 1] = 1;
-        
+
         if (_PuzzleScript.WinScreen_FirstPop)
         {
             GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[10]);
             GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[11]);
         }
+
         _PuzzleScript.WinScreen_FirstPop = false;
     }
 
