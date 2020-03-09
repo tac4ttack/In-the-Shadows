@@ -2,33 +2,36 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class ParticleGarbageCollector : MonoBehaviour
+namespace ITS.ParticleGarbageCollector
 {
-    private List<ParticleSystem> _Emitters;
-
-    void Awake()
+    public class ParticleGarbageCollector : MonoBehaviour
     {
-        // DEBUG
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
-        Debug.Log($"PARTICLE GARBAGE COLLECTOR - {this.name} - Awake()");
-        #endif
-        
-        _Emitters = new List<ParticleSystem>(this.gameObject.GetComponentsInChildren<ParticleSystem>());
-        Assert.IsNotNull(_Emitters, "No particle system found in children!");
-        Assert.IsTrue((_Emitters.Count > 0), "Particle system array is empty!");
-    }
+        private List<ParticleSystem> _Emitters;
 
-    void Update()
-    {
-        for (int i = 0; i < _Emitters.Count; i++)
+        void Awake()
         {
-            if (_Emitters[i] != null && !_Emitters[i].IsAlive(true))
-            {
-                Destroy(_Emitters[i].gameObject);
-                _Emitters.RemoveAt(i);
-            }
+            // DEBUG
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
+            Debug.Log($"PARTICLE GARBAGE COLLECTOR - {this.name} - Awake()");
+            #endif
+            
+            _Emitters = new List<ParticleSystem>(this.gameObject.GetComponentsInChildren<ParticleSystem>());
+            Assert.IsNotNull(_Emitters, "No particle system found in children!");
+            Assert.IsTrue((_Emitters.Count > 0), "Particle system array is empty!");
         }
-        if (_Emitters.Count == 0)
-            Destroy(this.gameObject);
+
+        void Update()
+        {
+            for (int i = 0; i < _Emitters.Count; i++)
+            {
+                if (_Emitters[i] != null && !_Emitters[i].IsAlive(true))
+                {
+                    Destroy(_Emitters[i].gameObject);
+                    _Emitters.RemoveAt(i);
+                }
+            }
+            if (_Emitters.Count == 0)
+                Destroy(this.gameObject);
+        }
     }
 }

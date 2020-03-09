@@ -1,68 +1,70 @@
 ﻿using UnityEngine;
 
-public class Water : MonoBehaviour
+namespace ITS.Water
 {
-    public float Scale = 1.0f;
-    public Vector2 SinSpeed = new Vector2(1.0f, 1.0f);
-    public Vector2 PerlinSpeed = new Vector2(1.0f, 1.0f);
-    public bool RecalculateNormals = true;
-    public bool UseSin = false;
-    public bool UsePerlin = true;
-
-    private Mesh _Mesh;
-    private Vector3[] _Vertices;
-    private Vector3[] _BaseVertices;
-
-    void Awake()
+    public class Water : MonoBehaviour
     {
-        // DEBUG
-        #if UNITY_EDITOR || DEVELOPMENT_BUILD
-        Debug.Log($"WATER - {this.name} - Awake()");
-        #endif
+        public float Scale = 1.0f;
+        public Vector2 SinSpeed = new Vector2(1.0f, 1.0f);
+        public Vector2 PerlinSpeed = new Vector2(1.0f, 1.0f);
+        public bool RecalculateNormals = true;
+        public bool UseSin = false;
+        public bool UsePerlin = true;
 
-        _Mesh = GetComponent<MeshFilter>().mesh;
+        private Mesh _Mesh;
+        private Vector3[] _Vertices;
+        private Vector3[] _BaseVertices;
 
-        // Fetch the plane vertices
-        if (_BaseVertices == null)
-            _BaseVertices = _Mesh.vertices;
-
-        _Vertices = new Vector3[_BaseVertices.Length];
-    }
-
-    void Update()
-    {
-        for (int i = 0; i < _Vertices.Length; i++)
+        void Awake()
         {
-            Vector3 vertex = _BaseVertices[i];
+            // DEBUG
+            #if UNITY_EDITOR || DEVELOPMENT_BUILD
+            Debug.Log($"WATER - {this.name} - Awake()");
+            #endif
 
-            if (UseSin == true && UsePerlin == false)
-            {
-                vertex.y += Mathf.Sin(vertex.x + Time.time * SinSpeed.x) *
-                            Mathf.Sin(vertex.z + Time.time * SinSpeed.y) * Scale;
-            }
+            _Mesh = GetComponent<MeshFilter>().mesh;
+            // Fetch the plane vertices
+            if (_BaseVertices == null)
+                _BaseVertices = _Mesh.vertices;
 
-            if (UsePerlin == true && UseSin == false)
-            {
-                vertex.y += Mathf.PerlinNoise(vertex.x + Time.time * PerlinSpeed.x,
-                                              vertex.z + Time.time * PerlinSpeed.y) * Scale;
-            }
-
-            if (UsePerlin == true && UseSin == true)
-            {
-                vertex.y += Mathf.PerlinNoise(vertex.x + Time.time * PerlinSpeed.x,
-                                              vertex.z + Time.time * PerlinSpeed.y) *
-                            Mathf.Sin(vertex.x + Time.time * SinSpeed.x) *
-                            Mathf.Sin(vertex.z + Time.time * SinSpeed.y) * Scale;
-            }
-
-            _Vertices[i] = vertex;
+            _Vertices = new Vector3[_BaseVertices.Length];
         }
 
-        _Mesh.MarkDynamic();
-        _Mesh.vertices = _Vertices;
-        _Mesh.RecalculateBounds();
+        void FixedUpdate()
+        {
+            for (int i = 0; i < _Vertices.Length; i++)
+            {
+                Vector3 vertex = _BaseVertices[i];
 
-        if (RecalculateNormals)
-            _Mesh.RecalculateNormals();
+                if (UseSin == true && UsePerlin == false)
+                {
+                    vertex.y += Mathf.Sin(vertex.x + Time.time * SinSpeed.x) *
+                                Mathf.Sin(vertex.z + Time.time * SinSpeed.y) * Scale;
+                }
+
+                if (UsePerlin == true && UseSin == false)
+                {
+                    vertex.y += Mathf.PerlinNoise(vertex.x + Time.time * PerlinSpeed.x,
+                                                vertex.z + Time.time * PerlinSpeed.y) * Scale;
+                }
+
+                if (UsePerlin == true && UseSin == true)
+                {
+                    vertex.y += Mathf.PerlinNoise(vertex.x + Time.time * PerlinSpeed.x,
+                                                vertex.z + Time.time * PerlinSpeed.y) *
+                                Mathf.Sin(vertex.x + Time.time * SinSpeed.x) *
+                                Mathf.Sin(vertex.z + Time.time * SinSpeed.y) * Scale;
+                }
+
+                _Vertices[i] = vertex;
+            }
+
+            _Mesh.MarkDynamic();
+            _Mesh.vertices = _Vertices;
+            _Mesh.RecalculateBounds();
+
+            if (RecalculateNormals)
+                _Mesh.RecalculateNormals();
+        }
     }
 }

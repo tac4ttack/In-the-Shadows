@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using ITS.GameManagement;
 
-public class PointerEventsHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+namespace ITS.PointerEventsHandler
 {
-    public void OnPointerEnter(PointerEventData pointerEventData)
+    public class PointerEventsHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[8]);
-    }
+        public void OnPointerEnter(PointerEventData pointerEventData)
+        {
+            GameManager.GM.SM.SfxSrc.PlayOneShot(GameManager.GM.SM.Sfx[8]);
+        }
 
-    public void OnPointerExit(PointerEventData pointerEventData) {}
+        public void OnPointerExit(PointerEventData pointerEventData) {}
+    }
 }

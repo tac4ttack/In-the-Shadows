@@ -1,27 +1,31 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Rendering.PostProcessing;
+using ITS.GameManagement;
 
-public class PostProcessManager : MonoBehaviour
+namespace ITS.PostProcessManagement
 {
-    private PostProcessLayer _Cam_PostProcessLayer;
-
-    public void InitCamAntialiasing()
+    public class PostProcessManager : MonoBehaviour
     {
-        _Cam_PostProcessLayer = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PostProcessLayer>();
-        Assert.IsNotNull(_Cam_PostProcessLayer, "Post processing layer not found on main camera!");
+        private PostProcessLayer _Cam_PostProcessLayer;
 
-        if (_Cam_PostProcessLayer == null)
+        public void InitCamAntialiasing()
         {
-            return;
-        }
-        if (GameManager.GM.Settings.FXAAEnabled)
-        {
-            _Cam_PostProcessLayer.antialiasingMode = PostProcessLayer.Antialiasing.FastApproximateAntialiasing;
-        }
-        else
-        {
-            _Cam_PostProcessLayer.antialiasingMode = PostProcessLayer.Antialiasing.None;
+            _Cam_PostProcessLayer = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<PostProcessLayer>();
+            Assert.IsNotNull(_Cam_PostProcessLayer, "Post processing layer not found on main camera!");
+
+            if (_Cam_PostProcessLayer == null)
+            {
+                return;
+            }
+            if (GameManager.GM.Settings.FXAAEnabled)
+            {
+                _Cam_PostProcessLayer.antialiasingMode = PostProcessLayer.Antialiasing.FastApproximateAntialiasing;
+            }
+            else
+            {
+                _Cam_PostProcessLayer.antialiasingMode = PostProcessLayer.Antialiasing.None;
+            }
         }
     }
 }

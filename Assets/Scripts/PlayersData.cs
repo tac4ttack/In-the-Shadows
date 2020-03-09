@@ -1,117 +1,120 @@
 ﻿using System.Collections.Generic;
 
-[System.Serializable]
-public class PlayersData
+namespace ITS.Data
 {
-    /*
-        This multidimensional array is used to store the players progression
-        0 -> locked | 1 -> unlocked | 2 -> completed
-        You can access values like this:
-            ProgressionArray[player_slot].Level[level_index]
-    */
-    [System.Serializable] public struct ProgressionArray { public int[] Level; }
-
-    /*
-        List storing for which level we have to launch the unlock cutscene
-    */
-    [System.Serializable] public struct UnlockQueue { public List<int> q; }
-
-    /*
-        List storing for which level we have to launch the complete cutscene
-    */
-    [System.Serializable] public struct CompleteQueue { public List<int> q; }
-
-    public string[] PlayersName;
-    public ProgressionArray[] Progression;
-    public float[] ProgressionPercentage;
-    public string[] LastPlayed;
-    public int[] LastPlayedLevel;
-    public bool[] IsEmpty;
-
-    public UnlockQueue[] ToUnlock;
-    public CompleteQueue[] ToComplete;
-
-    public int PuzzlesAmount = 5;
-
-    public PlayersData()
+    [System.Serializable]
+    public class PlayersData
     {
-        PlayersName = new string[3];
-        Progression = new ProgressionArray[3];
-        ProgressionPercentage = new float[3];
-        LastPlayed = new string[3];
-        LastPlayedLevel = new int[3];
-        IsEmpty = new bool[3];
-        ToUnlock = new UnlockQueue[3];
-        ToComplete = new CompleteQueue[3];
-        PuzzlesAmount = 5;
+        /*
+            This multidimensional array is used to store the players progression
+            0 -> locked | 1 -> unlocked | 2 -> completed
+            You can access values like this:
+                ProgressionArray[player_slot].Level[level_index]
+        */
+        [System.Serializable] public struct ProgressionArray { public int[] Level; }
 
-        for (int i = 0; i < 3; i++)
+        /*
+            List storing for which level we have to launch the unlock cutscene
+        */
+        [System.Serializable] public struct UnlockQueue { public List<int> q; }
+
+        /*
+            List storing for which level we have to launch the complete cutscene
+        */
+        [System.Serializable] public struct CompleteQueue { public List<int> q; }
+
+        public string[] PlayersName;
+        public ProgressionArray[] Progression;
+        public float[] ProgressionPercentage;
+        public string[] LastPlayed;
+        public int[] LastPlayedLevel;
+        public bool[] IsEmpty;
+
+        public UnlockQueue[] ToUnlock;
+        public CompleteQueue[] ToComplete;
+
+        public int PuzzlesAmount = 5;
+
+        public PlayersData()
         {
-            PlayersName[i] = "Player #" + (i + 1);
-            Progression[i].Level = new int[PuzzlesAmount];
-            ToUnlock[i].q = new List<int>();
-            ToComplete[i].q = new List<int>();
-            for (int j = 0; j < PuzzlesAmount; j++)
+            PlayersName = new string[3];
+            Progression = new ProgressionArray[3];
+            ProgressionPercentage = new float[3];
+            LastPlayed = new string[3];
+            LastPlayedLevel = new int[3];
+            IsEmpty = new bool[3];
+            ToUnlock = new UnlockQueue[3];
+            ToComplete = new CompleteQueue[3];
+            PuzzlesAmount = 5;
+
+            for (int i = 0; i < 3; i++)
             {
-                if (j == 0)
-                    Progression[i].Level[j] = 1;
-                else
-                    Progression[i].Level[j] = 0;
+                PlayersName[i] = "Player #" + (i + 1);
+                Progression[i].Level = new int[PuzzlesAmount];
+                ToUnlock[i].q = new List<int>();
+                ToComplete[i].q = new List<int>();
+                for (int j = 0; j < PuzzlesAmount; j++)
+                {
+                    if (j == 0)
+                        Progression[i].Level[j] = 1;
+                    else
+                        Progression[i].Level[j] = 0;
+                }
+                ProgressionPercentage[i] = 0f;
+                LastPlayed[i] = "never";
+                LastPlayedLevel[i] = 0;
+                IsEmpty[i] = true;
             }
-            ProgressionPercentage[i] = 0f;
-            LastPlayed[i] = "never";
-            LastPlayedLevel[i] = 0;
-            IsEmpty[i] = true;
         }
-    }
 
-    public PlayersData(PlayersData iData)
-    {
-        PlayersName = new string[3];
-        Progression = new ProgressionArray[3];
-        ProgressionPercentage = new float[3];
-        LastPlayed = new string[3];
-        LastPlayedLevel = new int[3];
-        IsEmpty = new bool[3];
-        ToUnlock = new UnlockQueue[3];
-        ToComplete = new CompleteQueue[3];
-        PuzzlesAmount = 5;
-
-        for (int i = 0; i < 3; i++)
+        public PlayersData(PlayersData iData)
         {
-            PlayersName[i] = iData.PlayersName[i];
-            Progression[i].Level = new int[PuzzlesAmount];
-            for (int j = 0; j < PuzzlesAmount; j++)
+            PlayersName = new string[3];
+            Progression = new ProgressionArray[3];
+            ProgressionPercentage = new float[3];
+            LastPlayed = new string[3];
+            LastPlayedLevel = new int[3];
+            IsEmpty = new bool[3];
+            ToUnlock = new UnlockQueue[3];
+            ToComplete = new CompleteQueue[3];
+            PuzzlesAmount = 5;
+
+            for (int i = 0; i < 3; i++)
             {
-                Progression[i].Level[j] = iData.Progression[i].Level[j];
+                PlayersName[i] = iData.PlayersName[i];
+                Progression[i].Level = new int[PuzzlesAmount];
+                for (int j = 0; j < PuzzlesAmount; j++)
+                {
+                    Progression[i].Level[j] = iData.Progression[i].Level[j];
+                }
+                ProgressionPercentage[i] = iData.ProgressionPercentage[i];
+                LastPlayed[i] = iData.LastPlayed[i];
+                LastPlayedLevel[i] = iData.LastPlayedLevel[i];
+                IsEmpty[i] = iData.IsEmpty[i];
+                ToUnlock[i].q = new List<int>(iData.ToUnlock[i].q);
+                ToComplete[i].q = new List<int>(iData.ToComplete[i].q);
             }
-            ProgressionPercentage[i] = iData.ProgressionPercentage[i];
-            LastPlayed[i] = iData.LastPlayed[i];
-            LastPlayedLevel[i] = iData.LastPlayedLevel[i];
-            IsEmpty[i] = iData.IsEmpty[i];
-            ToUnlock[i].q = new List<int>(iData.ToUnlock[i].q);
-            ToComplete[i].q = new List<int>(iData.ToComplete[i].q);
         }
-    }
 
-    public void ResetTargetPlayer(int iSlot)
-    {
-        if (iSlot >= 0 && iSlot < 3)
+        public void ResetTargetPlayer(int iSlot)
         {
-            PlayersName[iSlot] = "Player #" + (iSlot + 1);
-            for (int i = 0; i < PuzzlesAmount - 1; i++)
+            if (iSlot >= 0 && iSlot < 3)
             {
-                if (i == 0)
-                    Progression[iSlot].Level[i] = 1;
-                else
-                    Progression[iSlot].Level[i] = 0;
-                ToUnlock[iSlot].q.Clear();
-                ToComplete[iSlot].q.Clear();
+                PlayersName[iSlot] = "Player #" + (iSlot + 1);
+                for (int i = 0; i < PuzzlesAmount - 1; i++)
+                {
+                    if (i == 0)
+                        Progression[iSlot].Level[i] = 1;
+                    else
+                        Progression[iSlot].Level[i] = 0;
+                    ToUnlock[iSlot].q.Clear();
+                    ToComplete[iSlot].q.Clear();
+                }
+                ProgressionPercentage[iSlot] = 0f;
+                LastPlayed[iSlot] = "never";
+                LastPlayedLevel[iSlot] = 0;
+                IsEmpty[iSlot] = true;
             }
-            ProgressionPercentage[iSlot] = 0f;
-            LastPlayed[iSlot] = "never";
-            LastPlayedLevel[iSlot] = 0;
-            IsEmpty[iSlot] = true;
         }
     }
 }
