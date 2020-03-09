@@ -1,0 +1,291 @@
+fileFormatVersion: 2
+guid: 7673d51cee056465cbefa6e55a2b2c6c
+ModelImporter:
+  serializedVersion: 19300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Bowl
+    second: {fileID: 2100000, guid: a097eb95c98f8442a8037536d9ae61b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Cali
+    second: {fileID: 2100000, guid: ae64e7d9e258949f2b17d5152d5275a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_CaliFrame
+    second: {fileID: 2100000, guid: cc0b8898afddb4f92aab9b06016a9e3c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Cupboard
+    second: {fileID: 2100000, guid: 8552d71800ff249d7be09546b6b705d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_CupboardDoors
+    second: {fileID: 2100000, guid: 6d88dde60c3e44230b353fd710e707da, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Floor
+    second: {fileID: 2100000, guid: 7e9510acfbdb342d9b283bdfc2a2c169, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FloorPlanks
+    second: {fileID: 2100000, guid: 6bcbda1ea7e344ba88847e220dfa9676, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerBud_A
+    second: {fileID: 2100000, guid: 081dd90812330422abba5663ea40768e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerBud_B
+    second: {fileID: 2100000, guid: 509b16d5535cb4ffca43c0b27eca5bd6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerBud_C
+    second: {fileID: 2100000, guid: 280d6a8faeca9429b914bdad9d502373, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerLeaf
+    second: {fileID: 2100000, guid: e774996739a8244d3883bd41faa5933a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerStem_A
+    second: {fileID: 2100000, guid: f4494b2fca48e4e4db0d5bc91382475a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerStem_B
+    second: {fileID: 2100000, guid: 659df8e675a134fe280c070f4ddeab49, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerStem_C
+    second: {fileID: 2100000, guid: 4334ea579d80741329b670a7b14ad54d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerStem_D
+    second: {fileID: 2100000, guid: 6af28215db45b4af98d9402c64235c59, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_FlowerStem_E
+    second: {fileID: 2100000, guid: f98a539a60d4b464cbc8e8143a7e173e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Flower_A
+    second: {fileID: 2100000, guid: 64c77139db9b947279162a73128c0729, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Flower_B
+    second: {fileID: 2100000, guid: 89419c849fa584f7386e522d24376b3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Flower_C
+    second: {fileID: 2100000, guid: 9841e343a96d94aab934d396f7f2b1e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Flower_D
+    second: {fileID: 2100000, guid: eef3b13341621406692de81337db2406, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Flower_E
+    second: {fileID: 2100000, guid: 927621c1bb3b54bd983e2e525ce4d2ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_LampFrame
+    second: {fileID: 2100000, guid: 7c259bc7be9314291a428cd9f3fa7ef4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_LampLight
+    second: {fileID: 2100000, guid: 8654ad57c45564fb9b7f1e671c01fb44, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_LampSides
+    second: {fileID: 2100000, guid: 79e9669a93327429ca0fc9ef456f7c03, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Pillow_Blue
+    second: {fileID: 2100000, guid: 633f349a02d464f3fa627da4b900bb52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Pillow_Green
+    second: {fileID: 2100000, guid: c49614e7e5dc2465d8238cbb4942af70, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Pillow_Pink
+    second: {fileID: 2100000, guid: 15e2bd4bd16864941ae90f0c380b44a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Pillow_Purple
+    second: {fileID: 2100000, guid: 45242e52a320244c597862a73ad450ce, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_TeaCups
+    second: {fileID: 2100000, guid: ff27c227c46024095a89b5facc85a7bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_TeaCupsTray
+    second: {fileID: 2100000, guid: 0e204981540d84b379c305c4189aa73b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_TeaTable
+    second: {fileID: 2100000, guid: f16619f5d7d5049aaa77414be4782f7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_TeaTableFloor
+    second: {fileID: 2100000, guid: 5216ca60c81b949e0abef20ba5d96efe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Vase
+    second: {fileID: 2100000, guid: 8f7b30814eee8463f9e988a68f1fb14b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_WallPainting
+    second: {fileID: 2100000, guid: a69d39e11ebb14585bc48384dc5a861f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Walls
+    second: {fileID: 2100000, guid: 8727b07247c3b4d53bea773a5758ac5d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_WallsBeam
+    second: {fileID: 2100000, guid: 36035bda3ea554c30bb022484f8005d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Window
+    second: {fileID: 2100000, guid: f4b3d471d7319484c9d4e7a5098452ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_WindowWoodFrame
+    second: {fileID: 2100000, guid: b1866bccaeb4745f99bb768cb474f90a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowPoly_TeaRoom_Window_Round
+    second: {fileID: 2100000, guid: 188ae44178c6f481b936fe92a19bed9c, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 3
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 0
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
