@@ -277,14 +277,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3928979995663339170}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.08, y: 1.3599999, z: 4.38}
+  m_LocalRotation: {x: 0.018464936, y: -0.7498186, z: 0.6610541, w: 0.020944357}
+  m_LocalPosition: {x: 1.08, y: 1.4, z: 1.88}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 3928979994455646343}
   m_Father: {fileID: 3928979996434765242}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 82.8, y: -176.8, z: 0}
 --- !u!114 &3928979995663339172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,10 +297,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2152f94fcf15a4e09a59c3c8b0aaf363, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPuzzlePieceValidated: 0
+  isPuzzlePieceValidated: 1
   _OrientationSolutions:
   - {x: 0, y: -0.7, z: 0, w: 0.7}
   - {x: 0, y: 0.7, z: 0, w: 0.7}
+  - {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
+  - {x: -0.7, y: 0, z: 0.7, w: 0}
+  - {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
   _RelativePuzzlePiece: {fileID: 3928979995926354058}
   _RelativeDirectionSolution: {x: 0, y: 0, z: 0}
   _RelativeDistanceSolution: 0.025
@@ -313,8 +316,8 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 1
-  _RotationSpeed: 100
-  _TranslationSpeed: 2
+  _RotationSpeed: 93.203125
+  _TranslationSpeed: 3.4316406
   _OrientationBias: 0.08
   _DirectionBias: 0.08
   _DistanceBias: 0.025
@@ -434,14 +437,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3928979995926354058}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0799961, y: 1.36, z: 1.8699992}
+  m_LocalRotation: {x: 0.17896336, y: 0.086592734, z: -0.97991014, w: 0.01581464}
+  m_LocalPosition: {x: 1.08, y: 1.85, z: 3.96}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 3928979996376215516}
   m_Father: {fileID: 3928979996434765242}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -190.1, y: -200.7, z: 0}
 --- !u!114 &3928979995926354060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,7 +599,7 @@ Transform:
   m_GameObject: {fileID: 3928979996434765240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -39.1, y: 15.42, z: 25.01}
-  m_LocalScale: {x: 0.60000014, y: 0.6, z: 0.60000014}
+  m_LocalScale: {x: 0.60000026, y: 0.6, z: 0.60000026}
   m_Children:
   - {fileID: 3928979995887175846}
   - {fileID: 3928979995926354061}
@@ -618,5 +621,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentState: 0
   CurrentPromptTarget: 0
+  WinScreen_FirstPop: 1
   _PuzzlePieces: []
   _PuzzleValidated: 0
