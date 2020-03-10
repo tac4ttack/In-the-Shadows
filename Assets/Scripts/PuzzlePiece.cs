@@ -86,6 +86,7 @@ namespace ITS.PuzzlePieceSystem
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 string debugString = $"Name = {this.gameObject.name}\n"
+                        +$"Is Validated? = {isPuzzlePieceValidated}\n"
                         +$"LocalRotation = {this.gameObject.transform.localRotation}\n"
                         +$"Rotation = {this.gameObject.transform.rotation}\n";
 
@@ -149,8 +150,7 @@ namespace ITS.PuzzlePieceSystem
 
         public void SetRelativePuzzle(GameObject iPuzzle)
         {
-            if (iPuzzle != null)
-                _RelativePuzzlePiece = iPuzzle;
+            _RelativePuzzlePiece = iPuzzle;
         }
 
         public void SetBiases(float iOrientation, float iDirection, float iDistance)

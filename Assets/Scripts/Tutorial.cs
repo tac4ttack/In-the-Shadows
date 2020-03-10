@@ -87,7 +87,7 @@ namespace ITS.TutorialSystem
             TutorialStateMachine.ChangeState(TutorialSteps[0]);
         }
 
-        void Update()
+        void FixedUpdate()
         {   
             TutorialStateMachine.ExecuteState();
         }
@@ -469,7 +469,6 @@ namespace ITS.TutorialSystem
 
         public void Exit()
         {
-            _TutorialScript.DummyPuzzlePiece.transform.localRotation = new Quaternion(42f, 42f, 42f, 42f);
             _TutorialScript.Tutorial_Next_BTN.GetComponentInChildren<TextMeshProUGUI>().text = "next";
         }
     }
