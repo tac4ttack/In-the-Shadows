@@ -2,13 +2,13 @@
 
 ## Introduction
 
-This is my first try at making a Unity project so obviously it is far from perfect. The available builds are the version is used to validate the project at 42 Paris.  
+This is my first try at making a Unity project so obviously it is far from perfect. The available builds are the versions used to validate the project at 42 Paris.  
 
 The goal was to recreate a small game prototype like "**Shadowmatic**", a puzzle game made for mobiles in 2015, more info on [www.shadowmatic.com](http://www.shadowmatic.com).
 
 ## Quick synopsis:
 
-You are working for a company whose business is to clone planets. Part of the quality assurance team, you have to "recover" missed planet's artefacts that the copy paste team forgot to process (they are the worst).
+You are working for a company whose business is to clone planets. As part of the quality assurance team, you have to "recover" missed planet's artefacts that the copy paste team forgot to process (they are the worst).
 
 ## Features:
 
